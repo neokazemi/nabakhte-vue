@@ -1,11 +1,92 @@
 <template>
-  <div>
-    1
-  </div>
+  <v-container>
+    <v-row>
+      <v-col>
+        <breadcrumbs :items="breadcrumbsItems" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col
+        cols="3"
+      >
+        <sidebar />
+      </v-col>
+      <v-col
+        cols="9"
+      >
+        <v-card
+          v-for="(item, index) in $store.getters.posts"
+          :key="index"
+          :link="true"
+          :href="'#'"
+          hover
+          class="mx-auto mb-5"
+        >
+          <v-img
+            class="white--text align-end"
+            src="https://media.chibekhoonam.net/2020/08/entekhab-reshte-motevasete-1.jpg"
+          />
+          <v-card-title v-html="item.title.rendered" />
+          <v-card-subtitle class="pb-0" v-html="item.excerpt.rendered" />
+          <v-card-actions>
+            <v-btn
+              color="orange"
+              text
+            >
+              Share
+            </v-btn>
+            <v-btn
+              color="orange"
+              text
+            >
+              Explore
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
+import Sidebar from '../../../components/app/Sidebar'
+import Breadcrumbs from '~/components/Breadcrumbs'
 export default {
-  name: 'Category'
+  middleware: 'getPosts',
+  name: 'Category',
+  components: {
+    Breadcrumbs,
+    Sidebar
+  },
+  data () {
+    return {
+      breadcrumbsItems: [
+        {
+          disabled: false,
+          exact: false,
+          href: '#',
+          link: false,
+          text: 'خانه',
+          to: '#'
+        },
+        {
+          disabled: false,
+          exact: false,
+          href: '#',
+          link: false,
+          text: 'صفحه یک',
+          to: '#'
+        },
+        {
+          disabled: false,
+          exact: false,
+          href: '#',
+          link: false,
+          text: 'صفحه دو',
+          to: '#'
+        }
+      ]
+    }
+  }
 }
 </script>

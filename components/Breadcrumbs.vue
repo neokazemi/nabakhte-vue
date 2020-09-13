@@ -1,13 +1,27 @@
 <template>
-    $END$
+  <v-row>
+    <v-col>
+      <v-breadcrumbs :divider="divider" :items="items" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-    export default {
-        name: "Breadcrumbs"
+export default {
+  name: 'Breadcrumbs',
+  props: {
+    items: {
+      type: Array,
+      required: true,
+      default () {
+        return []
+      }
+    },
+    divider: {
+      type: String,
+      required: false,
+      default: '>'
     }
+  }
+}
 </script>
-
-<style scoped>
-
-</style>
