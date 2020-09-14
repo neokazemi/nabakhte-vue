@@ -160,6 +160,7 @@ export default {
   }
 
   .phone {
+    margin-top: 5px;
     font-size: 1.2rem;
     text-align: center;
   }
