@@ -7,12 +7,28 @@ $body-font-family: 'IRANSans', 'Arial', 'Verdana', 'Tahoma', sans-serif;
 $font-size-root: 16px;
 $line-height-root: 1.5;
 $border-radius-root: 4px;
+$grid-breakpoints: (
+  'xs': 0,
+  'sm': 600px,
+  'md': 960px,
+  'lg': 1280px - 16px,
+  'xl': 1920px - 16px
+) !default;
 
-//map-deep-merge(
-//(
-//'md': map-get($grid-breakpoints, 'md') * 0.9375,
-//'lg': map-get($grid-breakpoints, 'lg') * 0.9375,
-//'xl': map-get($grid-breakpoints, 'xl') * 0.9375
-//),
-//$container-max-widths
-//);
+@media (min-width: map-get($grid-breakpoints, 'xl')) {
+  .container {
+    max-width: 1170px !important;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'lg')) {
+  .container {
+    max-width: 1170px !important;
+  }
+}
+
+@media (min-width: map-get($grid-breakpoints, 'md')) {
+  .container {
+    max-width: 1170px !important;
+  }
+}
