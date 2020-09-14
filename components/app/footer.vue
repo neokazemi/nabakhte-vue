@@ -64,7 +64,7 @@
                   <div class="mx-auto logo-container">
                     <a class="logo" href="#">
                       <v-lazy>
-                        <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" :width="126" class="mx-auto logo-image" />
+                        <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" :width="130" class="mx-auto logo-image" />
                       </v-lazy>
                       <div class="logo-info-1">
                         تحلیل، مقایسه و خرید آنلاین
@@ -100,17 +100,24 @@
           </v-row>
         </v-container>
       </v-sheet>
-
-      <v-row>
-        <v-col
-          cols="12"
-        >
-          <v-lazy>
-            <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" :width="126" class="mx-auto" />
-            <!--                <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/NEMAD.png" :width="75" class="mx-auto" />-->
-          </v-lazy>
-        </v-col>
-      </v-row>
+      <v-container>
+        <v-row>
+          <v-col :md="6" class="e-namad">
+            <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/NEMAD.png" :height="68" :max-width="75" :contain="true" />
+            <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/samandehi.png" :height="68" :max-width="75" :contain="true" />
+          </v-col>
+          <v-col :md="6" class="copy-right">
+            <div class="contact-us">
+            </div>
+            <div class="rights">
+              <p>© 2020 Chibekhoonam<br>
+                ivahid Specialized and Professional Web Design & Development Co
+              </p>
+              <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/ivahid.svg" :max-height="33" :max-width="100" :contain="true" />
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-col>
   </v-row>
 </template>
@@ -169,4 +176,28 @@ export default {
     font-size: 0.9rem;
     text-align: center;
   }
+
+  .e-namad {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .copy-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rights,
+  .contact-us {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    font-size: 0.6rem;
+    height: 50%;
+    justify-content: flex-end;
+  }
+
 </style>
