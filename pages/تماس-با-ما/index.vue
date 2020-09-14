@@ -40,19 +40,11 @@ export default {
           to: '#'
         },
         {
-          disabled: false,
+          disabled: true,
           exact: false,
           href: '#',
           link: false,
-          text: 'صفحه یک',
-          to: '#'
-        },
-        {
-          disabled: false,
-          exact: false,
-          href: '#',
-          link: false,
-          text: 'صفحه دو',
+          text: 'تماس با ما',
           to: '#'
         }
       ]

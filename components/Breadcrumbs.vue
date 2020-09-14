@@ -1,6 +1,6 @@
 <template>
-  <v-row>
-    <v-col>
+  <v-row class="bread-row">
+    <v-col class="bread-col">
       <v-breadcrumbs :divider="divider" :items="items" />
     </v-col>
   </v-row>
@@ -25,3 +25,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .bread-col {
+    padding: 0 12px;
+  }
+
+  .bread-col ul {
+    padding: 0 12px;
+  }
+</style>

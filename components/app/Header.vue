@@ -14,7 +14,9 @@
               <div class="col-7">
                 <ul class=" nav navigation-bar">
                   <li class="nav-item">
-                    <a id="home-page" class="nav-link" href="#">چی بخونم</a>
+                    <nuxt-link id="home-page" class="nav-link" to="/">
+                      چی بخونم
+                    </nuxt-link>
                   </li>
                   <li class="nav-item">
                     <nuxt-link to="/تماس-با-ما" class="nav-link">
@@ -22,10 +24,14 @@
                     </nuxt-link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">درباره ما</a>
+                    <nuxt-link to="/درباره-ما" class="nav-link">
+                      درباره ما
+                    </nuxt-link>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">قوانین و شرایط</a>
+                    <nuxt-link class="nav-link" to="/قوانین-و-شرایط">
+                      قوانین و شرایط
+                    </nuxt-link>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">اخبار</a>
@@ -97,7 +103,9 @@
                         </div>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link menu-nav" href="#">آموزش خرید کتاب</a>
+                        <nuxt-link class="nav-link menu-nav" to="/آموزش-تصویری-خرید-کتاب-از-سایت-چی-بخونم">
+                          آموزش خرید کتاب
+                        </nuxt-link>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link menu-nav" href="#">
