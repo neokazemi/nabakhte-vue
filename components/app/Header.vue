@@ -46,6 +46,10 @@
                   <div class="header-bg-white-horizontal" />
                 </div>
               </div>
+              <div class="col-2 favorites">
+                <p class="black-font fontIranSans">علاقه مندی ها</p>
+                <div class="header-fluid-bg"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -413,9 +417,9 @@ a ::after {
   padding: 8px 0;
 }
 
-.black {
+.black-font {
   color: #292b2c;
-  padding: 8px 0 0 0;
+  padding: 0;
 }
 
 .favorites {
@@ -424,6 +428,8 @@ a ::after {
   text-align: center;
   height: 36px;
   margin-top: 4px;
+  font-size: 0.8rem;
+  position: relative;
 }
 
 .contact-us {
@@ -727,9 +733,10 @@ header a {
 .header-fluid-bg {
   position: absolute;
   height: 36px;
-  left: -120%;
+  right: 100%;
   top: 0;
-  width: 120%;
+  width: 500px;
+  overflow: hidden;
   z-index: 2;
   background-color: #f8f8f8;
   margin: 0;
