@@ -147,8 +147,8 @@
                   </div>
                   <a class="logo" href="#">
                 <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
-                <p id="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
-                <p id="logo-info-2">کتاب های کمک آموزشی</p>
+                <p class="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
+                <p class="logo-info-2">کتاب های کمک آموزشی</p>
               </a>
                 </div>
               </div>
@@ -542,40 +542,6 @@ header a {
   justify-content: space-between;
 }
 
-.logo .logo-image {
-  width: 130px;
-  margin: 10px auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-#logo-info-1 {
-  border-top: 1px solid #c3c3c3;
-  font-size: 0.7rem;
-  margin: 0 8px;
-  display: block;
-  color: #8e8e8e;
-  text-align: center;
-  line-height: 17px;
-}
-
-#logo-info-2 {
-  border-bottom: 1px solid #c3c3c3;
-  font-size: 0.85rem;
-  margin: 0 8px;
-  display: block;
-  color: #8e8e8e;
-  text-align: center;
-  line-height: 17px;
-}
-
-.logo {
-  text-decoration: none !important;
-  padding: 0 20px;
-  width: 100%;
-}
-
 .account-management {
   height: 83px;
   margin-top: 26px;
@@ -708,8 +674,8 @@ header a {
   margin-right: 0;
 }
 
-.menu .col-7 {
-  padding-right: 0;
+.top-menu .menu .col {
+  padding: 0 12px 0 0;
 }
 
 .header-bg {
