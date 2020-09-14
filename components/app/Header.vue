@@ -17,7 +17,9 @@
                     <a id="home-page" class="nav-link" href="#">چی بخونم</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">تماس با ما</a>
+                    <nuxt-link to="/تماس-با-ما" class="nav-link">
+                      تماس با ما
+                    </nuxt-link>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">درباره ما</a>

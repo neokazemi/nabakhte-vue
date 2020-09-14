@@ -4,3 +4,13 @@ main,
 .footer {
   background: $background-color;
 }
+
+.article-post-content p {
+  margin: 10px 0 !important;
+  text-align: justify;
+}
+
+.article-post-content {
+  padding: 20px 30px 30px 30px;
+  line-height: 30px;
+}
