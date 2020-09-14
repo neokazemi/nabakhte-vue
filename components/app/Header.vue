@@ -55,98 +55,102 @@
         </div>
         <div class="container top-menu">
           <div class="row menu">
-            <div class="col-7">
-              <div class="row menu-options-container justify-content-start align-items-center">
-                <ul class="nav">
-                  <li class="nav-item">
-                    <a class="nav-link menu-nav" href="#">
-                      <i class="fas fa-ellipsis-v" />دسته بندی محصولات
-                    </a>
-                  </li>
-                  <li class="nav-item consulting">
-                    <a class="nav-link menu-nav" href="#">
-                      <i class="fas fa-user-tie" />مشاوره
-                      <i class="fas fa-angle-down" />
-                    </a>
-                    <div class="consulting-mega-menu">
-                      <div class="option-selection">
-                        <a class="offline-consulting option" href="#">
-                          <p>
-                            <i class="fas fa-angle-left" />مشاوره آفلاین
-                          </p>
+            <div class="col">
+              <div class="menu-bar full-container">
+                <div class="right-bar">
+                  <div class="row menu-options-container justify-content-start align-items-center">
+                    <ul class="nav">
+                      <li class="nav-item">
+                        <a class="nav-link menu-nav" href="#">
+                          <i class="fas fa-ellipsis-v" />دسته بندی محصولات
                         </a>
-                        <a class="documents option" href="#">
-                          <p>
-                            <i class="fas fa-angle-left" />مجموعه مقالات
-                          </p>
+                      </li>
+                      <li class="nav-item consulting">
+                        <a class="nav-link menu-nav" href="#">
+                          <i class="fas fa-user-tie" />مشاوره
+                          <i class="fas fa-angle-down" />
                         </a>
+                        <div class="consulting-mega-menu">
+                          <div class="option-selection">
+                            <a class="offline-consulting option" href="#">
+                              <p>
+                                <i class="fas fa-angle-left" />مشاوره آفلاین
+                              </p>
+                            </a>
+                            <a class="documents option" href="#">
+                              <p>
+                                <i class="fas fa-angle-left" />مجموعه مقالات
+                              </p>
+                            </a>
+                          </div>
+                          <div class="offline-consulting-menu">
+                            <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
+                            <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
+                            <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
+                            <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
+                            <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
+                            <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
+                          </div>
+                          <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
+                        </div>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link menu-nav" href="#">آموزش خرید کتاب</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link menu-nav" href="#">
+                          <i class="fas fa-shopping-bag" />پیگیری سفارش
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="row searchbar-container">
+                    <input type="text" placeholder="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)" />
+                    <button type="submit" class="search-button">
+                      <i class="fas fa-search" />
+                    </button>
+                  </div>
+                </div>
+                <div class="left-bar">
+                  <div class="user-button">
+                    <div class="user-cart">
+                      <a href="#">
+                        <div class="cart-logo leftSide-btn-arrow">
+                          <i class="fas fa-shopping-cart" />
+                        </div>
+                        <h2 class="cart-description">سبد خرید</h2>
+                      </a>
+                      <div class="cart-details user-button-details">
+                        <p>چیزی در سبد خرید یافت نشد</p>
                       </div>
-                      <div class="offline-consulting-menu">
-                        <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
-                        <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
-                        <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
-                        <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
-                        <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
-                        <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
-                      </div>
-                      <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
                     </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link menu-nav" href="#">آموزش خرید کتاب</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link menu-nav" href="#">
-                      <i class="fas fa-shopping-bag" />پیگیری سفارش
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="row searchbar-container">
-                <input type="text" placeholder="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)" />
-                <button type="submit" class="search-button">
-                  <i class="fas fa-search" />
-                </button>
-              </div>
-            </div>
-
-            <div class="col-3 user-button">
-              <div class="user-cart">
-                <a href="#">
-                  <div class="cart-logo leftSide-btn-arrow">
-                    <i class="fas fa-shopping-cart" />
+                    <div class="account-management">
+                      <a href="#">
+                        <div class="account-logo leftSide-btn-arrow">
+                          <i class="fas fa-user" />
+                        </div>
+                        <h2 class="account-description">حساب کاربری</h2>
+                      </a>
+                      <div class="account-options user-button-details">
+                        <a class="first-option" href="#">
+                          <i class="fas fa-shopping-basket" />سفارش ها
+                        </a>
+                        <a class="middle-option" href="#">
+                          <i class="fas fa-truck" />آدرس ها
+                        </a>
+                        <a class="middle-option" href="#">ویرایش پروفایل</a>
+                        <a class="last-option" href="#">خروج</a>
+                      </div>
+                    </div>
                   </div>
-                  <h2 class="cart-description">سبد خرید</h2>
-                </a>
-                <div class="cart-details user-button-details">
-                  <p>چیزی در سبد خرید یافت نشد</p>
-                </div>
-              </div>
-              <div class="account-management">
-                <a href="#">
-                  <div class="account-logo leftSide-btn-arrow">
-                    <i class="fas fa-user" />
-                  </div>
-                  <h2 class="account-description">حساب کاربری</h2>
-                </a>
-                <div class="account-options user-button-details">
-                  <a class="first-option" href="#">
-                    <i class="fas fa-shopping-basket" />سفارش ها
-                  </a>
-                  <a class="middle-option" href="#">
-                    <i class="fas fa-truck" />آدرس ها
-                  </a>
-                  <a class="middle-option" href="#">ویرایش پروفایل</a>
-                  <a class="last-option" href="#">خروج</a>
+                  <a class="logo" href="#">
+                <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
+                <p id="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
+                <p id="logo-info-2">کتاب های کمک آموزشی</p>
+              </a>
                 </div>
               </div>
             </div>
-
-            <a class="col-2 logo" href="#">
-              <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
-              <p id="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
-              <p id="logo-info-2">کتاب های کمک آموزشی</p>
-            </a>
           </div>
         </div>
       </div>
@@ -473,6 +477,22 @@ header a {
   text-decoration: none;
 }
 
+.menu-bar {
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+}
+
+.menu-bar .right-bar {
+  width: calc(100% - 470px);
+}
+
+.menu-bar .left-bar {
+  width: 480px;
+  display: flex;
+  flex-direction: row;
+}
+
 .menu-nav {
   color: #000 !important;
   font-size: 0.8rem;
@@ -515,6 +535,8 @@ header a {
   height: 120px;
   flex-flow: row;
   display: flex;
+  width: 285px;
+  padding: 0 20px;
   justify-content: space-between;
 }
 
@@ -538,7 +560,7 @@ header a {
 
 #logo-info-2 {
   border-bottom: 1px solid #c3c3c3;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin: 0 8px;
   display: block;
   color: #8e8e8e;
@@ -548,12 +570,14 @@ header a {
 
 .logo {
   text-decoration: none !important;
-  padding: 12px 20px;
+  padding: 0 20px;
+  width: 100%;
 }
 
 .account-management {
   height: 83px;
   margin-top: 26px;
+  margin-right: 5px;
   color: #50cbb2;
   text-decoration: none !important;
   width: 120px;
@@ -570,6 +594,7 @@ header a {
 .user-cart {
   height: 83px;
   margin-top: 26px;
+  margin-left: 5px;
   color: #fb1616;
   align-items: center;
   width: 120px;
