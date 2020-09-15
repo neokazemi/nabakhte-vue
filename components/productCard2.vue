@@ -16,7 +16,7 @@
       </div>
     </div>
     <a :href="details.productURL" class="title">
-      <span></span>
+      <slot></slot>
     </a>
     <div class="price">
       <span class="percent">{{ details.off }}%</span>
@@ -71,7 +71,7 @@ export default {
     background-color: #ff4342;
     border-radius: 0 10px 10px 0;
     padding: 2px 10px;
-    z-index: 99;
+    z-index: 1;
     position: absolute;
     top: 8px;
     left: 0;

@@ -68,7 +68,7 @@ export default {
   background-color: #ff4342;
   border-radius: 0 10px 10px 0;
   padding: 2px 10px;
-  z-index: 99;
+  z-index: 1;
   position: absolute;
   top: 8px;
   left: 0;

@@ -816,7 +816,7 @@ header .scrolledMenu .scrolledMenuLinks .theme--light.v-btn:not(.v-btn--flat):no
   height: 340px;
   background-color: #f4f1ec;
   width: 588px;
-  margin: 5px;
+  margin: 0;
   margin-top: 30px;
   position: absolute;
   left: 0;
@@ -1185,15 +1185,8 @@ header .scrolledMenu .scrolledMenuLinks .theme--light.v-btn:not(.v-btn--flat):no
   background: transparent;
 }
 
-.body-head div {
-  height: inherit;
-}
-
-.body-haed div div {
-  height: inherit;
-}
-
 .big-carousel {
   height: 355px;
+  position: relative;
 }
 </style>
