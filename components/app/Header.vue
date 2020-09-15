@@ -383,6 +383,13 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
 </style>
 
 <style>
+
+.full-container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .v-application p {
   margin: 0;
 }
@@ -394,12 +401,6 @@ header.v-app-bar--is-scrolled .v-toolbar__content {
 header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
   padding: 0;
   flex-shrink: 2;
-}
-
-.full-container {
-  width: 100%;
-  padding: 0;
-  margin: 0;
 }
 
 .top-bar {

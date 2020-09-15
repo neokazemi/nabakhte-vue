@@ -1,5 +1,5 @@
 <template>
-  <div class="product-card-1 product-card">
+  <div :class="{ 'product-card-1': type == 1, 'product-card-2': type == 2, 'product-card': true }">
     <div class="product-card-image">
       <a :href="details.productURL"><img :src="details.imgURL"></a>
       <div class="image-hover">
@@ -9,13 +9,16 @@
         <button class="card-button like" type="submit"><i class="fas fa-heart"></i></button>
         <button class="card-button buy" type="submit"><i class="fas fa-shopping-cart"></i></button>
       </div>
-
+      <div class="card-slider" v-if="type == 2">
+        <button></button>
+        <button></button>
+      </div>
     </div>
     <a :href="details.productURL" class="title">
       <slot></slot>
     </a>
     <div class="price">
-      <span class="old-price">{{ details.oldPrice }}</span>
+      <span class="old-price" v-if="type == 1">{{ details.oldPrice | price}}</span>
       <span class="percent">{{ details.off }}%</span>
       <span class="new-price">{{ details.newPrice | price }}</span>
       <span class="toman">تومان</span>
@@ -38,6 +41,11 @@ export default {
           productURL: '#'
         }
       }
+    },
+    type: {
+      type: Number,
+      required: false,
+      default: 1
     }
   },
   filters: {
@@ -112,7 +120,7 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 0 3px;
+  margin: 20px 3px 0 3px;
 }
 
 .product-card-1 .price {
