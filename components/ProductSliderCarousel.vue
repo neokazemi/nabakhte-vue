@@ -9,14 +9,14 @@
             <slot />
           </div>
           <div class="slider-carousel">
-            <Swiper class="swiper" :options="swiperOption">
+            <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products" :key="index">
                 <ProductCard :details="product">
                   {{ product.productTitle }}
                 </ProductCard>
               </SwiperSlide>
-              <div slot="button-prev" class="swiper-button-prev" />
-              <div slot="button-next" class="swiper-button-next" />
+              <div slot="button-prev" class="swiper-button-prev" @click="slidePrev" />
+              <div slot="button-next" class="swiper-button-next" @click="slideNext" />
             </Swiper>
           </div>
         </v-col>
@@ -75,6 +75,14 @@ export default {
         }
       }
     }
+  },
+  methods: {
+    slideNext () {
+      this.$refs.mySwiperRef.$swiper.slideNext()
+    },
+    slidePrev () {
+      this.$refs.mySwiperRef.$swiper.slidePrev()
+    }
   }
 }
 </script>
@@ -124,7 +132,3 @@ export default {
     padding: 0 12px;
   }
 </style>
-
-<!--<style lang="scss" scoped>-->
-<!--  @import './base.scss';-->
-<!--</style>-->
