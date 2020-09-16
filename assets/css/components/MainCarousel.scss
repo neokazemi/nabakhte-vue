@@ -1,0 +1,28 @@
+.big-carousel {
+  .v-window__prev,
+  .v-window__next {
+    border-radius: 0;
+    background-color: #50cbb2;
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    width: 20px;
+    height: 20px;
+  }
+
+  .v-window__next {
+    left: 21px;
+    right: auto !important;
+  }
+
+  .v-btn--icon {
+    &.v-size--default {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.v-size--default .v-icon {
+      font-size: 20px !important;
+    }
+  }
+}
