@@ -54,13 +54,13 @@
 
 <script>
 import axios from 'axios'
-// import Post from '../../../models/Post'
-// import * as Model from 'js-abstract-model'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
+// import Post from '../../../models/Post'
+// import * as Model from 'js-abstract-model'
+const { Model } = require('js-abstract-model')
 // import { PostList } from '~/models/Post'
 // import Post from '~/models/Post'
-// const { Model } = require('js-abstract-model')
 export default {
   name: 'Category',
   components: {
@@ -76,7 +76,6 @@ export default {
       })
   },
   data () {
-    // console.log('Model', Model)
     return {
       breadcrumbsItems: [
         {
@@ -105,6 +104,9 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    console.log('Model', Model)
   }
 }
 </script>
