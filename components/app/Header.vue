@@ -44,10 +44,10 @@
               <div class="col-3 contact-us">
                 <p class="white-font fontIranSans nav-bar-options">
                   021-66979455
-                  <i class="fas fa-phone-volume"></i>
+                  <i class="fas fa-phone-volume" />
                 </p>
-                <a href="#" class="instagram nav-bar-options"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="telegram nav-bar-options"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" class="instagram nav-bar-options"><i class="fab fa-instagram" /></a>
+                <a href="#" class="telegram nav-bar-options"><i class="fab fa-telegram-plane" /></a>
                 <div class="header-bg">
                   <div class="header-bg-white" />
                   <div class="header-bg-green" />
@@ -55,8 +55,10 @@
                 </div>
               </div>
               <div class="col-2 favorites">
-                <p class="black-font fontIranSans">علاقه مندی ها</p>
-                <div class="header-fluid-bg"></div>
+                <p class="black-font fontIranSans">
+                  علاقه مندی ها
+                </p>
+                <div class="header-fluid-bg" />
               </div>
             </div>
           </div>
@@ -115,7 +117,7 @@
                     </ul>
                   </div>
                   <div class="row searchbar-container">
-                    <input type="text" placeholder="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)" />
+                    <input type="text" placeholder="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)">
                     <button type="submit" class="search-button">
                       <i class="fas fa-search" />
                     </button>
@@ -154,10 +156,10 @@
                     </div>
                   </div>
                   <a class="logo" href="#">
-                <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
-                <p class="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
-                <p class="logo-info-2">کتاب های کمک آموزشی</p>
-              </a>
+                    <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
+                    <p class="logo-info-1">تحلیل، مقایسه و خرید آنلاین</p>
+                    <p class="logo-info-2">کتاب های کمک آموزشی</p>
+                  </a>
                 </div>
               </div>
             </div>
@@ -224,7 +226,7 @@
           <a class="nav-link menu-nav" href="#">پیگیری سفارش</a>
         </ul>
         <div class="leftSide">
-          <input class="fixed-search-input" type="text" placeholder="جستجو" />
+          <input class="fixed-search-input" type="text" placeholder="جستجو">
           <a href="#">
             <div class="leftSide-btn search-button">
               <i class="fas fa-shopping-cart" />
@@ -518,14 +520,12 @@ header a {
 
 .searchbar-container input {
   font-size: 0.8rem;
-  word-spacing: 2;
   font-weight: 400;
   width: 90%;
   padding: 0 6px;
   margin-right: 20px;
-  border-color: internal-light-dark;
   background-color: #fff;
-  border: 0;
+  border: none;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   border-left: 1px solid #ececec;
 }
@@ -642,7 +642,6 @@ header a {
   padding-right: 0;
   padding-left: 3px;
   color: #f8f8f8;
-  font-weight: thin;
   font-size: 0.8rem;
 }
 
@@ -1094,7 +1093,7 @@ a:hover .fa-angle-down {
 
 .fixed-navbar .fixed-navbar-content {
   height: 41px;
-  padding: auto 0;
+  padding: 0;
 }
 
 .fixed-navbar .fixed-navbar-content .row .nav-menu a {
