@@ -174,9 +174,34 @@
             </v-btn>
           </v-item>
           <v-item>
-            <v-btn small depressed>
-              مشاوره
-            </v-btn>
+            <div class="consulting">
+              <v-btn small depressed>
+                مشاوره
+              </v-btn>
+              <div class="consulting-mega-menu">
+                <div class="option-selection">
+                  <a class="offline-consulting option" href="#">
+                    <p>
+                      <i class="fas fa-angle-left" />مشاوره آفلاین
+                    </p>
+                  </a>
+                  <a class="documents option" href="#">
+                    <p>
+                      <i class="fas fa-angle-left" />مجموعه مقالات
+                    </p>
+                  </a>
+                </div>
+                <div class="offline-consulting-menu">
+                  <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
+                  <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
+                  <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
+                  <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
+                  <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
+                  <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
+                </div>
+                <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
+              </div>
+            </div>
           </v-item>
           <v-item>
             <v-btn small depressed>
