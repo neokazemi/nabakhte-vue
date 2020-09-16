@@ -174,7 +174,7 @@
             </v-btn>
           </v-item>
           <v-item>
-            <v-div class="consulting">
+            <div class="consulting">
               <v-btn small depressed>
                 مشاوره
               </v-btn>
@@ -201,7 +201,7 @@
                 </div>
                 <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
               </div>
-            </v-div>
+            </div>
           </v-item>
           <v-item>
             <v-btn small depressed>
