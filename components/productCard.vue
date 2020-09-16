@@ -4,21 +4,25 @@
       <a :href="details.productURL"><img :src="details.imgURL"></a>
       <div class="image-hover">
         <a class="more-info" :href="details.productURL">
-          توضیحات بیشتر <i class="fas fa-angle-double-left"></i>
+          توضیحات بیشتر <i class="fas fa-angle-double-left" />
         </a>
-        <button class="card-button like" type="submit"><i class="fas fa-heart"></i></button>
-        <button class="card-button buy" type="submit"><i class="fas fa-shopping-cart"></i></button>
+        <button class="card-button like" type="submit">
+          <i class="fas fa-heart" />
+        </button>
+        <button class="card-button buy" type="submit">
+          <i class="fas fa-shopping-cart" />
+        </button>
       </div>
-      <div class="card-slider" v-if="type == 2">
-        <button></button>
-        <button></button>
+      <div v-if="type == 2" class="card-slider">
+        <button />
+        <button />
       </div>
     </div>
     <a :href="details.productURL" class="title">
-      <slot></slot>
+      <slot />
     </a>
     <div class="price">
-      <span class="old-price" v-if="type == 1">{{ details.oldPrice | price}}</span>
+      <span v-if="type == 1" class="old-price">{{ details.oldPrice | price }}</span>
       <span class="percent">{{ details.off }}%</span>
       <span class="new-price">{{ details.newPrice | price }}</span>
       <span class="toman">تومان</span>
@@ -28,7 +32,12 @@
 
 <script>
 export default {
-  name: 'productCard1',
+  name: 'ProductCard1',
+  filters: {
+    price (value) {
+      return value.toLocaleString('ar-SA')
+    }
+  },
   props: {
     details: {
       type: Object,
@@ -46,11 +55,6 @@ export default {
       type: Number,
       required: false,
       default: 1
-    }
-  },
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
     }
   }
 }
