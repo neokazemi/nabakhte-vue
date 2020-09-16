@@ -53,7 +53,6 @@
 </template>
 
 <script>
-// import axios from 'axios'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import { PostList } from '~/models/Post'

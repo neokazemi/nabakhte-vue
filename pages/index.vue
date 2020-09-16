@@ -1,19 +1,21 @@
 <template>
-  <v-row>
-    <v-col>
-      <v-layout
-        column
-        justify-center
-        align-center
-      >
-        <v-row
-          justify="center"
-          no-gutters
+  <div>
+    <v-row>
+      <v-col>
+        <v-layout
+          column
+          justify-center
+          align-center
         >
-          <v-col
-            cols="12"
+          <v-row
+            justify="center"
+            no-gutters
           >
-            <TopView />
+            <v-col
+              cols="12"
+            >
+              <TopView />
+            </v-col>
           </v-row>
         </v-layout>
       </v-col>
@@ -31,8 +33,8 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import ProductSliderCarousel from '~/components/ProductSliderCarousel'
+import TopView from '~/components/top-view/top-view'
 
 export default {
   components: {
