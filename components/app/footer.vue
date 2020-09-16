@@ -85,8 +85,7 @@
                   class="text-center"
                 >
                   <div class="ft-contact-us-container">
-                    <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/footlogo.png" :width="150" :max-height="79" :contain="true">
-                    </v-img>
+                    <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/footlogo.png" :width="150" :max-height="79" :contain="true" />
                     <p class="phone">
                       021-66979455
                     </p>
@@ -107,10 +106,11 @@
             <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/samandehi.png" :height="68" :max-width="75" :contain="true" />
           </v-col>
           <v-col :md="6" class="copy-right">
-            <div class="contact-us">
-            </div>
+            <div class="contact-us" />
             <div class="rights">
-              <p>© 2020 Chibekhoonam<br>
+              <p>
+                © 2020 Chibekhoonam
+                <br>
                 ivahid Specialized and Professional Web Design & Development Co
               </p>
               <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/ivahid.svg" :max-height="33" :max-width="100" :contain="true" />

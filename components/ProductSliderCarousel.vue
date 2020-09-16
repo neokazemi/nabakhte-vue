@@ -1,24 +1,24 @@
 <template>
   <div :fluid="true" class="new-books-container full-container">
-    <div :class="{ 'slider-bg': true, 'green-slider-bg': type == 1, 'purple-slider-bg': type == 2 }" />
-    <div :class="{ 'price-bg': true, 'green-price-bg': type == 1, 'purple-price-bg': type == 2 }" />
+    <div :class="{ 'slider-bg': true, 'green-slider-bg': type === 1, 'purple-slider-bg': type === 2 }" />
+    <div :class="{ 'price-bg': true, 'green-price-bg': type === 1, 'purple-price-bg': type === 2 }" />
     <v-container class="slider-container">
       <v-row>
         <v-col class="slider">
-          <div :class="{ 'slider-title': type == 1, 'purple-slider-title': type == 2 }">
+          <div :class="{ 'slider-title': type === 1, 'purple-slider-title': type === 2 }">
             <slot />
           </div>
           <div class="slider-carousel">
-            <slider ref="slider" :options="options" @slide="slide" @tap="onTap" @init="onInit">
-              <slideritem v-for="(product,index) in products" :key="index" :style="style">
+            <Swiper ref="mySwiper" :options="swiperOptions">
+              <SwiperSlide v-for="(product,index) in products" :key="index" :style="style">
                 <ProductCard :details="product">
                   {{ product.productTitle }}
                 </ProductCard>
-              </slideritem>
+              </SwiperSlide>
               <div slot="loading">
                 loading...
               </div>
-            </slider>
+            </Swiper>
             <!-- <ProductCard v-for="(product, index) in products" :key="index" type="1" :details="product">
               {{ product.productTitle }}
             </ProductCard> -->
@@ -30,18 +30,25 @@
 </template>
 
 <script>
-import { slider, slideritem } from 'vue-concise-slider'
+import { Swiper, SwiperSlide, directive } from 'vue-awesome-swiper'
+// import 'swiper/css/swiper.css'
 import ProductCard from './productCard'
 
 export default {
   components: {
     ProductCard,
-    slider,
-    slideritem
+    Swiper,
+    SwiperSlide
+  },
+  directives: {
+    swiper: directive
   },
   props: {
     products: {
-      type: Array
+      type: Array,
+      default () {
+        return []
+      }
     },
     type: {
       type: Number,
@@ -51,21 +58,20 @@ export default {
   },
   data () {
     return {
-      options: {
-        currentPage: 3,
-        tracking: false,
-        thresholdDistance: 150,
-        loopedSlides: 1,
-        thresholdTime: 300,
-        infinite: 5,
-        slidesToScroll: 5,
-        loop: true,
-        pagination: false,
-        autoplay: 3000
+      swiperOptions: {
+        pagination: {
+          el: '.swiper-pagination'
+        }
+        // Some Swiper option/callback...
       },
       style: {
         width: '20%'
       }
+    }
+  },
+  computed: {
+    swiper () {
+      return this.$refs.mySwiper.$swiper
     }
   }
 }

@@ -8,7 +8,9 @@
         <CarouselButtons />
       </div>
       <div class="col-3">
-        <ProductCard type=2>گلبرگ</ProductCard>
+        <ProductCard type="2">
+          گلبرگ
+        </ProductCard>
       </div>
     </div>
   </div>
