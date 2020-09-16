@@ -114,3 +114,9 @@
     margin-right: 1px;
   }
 </style>
+
+<script>
+export default {
+  name: 'UnderCarouselButtons'
+}
+</script>
