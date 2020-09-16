@@ -304,9 +304,6 @@ header.v-app-bar--is-scrolled .fixedMenu {
 
 header.v-app-bar--is-scrolled .scrolledMenu {
   display: flex;
-  padding: 3px 12px;
-  min-height: 41px;
-  position: relative;
 }
 
 header.v-app-bar--is-scrolled .scrolledMenu .leftSide {
@@ -385,24 +382,18 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
 </style>
 
 <style>
+.v-application p {
+  margin: 0;
+}
+
+header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
+  padding: 0;
+}
 
 .full-container {
   width: 100%;
   padding: 0;
   margin: 0;
-}
-
-.v-application p {
-  margin: 0;
-}
-
-header.v-app-bar--is-scrolled .v-toolbar__content {
-  height: 41px;
-}
-
-header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
-  padding: 0;
-  flex-shrink: 2;
 }
 
 .top-bar {
@@ -802,21 +793,13 @@ a:hover .fa-angle-down {
   transform: rotate(180deg);
 }
 
-.scrolledMenu .consulting {
-  width: 100px;
-}
-
-header .scrolledMenu .scrolledMenuLinks .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
-  background-color: #fff;
-}
-
 .consulting-mega-menu {
   font-size: 0.8rem;
   font-weight: 400;
   height: 340px;
   background-color: #f4f1ec;
-  width: 588px;
-  margin: 0;
+  width: 115%;
+  margin: 5px;
   margin-top: 30px;
   position: absolute;
   left: 0;
@@ -1185,8 +1168,15 @@ header .scrolledMenu .scrolledMenuLinks .theme--light.v-btn:not(.v-btn--flat):no
   background: transparent;
 }
 
+.body-head div {
+  height: inherit;
+}
+
+.body-haed div div {
+  height: inherit;
+}
+
 .big-carousel {
   height: 355px;
-  position: relative;
 }
 </style>

@@ -15,7 +15,7 @@
         cols="9"
       >
         <v-card
-          v-for="(item, index) in $store.getters.posts"
+          v-for="(item, index) in posts.list"
           :key="index"
           :link="true"
           :href="'#'"
@@ -26,8 +26,12 @@
             class="white--text align-end"
             src="https://media.chibekhoonam.net/2020/08/entekhab-reshte-motevasete-1.jpg"
           />
-          <v-card-title v-html="item.title.rendered" />
-          <v-card-subtitle class="pb-0" v-html="item.excerpt.rendered" />
+          <v-card-title>
+            {{ item.title }}
+          </v-card-title>
+          <v-card-subtitle class="pb-0">
+            {{ item.excerpt }}
+          </v-card-subtitle>
           <v-card-actions>
             <v-btn
               color="orange"
@@ -49,14 +53,21 @@
 </template>
 
 <script>
-import Sidebar from '../../../components/app/Sidebar'
+// import axios from 'axios'
+import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
+import { PostList } from '~/models/Post'
 export default {
-  middleware: 'getPosts',
   name: 'Category',
   components: {
     Breadcrumbs,
     Sidebar
+  },
+  asyncData (context) {
+    return (new PostList()).fetch()
+      .then((response) => {
+        context.store.commit('updatePosts', new PostList(response.data))
+      })
   },
   data () {
     return {
@@ -86,6 +97,11 @@ export default {
           to: '#'
         }
       ]
+    }
+  },
+  computed: {
+    posts () {
+      return this.$store.getters.posts
     }
   }
 }

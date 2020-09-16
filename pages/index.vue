@@ -1,15 +1,17 @@
 <template>
-  <div>
-    <v-row>
-      <v-col>
-        <v-layout
-          column
-          justify-center
-          align-center
+  <v-row>
+    <v-col>
+      <v-layout
+        column
+        justify-center
+        align-center
+      >
+        <v-row
+          justify="center"
+          no-gutters
         >
-          <v-row
-            justify="center"
-            no-gutters
+          <v-col
+            cols="12"
           >
             <TopView />
           </v-row>
@@ -29,8 +31,8 @@
 </template>
 
 <script>
-import TopView from '../components/top-view/top-view'
-import ProductSliderCarousel from '../components/ProductSliderCarousel'
+import Logo from '~/components/Logo.vue'
+import VuetifyLogo from '~/components/VuetifyLogo.vue'
 
 export default {
   components: {
@@ -101,11 +103,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-  a {
-    text-decoration: none;
-  }
-
-</style>
