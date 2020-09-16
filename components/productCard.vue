@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'product-card-1': type == 1, 'product-card-2': type == 2, 'product-card': true }">
+  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true }">
     <div class="product-card-image">
       <a :href="details.productURL"><img :src="details.imgURL"></a>
       <div class="image-hover">
@@ -13,7 +13,7 @@
           <i class="fas fa-shopping-cart" />
         </button>
       </div>
-      <div v-if="type == 2" class="card-slider">
+      <div v-if="type === 2" class="card-slider">
         <button />
         <button />
       </div>
@@ -22,7 +22,7 @@
       <slot />
     </a>
     <div class="price">
-      <span v-if="type == 1" class="old-price">{{ details.oldPrice | price }}</span>
+      <span v-if="type === 1" class="old-price">{{ details.oldPrice | price }}</span>
       <span class="percent">{{ details.off }}%</span>
       <span class="new-price">{{ details.newPrice | price }}</span>
       <span class="toman">تومان</span>
