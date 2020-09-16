@@ -33,13 +33,20 @@
 </template>
 
 <script>
+import { ProductList } from '../models/Product'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
-import TopView from '~/components/top-view/top-view'
+import TopView from '~/components/TopView/TopView'
 
 export default {
   components: {
     TopView,
     ProductSliderCarousel
+  },
+  asyncData (context) {
+    return (new ProductList()).fetch()
+      .then((response) => {
+        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
+      })
   },
   data () {
     return {
@@ -101,6 +108,11 @@ export default {
           productTitle: 'کتاب کمک آموزشی 7'
         }
       ]
+    }
+  },
+  computed: {
+    products () {
+      return this.$store.getters.products
     }
   }
 }

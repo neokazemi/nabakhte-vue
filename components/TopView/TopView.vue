@@ -18,9 +18,10 @@
 <script>
 import ProductCard from '../productCard'
 import MainCarousel from './MainCarousel'
-import CarouselButtons from './underCarouselButtons'
+import CarouselButtons from './UnderCarouselButtons'
 
 export default {
+  name: 'TopView',
   components: {
     ProductCard,
     MainCarousel,
