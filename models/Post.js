@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/named
 import { Model, Collection } from 'js-abstract-model'
 
 class Post extends Model {
