@@ -172,9 +172,34 @@
             </v-btn>
           </v-item>
           <v-item>
-            <v-btn small depressed>
-              مشاوره
-            </v-btn>
+            <v-div class="consulting">
+              <v-btn small depressed>
+                مشاوره
+              </v-btn>
+              <div class="consulting-mega-menu">
+                <div class="option-selection">
+                  <a class="offline-consulting option" href="#">
+                    <p>
+                      <i class="fas fa-angle-left" />مشاوره آفلاین
+                    </p>
+                  </a>
+                  <a class="documents option" href="#">
+                    <p>
+                      <i class="fas fa-angle-left" />مجموعه مقالات
+                    </p>
+                  </a>
+                </div>
+                <div class="offline-consulting-menu">
+                  <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
+                  <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
+                  <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
+                  <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
+                  <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
+                  <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
+                </div>
+                <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
+              </div>
+            </v-div>
           </v-item>
           <v-item>
             <v-btn small depressed>
@@ -277,6 +302,9 @@ header.v-app-bar--is-scrolled .fixedMenu {
 
 header.v-app-bar--is-scrolled .scrolledMenu {
   display: flex;
+  padding: 3px 12px;
+  min-height: 41px;
+  position: relative;
 }
 
 header.v-app-bar--is-scrolled .scrolledMenu .leftSide {
@@ -355,18 +383,24 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
 </style>
 
 <style>
-.v-application p {
-  margin: 0;
-}
-
-header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
-  padding: 0;
-}
 
 .full-container {
   width: 100%;
   padding: 0;
   margin: 0;
+}
+
+.v-application p {
+  margin: 0;
+}
+
+header.v-app-bar--is-scrolled .v-toolbar__content {
+  height: 41px;
+}
+
+header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
+  padding: 0;
+  flex-shrink: 2;
 }
 
 .top-bar {
@@ -769,13 +803,21 @@ a:hover .fa-angle-down {
   transform: rotate(180deg);
 }
 
+.scrolledMenu .consulting {
+  width: 100px;
+}
+
+header .scrolledMenu .scrolledMenuLinks .theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: #fff;
+}
+
 .consulting-mega-menu {
   font-size: 0.8rem;
   font-weight: 400;
   height: 340px;
   background-color: #f4f1ec;
-  width: 115%;
-  margin: 5px;
+  width: 588px;
+  margin: 0;
   margin-top: 30px;
   position: absolute;
   left: 0;
@@ -1144,15 +1186,8 @@ a:hover .fa-angle-down {
   background: transparent;
 }
 
-.body-head div {
-  height: inherit;
-}
-
-.body-haed div div {
-  height: inherit;
-}
-
 .big-carousel {
   height: 355px;
+  position: relative;
 }
 </style>
