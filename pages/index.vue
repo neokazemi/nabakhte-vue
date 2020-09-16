@@ -22,7 +22,7 @@
     <ProductSliderCarousel :products="books">
       جدید ترین نوشت افزار ها
     </ProductSliderCarousel>
-    <ProductSliderCarousel :products="books" type="2">
+    <ProductSliderCarousel :products="books" main-bg="#6130a4" bottom-bg="#6d3ab3">
       محبوب ترین محصولات
     </ProductSliderCarousel>
   </div>
@@ -87,6 +87,14 @@ export default {
           imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
           productURL: '#',
           productTitle: 'کتاب کمک آموزشی 6'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 7'
         }
       ]
     }
