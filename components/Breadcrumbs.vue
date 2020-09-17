@@ -34,4 +34,9 @@ export default {
   .bread-col ul {
     padding: 0 12px;
   }
+
+  .v-breadcrumbs .v-breadcrumbs__item {
+    color: #000;
+    font-weight: bold;
+  }
 </style>
