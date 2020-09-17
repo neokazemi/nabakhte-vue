@@ -12,12 +12,12 @@
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products" :key="index">
                 <ProductCard :details="product">
-                  {{ product.productTitle }}
+                  {{ product.name }}
                 </ProductCard>
               </SwiperSlide>
-              <div slot="button-prev" class="swiper-button-prev" @click="slidePrev" />
-              <div slot="button-next" class="swiper-button-next" @click="slideNext" />
             </Swiper>
+            <div slot="button-prev" class="swiper-button-prev" @click="slidePrev" />
+            <div slot="button-next" class="swiper-button-next" @click="slideNext" />
           </div>
         </v-col>
       </v-row>
@@ -122,6 +122,7 @@ export default {
     display: flex;
     flex-direction: row;
     height: 405px;
+    position: relative;
   }
 
   .slider-container {
@@ -131,4 +132,21 @@ export default {
   .slider {
     padding: 0 12px;
   }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    left: -70px;
+  }
+
+  .swiper-button-next {
+    position: absolute;
+    right: -70px;
+  }
+
 </style>

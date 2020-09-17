@@ -1,9 +1,12 @@
 <template>
   <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true }">
     <div class="product-card-image">
-      <a :href="details.productURL"><img :src="details.imgURL"></a>
+      <p class="analysis">
+        <i class="fas fa-chart-pie" /> تحلیل
+      </p>
+      <a :href="details.link"><img :src="details.image.url"></a>
       <div class="image-hover">
-        <a class="more-info" :href="details.productURL">
+        <a class="more-info" :href="details.link">
           توضیحات بیشتر <i class="fas fa-angle-double-left" />
         </a>
         <button class="card-button like" type="submit">
@@ -13,18 +16,14 @@
           <i class="fas fa-shopping-cart" />
         </button>
       </div>
-      <div v-if="type === 2" class="card-slider">
-        <button />
-        <button />
-      </div>
     </div>
-    <a :href="details.productURL" class="title">
+    <a :href="details.link" class="product-title">
       <slot />
     </a>
     <div class="price">
-      <span v-if="type === 1" class="old-price">{{ details.oldPrice | price }}</span>
-      <span class="percent">{{ details.off }}%</span>
-      <span class="new-price">{{ details.newPrice | price }}</span>
+      <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
+      <span class="percent">{{ 20 }}%</span>
+      <span class="new-price">{{ 80000 | price }}</span>
       <span class="toman">تومان</span>
     </div>
   </div>
@@ -67,7 +66,6 @@ export default {
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  position: relative;
 }
 
 .product-card-image {
@@ -93,28 +91,27 @@ export default {
   display: block;
 }
 
-.product-card-1 .title {
+.product-card-1 .product-title {
   height: auto;
   line-height: 24px;
-  padding: 0 15px;
   color: #fff;
   font-family: inherit;
-  font-size: 13pt;
+  font-size: 0.8rem;
   width: 100%;
   text-align: center;
   margin: 4% 0;
 }
 
-.product-card-2 .title {
+.product-card-2 .product-title {
   color: #207c69;
-  font-size: 14pt;
+  font-size: 0.9rem;
   padding: 0 15px;
   margin: 30px auto 0 auto;
   width: 100%;
   text-align: center;
 }
 
-.product-card .title:hover {
+.product-card .product-title:hover {
   text-decoration: none;
 }
 
@@ -124,7 +121,9 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 20px 3px 0 3px;
+  margin: 20px 0 0 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .product-card-1 .price {
@@ -237,25 +236,6 @@ export default {
 .product-card-image .image-hover .more-info i {
   font-size: 14px;
   margin: 3px;
-}
-
-.product-card .card-slider {
-  width: 43px;
-  height: 20px;
-  position: absolute;
-  top: calc(90% - 10px);
-  right: -30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.card-slider button {
-  background-color: #50cbb2;
-  width: 21px;
-  height: 24px;
-  border: none;
-  cursor: pointer;
 }
 
 .card-button {
