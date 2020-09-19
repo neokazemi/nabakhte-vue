@@ -1,4 +1,5 @@
 import { Model, Collection } from 'js-abstract-model'
+import { PostCategoryList } from './PostCategory'
 
 class Post extends Model {
   constructor (data) {
@@ -13,8 +14,6 @@ class Post extends Model {
       { key: 'slug' },
       { key: 'status' },
       { key: 'type' },
-      { key: 'link' },
-      { key: 'title' },
       {
         key: 'title',
         value (itemVal) {
@@ -39,7 +38,10 @@ class Post extends Model {
           return (itemVal && itemVal.rendered) ? itemVal.rendered : ''
         }
       },
-      { key: 'categories' }
+      {
+        key: 'categories',
+        relatedModel: PostCategoryList
+      }
     ])
   }
 }
