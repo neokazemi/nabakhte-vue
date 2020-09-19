@@ -1,6 +1,6 @@
 <template>
   <div :fluid="true" class="new-books-container full-container">
-    <div class="slider-bg" :style="{ backgroundColor: mainBg }" />
+    <div :class="{ 'slider-bg': true, 'shorter-slider-bg': type === 2 }" :style="{ backgroundColor: mainBg }" />
     <div class="price-bg" :style="{ backgroundColor: bottomBg }" />
     <v-container class="slider-container">
       <v-row>
@@ -8,16 +8,16 @@
           <div class="slider-title" :style="{ color: mainBg }">
             <slot />
           </div>
-          <div class="slider-carousel">
+          <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products" :key="index">
-                <ProductCard :details="product">
-                  {{ product.productTitle }}
+                <ProductCard :details="product" :type="productCardType">
+                  {{ product.name }}
                 </ProductCard>
               </SwiperSlide>
-              <div slot="button-prev" class="swiper-button-prev" @click="slidePrev" />
-              <div slot="button-next" class="swiper-button-next" @click="slideNext" />
             </Swiper>
+            <div slot="button-prev" :class="{ 'swiper-button-prev': type === 1, 'swiper-button-prev2': type === 2 }" @click="slidePrev" />
+            <div slot="button-next" :class="{ 'swiper-button-next': type === 1, 'swiper-button-next2': type === 2 }" @click="slideNext" />
           </div>
         </v-col>
       </v-row>
@@ -50,12 +50,60 @@ export default {
     bottomBg: {
       type: String,
       default: '#42bc3f'
+    },
+    type: {
+      type: Number,
+      required: false,
+      default: 1
     }
   },
   data () {
     return {
       swiperOption: {
-        breakpoints: {
+        breakpoints: this.getBreakPoints(),
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
+        }
+      }
+    }
+  },
+  computed: {
+    productCardType () {
+      if (this.type === 1) {
+        return 1
+      } else if (this.type === 2) {
+        return 3
+      } else {
+        return 1
+      }
+    }
+  },
+  methods: {
+    slideNext () {
+      this.$refs.mySwiperRef.$swiper.slideNext()
+    },
+    slidePrev () {
+      this.$refs.mySwiperRef.$swiper.slidePrev()
+    },
+    getBreakPoints () {
+      if (this.type === 2) {
+        return {
+          640: {
+            slidesPerView: 3,
+            spaceBetween: 0
+          },
+          768: {
+            slidesPerView: 5,
+            spaceBetween: 0
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 0
+          }
+        }
+      } else if (this.type === 1) {
+        return {
           640: {
             slidesPerView: 2,
             spaceBetween: 0
@@ -68,20 +116,8 @@ export default {
             slidesPerView: 5,
             spaceBetween: 0
           }
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
         }
       }
-    }
-  },
-  methods: {
-    slideNext () {
-      this.$refs.mySwiperRef.$swiper.slideNext()
-    },
-    slidePrev () {
-      this.$refs.mySwiperRef.$swiper.slidePrev()
     }
   }
 }
@@ -105,6 +141,10 @@ export default {
     z-index: -1;
   }
 
+  .shorter-slider-bg {
+    height: 250px;
+  }
+
   .price-bg {
     position: absolute;
     bottom: 0;
@@ -122,6 +162,11 @@ export default {
     display: flex;
     flex-direction: row;
     height: 405px;
+    position: relative;
+  }
+
+  .shorter-slider-carousel {
+    height: 350px;
   }
 
   .slider-container {
@@ -131,4 +176,56 @@ export default {
   .slider {
     padding: 0 12px;
   }
+
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    left: -70px;
+  }
+
+  .swiper-button-next {
+    position: absolute;
+    right: -70px;
+  }
+
+  .swiper-button-next2::after,
+  .swiper-button-prev2::after {
+    font-weight: 800;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .swiper-button-next2,
+  .swiper-button-prev2 {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 10;
+    top: 120px;
+    text-align: center;
+  }
+
+  .swiper-button-prev2 {
+    left: -10px;
+    background-color: #50cbb2;
+  }
+
+  .swiper-button-next2 {
+    background-color: #fb1616;
+    right: -10px;
+  }
+
+  .swiper-button-next2::after {
+    content: '<';
+  }
+
+  .swiper-button-prev2::after {
+    content: '>';
+  }
+
 </style>

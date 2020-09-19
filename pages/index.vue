@@ -14,19 +14,19 @@
             <v-col
               cols="12"
             >
-              <TopView />
+              <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
             </v-col>
           </v-row>
         </v-layout>
       </v-col>
     </v-row>
-    <ProductSliderCarousel :products="books">
+    <ProductSliderCarousel :products="products.list">
       جدید ترین کتاب های کمک آموزشی
     </ProductSliderCarousel>
-    <ProductSliderCarousel :products="books">
+    <ProductSliderCarousel :products="products.list">
       جدید ترین نوشت افزار ها
     </ProductSliderCarousel>
-    <ProductSliderCarousel :products="books" main-bg="#6130a4" bottom-bg="#6d3ab3">
+    <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
       محبوب ترین محصولات
     </ProductSliderCarousel>
   </div>
@@ -107,7 +107,18 @@ export default {
           productURL: '#',
           productTitle: 'کتاب کمک آموزشی 7'
         }
+      ],
+      mainCarouselSlides: [
+        {
+          imgurl: 'https://media.chibekhoonam.net/2020/09/nazarsanji-hafte3-shahrivar.jpg',
+          url: '#'
+        },
+        {
+          imgurl: 'https://media.chibekhoonam.net/2020/08/%D8%A7%D8%B3%D9%84%D8%A7%DB%8C%D8%AF-%D8%B4%D9%88.jpg',
+          url: '#'
+        }
       ]
+
     }
   },
   computed: {

@@ -10,7 +10,7 @@
     </a>
     <a href="#" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/24-hours.svg" alt=""><p>پشتیبانی</p>
-      <p class="after-hover-text">بیشتر hh</p>
+      <p class="after-hover-text">بیشتر بدانید</p>
     </a>
     <a href="#" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/customer-service.svg" alt=""><p>خدمات مشتریان</p>
