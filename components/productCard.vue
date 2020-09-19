@@ -1,7 +1,7 @@
 <template>
-  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true }">
+  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true, 'font-black': type === 3 }">
     <div class="product-card-image">
-      <p class="analysis">
+      <p v-if="type === 2" class="analysis">
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
       <a :href="details.link"><img :src="details.image.url"></a>
@@ -21,7 +21,7 @@
       <slot />
     </a>
     <div class="price">
-      <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
+      <span v-if="type === 1 || type === 3" class="old-price">{{ 100000 | price }}</span>
       <span class="percent">{{ 20 }}%</span>
       <span class="new-price">{{ 80000 | price }}</span>
       <span class="toman">تومان</span>
@@ -91,6 +91,10 @@ export default {
   display: block;
 }
 
+.font-black .product-title {
+  padding: 0 10px;
+}
+
 .product-card-1 .product-title {
   height: auto;
   line-height: 24px;
@@ -152,6 +156,7 @@ export default {
   background-color: #fb1616;
   margin: 0 3px;
   font-family: inherit;
+  color: #fff !important;
 }
 
 .product-card-1 .price .percent {
@@ -214,7 +219,7 @@ export default {
 
 .product-card-image .image-hover .more-info {
   font-family: inherit;
-  color: #fff;
+  color: #fff !important;
   font-size: 14pt;
   display: flex;
   width: 100%;
@@ -222,6 +227,10 @@ export default {
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.font-black .product-card-image .image-hover .more-info {
+  font-size: 0.75rem;
 }
 
 .card-button i {
@@ -262,4 +271,16 @@ export default {
   background-color: #fb1616;
   left: calc(50% - 40px);
 }
+
+.font-black {
+  color: #000 !important;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.font-black a {
+  color: #000 !important;
+}
+
 </style>
