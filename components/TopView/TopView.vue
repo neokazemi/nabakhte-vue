@@ -3,14 +3,21 @@
     <div class="row">
       <div class="col-md-9">
         <div class="row big-carousel">
-          <MainCarousel />
+          <MainCarousel :slides="mainCarouselSlides" />
+          <CarouselButtons />
         </div>
-        <CarouselButtons />
       </div>
       <div class="col-3">
-        <ProductCard :type="2">
-          گلبرگ
-        </ProductCard>
+        <v-carousel hide-delimiters class="product-card">
+          <v-carousel-item
+            v-for="(product,index) in productCards"
+            :key="index"
+          >
+            <ProductCard :type="2" :details="product">
+              {{ product.name }}
+            </ProductCard>
+          </v-carousel-item>
+        </v-carousel>
       </div>
     </div>
   </div>
@@ -26,6 +33,47 @@ export default {
     ProductCard,
     MainCarousel,
     CarouselButtons
+  },
+  props: {
+    productCards: {
+      type: Array
+    },
+    mainCarouselSlides: {
+      type: Array
+    }
   }
 }
 </script>
+
+<style>
+  .product-card .v-window__prev,
+  .product-card .v-window__next {
+    background: #50cbb2;
+    position: absolute;
+    border-radius: 0;
+    margin: 0;
+    top: calc(60% - 20px);
+    z-index: 1;
+    width: 20px;
+    height: 20px;
+  }
+
+  .product-card .v-window__prev {
+    right: 20px;
+  }
+
+  .product-card .v-window__next {
+    right: -1px;
+  }
+
+  .product-card .v-window__prev i,
+  .product-card .v-window__next i {
+    font-size: 20px !important;
+  }
+
+  .product-card .v-window__prev button,
+  .product-card .v-window__next button {
+    width: 20px;
+    height: 20px;
+  }
+</style>

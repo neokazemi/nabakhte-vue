@@ -37,7 +37,9 @@
                     <a class="nav-link" href="#">اخبار</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">مقالات</a>
+                    <nuxt-link class="nav-link" to="/blog/category/maghalat">
+                      مقالات
+                    </nuxt-link>
                   </li>
                 </ul>
               </div>
@@ -312,6 +314,11 @@ header.v-app-bar--is-scrolled .scrolledMenu .leftSide {
 
 header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
   flex: 1;
+  display: flex;
+}
+
+header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
+  margin: auto 5px;
 }
 
 .scrolledMenu .leftSide .leftSide-btn {
@@ -798,9 +805,9 @@ a:hover .fa-angle-down {
   font-weight: 400;
   height: 340px;
   background-color: #f4f1ec;
-  width: 115%;
+  width: 731px;
   margin: 5px;
-  margin-top: 30px;
+  margin-top: 0;
   position: absolute;
   left: 0;
   right: 0;
@@ -811,6 +818,10 @@ a:hover .fa-angle-down {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   opacity: 0;
+}
+
+.scrolledMenu .consulting-mega-menu {
+  width: 816px;
 }
 
 .consulting:hover .consulting-mega-menu {
