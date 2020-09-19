@@ -125,7 +125,6 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 20px 0 0 0;
   position: absolute;
   bottom: 0;
 }
