@@ -4,11 +4,13 @@
       <p v-if="type === 2" class="analysis">
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
-      <a :href="details.link"><img :src="details.image.url"></a>
+      <nuxt-link :to="productLink">
+        <img :src="details.image.url">
+      </nuxt-link>
       <div class="image-hover">
-        <a class="more-info" :href="details.link">
+        <nuxt-link class="more-info" :to="productLink">
           توضیحات بیشتر <i class="fas fa-angle-double-left" />
-        </a>
+        </nuxt-link>
         <button class="card-button like" type="submit">
           <i class="fas fa-heart" />
         </button>
@@ -17,9 +19,9 @@
         </button>
       </div>
     </div>
-    <a :href="details.link" class="product-title">
+    <nuxt-link :to="productLink" class="product-title">
       <slot />
-    </a>
+    </nuxt-link>
     <div class="price">
       <span v-if="type === 1 || type === 3" class="old-price">{{ 100000 | price }}</span>
       <span class="percent">{{ 20 }}%</span>
@@ -55,6 +57,11 @@ export default {
       required: false,
       default: 1
     }
+  },
+  computed: {
+    productLink () {
+      return '/product/' + this.details.name.split(' ').join('_')
+    }
   }
 }
 </script>
@@ -85,7 +92,7 @@ export default {
   color: #fff;
 }
 
-.product-card-image a img {
+.product-card-image img {
   width: 100%;
   height: auto;
   display: block;
