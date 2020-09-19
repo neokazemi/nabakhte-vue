@@ -866,7 +866,7 @@ a:hover .fa-angle-down {
 
 .user-cart .cart-details p {
   padding: 17px;
-  font-size: 1.15rem;
+  font-size: 0.9rem;
   color: #000;
 }
 
@@ -939,7 +939,7 @@ a:hover .fa-angle-down {
 }
 
 .account-management .account-options a {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   width: 100%;
   color: #000 !important;
   margin: 0;

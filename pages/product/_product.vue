@@ -68,6 +68,9 @@
                   فاگوزیست دوازدهم فصل چهارم (تغییر در اطلاعات وراثتی) فاگو
                 </a>
                 <div class="add-to-cart" />
+                <a href="#">
+                  فاگوزیست دوازدهم فصل اول (مولکول های اطلاعاتی) فاگو</a>
+                <div class="add-to-cart" />
               </div>
             </div>
           </div>
@@ -307,6 +310,8 @@ export default {
     padding: 20px 10px;
     font-size: 0.85rem;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
   }
 
   .related-book {
