@@ -6,7 +6,7 @@ class Post extends Model {
     super(data, [
       {
         key: 'baseRoute',
-        default: 'https://www.chibekhoonam.net/wp-json/wp/v2/posts?categories=929&per_page=10'
+        default: 'https://www.chibekhoonam.net/wp-json/wp/v2/posts?per_page=10&categories=929'
       },
       { key: 'id' },
       { key: 'date' },
