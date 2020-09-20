@@ -206,6 +206,13 @@
               ندارد
             </ProductSpecs>
           </div>
+          <div v-if="selectedTab === 3" class="comments">
+            <h3 class="dark-green-font">
+              2 دیدگاه
+            </h3>
+            <Comment :data="comments[0]" />
+            <Comment :data="comments[1]" />
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -217,6 +224,7 @@ import Breadcrumbs from '../../components/Breadcrumbs'
 import { ProductList } from '../../models/Product'
 import ProductSliderCarousel from '../../components/ProductSliderCarousel'
 import ProductSpecs from '../../components/ProductSpecs'
+import Comment from '../../components/Comment'
 
 export default {
   name: 'Product',
@@ -228,7 +236,8 @@ export default {
   components: {
     ProductSliderCarousel,
     Breadcrumbs,
-    ProductSpecs
+    ProductSpecs,
+    Comment
   },
   props: {
     productData: {
@@ -293,7 +302,21 @@ export default {
           to: '#'
         }
       ],
-      selectedTab: 1
+      selectedTab: 1,
+      comments: [
+        {
+          name: 'یه کنکوری',
+          date: '26 / 6 / 1398',
+          likes: 1,
+          text: 'چرا برایه این کتاب مثله جلد اولش دانلود رایگان قسمتی از اون رو نذاشتین؟؟؟'
+        },
+        {
+          name: 'مشاور آموزشی',
+          date: '26 / 6 / 1398',
+          likes: 0,
+          text: 'سلام. خود سایت قلم چی هم نداشت متاسفانه…'
+        }
+      ]
     }
   },
   computed: {
@@ -526,6 +549,8 @@ export default {
     border: 1px solid #f1eeee;
     box-shadow: rgba(4, 5, 5, 0.15) 0 1px 2px;
     padding: 0 30px;
+    height: auto;
+    overflow: hidden;
   }
 
   .bold {
@@ -542,6 +567,10 @@ export default {
 
   .green-font {
     color: #0c3;
+  }
+
+  .dark-green-font {
+    color: #1e971b;
   }
 
   .tab-content div {
