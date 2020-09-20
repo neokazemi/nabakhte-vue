@@ -28,6 +28,10 @@ export default {
     font-size: 0.9rem;
     align-items: center;
     line-height: 40px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .specs:hover {
