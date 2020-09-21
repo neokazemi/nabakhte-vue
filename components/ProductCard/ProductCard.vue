@@ -6,18 +6,23 @@
     <ProductCard2 v-if="type === 5" :details="details">
       {{ details.name }}
     </ProductCard2>
+    <ProductCard3 v-if="type === 6" :details="details">
+      {{ details.name }}
+    </ProductCard3>
   </div>
 </template>
 
 <script>
 import productCard1 from './productCard1'
 import ProductCard2 from './ProductCard2'
+import ProductCard3 from './ProductCard3'
 
 export default {
   name: 'ProductCard',
   components: {
     productCard1,
-    ProductCard2
+    ProductCard2,
+    ProductCard3
   },
   props: {
     details: {

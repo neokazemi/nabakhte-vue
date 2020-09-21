@@ -133,9 +133,10 @@
                           <i class="fas fa-shopping-cart" />
                         </div>
                         <h2 class="cart-description">سبد خرید</h2>
+                        <v-badge :content="cart.list.length" color="#fb1616" :offset-x="50" :offset-y="-40" />
                       </a>
                       <div class="cart-details user-button-details">
-                        <p>چیزی در سبد خرید یافت نشد</p>
+                        <HeaderCart :products="products.list" />
                       </div>
                     </div>
                     <div class="account-management">
@@ -276,8 +277,98 @@
 </template>
 
 <script>
+import HeaderCart from '../HeaderCart'
+import { ProductList } from '../../models/Product'
 export default {
-  name: 'Header'
+  name: 'Header',
+  components: { HeaderCart },
+  asyncData (context) {
+    return (new ProductList()).fetch()
+      .then((response) => {
+        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
+      })
+  },
+  data () {
+    return {
+      books: [
+        {
+          oldPrice: 120000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 1'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 2'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 3'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 4'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 5'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 6'
+        },
+        {
+          oldPrice: 100000,
+          newPrice: 80000,
+          off: 20,
+          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
+          productURL: '#',
+          productTitle: 'کتاب کمک آموزشی 7'
+        }
+      ],
+      mainCarouselSlides: [
+        {
+          imgurl: 'https://media.chibekhoonam.net/2020/09/nazarsanji-hafte3-shahrivar.jpg',
+          url: '#'
+        },
+        {
+          imgurl: 'https://media.chibekhoonam.net/2020/08/%D8%A7%D8%B3%D9%84%D8%A7%DB%8C%D8%AF-%D8%B4%D9%88.jpg',
+          url: '#'
+        }
+      ]
+
+    }
+  },
+  computed: {
+    products () {
+      return this.$store.getters.products
+    },
+    cart () {
+      return this.$store.getters.products
+    }
+  }
 }
 </script>
 
@@ -865,7 +956,6 @@ a:hover .fa-angle-down {
 }
 
 .user-cart .cart-details p {
-  padding: 17px;
   font-size: 0.9rem;
   color: #000;
 }
@@ -1004,9 +1094,10 @@ a:hover .fa-angle-down {
 }
 
 .user-cart .cart-details {
-  height: 55px;
+  min-height: 55px;
   width: 340px;
   right: 0%;
+  padding: 17px;
 }
 
 .user-button-details {

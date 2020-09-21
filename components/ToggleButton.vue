@@ -22,7 +22,7 @@ export default {
           }
         ]
       },
-      required: true
+      required: false
     }
   }
 }
@@ -47,5 +47,6 @@ export default {
 
   .toggle-button-container .v-input--switch {
     float: left;
+    direction: ltr;
   }
 </style>
