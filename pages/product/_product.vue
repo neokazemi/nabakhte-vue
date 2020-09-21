@@ -302,6 +302,7 @@ export default {
           to: '#'
         }
       ],
+      transition: 'expand',
       selectedTab: 1,
       comments: [
         {
@@ -333,6 +334,7 @@ export default {
 </script>
 
 <style>
+
   .product-data {
     display: flex;
     flex-direction: row;
