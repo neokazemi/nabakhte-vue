@@ -5,7 +5,7 @@
         {{ item.name }}
       </v-expansion-panel-header>
       <div class="details">
-        <v-expansion-panel-content v-for="(itemDetails, detailsIndex) in item.details" :key="detailsIndex">
+        <v-expansion-panel-content v-for="(itemDetails, detailsIndex) in item.details" :key="detailsIndex" eager>
           <label :for="detailsIndex">
             <input type="checkbox" :name="detailsIndex">
             {{ itemDetails }}
