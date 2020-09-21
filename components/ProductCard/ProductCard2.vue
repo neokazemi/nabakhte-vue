@@ -7,7 +7,7 @@
       <div class="right-part">
         <slot />
         <div class="price">
-          <span v-if="type === 1 || type === 3 || type === 4" class="old-price">{{ 100000 | price }}</span>
+          <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
           <span class="percent">{{ 20 }}%</span>
           <span class="new-price">{{ 80000 | price }}</span>
           <span class="toman">تومان</span>
