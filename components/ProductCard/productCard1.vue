@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true, 'font-black': type === 3 }">
+  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true, 'font-black': type === 3, 'product-card-4': type === 4 }">
     <div class="product-card-image">
       <p v-if="type === 2" class="analysis">
         <i class="fas fa-chart-pie" /> تحلیل
@@ -22,8 +22,18 @@
     <nuxt-link :to="productLink" class="product-title">
       <slot />
     </nuxt-link>
+    <v-rating
+      v-if="type === 4"
+      readonly
+      small
+      :value="3"
+      dense
+      background-color="#2bbb28"
+      color="#2bbb28"
+      class="rating"
+    />
     <div class="price">
-      <span v-if="type === 1 || type === 3" class="old-price">{{ 100000 | price }}</span>
+      <span v-if="type === 1 || type === 3 || type === 4" class="old-price">{{ 100000 | price }}</span>
       <span class="percent">{{ 20 }}%</span>
       <span class="new-price">{{ 80000 | price }}</span>
       <span class="toman">تومان</span>
@@ -122,6 +132,38 @@ export default {
   text-align: center;
 }
 
+.product-card-4 {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+  border-radius: 2px;
+}
+
+.product-card-4 a {
+  color: #000;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.product-card-4 .product-title {
+  height: 40px;
+  margin: 10px;
+}
+
+.product-card-4 .rating {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.product-card-4 .product-card-image {
+  margin: 0;
+  width: 100%;
+}
+
+.rating button {
+  background-color: transparent;
+}
+
 .product-card .product-title:hover {
   text-decoration: none;
 }
@@ -141,11 +183,16 @@ export default {
   line-height: 38px;
   font-size: 10pt;
   color: #fff;
+  bottom: -8px;
 }
 
 .product-card-2 .price {
   color: #799992;
   font-size: 1.1rem;
+  position: relative;
+}
+
+.product-card-4 .price {
   position: relative;
 }
 
@@ -226,7 +273,7 @@ export default {
 .product-card-image .image-hover .more-info {
   font-family: inherit;
   color: #fff !important;
-  font-size: 14pt;
+  font-size: 0.8rem;
   display: flex;
   width: 100%;
   height: 100%;

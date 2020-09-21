@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import ProductCard from '../productCard'
+import ProductCard from '../ProductCard/ProductCard'
 import MainCarousel from './MainCarousel'
 import CarouselButtons from './UnderCarouselButtons'
 
