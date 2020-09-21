@@ -28,6 +28,7 @@
     "js-abstract-model": "0.1.1",
     "nuxt": "^2.14.0",
     "swiper": "^6.2.0",
+    "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1"
   },
   "devDependencies": {

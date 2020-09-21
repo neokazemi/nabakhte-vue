@@ -7,6 +7,9 @@
         <v-col class="slider">
           <div class="slider-title" :style="{ color: mainBg }">
             <slot />
+            <nuxt-link v-if="type === 1" class="more-info" to="/shop">
+              مشاهده بیشتر
+            </nuxt-link>
           </div>
           <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
@@ -28,7 +31,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
-import ProductCard from './productCard'
+import ProductCard from './ProductCard/ProductCard'
 
 export default {
   components: {
@@ -156,6 +159,15 @@ export default {
 
   .slider-title {
     font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+
+  .slider-title a {
+    font-size: 0.7rem;
+    color: #8e8e8e;
   }
 
   .slider-carousel {

@@ -4,7 +4,9 @@
       <v-col
         cols="3"
       >
-        <sidebar :tree-view="treeviewItems" />
+        <sidebar>
+          <Treeview :tree-view="treeviewItems" />
+        </sidebar>
       </v-col>
       <v-col
         cols="9"
@@ -22,6 +24,7 @@
 
 <script>
 import PostItem from '../../../components/PostItem'
+import Treeview from '../../../components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import { PostList } from '~/models/Post'
@@ -30,7 +33,8 @@ export default {
   components: {
     Breadcrumbs,
     Sidebar,
-    PostItem
+    PostItem,
+    Treeview
   },
   asyncData (context) {
     return (new PostList()).fetch()
