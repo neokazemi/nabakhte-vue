@@ -128,13 +128,15 @@
                 <div class="left-bar">
                   <div class="user-button">
                     <div class="user-cart">
-                      <a href="#">
+                      <nuxt-link to="/سبد-خرید">
                         <div class="cart-logo leftSide-btn-arrow">
                           <i class="fas fa-shopping-cart" />
                         </div>
-                        <h2 class="cart-description">سبد خرید</h2>
-                        <v-badge :content="cart.list.length" color="#fb1616" :offset-x="50" :offset-y="-40" />
-                      </a>
+                        <h2 class="cart-description">
+                          سبد خرید
+                        </h2>
+                        <Badge :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
+                      </nuxt-link>
                       <div class="cart-details user-button-details">
                         <HeaderCart :products="products.list" />
                       </div>
@@ -260,11 +262,11 @@
               <i class="fas fa-shopping-cart" />
             </div>
           </a>
-          <a href="#">
+          <nuxt-link to="/سبد-خرید">
             <div class="leftSide-btn leftSide-btn-arrow cart-logo">
               <i class="fas fa-shopping-cart" />
             </div>
-          </a>
+          </nuxt-link>
           <a href="#">
             <div class="leftSide-btn leftSide-btn-arrow account-logo">
               <i class="fas fa-user" />
