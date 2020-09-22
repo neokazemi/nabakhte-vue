@@ -1,11 +1,12 @@
 import { Model, Collection } from 'js-abstract-model'
+import { PostCategoryList } from './PostCategory'
 
 class Post extends Model {
   constructor (data) {
     super(data, [
       {
         key: 'baseRoute',
-        default: 'https://www.chibekhoonam.net/wp-json/wp/v2/posts?categories=929&per_page=10'
+        default: 'https://www.chibekhoonam.net/wp-json/wp/v2/posts?per_page=10&categories=929'
       },
       { key: 'id' },
       { key: 'date' },
@@ -13,8 +14,6 @@ class Post extends Model {
       { key: 'slug' },
       { key: 'status' },
       { key: 'type' },
-      { key: 'link' },
-      { key: 'title' },
       {
         key: 'title',
         value (itemVal) {
@@ -39,7 +38,10 @@ class Post extends Model {
           return (itemVal && itemVal.rendered) ? itemVal.rendered : ''
         }
       },
-      { key: 'categories' }
+      {
+        key: 'categories',
+        relatedModel: PostCategoryList
+      }
     ])
   }
 }
