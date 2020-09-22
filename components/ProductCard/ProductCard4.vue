@@ -1,0 +1,178 @@
+<template>
+  <v-container :fluid="true" class="product-card">
+    <v-row>
+      <v-col :md="1">
+        <a href="#" class="remove">حذف ×</a>
+      </v-col>
+      <v-col :md="1">
+        <v-img :src="details.image.url" contain :width="56" :height="75" />
+      </v-col>
+      <v-col :md="4">
+        <p class="name">
+          <slot />
+        </p>
+      </v-col>
+      <v-col :md="2">
+        <div class="price">
+          <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
+          <span class="percent">{{ 20 }}%</span>
+          <span class="new-price">{{ 80000 | price }}</span>
+          <span class="toman">تومان</span>
+        </div>
+      </v-col>
+      <v-col :md="2" class="count">
+        <v-select
+          :items="items"
+          outlined
+          background-color="#fff"
+          dense
+          eager
+          flat
+          :value="items[0]"
+          :height="20"
+        />
+      </v-col>
+      <v-col :md="2" class="final-price">
+        <p>{{ 80000 | price }} <span>تومان</span></p>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  name: 'ProductCard4',
+  filters: {
+    price (value) {
+      return value.toLocaleString('ar-SA')
+    }
+  },
+  props: {
+    details: {
+      type: Object,
+      required: true
+    },
+    type: {
+      type: Number,
+      required: false,
+      default: 1
+    }
+  },
+  data () {
+    return {
+      items: [
+        '1 عدد',
+        '2 عدد',
+        '3 عدد',
+        '4 عدد',
+        '5 عدد',
+        '6 عدد',
+        '7 عدد',
+        '8 عدد',
+        '9 عدد'
+      ]
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .col {
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .container {
+    padding: 6px 12px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .price {
+    font-weight: bold;
+    position: relative;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    font-size: 0.9rem;
+  }
+
+  .percent {
+    background-color: #fb1616;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 0.8rem;
+    color: #fff;
+  }
+
+  .final-price {
+    color: #24a822;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .final-price span {
+    font-size: 0.8rem;
+  }
+
+  .remove {
+    color: #8d8d8d;
+    font-size: 0.8rem;
+  }
+</style>
+
+<style>
+  .count input {
+    background-color: #fff;
+  }
+
+  .product-card .count .v-input__slot {
+    width: 40%;
+    padding: 0 5px !important;
+  }
+
+  .product-card .count .v-select__slot {
+    height: 25px;
+  }
+
+  .product-card .count .v-input__control {
+    align-items: center;
+  }
+
+  .product-card .count .v-text-field__details {
+    display: none;
+  }
+
+  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__selections input {
+    display: none;
+  }
+
+  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot fieldset {
+    height: 30px;
+  }
+
+  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-input__append-inner {
+    padding: 0;
+    margin-top: 0;
+  }
+
+  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__selections {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+
+  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+    min-height: 20px;
+  }
+</style>

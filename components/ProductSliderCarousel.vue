@@ -8,7 +8,7 @@
           <div class="slider-title" :style="{ color: mainBg }">
             <slot />
             <nuxt-link v-if="type === 1" class="more-info" to="/shop">
-              مشاهده بیشتر
+              مشاهده بیشتر <div class="more-info-icon" />
             </nuxt-link>
           </div>
           <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2 }">
@@ -168,6 +168,17 @@ export default {
   .slider-title a {
     font-size: 0.7rem;
     color: #8e8e8e;
+    display: flex;
+    align-items: center;
+  }
+
+  .more-info-icon {
+    border: 2px solid #d4d4d4;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    margin: 0 10px;
   }
 
   .slider-carousel {
