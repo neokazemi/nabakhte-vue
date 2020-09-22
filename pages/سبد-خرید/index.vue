@@ -38,6 +38,37 @@
               اعمال تخفیف
             </button>
           </div>
+          <div class="purchase-details">
+            <v-container>
+              <v-row>
+                <v-col :md="6" class="total-price">
+                  <p class="p-1">
+                    مجموع کل سبد خرید
+                  </p>
+                  <h4>
+                    {{ 6 * 80000 | price }} <h6>تومان</h6>
+                  </h4>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col :md="6" class="total-price total-price2">
+                  <p class="p-2">
+                    مجموع نهایی
+                  </p>
+                  <h1>
+                    {{ 6 * 80000 | price }} <span>تومان</span>
+                  </h1>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <a class="purchase" href="#">
+                    اقدام به پرداخت
+                  </a>
+                </v-col>
+              </v-row>
+            </v-container>
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -53,6 +84,11 @@ export default {
   components: {
     ProductCard,
     Breadcrumbs
+  },
+  filters: {
+    price (value) {
+      return value.toLocaleString('ar-SA')
+    }
   },
   asyncData (context) {
     return (new ProductList()).fetch()
@@ -99,6 +135,7 @@ export default {
     min-height: 50px;
     background-color: #fff;
     box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    position: relative;
   }
 
   .empty-cart p {
@@ -182,5 +219,73 @@ export default {
     background-color: #fff;
     margin: 0 5px;
     padding: 0 10px;
+  }
+
+  .apply-discount:hover {
+    opacity: 0.7;
+  }
+
+  .purchase-details {
+    background-color: #f2f2f2;
+    min-height: 50px;
+    width: calc(100% + 24px);
+    margin-right: -12px;
+    margin-bottom: -12px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .purchase-details .container {
+    padding: 30px 45px;
+  }
+
+  .total-price {
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px 15px;
+    align-items: center;
+  }
+
+  .total-price .p-1 {
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 1.8;
+  }
+
+  .total-price * {
+    display: inline-block;
+  }
+
+  .total-price2 {
+    margin-top: 10px;
+    color: #24a822;
+  }
+
+  .total-price .p-2 {
+    font-weight: bold;
+    font-size: 1.1rem;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  .total-price2 span {
+    font-size: 0.8rem;
+  }
+
+  .purchase {
+    margin-right: -15px;
+    background-color: #2c2d33;
+    color: #fff;
+    padding: 10px 25px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    display: inline-block;
+  }
+
+  .purchase:hover {
+    background-color: #00b722;
   }
 </style>
