@@ -1,24 +1,32 @@
 <template>
   <div class="row under-carousel-buttons">
-    <a href="#" class="under-carousel-button">
+    <nuxt-link to="/خدمات-مشتریان" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/free-delivery.svg" alt=""><p>ارسال سریع</p>
-      <p class="after-hover-text">بیشتر بدانید</p>
-    </a>
-    <a href="#" class="under-carousel-button">
+      <p class="after-hover-text">
+        بیشتر بدانید
+      </p>
+    </nuxt-link>
+    <nuxt-link to="/خدمات-مشتریان" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/tag.svg" alt=""><p>تخفیف های جذاب</p>
-      <p class="after-hover-text">بیشتر بدانید</p>
-    </a>
-    <a href="#" class="under-carousel-button">
+      <p class="after-hover-text">
+        بیشتر بدانید
+      </p>
+    </nuxt-link>
+    <nuxt-link to="/خدمات-مشتریان" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/24-hours.svg" alt=""><p>پشتیبانی</p>
-      <p class="after-hover-text">بیشتر بدانید</p>
-    </a>
-    <a href="#" class="under-carousel-button">
+      <p class="after-hover-text">
+        بیشتر بدانید
+      </p>
+    </nuxt-link>
+    <nuxt-link to="/خدمات-مشتریان" class="under-carousel-button">
       <img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/customer-service.svg" alt=""><p>خدمات مشتریان</p>
-      <p class="after-hover-text">بیشتر بدانید</p>
-    </a>
-    <a href="#" class="under-carousel-button type2">
+      <p class="after-hover-text">
+        بیشتر بدانید
+      </p>
+    </nuxt-link>
+    <nuxt-link to="/خدمات-مشتریان" class="under-carousel-button type2">
       بیشتر بدانید ...
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
