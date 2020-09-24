@@ -1,26 +1,29 @@
 <template>
   <v-container :fluid="true" class="product-card">
-    <v-row>
-      <v-col :md="1">
+    <v-row class="flex-column flex-sm-row">
+      <v-col :sm="1">
         <a href="#" class="remove">حذف ×</a>
       </v-col>
-      <v-col :md="1">
+      <v-col :sm="1" class="product-card-image-cart">
         <v-img :src="details.image.url" contain :width="56" :height="75" />
       </v-col>
-      <v-col :md="4">
-        <p class="name">
+      <v-col :sm="4" class="justify-sm-center justify-start">
+        <p class="name justify-start">
+          <span class="d-inline-block d-sm-none title">محصول: </span>
           <slot />
         </p>
       </v-col>
-      <v-col :md="2">
-        <div class="price">
+      <v-col :sm="2">
+        <div class="price justify-sm-center justify-start">
+          <span class="title d-inline-block d-sm-none">قیمت: </span>
           <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
           <span class="percent">{{ 20 }}%</span>
           <span class="new-price">{{ 80000 | price }}</span>
-          <span class="toman">تومان</span>
+          <span class="toman"> تومان</span>
         </div>
       </v-col>
-      <v-col :md="2" class="count">
+      <v-col :sm="2" class="count justify-sm-center justify-start">
+        <span class="title d-inline-block d-sm-none">تعداد: </span>
         <v-select
           :items="items"
           outlined
@@ -32,8 +35,8 @@
           :height="20"
         />
       </v-col>
-      <v-col :md="2" class="final-price">
-        <p>{{ 80000 | price }} <span>تومان</span></p>
+      <v-col :sm="2" class="final-price justify-sm-center justify-start">
+        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ 80000 | price }} <span> تومان </span></p>
       </v-col>
     </v-row>
   </v-container>
@@ -69,7 +72,8 @@ export default {
         '6 عدد',
         '7 عدد',
         '8 عدد',
-        '9 عدد'
+        '9 عدد',
+        '100 عدد'
       ]
     }
   }
@@ -114,6 +118,7 @@ export default {
     padding: 0 5px;
     font-size: 0.8rem;
     color: #fff;
+    line-height: 20px !important;
   }
 
   .final-price {
@@ -130,6 +135,18 @@ export default {
     color: #8d8d8d;
     font-size: 0.8rem;
   }
+
+  .product-card .title {
+    font-weight: bold;
+    font-size: 0.7rem;
+    margin-left: 10px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .product-card {
+      padding: 0 12px;
+    }
+  }
 </style>
 
 <style>
@@ -138,7 +155,7 @@ export default {
   }
 
   .product-card .count .v-input__slot {
-    width: 40%;
+    width: 50%;
     padding: 0 5px !important;
   }
 
@@ -174,5 +191,52 @@ export default {
 
   .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
     min-height: 20px;
+  }
+
+  @media only screen and (max-width: 960px) {
+    .product-card .count .v-input__slot {
+      width: 80%;
+    }
+
+    .product-card-image-cart {
+      padding: 0;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .product-card .count .v-input__slot {
+      width: 100%;
+    }
+
+    .product-card-image-cart {
+      padding: 0;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .product-card .col {
+      padding: 5px 0;
+      border-top: 1px solid #f8f8f8;
+      border-bottom: 1px solid #f8f8f8;
+      line-height: 50px;
+    }
+
+    .product-card .count .v-input__slot {
+      width: 30%;
+      font-size: 1rem;
+      align-self: start;
+    }
+
+    .product-card-image-cart .v-image {
+      height: 150px !important;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .product-card .count .v-input__slot {
+      width: 50%;
+      font-size: 1rem;
+      align-self: start;
+    }
   }
 </style>

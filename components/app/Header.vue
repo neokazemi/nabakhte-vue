@@ -540,6 +540,7 @@ a ::after {
 
 #home-page {
   font-size: 1rem;
+  margin-top: -4px;
 }
 
 .nav p {
@@ -782,8 +783,9 @@ header a {
 }
 
 .navigation-bar .nav-item .nav-link::after {
-  content: "/";
-  padding-top: 10px;
+  content: "|";
+  padding-top: 3px;
+  padding-right: 5px;
   margin: 0 8px;
   font-size: 7pt;
   opacity: 0.5;
