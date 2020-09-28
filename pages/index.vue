@@ -1,25 +1,21 @@
 <template>
   <div>
-    <v-row>
-      <v-col>
-        <v-layout
-          column
-          justify-center
-          align-center
+    <v-layout
+      column
+      justify-center
+      align-center
+    >
+      <v-row
+        justify="center"
+        no-gutters
+      >
+        <v-col
+          cols="12"
         >
-          <v-row
-            justify="center"
-            no-gutters
-          >
-            <v-col
-              cols="12"
-            >
-              <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
-            </v-col>
-          </v-row>
-        </v-layout>
-      </v-col>
-    </v-row>
+          <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
+        </v-col>
+      </v-row>
+    </v-layout>
     <ProductSliderCarousel :products="products.list">
       جدید ترین کتاب های کمک آموزشی
     </ProductSliderCarousel>

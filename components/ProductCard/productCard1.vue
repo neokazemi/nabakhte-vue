@@ -5,7 +5,7 @@
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
       <nuxt-link :to="productLink">
-        <img :src="details.image.url">
+        <img :src="details.image.url" alt="">
       </nuxt-link>
       <div class="image-hover">
         <nuxt-link class="more-info" :to="productLink">
@@ -114,7 +114,7 @@ export default {
 
 .product-card-1 .product-title {
   height: auto;
-  line-height: 24px;
+  line-height: 1.4rem;
   color: #fff;
   font-family: inherit;
   font-size: 0.8rem;
@@ -180,8 +180,8 @@ export default {
 
 .product-card-1 .price {
   height: 38px;
-  line-height: 38px;
-  font-size: 10pt;
+  line-height: 2.3rem;
+  font-size: 1rem;
   color: #fff;
   bottom: -8px;
 }
@@ -215,7 +215,7 @@ export default {
 .product-card-1 .price .percent {
   font-size: inherit;
   font-weight: 500;
-  line-height: 17px;
+  line-height: 1rem;
 }
 
 .product-card-2 .price .percent {
@@ -242,7 +242,7 @@ export default {
 
 .product-card-1 .price .new-price {
   font-weight: bold;
-  font-size: 14pt;
+  font-size: 1.2rem;
   font-family: inherit;
   margin: 0 3px;
 }
@@ -335,5 +335,4 @@ export default {
 .font-black a {
   color: #000 !important;
 }
-
 </style>

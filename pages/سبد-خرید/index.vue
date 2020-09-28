@@ -297,7 +297,7 @@ export default {
     background-color: #00b722;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1264px) {
     .breadcrumbs-container,
     .cart-container {
       width: 950px;

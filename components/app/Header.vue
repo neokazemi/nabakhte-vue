@@ -66,8 +66,8 @@
           </div>
         </div>
         <div class="container top-menu">
-          <div class="row menu">
-            <div class="col">
+          <div class="row menu justify-center">
+            <div class="col top-menu-col">
               <div class="menu-bar full-container">
                 <div class="right-bar">
                   <div class="row menu-options-container justify-content-start align-items-center">
@@ -83,7 +83,10 @@
                           <i class="fas fa-angle-down" />
                         </a>
                         <div class="consulting-mega-menu">
-                          <div class="option-selection">
+                          <div class="consulting-mega-menu-bg" />
+                          <div
+                            class="option-selection"
+                          >
                             <a class="offline-consulting option" href="#">
                               <p>
                                 <i class="fas fa-angle-left" />مشاوره آفلاین
@@ -135,27 +138,31 @@
                         <h2 class="cart-description">
                           سبد خرید
                         </h2>
-                        <Badge :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
+                        <Badge v-if="typeof cart.list !== 'undefined'" :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
                       </nuxt-link>
                       <div class="cart-details user-button-details">
                         <HeaderCart :products="products.list" />
                       </div>
                     </div>
                     <div class="account-management">
-                      <a href="#">
+                      <nuxt-link to="/my-account">
                         <div class="account-logo leftSide-btn-arrow">
                           <i class="fas fa-user" />
                         </div>
-                        <h2 class="account-description">حساب کاربری</h2>
-                      </a>
+                        <h2 class="account-description">
+                          حساب کاربری
+                        </h2>
+                      </nuxt-link>
                       <div class="account-options user-button-details">
-                        <a class="first-option" href="#">
+                        <nuxt-link class="first-option" to="/my-account/orders">
                           <i class="fas fa-shopping-basket" />سفارش ها
-                        </a>
-                        <a class="middle-option" href="#">
+                        </nuxt-link>
+                        <nuxt-link class="middle-option" to="/my-account/edit-address">
                           <i class="fas fa-truck" />آدرس ها
-                        </a>
-                        <a class="middle-option" href="#">ویرایش پروفایل</a>
+                        </nuxt-link>
+                        <nuxt-link class="middle-option" to="/my-account/edit-account">
+                          ویرایش پروفایل
+                        </nuxt-link>
                         <a class="last-option" href="#">خروج</a>
                       </div>
                     </div>
@@ -256,6 +263,7 @@
           <a class="nav-link menu-nav" href="#">پیگیری سفارش</a>
         </ul>
         <div class="leftSide">
+          // eslint-disable-next-line
           <input class="fixed-search-input" type="text" placeholder="جستجو">
           <a href="#">
             <div class="leftSide-btn search-button">
@@ -281,9 +289,10 @@
 <script>
 import HeaderCart from '../HeaderCart'
 import { ProductList } from '../../models/Product'
+import Badge from '../Badge'
 export default {
   name: 'Header',
-  components: { HeaderCart },
+  components: { HeaderCart, Badge },
   asyncData (context) {
     return (new ProductList()).fetch()
       .then((response) => {
@@ -478,6 +487,52 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   color: #252525;
   font-size: 12px;
   padding-right: 15px;
+}
+
+.consulting-mega-menu-bg {
+  background-color: #fff;
+  position: absolute;
+  top: -10%;
+  right: 0;
+  width: 97%;
+  height: 250%;
+  border-top-left-radius: 50%;
+}
+
+@media only screen and (max-width: 1264px) {
+  .navbar-container {
+    width: 950px;
+  }
+
+  .nav-item {
+    margin: auto 0;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 950px;
+  }
+
+  .menu-nav {
+    padding: 10px 0;
+  }
+
+  .searchbar-container input {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 959.5px) {
+  .navbar-container {
+    width: 600px;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 600px;
+  }
+
+  header .fixedMenu {
+    display: none;
+  }
 }
 </style>
 
@@ -913,6 +968,7 @@ a:hover .fa-angle-down {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   opacity: 0;
+  overflow: hidden;
 }
 
 .scrolledMenu .consulting-mega-menu {

@@ -19,11 +19,11 @@
                 </ProductCard>
               </SwiperSlide>
             </Swiper>
-            <div slot="button-prev" :class="{ 'swiper-button-prev': type === 1, 'swiper-button-prev2': type === 2 }" @click="slidePrev" />
-            <div slot="button-next" :class="{ 'swiper-button-next': type === 1, 'swiper-button-next2': type === 2 }" @click="slideNext" />
           </div>
         </v-col>
       </v-row>
+      <div slot="button-prev" :class="{ 'swiper-button-prev': type === 1, 'swiper-button-prev2': type === 2 }" @click="slidePrev" />
+      <div slot="button-next" :class="{ 'swiper-button-next': type === 1, 'swiper-button-next2': type === 2 }" @click="slideNext" />
     </v-container>
   </div>
 </template>
@@ -107,15 +107,19 @@ export default {
         }
       } else if (this.type === 1) {
         return {
-          640: {
+          400: {
             slidesPerView: 2,
             spaceBetween: 0
           },
-          768: {
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 0
+          },
+          960: {
             slidesPerView: 4,
             spaceBetween: 0
           },
-          1024: {
+          1200: {
             slidesPerView: 5,
             spaceBetween: 0
           }
@@ -204,22 +208,23 @@ export default {
   .swiper-button-next::after {
     font-weight: 800;
     color: #fff;
+    text-shadow: 0 0 10px #424242;
   }
 
   .swiper-button-prev {
     position: absolute;
-    left: -70px;
+    left: 40px;
   }
 
   .swiper-button-next {
     position: absolute;
-    right: -70px;
+    right: 40px;
   }
 
   .swiper-button-next2::after,
   .swiper-button-prev2::after {
     font-weight: 800;
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #fff;
   }
 
@@ -251,4 +256,51 @@ export default {
     content: '>';
   }
 
+  @media only screen and (max-width: 1200px) {
+    .slider-container {
+      width: 950px;
+    }
+  }
+
+  @media only screen and (max-width: 959.5px) {
+    .slider-container {
+      max-width: 600px;
+    }
+
+    .slider-bg {
+      height: 250px;
+    }
+
+    .slider-carousel {
+      height: 340px;
+    }
+  }
+
+  @media only screen and (max-width: 599.5px) {
+    .slider-container {
+      width: 350px;
+    }
+
+    .slider-carousel {
+      height: 310px;
+    }
+
+    .slider-bg {
+      height: 220px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .slider-container {
+      width: 200px;
+    }
+
+    .slider-carousel {
+      height: 330px;
+    }
+
+    .slider-bg {
+      height: 240px;
+    }
+  }
 </style>
