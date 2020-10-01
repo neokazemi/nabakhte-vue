@@ -12,6 +12,9 @@
     <ProductCard4 v-if="type === 7" :details="details">
       {{ details.name }}
     </ProductCard4>
+    <ProductCard5 v-if="type === 8" :details="details">
+      {{ details.name }}
+    </ProductCard5>
   </div>
 </template>
 
@@ -20,10 +23,12 @@ import productCard1 from './productCard1'
 import ProductCard2 from './ProductCard2'
 import ProductCard3 from './ProductCard3'
 import ProductCard4 from './ProductCard4'
+import ProductCard5 from './ProductCard5'
 
 export default {
   name: 'ProductCard',
   components: {
+    ProductCard5,
     ProductCard4,
     productCard1,
     ProductCard2,

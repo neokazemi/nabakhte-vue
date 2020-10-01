@@ -1,6 +1,8 @@
 <template>
   <div>
+    <TopView v-if="ispwa" :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
     <v-layout
+      v-else
       column
       justify-center
       align-center
@@ -16,15 +18,28 @@
         </v-col>
       </v-row>
     </v-layout>
-    <ProductSliderCarousel :products="products.list">
-      جدید ترین کتاب های کمک آموزشی
-    </ProductSliderCarousel>
-    <ProductSliderCarousel :products="products.list">
-      جدید ترین نوشت افزار ها
-    </ProductSliderCarousel>
-    <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
-      محبوب ترین محصولات
-    </ProductSliderCarousel>
+    <div v-if="ispwa">
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        جدید ترین کتاب های کمک آموزشی
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        جدید ترین نوشت افزار ها
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        محبوب ترین محصولات
+      </ProductSliderCarousel>
+    </div>
+    <div v-else>
+      <ProductSliderCarousel :products="products.list">
+        جدید ترین کتاب های کمک آموزشی
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list">
+        جدید ترین نوشت افزار ها
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
+        محبوب ترین محصولات
+      </ProductSliderCarousel>
+    </div>
   </div>
 </template>
 
@@ -120,6 +135,9 @@ export default {
   computed: {
     products () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   }
 }

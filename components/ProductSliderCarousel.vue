@@ -1,17 +1,20 @@
 <template>
   <div :fluid="true" class="new-books-container full-container">
-    <div :class="{ 'slider-bg': true, 'shorter-slider-bg': type === 2 }" :style="{ backgroundColor: mainBg }" />
-    <div class="price-bg" :style="{ backgroundColor: bottomBg }" />
-    <v-container class="slider-container">
+    <div v-if="type === 1 || type === 2" :class="{ 'slider-bg': true, 'shorter-slider-bg': type === 2 }" :style="{ backgroundColor: mainBg }" />
+    <div v-if="type === 1 || type === 2" class="price-bg" :style="{ backgroundColor: bottomBg } " />
+    <v-container :class="{ 'slider-container': true, 'slider-container3': type === 3 }">
       <v-row>
         <v-col class="slider">
-          <div class="slider-title" :style="{ color: mainBg }">
+          <div :class="{ 'slider-title': true, 'slider-title3': type === 3 }" :style="{ color: mainBg }">
             <slot />
             <nuxt-link v-if="type === 1" class="more-info" to="/shop">
               مشاهده بیشتر <div class="more-info-icon" />
             </nuxt-link>
+            <nuxt-link v-if="type === 3" class="more-info3" to="/shop">
+              مشاهده بیشتر >
+            </nuxt-link>
           </div>
-          <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2 }">
+          <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2, 'pwa-slider-carousel': type === 3 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products" :key="index">
                 <ProductCard :details="product" :type="productCardType">
@@ -22,8 +25,8 @@
           </div>
         </v-col>
       </v-row>
-      <div slot="button-prev" :class="{ 'swiper-button-prev': type === 1, 'swiper-button-prev2': type === 2 }" @click="slidePrev" />
-      <div slot="button-next" :class="{ 'swiper-button-next': type === 1, 'swiper-button-next2': type === 2 }" @click="slideNext" />
+      <div v-if="type === 1 || type === 2" slot="button-prev" :class="{ 'swiper-button-prev': type === 1, 'swiper-button-prev2': type === 2 }" @click="slidePrev" />
+      <div v-if="type === 1 || type === 2" slot="button-next" :class="{ 'swiper-button-next': type === 1, 'swiper-button-next2': type === 2 }" @click="slideNext" />
     </v-container>
   </div>
 </template>
@@ -59,6 +62,7 @@ export default {
       required: false,
       default: 1
     }
+
   },
   data () {
     return {
@@ -77,6 +81,8 @@ export default {
         return 1
       } else if (this.type === 2) {
         return 3
+      } else if (this.type === 3) {
+        return 8
       } else {
         return 1
       }
@@ -92,15 +98,19 @@ export default {
     getBreakPoints () {
       if (this.type === 2) {
         return {
-          640: {
+          400: {
+            slidesPerView: 2,
+            spaceBetween: 0
+          },
+          600: {
             slidesPerView: 3,
             spaceBetween: 0
           },
-          768: {
+          960: {
             slidesPerView: 5,
             spaceBetween: 0
           },
-          1024: {
+          1260: {
             slidesPerView: 6,
             spaceBetween: 0
           }
@@ -119,8 +129,23 @@ export default {
             slidesPerView: 4,
             spaceBetween: 0
           },
-          1200: {
+          1260: {
             slidesPerView: 5,
+            spaceBetween: 0
+          }
+        }
+      } else if (this.type === 3) {
+        return {
+          0: {
+            slidesPerView: 1.2,
+            spaceBetween: 0
+          },
+          400: {
+            slidesPerView: 2.2,
+            spaceBetween: 0
+          },
+          768: {
+            slidesPerView: 3.2,
             spaceBetween: 0
           }
         }
@@ -169,11 +194,20 @@ export default {
     padding: 0 10px;
   }
 
+  .slider-title3 {
+    margin-bottom: 20px;
+  }
+
   .slider-title a {
     font-size: 0.7rem;
     color: #8e8e8e;
     display: flex;
     align-items: center;
+  }
+
+  .slider-title .more-info3 {
+    font-size: 1rem;
+    color: #000;
   }
 
   .more-info-icon {
@@ -194,6 +228,10 @@ export default {
 
   .shorter-slider-carousel {
     height: 350px;
+  }
+
+  .pwa-slider-carousel {
+    height: fit-content !important;
   }
 
   .slider-container {
@@ -256,9 +294,18 @@ export default {
     content: '>';
   }
 
-  @media only screen and (max-width: 1200px) {
+  .slider-container3 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  @media only screen and (max-width: 1260px) {
     .slider-container {
-      width: 950px;
+      width: 930px;
+    }
+
+    .slider {
+      padding: 0;
     }
   }
 

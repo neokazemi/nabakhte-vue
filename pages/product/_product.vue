@@ -587,4 +587,45 @@ export default {
     margin: 15px;
   }
 
+  @media only screen and (max-width: 1260px) {
+    .product {
+      width: 950px;
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    .product {
+      width: 650px;
+    }
+
+    .product-data {
+      flex-direction: column;
+    }
+
+    .product-data .v-image {
+      width: 200px !important;
+      height: auto !important;
+      margin: auto;
+      margin-bottom: 10px;
+    }
+
+    .product-data .first {
+      padding: 25px 10px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .product {
+      width: 90%;
+    }
+
+    .product-data .product-details {
+      flex-direction: column;
+    }
+
+    .product-details .share {
+      bottom: -42px;
+    }
+  }
+
 </style>

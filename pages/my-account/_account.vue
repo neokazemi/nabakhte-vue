@@ -6,7 +6,7 @@
       </v-col>
     </v-row>
     <v-row class="page-content">
-      <v-col :md="3">
+      <v-col :md="3" :sm="4">
         <v-navigation-drawer permanent floating :width="'fit-content'">
           <v-list>
             <v-list-item v-for="(item, index) in navItems" :key="index" link :to="item.url">
@@ -17,7 +17,7 @@
           </v-list>
         </v-navigation-drawer>
       </v-col>
-      <v-col :md="9" class="tab-content">
+      <v-col :md="9" :sm="8" class="tab-content">
         <p class="complete-info">
           برای استفاده بهینه از خدمات سایت اطلاعات <nuxt-link to="/my-account/edit-address">
             حساب کاربری
@@ -42,8 +42,8 @@
         </div>
         <div v-if="currentTab === 'edit-address'" class="edit-address">
           <p>آدرس‌های زیر برای ارسال فاکتور و صورت حساب استفاده خواهند شد.</p>
-          <div class="full-width flex-row d-flex">
-            <div class="half-width">
+          <div class="full-width flex-sm-row flex-column d-flex">
+            <div class="half-width address-box">
               <div class="d-flex flex-row address-bar">
                 <h3>آدرس صورتحساب</h3>
                 <nuxt-link to="#">
@@ -54,7 +54,7 @@
               </div>
               <p>شما هنوز آدرسی ثبت نکرده اید.</p>
             </div>
-            <div class="half-width">
+            <div class="half-width address-box">
               <div class="d-flex flex-row address-bar">
                 <h3>آدرس برای ارسال بار</h3>
                 <nuxt-link to="#">
@@ -132,6 +132,20 @@
                 </div>
               </div>
               <div class="input-field half-width" />
+            </div>
+            <div class="full-width password-box">
+              <p class="bold">
+                تغییر گذرواژه
+              </p>
+              <div class="input-field">
+                <v-text-field label="رمز عبور پیشین" filled type="password" hint="(در صورتی که قصد تغییر ندارید خالی بگذارید)" />
+              </div>
+              <div class="input-field">
+                <v-text-field label="رمز عبور جدید" filled type="password" hint="(در صورتی که قصد تغییر ندارید خالی بگذارید)" />
+              </div>
+              <div class="input-field">
+                <v-text-field label="تکرار رمز عبور" filled type="password" />
+              </div>
             </div>
           </div>
         </div>
@@ -351,6 +365,35 @@ export default {
   .page-content .tab-content .input-field-radio p {
     margin-bottom: 0;
   }
+
+  .password-box {
+    padding: 20px;
+  }
+
+  @media only screen and (max-width: 960px) {
+    .half-width {
+      width: 95%;
+      margin: 0 20px;
+    }
+
+    .input-fields-top .input-row {
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .page-content {
+      flex-direction: column;
+    }
+
+    .page-content .v-navigation-drawer {
+      width: 100% !important;
+    }
+
+    .address-box {
+      margin-bottom: 40px;
+    }
+  }
 </style>
 
 <style>
@@ -404,5 +447,13 @@ export default {
 
   .input-field .v-select.v-input--dense .v-chip {
     margin: 2px 4px;
+  }
+
+  .page-content .input-field .v-label {
+    font-size: 1rem;
+  }
+
+  .page-content .input-field .v-text-field--filled > .v-input__control > .v-input__slot {
+    min-height: 30px;
   }
 </style>

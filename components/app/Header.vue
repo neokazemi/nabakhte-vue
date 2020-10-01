@@ -1,7 +1,35 @@
 <template>
   <div>
     <v-app-bar
-      v-if="true"
+      v-if="ispwa === true"
+      color="#fff"
+      app
+      class="pwa-header"
+    >
+      <div class="pwa-appbar">
+        <div class="pwa-appbar-item">
+          <v-app-bar-nav-icon />
+        </div>
+        <div class="pwa-appbar-item">
+          <p>جستجو</p>
+        </div>
+        <div class="pwa-appbar-item">
+          <nuxt-link to="/سبد-خرید">
+            سبد خرید
+          </nuxt-link>
+        </div>
+        <div class="pwa-appbar-item">
+          <p>پنل کاربری</p>
+        </div>
+        <div class="pwa-appbar-item">
+          <nuxt-link to="/" class="full-height d-flex align-center">
+            <v-img src="./images/logo3.png" contain :height="'70%'" :min-width="50" />
+          </nuxt-link>
+        </div>
+      </div>
+    </v-app-bar>
+    <v-app-bar
+      v-else
       shrink-on-scroll
       fixed
       app
@@ -263,7 +291,6 @@
           <a class="nav-link menu-nav" href="#">پیگیری سفارش</a>
         </ul>
         <div class="leftSide">
-          // eslint-disable-next-line
           <input class="fixed-search-input" type="text" placeholder="جستجو">
           <a href="#">
             <div class="leftSide-btn search-button">
@@ -369,7 +396,6 @@ export default {
           url: '#'
         }
       ]
-
     }
   },
   computed: {
@@ -378,6 +404,9 @@ export default {
     },
     cart () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   }
 }
@@ -394,7 +423,7 @@ header .scrolledMenu {
 
 header {
   box-shadow: none !important;
-  background-color: #f8f8f8 !important;
+  background-color: #f8f8f8;
 }
 
 header.v-app-bar--is-scrolled {
@@ -499,6 +528,32 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   border-top-left-radius: 50%;
 }
 
+.pwa-appbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: inherit;
+  width: 100%;
+  border-bottom: 1px solid #2bbb28;
+}
+
+.pwa-appbar-item {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.pwa-header a {
+  color: #000;
+}
+
 @media only screen and (max-width: 1264px) {
   .navbar-container {
     width: 950px;
@@ -533,12 +588,32 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   header .fixedMenu {
     display: none;
   }
+
+  .pwa-appbar-item {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pwa-appbar-item {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .pwa-appbar-item {
+    font-size: 0.9rem;
+  }
 }
 </style>
 
 <style>
 .v-application p {
   margin: 0;
+}
+
+.pwa-header .v-toolbar__content {
+  padding: 0 !important;
 }
 
 header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
@@ -1326,19 +1401,11 @@ a:hover .fa-angle-down {
 }
 
 .body-head {
-  height: 462px;
+  height: auto;
   background: transparent;
 }
 
-.body-head div {
-  height: inherit;
-}
-
-.body-haed div div {
-  height: inherit;
-}
-
 .big-carousel {
-  height: 355px;
+  height: auto;
 }
 </style>
