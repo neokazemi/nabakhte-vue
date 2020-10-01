@@ -1,7 +1,35 @@
 <template>
   <div>
     <v-app-bar
-      v-if="true"
+      v-if="ispwa === true"
+      color="#fff"
+      app
+      class="pwa-header"
+    >
+      <div class="pwa-appbar">
+        <div class="pwa-appbar-item">
+          <v-app-bar-nav-icon />
+        </div>
+        <div class="pwa-appbar-item">
+          <p>جستجو</p>
+        </div>
+        <div class="pwa-appbar-item">
+          <nuxt-link to="/سبد-خرید">
+            سبد خرید
+          </nuxt-link>
+        </div>
+        <div class="pwa-appbar-item">
+          <p>پنل کاربری</p>
+        </div>
+        <div class="pwa-appbar-item">
+          <nuxt-link to="/" class="full-height d-flex align-center">
+            <v-img src="./images/logo3.png" contain :height="'70%'" :min-width="50" />
+          </nuxt-link>
+        </div>
+      </div>
+    </v-app-bar>
+    <v-app-bar
+      v-else
       shrink-on-scroll
       fixed
       app
@@ -66,8 +94,8 @@
           </div>
         </div>
         <div class="container top-menu">
-          <div class="row menu">
-            <div class="col">
+          <div class="row menu justify-center">
+            <div class="col top-menu-col">
               <div class="menu-bar full-container">
                 <div class="right-bar">
                   <div class="row menu-options-container justify-content-start align-items-center">
@@ -83,7 +111,10 @@
                           <i class="fas fa-angle-down" />
                         </a>
                         <div class="consulting-mega-menu">
-                          <div class="option-selection">
+                          <div class="consulting-mega-menu-bg" />
+                          <div
+                            class="option-selection"
+                          >
                             <a class="offline-consulting option" href="#">
                               <p>
                                 <i class="fas fa-angle-left" />مشاوره آفلاین
@@ -135,27 +166,31 @@
                         <h2 class="cart-description">
                           سبد خرید
                         </h2>
-                        <Badge :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
+                        <Badge v-if="typeof cart.list !== 'undefined'" :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
                       </nuxt-link>
                       <div class="cart-details user-button-details">
                         <HeaderCart :products="products.list" />
                       </div>
                     </div>
                     <div class="account-management">
-                      <a href="#">
+                      <nuxt-link to="/my-account">
                         <div class="account-logo leftSide-btn-arrow">
                           <i class="fas fa-user" />
                         </div>
-                        <h2 class="account-description">حساب کاربری</h2>
-                      </a>
+                        <h2 class="account-description">
+                          حساب کاربری
+                        </h2>
+                      </nuxt-link>
                       <div class="account-options user-button-details">
-                        <a class="first-option" href="#">
+                        <nuxt-link class="first-option" to="/my-account/orders">
                           <i class="fas fa-shopping-basket" />سفارش ها
-                        </a>
-                        <a class="middle-option" href="#">
+                        </nuxt-link>
+                        <nuxt-link class="middle-option" to="/my-account/edit-address">
                           <i class="fas fa-truck" />آدرس ها
-                        </a>
-                        <a class="middle-option" href="#">ویرایش پروفایل</a>
+                        </nuxt-link>
+                        <nuxt-link class="middle-option" to="/my-account/edit-account">
+                          ویرایش پروفایل
+                        </nuxt-link>
                         <a class="last-option" href="#">خروج</a>
                       </div>
                     </div>
@@ -281,9 +316,10 @@
 <script>
 import HeaderCart from '../HeaderCart'
 import { ProductList } from '../../models/Product'
+import Badge from '../Badge'
 export default {
   name: 'Header',
-  components: { HeaderCart },
+  components: { HeaderCart, Badge },
   asyncData (context) {
     return (new ProductList()).fetch()
       .then((response) => {
@@ -360,7 +396,6 @@ export default {
           url: '#'
         }
       ]
-
     }
   },
   computed: {
@@ -369,6 +404,9 @@ export default {
     },
     cart () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   }
 }
@@ -385,7 +423,7 @@ header .scrolledMenu {
 
 header {
   box-shadow: none !important;
-  background-color: #f8f8f8 !important;
+  background-color: #f8f8f8;
 }
 
 header.v-app-bar--is-scrolled {
@@ -479,11 +517,103 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   font-size: 12px;
   padding-right: 15px;
 }
+
+.consulting-mega-menu-bg {
+  background-color: #fff;
+  position: absolute;
+  top: -10%;
+  right: 0;
+  width: 97%;
+  height: 250%;
+  border-top-left-radius: 50%;
+}
+
+.pwa-appbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: inherit;
+  width: 100%;
+  border-bottom: 1px solid #2bbb28;
+}
+
+.pwa-appbar-item {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.pwa-header a {
+  color: #000;
+}
+
+@media only screen and (max-width: 1264px) {
+  .navbar-container {
+    width: 950px;
+  }
+
+  .nav-item {
+    margin: auto 0;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 950px;
+  }
+
+  .menu-nav {
+    padding: 10px 0;
+  }
+
+  .searchbar-container input {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 959.5px) {
+  .navbar-container {
+    width: 600px;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 600px;
+  }
+
+  header .fixedMenu {
+    display: none;
+  }
+
+  .pwa-appbar-item {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .pwa-appbar-item {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .pwa-appbar-item {
+    font-size: 0.9rem;
+  }
+}
 </style>
 
 <style>
 .v-application p {
   margin: 0;
+}
+
+.pwa-header .v-toolbar__content {
+  padding: 0 !important;
 }
 
 header:not(.v-app-bar--is-scrolled) .v-toolbar__content {
@@ -540,6 +670,7 @@ a ::after {
 
 #home-page {
   font-size: 1rem;
+  margin-top: -4px;
 }
 
 .nav p {
@@ -782,8 +913,9 @@ header a {
 }
 
 .navigation-bar .nav-item .nav-link::after {
-  content: "/";
-  padding-top: 10px;
+  content: "|";
+  padding-top: 3px;
+  padding-right: 5px;
   margin: 0 8px;
   font-size: 7pt;
   opacity: 0.5;
@@ -911,6 +1043,7 @@ a:hover .fa-angle-down {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   opacity: 0;
+  overflow: hidden;
 }
 
 .scrolledMenu .consulting-mega-menu {
@@ -1268,19 +1401,11 @@ a:hover .fa-angle-down {
 }
 
 .body-head {
-  height: 462px;
+  height: auto;
   background: transparent;
 }
 
-.body-head div {
-  height: inherit;
-}
-
-.body-haed div div {
-  height: inherit;
-}
-
 .big-carousel {
-  height: 355px;
+  height: auto;
 }
 </style>

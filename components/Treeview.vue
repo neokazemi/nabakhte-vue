@@ -25,6 +25,9 @@ export default {
   props: {
     treeView: {
       type: Array,
+      default () {
+        return []
+      },
       required: false
     }
   }

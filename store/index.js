@@ -1,6 +1,7 @@
 export const state = () => ({
   posts: [],
-  products: []
+  products: [],
+  ispwa: true
 })
 
 export const mutations = {
@@ -34,6 +35,9 @@ export const getters = {
   },
   products (state) {
     return state.products
+  },
+  ispwa (state) {
+    return state.ispwa
   }
   // url_crud_model: (state) => (object) => {
   //   // let modelName = object.constructor.name;

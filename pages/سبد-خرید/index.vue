@@ -1,11 +1,11 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col>
+    <v-row class="breadcrumbs-container">
+      <v-col :xs="12">
         <Breadcrumbs :items="breadcrumbsItems" />
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="cart-container">
       <v-col class="cart-content">
         <div v-if="products.list.length === 0" class="empty-cart">
           <p>سبد خرید شما در حال حاضر خالی است.</p>
@@ -14,19 +14,20 @@
           </nuxt-link>
         </div>
         <div v-else class="cart-with-products">
-          <v-container :fluid="true" class="table-header">
-            <v-row class="table-header-row">
-              <v-col :md="2" />
-              <v-col :md="4" class="product-names">
+          <v-container :fluid="true" class="d-none d-sm-flex">
+            <v-row class="table-header-row no-gutters">
+              <v-col :sm="1" />
+              <v-col :sm="1" />
+              <v-col :sm="4" class="product-names justify-center d-flex">
                 محصولات
               </v-col>
-              <v-col :md="2">
+              <v-col :sm="2" class="justify-center d-flex">
                 قیمت
               </v-col>
-              <v-col :md="2">
+              <v-col :sm="2" class="justify-center d-flex">
                 تعداد
               </v-col>
-              <v-col :md="2">
+              <v-col :sm="2" class="justify-center d-flex">
                 مجموع
               </v-col>
             </v-row>
@@ -131,6 +132,11 @@ export default {
 </script>
 
 <style scoped>
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
   .cart-content {
     min-height: 50px;
     background-color: #fff;
@@ -165,6 +171,7 @@ export default {
 
   .table-header {
     padding: 0;
+    height: 40px;
   }
 
   .table-header .col {
@@ -283,9 +290,156 @@ export default {
     font-weight: bold;
     font-size: 1.3rem;
     display: inline-block;
+    border-radius: 4px;
   }
 
   .purchase:hover {
     background-color: #00b722;
+  }
+
+  @media screen and (max-width: 1264px) {
+    .breadcrumbs-container,
+    .cart-container {
+      width: 950px;
+      align-self: center;
+    }
+  }
+
+  @media screen and (max-width: 959.5px) {
+    .breadcrumbs-container,
+    .cart-container {
+      max-width: 600px;
+      align-self: center;
+    }
+
+    .discount-input {
+      font-size: 1rem;
+    }
+
+    .purchase {
+      display: block;
+      text-align: center;
+      margin: 0 -12px;
+      line-height: 30px;
+      font-size: 1.5rem;
+    }
+
+    .total-price .p-1 {
+      font-size: 1.2rem;
+    }
+
+    .total-price .p-2 {
+      font-size: 1.5rem;
+    }
+
+    .total-price2 span {
+      font-size: 1.2rem;
+    }
+
+    .total-price h4 {
+      font-size: 1.2rem;
+    }
+
+    .total-price h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .table-header {
+      height: 20px;
+    }
+
+    .discount-input {
+      font-size: 1.2rem;
+    }
+
+    .total-price .p-1 {
+      font-size: 1.5rem;
+    }
+
+    .total-price .p-2 {
+      font-size: 2rem;
+    }
+
+    .total-price2 span {
+      font-size: 1.5rem;
+    }
+
+    .total-price h4 {
+      font-size: 1.5rem;
+    }
+
+    .total-price h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .breadcrumbs-container,
+    .cart-container {
+      max-width: 90%;
+      align-self: center;
+    }
+
+    .discount-input {
+      font-size: 1.2rem;
+      min-width: 100px;
+    }
+
+    .total-price .p-1 {
+      font-size: 1.2rem;
+    }
+
+    .total-price .p-2 {
+      font-size: 1.5rem;
+    }
+
+    .total-price2 span {
+      font-size: 1.2rem;
+    }
+
+    .total-price h4 {
+      font-size: 1.2rem;
+    }
+
+    .total-price h1 {
+      font-size: 1.5rem;
+    }
+
+    .discount-code {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .discount-code * {
+      margin: 5px -20px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .discount-input {
+      font-size: 1rem;
+    }
+
+    .total-price .p-1 {
+      font-size: 1rem;
+    }
+
+    .total-price .p-2 {
+      font-size: 1.2rem;
+    }
+
+    .total-price2 span {
+      font-size: 1rem;
+    }
+
+    .total-price h4 {
+      font-size: 1rem;
+    }
+
+    .total-price h1 {
+      font-size: 1.2rem;
+    }
   }
 </style>
