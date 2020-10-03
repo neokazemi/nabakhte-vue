@@ -12,7 +12,7 @@
     <ProductCard4 v-if="type === 7" :details="details">
       {{ details.name }}
     </ProductCard4>
-    <ProductCard5 v-if="type === 8" :details="details">
+    <ProductCard5 v-if="type === 8" :details="details" :box-shadow="boxShadow">
       {{ details.name }}
     </ProductCard5>
   </div>
@@ -41,6 +41,11 @@ export default {
     type: {
       type: Number,
       default: 1
+    },
+    boxShadow: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   }
 }

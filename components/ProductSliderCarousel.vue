@@ -17,7 +17,7 @@
           <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2, 'pwa-slider-carousel': type === 3 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products" :key="index">
-                <ProductCard :details="product" :type="productCardType">
+                <ProductCard :details="product" :type="productCardType" :box-shadow="boxShadow">
                   {{ product.name }}
                 </ProductCard>
               </SwiperSlide>
@@ -61,8 +61,12 @@ export default {
       type: Number,
       required: false,
       default: 1
+    },
+    boxShadow: {
+      type: Boolean,
+      default: false,
+      required: false
     }
-
   },
   data () {
     return {
