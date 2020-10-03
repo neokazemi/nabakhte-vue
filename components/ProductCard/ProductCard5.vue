@@ -1,6 +1,6 @@
 <template>
   <div class="product-card5">
-    <div class="product-card5-bg">
+    <div :class="{ 'product-card5-bg': true, 'box-shadow': boxShadow }">
       <div class="product-img">
         <nuxt-link :to="productLink">
           <v-img :src="details.image.url" alt="" contain :width="'100%'" :height="'100%'" />
@@ -66,6 +66,11 @@ export default {
       type: Number,
       required: false,
       default: 1
+    },
+    boxShadow: {
+      type: Boolean,
+      default: false,
+      required: false
     }
   },
   computed: {
@@ -156,6 +161,10 @@ export default {
     padding: 5px 1px;
     font-weight: bold;
     color: #fff;
+  }
+
+  .box-shadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
   }
 </style>
 
