@@ -2,7 +2,7 @@ export const state = () => ({
   posts: [],
   products: [],
   ispwa: true,
-  footerMargin: '100px'
+  footerMargin: '0'
 })
 
 export const mutations = {
