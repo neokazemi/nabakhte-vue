@@ -503,6 +503,12 @@ export default {
       return this.$store.getters.ispwa
     }
   },
+  created () {
+    this.$store.commit('updateFooterMargin', '54px')
+  },
+  destroyed () {
+    this.$store.commit('updateFooterMargin', '0')
+  },
   methods: {
     selectTab (number) {
       this.selectedTab = number

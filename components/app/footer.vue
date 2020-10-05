@@ -1,5 +1,5 @@
 <template>
-  <div class="full-width">
+  <div class="full-width" :style="{ marginBottom: margin }">
     <div v-if="ispwa">
       <v-sheet
         tile
@@ -208,6 +208,13 @@
 <script>
 export default {
   name: 'Footer',
+  props: {
+    margin: {
+      type: String,
+      default: '0',
+      required: false
+    }
+  },
   computed: {
     ispwa () {
       return this.$store.getters.ispwa

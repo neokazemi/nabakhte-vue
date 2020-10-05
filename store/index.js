@@ -1,7 +1,8 @@
 export const state = () => ({
   posts: [],
   products: [],
-  ispwa: true
+  ispwa: true,
+  footerMargin: '100px'
 })
 
 export const mutations = {
@@ -10,6 +11,9 @@ export const mutations = {
   },
   updateProducts (state, newInfo) {
     state.products = newInfo
+  },
+  updateFooterMargin (state, newInfo) {
+    state.footerMargin = newInfo
   }
   // updateAppProps(state, newInfo) {
   //   if (typeof newInfo === 'function') {
@@ -38,6 +42,9 @@ export const getters = {
   },
   ispwa (state) {
     return state.ispwa
+  },
+  footerMargin (state) {
+    return state.footerMargin
   }
   // url_crud_model: (state) => (object) => {
   //   // let modelName = object.constructor.name;
