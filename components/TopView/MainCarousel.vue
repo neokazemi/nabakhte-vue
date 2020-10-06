@@ -1,6 +1,6 @@
 <template>
   <v-carousel
-    height="355"
+    height="auto"
     :hide-delimiters="true"
   >
     <v-carousel-item v-for="(slide, index) in slides" :key="index">

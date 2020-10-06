@@ -50,3 +50,33 @@ main,
 a {
   text-decoration: none;
 }
+
+@media only screen and (max-width: 1264px) {
+  :root {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  :root {
+    font-size: 12px;
+  }
+}

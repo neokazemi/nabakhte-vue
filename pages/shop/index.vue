@@ -1,81 +1,110 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <Breadcrumbs :items="breadcrumbsItems" />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col :md="3">
-        <Sidebar>
-          <div>
+  <div>
+    <div v-if="ispwa" class="pwa-container">
+      <div class="products">
+        <div v-for="(item, index) in products.list" :key="index" class="half-width">
+          <ProductCard :type="8" :details="item" />
+        </div>
+      </div>
+    </div>
+    <v-container v-else>
+      <v-row class="flex-column flex-md-row">
+        <v-col :sm="3">
+          <Breadcrumbs :items="breadcrumbsItems" />
+        </v-col>
+        <v-col :sm="9">
+          <div class="sort">
+            <div class="sort-by-container">
+              <p class="sort-by">
+                مرتب سازی بر اساس
+              </p>
+              <v-select
+                solo
+                :items="dropItems"
+                :value="dropItems[1]"
+                :height="30"
+                dense
+                class="select-sort"
+              />
+            </div>
+            <div class="show-type page-fields d-none d-md-block">
+              <button :class="{ 'button-selected': grid === 'row' }" @click="changeGridToRow">
+                rw
+              </button>
+              <button :class="{ 'button-selected': grid === 'square' }" @click="changeGridToSquare">
+                sq
+              </button>
+            </div>
+            <div class="page-fields pagination">
+              <v-pagination
+                v-model="page"
+                :length="201"
+                :total-visible="4"
+              />
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+      <v-row class="flex-column flex-md-row">
+        <v-col :md="3" class="right-side-menu">
+          <Sidebar>
+            <div class="d-none d-md-block">
+              <ToggleButton />
+              <ExpansionPanel :data="expansionPanelData" />
+            </div>
+          </Sidebar>
+          <v-btn
+            color="primary"
+            dark
+            class="d-block d-md-none"
+            width="100%"
+            @click.stop="drawer = true"
+          >
+            فیلترها
+          </v-btn>
+        </v-col>
+        <v-col :md="9" class="relative">
+          <v-navigation-drawer
+            v-model="drawer"
+            floating
+            right
+            fixed
+            class="navigation-drawer-filters"
+          >
             <ToggleButton />
             <ExpansionPanel :data="expansionPanelData" />
-          </div>
-        </Sidebar>
-      </v-col>
-      <v-col :md="9">
-        <div class="sort">
-          <p class="sort-by">
-            مرتب سازی بر اساس
-          </p>
-          <select class="page-fields">
-            <option>
-              محبوبیت
-            </option>
-            <option selected="selected">
-              جدید ترین
-            </option>
-            <option>
-              میانگین رتبه
-            </option>
-            <option>
-              هزینه: کم به زیاد
-            </option>
-            <option>
-              هزینه: زیاد به کم
-            </option>
-            <option>
-              پرفروش ترین
-            </option>
-          </select>
-          <div class="show-type page-fields">
-            <button :class="{ 'button-selected': grid === 'row' }" @click="changeGridToRow">
-              rw
-            </button>
-            <button :class="{ 'button-selected': grid === 'square' }" @click="changeGridToSquare">
-              sq
-            </button>
-          </div>
-          <div class="page-fields pagination">
-            <v-pagination
-              v-model="page"
-              :length="201"
-              :total-visible="4"
-            />
-          </div>
-        </div>
-        <transition name="fade">
-          <v-row v-if="grid === 'square'">
-            <v-col v-for="(product, index) in products.list" :key="index" :md="3" class="product-card-col">
-              <ProductCard :type="4" :details="product">
-                {{ product.name }}
-              </ProductCard>
-            </v-col>
-          </v-row>
-        </transition>
-        <transition name="fade">
-          <v-row v-if="grid === 'row'">
-            <v-col v-for="(product, index) in products.list" :key="index" :md="12" class="product-card-col">
-              <ProductCard :details="product" :type="5">
-                {{ product.name }}
-              </ProductCard>
-            </v-col>
-          </v-row>
-        </transition>
-      </v-col>
-    </v-row>
-  </v-container>
+            <v-btn
+              color="primary"
+              dark
+              width="80%"
+              class="mx-auto"
+              @click.stop="drawer = false"
+            >
+              بستن
+            </v-btn>
+          </v-navigation-drawer>
+          <transition name="fade">
+            <v-row v-if="grid === 'square'">
+              <v-col v-for="(product, index) in products.list" :key="index" :sm="3" class="product-card-col">
+                <ProductCard :type="4" :details="product">
+                  {{ product.name }}
+                </ProductCard>
+              </v-col>
+            </v-row>
+          </transition>
+          <transition name="fade">
+            <v-row v-if="grid === 'row'">
+              <v-col v-for="(product, index) in products.list" :key="index" :md="12" class="product-card-col">
+                <ProductCard :details="product" :type="5">
+                  {{ product.name }}
+                </ProductCard>
+              </v-col>
+            </v-row>
+          </transition>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 <script>
 import Breadcrumbs from '../../components/Breadcrumbs'
@@ -201,12 +230,24 @@ export default {
             'دهم انسانی'
           ]
         }
-      ]
+      ],
+      dropItems: [
+        'محبوبیت',
+        'جدیدترین',
+        'میانگین رتبه',
+        'هزینه: کم به زیاد',
+        'هزینه زیاد به کم',
+        'پرفروش ترین'
+      ],
+      drawer: false
     }
   },
   computed: {
     products () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   },
   methods: {
@@ -278,10 +319,127 @@ export default {
     padding: 6px 15px;
   }
 
+  .select-sort {
+    max-width: 170px;
+    margin: 0 10px;
+  }
+
+  .sort-by-container {
+    display: flex;
+    flex-direction: row;
+    min-width: 300px;
+    align-items: center;
+  }
+
+  .pwa-container {
+    width: 95%;
+    margin: 20px 2.5%;
+  }
+
+  .pwa-container .products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .half-width {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 1260px) {
+    .container {
+      width: 950px;
+    }
+  }
+
+  @media only screen and (max-width: 959.5px) {
+    .container {
+      width: 600px;
+    }
+
+    .sort-by {
+      font-size: 1rem;
+    }
+
+    .sort {
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .container {
+      max-width: 95%;
+    }
+
+    .sort-by {
+      font-size: 0.8rem;
+    }
+
+    .sort {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sort-by-container {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .pagination {
+      width: 100%;
+    }
+  }
 </style>
 
 <style>
   .pagination .v-pagination .v-pagination__navigation {
     display: none !important;
+  }
+
+  .v-input .v-input__control .v-select__slot .v-select__selections input {
+    display: none;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .v-navigation-drawer__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sort .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+    max-width: 170px;
+  }
+
+  .sort .v-text-field.v-text-field--solo.v-input--dense > .v-input__control {
+    min-height: 30px;
+  }
+
+  .sort .v-text-field__details {
+    display: none;
+  }
+
+  .sort .v-select__selection {
+    font-size: 0.8rem;
+  }
+
+  .sort .v-text-field.v-text-field--solo .v-input__append-inner {
+    padding-left: 0;
+    margin-left: -10px;
+  }
+
+  @media only screen and (max-width: 959.5px) {
+    .sort .v-select__selection {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .sort .v-select__selection {
+      font-size: 0.9rem;
+    }
   }
 </style>

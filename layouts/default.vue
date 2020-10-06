@@ -48,7 +48,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <Footer />
+    <Footer :margin="footerMargin" />
   </v-app>
 </template>
 
@@ -81,6 +81,11 @@ export default {
       right: false,
       rightDrawer: false,
       title: 'Vuetify.js'
+    }
+  },
+  computed: {
+    footerMargin () {
+      return this.$store.getters.footerMargin
     }
   },
   created () {

@@ -1,26 +1,107 @@
 <template>
-  <v-row class="footer">
-    <v-col>
+  <div class="full-width" :style="{ marginBottom: margin }">
+    <div v-if="ispwa">
+      <v-sheet
+        tile
+        :elevation="5"
+        :color="'white'"
+        class="pwa-footer"
+      >
+        <div class="mx-auto logo-container pwa-footer-box">
+          <a class="logo" href="#">
+            <v-lazy>
+              <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" :width="130" class="mx-auto logo-image" />
+            </v-lazy>
+            <div class="logo-info-1">
+              تحلیل، مقایسه و خرید آنلاین
+            </div>
+            <div class="logo-info-2">
+              کتاب های کمک آموزشی
+            </div>
+          </a>
+        </div>
+        <div class="pwa-footer-box">
+          <p class="about-cb">
+            چی بخونم، یک بانک کتاب واقعی و سرشار از اطلاعاتی بدردبخور است که قبل از خرید کتاب کمک آموزشی باید بدانید. بعد از یک انتخاب درست، با خیال راحت می توانید برای خرید اینترنتی کتاب از طریق همین سایت اقدام کنید.
+          </p>
+        </div>
+        <div class="pwa-footer-box d-flex flex-row">
+          <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/NEMAD.png" :height="68" :max-width="75" :contain="true" />
+          <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/samandehi.png" :height="68" :max-width="75" :contain="true" />
+        </div>
+        <div class="pwa-footer-box">
+          <v-container :fluid="true">
+            <v-row>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="/">
+                  خانه
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="/درباره-ما">
+                  درباره ما
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="#">
+                  قوانین و شرایط
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="#">
+                  اخبار
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="#">
+                  همکاری با ما
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="#">
+                  مشاوره
+                </nuxt-link>
+              </v-col>
+              <v-col :cols="6" :sm="6">
+                <nuxt-link to="#">
+                  پیگیری سفارش
+                </nuxt-link>
+              </v-col>
+            </v-row>
+          </v-container>
+        </div>
+        <div class="pwa-footer-box pwa-contact-us">
+          <div class="pwa-contact-us-box">
+            <p>021-66979455</p>
+          </div>
+          <div class="pwa-contact-us-box">
+            <p>info@chibekhoonam.net</p>
+          </div>
+        </div>
+      </v-sheet>
+    </div>
+    <div v-else>
       <v-sheet
         :tile="true"
         :elevation="5"
         :color="'white'"
       >
+        <div />
         <v-container>
           <v-row
             justify="center"
             no-gutters
           >
             <v-col>
-              <v-row>
+              <v-row class="footer-content">
                 <v-col
-                  :md="3"
-                  class="d-md-block d-sm-none"
+                  :sm="3"
+                  class="d-sm-block d-none"
                 >
                   <div class="text-h6">
                     دسترسی به سایت
                   </div>
-                  <v-row>
+                  <v-row class="footer-navigation">
                     <v-col :md="6" class="footer-dir">
                       <a class="text--secondary">
                         خانه
@@ -59,7 +140,7 @@
                   </v-row>
                 </v-col>
                 <v-col
-                  :md="6"
+                  :sm="6"
                 >
                   <div class="mx-auto logo-container">
                     <a class="logo" href="#">
@@ -81,7 +162,7 @@
                   </div>
                 </v-col>
                 <v-col
-                  :md="3"
+                  :sm="3"
                   class="text-center"
                 >
                   <div class="ft-contact-us-container">
@@ -99,36 +180,54 @@
           </v-row>
         </v-container>
       </v-sheet>
-      <v-container>
-        <v-row>
-          <v-col :md="6" class="e-namad">
-            <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/NEMAD.png" :height="68" :max-width="75" :contain="true" />
-            <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/samandehi.png" :height="68" :max-width="75" :contain="true" />
-          </v-col>
-          <v-col :md="6" class="copy-right">
-            <div class="contact-us" />
-            <div class="rights">
-              <p>
-                © 2020 Chibekhoonam
-                <br>
-                ivahid Specialized and Professional Web Design & Development Co
-              </p>
-              <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/ivahid.svg" :max-height="33" :max-width="100" :contain="true" />
-            </div>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-col>
-  </v-row>
+      <div class="full-width under-footer">
+        <v-container>
+          <v-row>
+            <v-col :md="6" class="e-namad">
+              <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/NEMAD.png" :height="68" :max-width="75" :contain="true" />
+              <v-img src="https://www.chibekhoonam.net/wp-content/uploads/2019/07/samandehi.png" :height="68" :max-width="75" :contain="true" />
+            </v-col>
+            <v-col :md="6" class="copy-right">
+              <div class="contact-us" />
+              <div class="rights">
+                <p>
+                  © 2020 Chibekhoonam
+                  <br>
+                  ivahid Specialized and Professional Web Design & Development Co
+                </p>
+                <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/ivahid.svg" :max-height="33" :max-width="100" :contain="true" />
+              </div>
+            </v-col>
+          </v-row>
+        </v-container>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  props: {
+    margin: {
+      type: String,
+      default: '0',
+      required: false
+    }
+  },
+  computed: {
+    ispwa () {
+      return this.$store.getters.ispwa
+    }
+  }
 }
 </script>
 
 <style scoped>
+  .full-width {
+    width: 100%;
+  }
+
   .v-footer {
     position: relative;
   }
@@ -200,4 +299,59 @@ export default {
     justify-content: flex-end;
   }
 
+  .under-footer {
+    background-color: #f8f8f8;
+  }
+
+  .pwa-footer {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pwa-footer .logo {
+    padding: 0;
+  }
+
+  .pwa-footer .pwa-footer-box {
+    margin-bottom: 10px;
+  }
+
+  .pwa-footer .pwa-footer-box .about-cb {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: justify;
+    line-height: 1.6;
+  }
+
+  .pwa-footer .pwa-contact-us {
+    display: flex;
+    flex-direction: row;
+    margin: 0 -30px;
+  }
+
+  .pwa-footer .pwa-contact-us .pwa-contact-us-box {
+    width: 100%;
+    border: 1px solid #cfcfcf;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pwa-footer .pwa-footer-box a {
+    color: #000;
+  }
+
+  @media only screen and (max-width: 960px) {
+    .footer-navigation {
+      flex-direction: column;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .footer-content {
+      flex-direction: column;
+    }
+  }
 </style>

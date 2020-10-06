@@ -1,34 +1,45 @@
 <template>
   <div>
-    <v-row>
-      <v-col>
-        <v-layout
-          column
-          justify-center
-          align-center
+    <TopView v-if="ispwa" :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
+    <v-layout
+      v-else
+      column
+      justify-center
+      align-center
+    >
+      <v-row
+        justify="center"
+        no-gutters
+      >
+        <v-col
+          cols="12"
         >
-          <v-row
-            justify="center"
-            no-gutters
-          >
-            <v-col
-              cols="12"
-            >
-              <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
-            </v-col>
-          </v-row>
-        </v-layout>
-      </v-col>
-    </v-row>
-    <ProductSliderCarousel :products="products.list">
-      جدید ترین کتاب های کمک آموزشی
-    </ProductSliderCarousel>
-    <ProductSliderCarousel :products="products.list">
-      جدید ترین نوشت افزار ها
-    </ProductSliderCarousel>
-    <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
-      محبوب ترین محصولات
-    </ProductSliderCarousel>
+          <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
+        </v-col>
+      </v-row>
+    </v-layout>
+    <div v-if="ispwa">
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        جدید ترین کتاب های کمک آموزشی
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        جدید ترین نوشت افزار ها
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+        محبوب ترین محصولات
+      </ProductSliderCarousel>
+    </div>
+    <div v-else>
+      <ProductSliderCarousel :products="products.list">
+        جدید ترین کتاب های کمک آموزشی
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list">
+        جدید ترین نوشت افزار ها
+      </ProductSliderCarousel>
+      <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
+        محبوب ترین محصولات
+      </ProductSliderCarousel>
+    </div>
   </div>
 </template>
 
@@ -124,6 +135,9 @@ export default {
   computed: {
     products () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   }
 }
