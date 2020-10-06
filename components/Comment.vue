@@ -25,7 +25,10 @@ export default {
   name: 'Comment',
   props: {
     data: {
-      type: Object
+      type: Object,
+      default () {
+        return {}
+      }
     }
   }
 }

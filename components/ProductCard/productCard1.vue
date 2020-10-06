@@ -1,25 +1,34 @@
 <template>
-  <div :class="{ 'product-card-1': type === 1, 'product-card-2': type === 2, 'product-card': true, 'font-black': type === 3, 'product-card-4': type === 4 }">
+  <div
+    :class="{
+      'product-card-1': type === 1,
+      'product-card-2': type === 2,
+      'product-card': true,
+      'font-black': type === 3,
+      'product-card-4': type === 4
+    }"
+  >
     <div class="product-card-image">
       <p v-if="type === 2" class="analysis">
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
-      <nuxt-link :to="productLink">
-        <img :src="details.image.url">
+      <nuxt-link :to="product.link">
+        <img :src="product.image.url" :alt="product.name">
       </nuxt-link>
       <div class="image-hover">
-        <nuxt-link class="more-info" :to="productLink">
-          توضیحات بیشتر <i class="fas fa-angle-double-left" />
+        <nuxt-link class="more-info" :to="product.link">
+          توضیحات بیشتر
+          <i class="fas fa-angle-double-left" />
         </nuxt-link>
         <button class="card-button like" type="submit">
           <i class="fas fa-heart" />
         </button>
-        <button class="card-button buy" type="submit">
+        <button class="card-button buy" @click="addToCart">
           <i class="fas fa-shopping-cart" />
         </button>
       </div>
     </div>
-    <nuxt-link :to="productLink" class="product-title">
+    <nuxt-link :to="product.link" class="product-title">
       <slot />
     </nuxt-link>
     <v-rating
@@ -33,15 +42,18 @@
       class="rating"
     />
     <div class="price">
-      <span v-if="type === 1 || type === 3 || type === 4" class="old-price">{{ 100000 | price }}</span>
-      <span class="percent">{{ 20 }}%</span>
-      <span class="new-price">{{ 80000 | price }}</span>
+      <span v-if="type === 1 || type === 3 || type === 4" class="old-price">{{ product.price.toman('base', false) }}</span>
+      <span class="percent">{{ product.price.discountInPercent() }}%</span>
+      <span class="new-price">{{ product.price.toman('final', false) }}</span>
       <span class="toman">تومان</span>
     </div>
   </div>
 </template>
 
 <script>
+import { Cart } from '../../models/Cart'
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard1',
   filters: {
@@ -50,16 +62,21 @@ export default {
     }
   },
   props: {
-    details: {
-      type: Object,
+    product: {
+      type: Product,
       default () {
-        return {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#'
-        }
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       }
     },
     type: {
@@ -68,9 +85,9 @@ export default {
       default: 1
     }
   },
-  computed: {
-    productLink () {
-      return '/product/' + this.details.name.split(' ').join('_')
+  methods: {
+    addToCart () {
+      (new Cart()).addItem(this.product)
     }
   }
 }

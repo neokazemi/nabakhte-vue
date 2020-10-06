@@ -36,10 +36,16 @@ export default {
   },
   props: {
     productCards: {
-      type: Array
+      type: Array,
+      default () {
+        return []
+      }
     },
     mainCarouselSlides: {
-      type: Array
+      type: Array,
+      default () {
+        return []
+      }
     }
   }
 }

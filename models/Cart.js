@@ -36,11 +36,10 @@ class Cart extends Collection {
   }
 
   addItem (product) {
-    const availableItem = this.list.find(function (i) {
-      return (i.product.id === product.id)
-    })
+    const availableItem = this.getItem(product)
 
     if (availableItem) {
+      // eslint-disable-next-line
       availableItem.qty++
     } else {
       super.addItem({
@@ -51,9 +50,10 @@ class Cart extends Collection {
   }
 
   remove (product) {
-    const availableItem = this.list.find(i => (i.product.id === product.id))
+    const availableItem = this.getItem(product)
 
     if (availableItem.qty > 1) {
+      // eslint-disable-next-line
       availableItem.qty--
     } else if (availableItem.qty === 1) {
       const availableItemIndex = this.list.findIndex(i => (i.product.id === product.id))
@@ -67,6 +67,10 @@ class Cart extends Collection {
       discount: this.list.reduce((accumulator, item) => { return accumulator + (item.product.price.discount * item.qty) }, 0),
       final: this.list.reduce((accumulator, item) => { return accumulator + (item.product.price.final * item.qty) }, 0)
     })
+  }
+
+  getItem (product) {
+    return this.list.find(i => (i.product.id === product.id))
   }
 
   qty () {
