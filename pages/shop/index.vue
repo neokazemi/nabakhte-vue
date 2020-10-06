@@ -1,6 +1,13 @@
 <template>
   <div>
-    <v-container>
+    <div v-if="ispwa" class="pwa-container">
+      <div class="products">
+        <div v-for="(item, index) in products.list" :key="index" class="half-width">
+          <ProductCard :type="8" :details="item" />
+        </div>
+      </div>
+    </div>
+    <v-container v-else>
       <v-row class="flex-column flex-md-row">
         <v-col :sm="3">
           <Breadcrumbs :items="breadcrumbsItems" />
@@ -238,6 +245,9 @@ export default {
   computed: {
     products () {
       return this.$store.getters.products
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   },
   methods: {
@@ -319,6 +329,22 @@ export default {
     flex-direction: row;
     min-width: 300px;
     align-items: center;
+  }
+
+  .pwa-container {
+    width: 95%;
+    margin: 20px 2.5%;
+  }
+
+  .pwa-container .products {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .half-width {
+    width: 50%;
+    margin-bottom: 20px;
   }
 
   @media only screen and (max-width: 1260px) {
