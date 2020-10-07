@@ -1,7 +1,7 @@
 <template>
   <div class="product-card6">
     <div class="image-container">
-      <v-img :src="details.image.url" contain :width="52" :height="63" />
+      <v-img :src="product.image.url" contain :width="52" :height="63" />
     </div>
     <div class="product-info-container">
       <div class="product-title">
@@ -21,7 +21,7 @@
           </nuxt-link>
         </div>
         <div class="price">
-          {{ 80000 | price }} تومان
+          {{ product.price.toman('final', false) }} تومان
         </div>
       </div>
     </div>
@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard6',
   filters: {
@@ -37,16 +39,21 @@ export default {
     }
   },
   props: {
-    details: {
-      type: Object,
+    product: {
+      type: Product,
       default () {
-        return {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#'
-        }
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       }
     },
     type: {

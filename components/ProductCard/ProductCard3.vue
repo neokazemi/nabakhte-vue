@@ -1,30 +1,41 @@
 <template>
   <div class="full-width card">
     <div class="product-image">
-      <v-img :src="details.image.url" contain />
+      <v-img :src="product.image.url" contain />
       <a class="cart-item-image-hover">×</a>
     </div>
     <div class="card-product-details">
       <slot />
       <div class="cart-item-price">
-        <p>{{ 100000 | price }} <span>تومان</span></p>
+        <p>{{ product.price.toman('final', false) }} <span>تومان</span></p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import mixinStore from '../../plugins/mixinStore'
+import { Product } from '../../models/Product'
 export default {
   name: 'ProductCard3',
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
-  },
+  mixins: [mixinStore],
   props: {
-    details: {
-      type: Object,
-      required: true
+    product: {
+      type: Product,
+      default () {
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
+      }
     },
     type: {
       type: Number,

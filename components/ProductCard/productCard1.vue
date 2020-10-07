@@ -1,11 +1,11 @@
 <template>
   <div
     :class="{
+      'product-card': true,
       'product-card-1': type === 1,
       'product-card-2': type === 2,
-      'product-card': true,
-      'font-black': type === 3,
-      'product-card-4': type === 4
+      'product-card-4': type === 4,
+      'font-black': type === 3
     }"
   >
     <div class="product-card-image">
@@ -23,7 +23,7 @@
         <button class="card-button like" type="submit">
           <i class="fas fa-heart" />
         </button>
-        <button class="card-button buy" @click="addToCart">
+        <button class="card-button buy" @click="addToCart(product)">
           <i class="fas fa-shopping-cart" />
         </button>
       </div>
@@ -51,16 +51,12 @@
 </template>
 
 <script>
-import { Cart } from '../../models/Cart'
 import { Product } from '../../models/Product'
+import mixinStore from '../../plugins/mixinStore'
 
 export default {
   name: 'ProductCard1',
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
-  },
+  mixins: [mixinStore],
   props: {
     product: {
       type: Product,
@@ -83,11 +79,6 @@ export default {
       type: Number,
       required: false,
       default: 1
-    }
-  },
-  methods: {
-    addToCart () {
-      (new Cart()).addItem(this.product)
     }
   }
 }

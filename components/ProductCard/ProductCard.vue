@@ -1,27 +1,29 @@
 <template>
   <div>
-    <productCard1 v-if="type <= 4" :details="details" :type="type">
-      {{ details.name }}
+    <productCard1 v-if="type <= 4" :product="product" :type="type">
+      {{ product.name }}
     </productCard1>
-    <ProductCard2 v-else-if="type === 5" :details="details">
-      {{ details.name }}
+    <ProductCard2 v-else-if="type === 5" :product="product">
+      {{ product.name }}
     </ProductCard2>
-    <ProductCard3 v-else-if="type === 6" :details="details">
-      {{ details.name }}
+    <ProductCard3 v-else-if="type === 6" :product="product">
+      {{ product.name }}
     </ProductCard3>
-    <ProductCard4 v-else-if="type === 7" :details="details">
-      {{ details.name }}
+    <ProductCard4 v-else-if="type === 7" :product="product">
+      {{ product.name }}
     </ProductCard4>
-    <ProductCard5 v-else-if="type === 8" :details="details" :box-shadow="boxShadow">
-      {{ details.name }}
+    <ProductCard5 v-else-if="type === 8" :product="product" :box-shadow="boxShadow">
+      {{ product.name }}
     </ProductCard5>
-    <ProductCard6 v-else-if="type === 9" :details="details">
-      {{ details.name }}
+    <ProductCard6 v-else-if="type === 9" :product="product">
+      {{ product.name }}
     </ProductCard6>
   </div>
 </template>
 
 <script>
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard',
   components: {
@@ -33,10 +35,21 @@ export default {
     ProductCard6: () => import('./ProductCard6')
   },
   props: {
-    details: {
-      type: Object,
+    product: {
+      type: Product,
       default () {
-        return {}
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       }
     },
     type: {

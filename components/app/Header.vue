@@ -169,7 +169,7 @@
                         <Badge v-if="typeof cart.list !== 'undefined'" :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
                       </nuxt-link>
                       <div class="cart-details user-button-details">
-                        <HeaderCart :products="products.list" />
+                        <HeaderCart :products="products" />
                       </div>
                     </div>
                     <div class="account-management">
@@ -400,7 +400,7 @@ export default {
   },
   computed: {
     products () {
-      return this.$store.getters.products
+      return new ProductList(this.$store.getters.products)
     },
     cart () {
       return this.$store.getters.products

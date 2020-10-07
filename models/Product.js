@@ -32,7 +32,8 @@ class Product extends Model {
       {
         key: 'tags',
         value (itemVal) {
-          return (itemVal) ? JSON.parse(itemVal) : null
+          return null
+          // return (itemVal) ? JSON.parse(itemVal) : null
         }
       },
       { key: 'enable' },
@@ -56,6 +57,21 @@ class Product extends Model {
       // {key: 'favor_url'},
       // {key: 'unfavor_url'},
     ])
+
+    this.loadImage()
+  }
+
+  getLink () {
+    return '/product/' + this.name.split(' ').join('_')
+  }
+
+  loadImage () {
+    if (!this.inputData || !this.inputData.image) {
+      return
+    }
+    this.image = new Image({
+      url: this.inputData.image.url
+    })
   }
 
   createFavorUrl (baseUrl, favored) {

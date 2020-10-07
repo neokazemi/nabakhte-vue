@@ -1,11 +1,11 @@
 <template>
   <div class="full-width">
-    <p v-if="products.length === 0" class="empty-cart">
+    <p v-if="products.list.length === 0" class="empty-cart">
       چیزی در سبد خرید یافت نشد
     </p>
-    <div v-if="products.length !== 0">
+    <div v-if="products.list.length !== 0">
       <div class="in-cart-products">
-        <ProductCard v-for="(product, index) in products" :key="index" :type="6" :details="product" class="product-card" />
+        <ProductCard v-for="(product, index) in products.list" :key="index" :type="6" :product="product" class="product-card" />
       </div>
       <div class="header-cart-buttons">
         <button class="see-cart">
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { ProductList } from '../models/Product'
 import ProductCard from './ProductCard/ProductCard'
 export default {
   name: 'HeaderCart',
@@ -28,11 +29,10 @@ export default {
   },
   props: {
     products: {
-      type: Array,
+      type: ProductList,
       default () {
-        return []
-      },
-      required: false
+        return new ProductList()
+      }
     }
   }
 }

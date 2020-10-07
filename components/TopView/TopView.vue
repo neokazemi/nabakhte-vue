@@ -10,10 +10,10 @@
       <div v-if="!ispwa" class="col-3">
         <v-carousel hide-delimiters class="product-card">
           <v-carousel-item
-            v-for="(product,index) in productCards"
+            v-for="(product,index) in products.list"
             :key="index"
           >
-            <ProductCard :type="2" :details="product">
+            <ProductCard :type="2" :product="product">
               {{ product.name }}
             </ProductCard>
           </v-carousel-item>
@@ -24,6 +24,7 @@
 </template>
 <script>
 import ProductCard from '../ProductCard/ProductCard'
+import { ProductList } from '../../models/Product'
 import MainCarousel from './MainCarousel'
 import CarouselButtons from './UnderCarouselButtons'
 
@@ -35,10 +36,10 @@ export default {
     CarouselButtons
   },
   props: {
-    productCards: {
-      type: Array,
+    products: {
+      type: ProductList,
       default () {
-        return []
+        return new ProductList()
       }
     },
     mainCarouselSlides: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopView v-if="ispwa" :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
+    <TopView v-if="ispwa" :products="products" :main-carousel-slides="mainCarouselSlides" />
     <v-layout
       v-else
       column
@@ -14,29 +14,29 @@
         <v-col
           cols="12"
         >
-          <TopView :product-cards="products.list" :main-carousel-slides="mainCarouselSlides" />
+          <TopView :products="products" :main-carousel-slides="mainCarouselSlides" />
         </v-col>
       </v-row>
     </v-layout>
     <div v-if="ispwa">
-      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
         جدید ترین کتاب های کمک آموزشی
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
         جدید ترین نوشت افزار ها
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
         محبوب ترین محصولات
       </ProductSliderCarousel>
     </div>
     <div v-else>
-      <ProductSliderCarousel :products="products.list">
+      <ProductSliderCarousel :products="products">
         جدید ترین کتاب های کمک آموزشی
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products.list">
+      <ProductSliderCarousel :products="products">
         جدید ترین نوشت افزار ها
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
+      <ProductSliderCarousel :products="products" main-bg="#6130a4" bottom-bg="#6d3ab3">
         محبوب ترین محصولات
       </ProductSliderCarousel>
     </div>
@@ -61,64 +61,6 @@ export default {
   },
   data () {
     return {
-      books: [
-        {
-          oldPrice: 120000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 1'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 2'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 3'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 4'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 5'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 6'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 7'
-        }
-      ],
       mainCarouselSlides: [
         {
           imgurl: 'https://media.chibekhoonam.net/2020/09/nazarsanji-hafte3-shahrivar.jpg',
@@ -134,7 +76,7 @@ export default {
   },
   computed: {
     products () {
-      return this.$store.getters.products
+      return new ProductList(this.$store.getters.products)
     },
     ispwa () {
       return this.$store.getters.ispwa
