@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { Product } from '../../models/Product'
+import { Product } from '~/models/Product'
 
 export default {
   name: 'ProductCard6',

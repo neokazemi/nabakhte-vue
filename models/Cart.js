@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { Collection, Model } from 'js-abstract-model'
 import { Product } from './Product'
 import Price from './Price'
@@ -35,27 +36,42 @@ class Cart extends Collection {
     return CartItem
   }
 
-  addItem (product) {
-    const availableItem = this.getItem(product)
+  addItem (item) {
+    let product = null
+    let availableCartItem = null
 
-    if (availableItem) {
-      // eslint-disable-next-line
-      availableItem.qty++
+    if (item instanceof Product) {
+      product = item
+      availableCartItem = this.getCartItem(product)
+      if (availableCartItem) {
+        // eslint-disable-next-line
+        // availableCartItem.qty++
+        Vue.set(availableCartItem, 'qty', (availableCartItem.qty + 1))
+      }
+    } else if (item instanceof CartItem) {
+      product = item.product
     } else {
+      return
+    }
+
+    if (
+      (item instanceof Product && !availableCartItem) ||
+      item instanceof CartItem
+    ) {
       super.addItem({
         product,
-        count: 1
+        qty: 1
       })
     }
   }
 
   remove (product) {
-    const availableItem = this.getItem(product)
+    const availableCartItem = this.getCartItem(product)
 
-    if (availableItem.qty > 1) {
+    if (availableCartItem.qty > 1) {
       // eslint-disable-next-line
-      availableItem.qty--
-    } else if (availableItem.qty === 1) {
+      availableCartItem.qty--
+    } else if (availableCartItem.qty === 1) {
       const availableItemIndex = this.list.findIndex(i => (i.product.id === product.id))
       this.list.splice(availableItemIndex, 1)
     }
@@ -69,7 +85,7 @@ class Cart extends Collection {
     })
   }
 
-  getItem (product) {
+  getCartItem (product) {
     return this.list.find(i => (i.product.id === product.id))
   }
 

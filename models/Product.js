@@ -59,6 +59,7 @@ class Product extends Model {
     ])
 
     this.loadImage()
+    this.loadPrice()
   }
 
   getLink () {
@@ -71,6 +72,14 @@ class Product extends Model {
     }
     this.image = new Image({
       url: this.inputData.image.url
+    })
+  }
+
+  loadPrice () {
+    this.price = new Price({
+      final: 80000,
+      base: 100000,
+      discount: 20000
     })
   }
 

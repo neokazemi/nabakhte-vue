@@ -1,11 +1,11 @@
 <template>
   <div class="full-width">
-    <p v-if="products.list.length === 0" class="empty-cart">
+    <p v-if="cart.list.length === 0" class="empty-cart">
       چیزی در سبد خرید یافت نشد
     </p>
-    <div v-if="products.list.length !== 0">
+    <div v-else>
       <div class="in-cart-products">
-        <ProductCard v-for="(product, index) in products.list" :key="index" :type="6" :product="product" class="product-card" />
+        <ProductCard v-for="(cartItem, index) in cart.list" :key="index" :type="6" :cart-item="cartItem" class="product-card" />
       </div>
       <div class="header-cart-buttons">
         <button class="see-cart">
@@ -20,13 +20,16 @@
 </template>
 
 <script>
-import { ProductList } from '../models/Product'
-import ProductCard from './ProductCard/ProductCard'
+import ProductCard from '~/components/ProductCard/ProductCard'
+import { ProductList } from '~/models/Product'
+import mixinStore from '~/plugins/mixinStore'
+
 export default {
   name: 'HeaderCart',
   components: {
     ProductCard
   },
+  mixins: [mixinStore],
   props: {
     products: {
       type: ProductList,

@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import { Product } from '../../models/Product'
-import mixinStore from '../../plugins/mixinStore'
+import { Product } from '~/models/Product'
+import mixinStore from '~/plugins/mixinStore'
 
 export default {
   name: 'ProductCard1',

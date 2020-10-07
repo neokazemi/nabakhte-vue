@@ -6,8 +6,8 @@
     <ProductCard2 v-else-if="type === 5" :product="product">
       {{ product.name }}
     </ProductCard2>
-    <ProductCard3 v-else-if="type === 6" :product="product">
-      {{ product.name }}
+    <ProductCard3 v-else-if="type === 6" :cart-item="cartItem">
+      {{ cartItem.product.name }}
     </ProductCard3>
     <ProductCard4 v-else-if="type === 7" :product="product">
       {{ product.name }}
@@ -22,7 +22,8 @@
 </template>
 
 <script>
-import { Product } from '../../models/Product'
+import { Product } from '~/models/Product'
+import { CartItem } from '~/models/Cart'
 
 export default {
   name: 'ProductCard',
@@ -35,6 +36,12 @@ export default {
     ProductCard6: () => import('./ProductCard6')
   },
   props: {
+    cartItem: {
+      type: CartItem,
+      default () {
+        return new CartItem()
+      }
+    },
     product: {
       type: Product,
       default () {
