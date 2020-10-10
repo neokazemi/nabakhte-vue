@@ -2,8 +2,8 @@
   <div class="product-card5">
     <div :class="{ 'product-card5-bg': true, 'box-shadow': boxShadow }">
       <div class="product-img">
-        <nuxt-link :to="productLink">
-          <v-img :src="details.image.url" alt="" contain :width="'100%'" :height="'100%'" />
+        <nuxt-link :to="product.getLink()">
+          <v-img :src="product.image.url" alt="" contain :width="'100%'" :height="'100%'" />
         </nuxt-link>
       </div>
       <div class="product-name">
@@ -24,17 +24,17 @@
         <nuxt-link to="#" />
         <div class="final-price">
           <p class="bold black-font">
-            {{ 80000 | price }}
+            {{ product.price.toman('final', false) }}
           </p>
           <p> تومان</p>
         </div>
       </div>
       <div class="discount-price">
         <p class="org-price">
-          {{ 100000 | price }}
+          {{ product.price.toman('base', false) }}
         </p>
         <p class="discount">
-          20%
+          {{ product.price.discountInPercent() }}%
         </p>
       </div>
     </div>
@@ -42,24 +42,26 @@
 </template>
 
 <script>
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard5',
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
-  },
   props: {
-    details: {
-      type: Object,
+    product: {
+      type: Product,
       default () {
-        return {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#'
-        }
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       }
     },
     type: {
@@ -71,11 +73,6 @@ export default {
       type: Boolean,
       default: false,
       required: false
-    }
-  },
-  computed: {
-    productLink () {
-      return '/product/' + this.details.name.split(' ').join('_')
     }
   }
 }

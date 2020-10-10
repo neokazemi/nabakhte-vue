@@ -1,11 +1,15 @@
 export const state = () => ({
+  cart: null,
   posts: [],
   products: [],
-  ispwa: true,
+  ispwa: false,
   footerMargin: '0'
 })
 
 export const mutations = {
+  updateCart (state, newInfo) {
+    state.cart = newInfo
+  },
   updatePosts (state, newInfo) {
     state.posts = newInfo
   },
@@ -34,6 +38,9 @@ export const mutations = {
 }
 
 export const getters = {
+  cart (state) {
+    return state.cart
+  },
   posts (state) {
     return state.posts
   },

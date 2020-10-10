@@ -1,15 +1,15 @@
 <template>
   <div class="full-width card">
     <div class="product-image">
-      <v-img :src="details.image.url" contain />
+      <v-img :src="product.image.url" contain />
     </div>
     <div class="full-width product-info">
       <div class="right-part">
         <slot />
         <div class="price">
-          <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
-          <span class="percent">{{ 20 }}%</span>
-          <span class="new-price">{{ 80000 | price }}</span>
+          <span v-if="type === 1" class="old-price">{{ product.price.toman('base', false) }}</span>
+          <span class="percent">{{ product.price.discountInPercent() }}%</span>
+          <span class="new-price">{{ product.price.toman('final', false) }}</span>
           <span class="toman">تومان</span>
         </div>
         <div class="buy-options">
@@ -60,24 +60,26 @@
 </template>
 
 <script>
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard2',
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
-  },
   props: {
-    details: {
-      type: Object,
+    product: {
+      type: Product,
       default () {
-        return {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#'
-        }
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       }
     },
     type: {

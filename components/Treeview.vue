@@ -25,10 +25,10 @@ export default {
   props: {
     treeView: {
       type: Array,
+      required: false,
       default () {
         return []
-      },
-      required: false
+      }
     }
   }
 }

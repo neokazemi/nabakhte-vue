@@ -1,47 +1,63 @@
 <template>
   <div>
-    <productCard1 v-if="type <= 4" :details="details" :type="type">
-      {{ details.name }}
+    <productCard1 v-if="type <= 4" :product="product" :type="type">
+      {{ product.name }}
     </productCard1>
-    <ProductCard2 v-if="type === 5" :details="details">
-      {{ details.name }}
+    <ProductCard2 v-else-if="type === 5" :product="product">
+      {{ product.name }}
     </ProductCard2>
-    <ProductCard3 v-if="type === 6" :details="details">
-      {{ details.name }}
+    <ProductCard3 v-else-if="type === 6" :cart-item="cartItem">
+      {{ cartItem.product.name }}
     </ProductCard3>
-    <ProductCard4 v-if="type === 7" :details="details">
-      {{ details.name }}
+    <ProductCard4 v-else-if="type === 7" :product="product">
+      {{ product.name }}
     </ProductCard4>
-    <ProductCard5 v-if="type === 8" :details="details" :box-shadow="boxShadow">
-      {{ details.name }}
+    <ProductCard5 v-else-if="type === 8" :product="product" :box-shadow="boxShadow">
+      {{ product.name }}
     </ProductCard5>
-    <ProductCard6 v-if="type === 9" :details="details">
-      {{ details.name }}
+    <ProductCard6 v-else-if="type === 9" :product="product">
+      {{ product.name }}
     </ProductCard6>
   </div>
 </template>
 
 <script>
-import productCard1 from './productCard1'
-import ProductCard2 from './ProductCard2'
-import ProductCard3 from './ProductCard3'
-import ProductCard4 from './ProductCard4'
-import ProductCard5 from './ProductCard5'
-import ProductCard6 from './ProductCard6'
+import { Product } from '~/models/Product'
+import { CartItem } from '~/models/Cart'
 
 export default {
   name: 'ProductCard',
   components: {
-    ProductCard6,
-    ProductCard5,
-    ProductCard4,
-    productCard1,
-    ProductCard2,
-    ProductCard3
+    ProductCard1: () => import('./ProductCard1'),
+    ProductCard2: () => import('./ProductCard2'),
+    ProductCard3: () => import('./ProductCard3'),
+    ProductCard4: () => import('./ProductCard4'),
+    ProductCard5: () => import('./ProductCard5'),
+    ProductCard6: () => import('./ProductCard6')
   },
   props: {
-    details: {
-      type: Object
+    cartItem: {
+      type: CartItem,
+      default () {
+        return new CartItem()
+      }
+    },
+    product: {
+      type: Product,
+      default () {
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
+      }
     },
     type: {
       type: Number,

@@ -5,7 +5,7 @@
         <a href="#" class="remove">حذف ×</a>
       </v-col>
       <v-col :sm="1" class="product-card-image-cart">
-        <v-img :src="details.image.url" contain :width="56" :height="75" />
+        <v-img :src="product.image.url" contain :width="56" :height="75" />
       </v-col>
       <v-col :sm="4" class="justify-sm-center justify-start">
         <p class="name justify-start">
@@ -16,9 +16,9 @@
       <v-col :sm="2">
         <div class="price justify-sm-center justify-start">
           <span class="title d-inline-block d-sm-none">قیمت: </span>
-          <span v-if="type === 1" class="old-price">{{ 100000 | price }}</span>
-          <span class="percent">{{ 20 }}%</span>
-          <span class="new-price">{{ 80000 | price }}</span>
+          <span v-if="type === 1" class="old-price">{{ product.price.toman('base', false) }}</span>
+          <span class="percent">{{ product.price.discountInPercent() }}%</span>
+          <span class="new-price">{{ product.price.toman('final', false) }}</span>
           <span class="toman"> تومان</span>
         </div>
       </v-col>
@@ -36,24 +36,34 @@
         />
       </v-col>
       <v-col :sm="2" class="final-price justify-sm-center justify-start">
-        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ 80000 | price }} <span> تومان </span></p>
+        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ product.price.toman('final', false) }} <span> تومان </span></p>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { Product } from '../../models/Product'
+
 export default {
   name: 'ProductCard4',
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
-  },
   props: {
-    details: {
-      type: Object,
-      required: true
+    product: {
+      type: Product,
+      default () {
+        return new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
+      }
     },
     type: {
       type: Number,

@@ -16,8 +16,8 @@
           </div>
           <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2, 'pwa-slider-carousel': type === 3 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
-              <SwiperSlide v-for="(product,index) in products" :key="index">
-                <ProductCard :details="product" :type="productCardType" :box-shadow="boxShadow">
+              <SwiperSlide v-for="(product,index) in products.list" :key="index">
+                <ProductCard :product="product" :type="productCardType" :box-shadow="boxShadow">
                   {{ product.name }}
                 </ProductCard>
               </SwiperSlide>
@@ -34,6 +34,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import { ProductList } from '../models/Product'
 import ProductCard from './ProductCard/ProductCard'
 
 export default {
@@ -44,9 +45,9 @@ export default {
   },
   props: {
     products: {
-      type: Array,
+      type: ProductList,
       default () {
-        return []
+        return new ProductList()
       }
     },
     mainBg: {

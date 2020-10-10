@@ -13,7 +13,10 @@ class Product extends Model {
         key: 'baseRoute',
         default: 'https://ads.alaatv.com/getAd?UUID=35b39d4b-517b-44bc-85c4-44f93242836f'
       },
-      { key: 'id' },
+      {
+        key: 'id',
+        default: Date.now()
+      },
       { key: 'UUID' },
       { key: 'type' },
       { key: 'name' },
@@ -29,7 +32,8 @@ class Product extends Model {
       {
         key: 'tags',
         value (itemVal) {
-          return (itemVal) ? JSON.parse(itemVal) : null
+          return null
+          // return (itemVal) ? JSON.parse(itemVal) : null
         }
       },
       { key: 'enable' },
@@ -53,6 +57,30 @@ class Product extends Model {
       // {key: 'favor_url'},
       // {key: 'unfavor_url'},
     ])
+
+    this.loadImage()
+    this.loadPrice()
+  }
+
+  getLink () {
+    return '/product/' + this.name.split(' ').join('_')
+  }
+
+  loadImage () {
+    if (!this.inputData || !this.inputData.image) {
+      return
+    }
+    this.image = new Image({
+      url: this.inputData.image.url
+    })
+  }
+
+  loadPrice () {
+    this.price = new Price({
+      final: 80000,
+      base: 100000,
+      discount: 20000
+    })
   }
 
   createFavorUrl (baseUrl, favored) {
