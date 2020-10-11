@@ -1,56 +1,74 @@
 <template>
-  <v-card
-    :link="true"
-    :href="'#'"
-    hover
-    class="mx-auto mb-5 post"
-    @mouseenter="toggleSubtitleVisibility"
-    @mouseleave="toggleSubtitleVisibility"
-  >
-    <v-img
-      class="white--text align-end"
-      src="https://media.chibekhoonam.net/2020/08/entekhab-reshte-motevasete-1.jpg"
-    />
-    <v-card-title>
-      {{ post.title }}
-    </v-card-title>
-    <div class="post-meta">
-      <div class="date">
-        {{ post.date.replace('T', ' ') }}
-        <!--        {{ post.shamsiDate(post.date.replace('T', ' ')).date }}-->
-      </div>
+  <div>
+    <div v-if="ispwa" class="pwa-box">
       <div class="category">
-        مقالات
+        <p>مقالات</p>
       </div>
-      <div class="comments">
-        بدون دیدگاه
+      <div class="post-title">
+        <p>
+          {{ post.title | limitLength(70) }}
+        </p>
       </div>
-      <div class="author">
-        توسط مشاور آموزشی
+      <div class="excerpt">
+        <p>
+          {{ post.excerpt | limitLength(150) }}
+        </p>
       </div>
     </div>
-    <transition name="slide-fade">
-      <v-card-subtitle
-        class="pb-0"
-      >
-        <a href="#" class="more-info">ادامه مطلب</a>
-        {{ post.excerpt | limitLength }}
-      </v-card-subtitle>
-    </transition>
-    <v-card-actions />
-  </v-card>
+    <v-card
+      v-else
+      :link="true"
+      :href="'#'"
+      hover
+      class="mx-auto mb-5 post"
+      @mouseenter="toggleSubtitleVisibility"
+      @mouseleave="toggleSubtitleVisibility"
+    >
+      <v-img
+        class="white--text align-end"
+        src="https://media.chibekhoonam.net/2020/08/entekhab-reshte-motevasete-1.jpg"
+      />
+      <v-card-title>
+        {{ post.title }}
+      </v-card-title>
+      <div class="post-meta">
+        <div class="date">
+          {{ post.date.replace('T', ' ') }}
+        <!--        {{ post.shamsiDate(post.date.replace('T', ' ')).date }}-->
+        </div>
+        <div class="category">
+          مقالات
+        </div>
+        <div class="comments">
+          بدون دیدگاه
+        </div>
+        <div class="author">
+          توسط مشاور آموزشی
+        </div>
+      </div>
+      <transition name="slide-fade">
+        <v-card-subtitle
+          class="pb-0"
+        >
+          <a href="#" class="more-info">ادامه مطلب</a>
+          {{ post.excerpt | limitLength(200) }}
+        </v-card-subtitle>
+      </transition>
+      <v-card-actions />
+    </v-card>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'PostItem',
   filters: {
-    limitLength (input) {
-      if (input.length > 200) {
-        let subtitle = input.substring(0, 200)
+    limitLength (input, limit) {
+      if (input.length > limit) {
+        let subtitle = input.substring(0, limit)
         subtitle = subtitle.substr(0, Math.min(subtitle.length, subtitle.lastIndexOf(' ')))
         return subtitle + ' ...'
-      }
+      } else { return input }
     }
   },
   props: {
@@ -62,6 +80,11 @@ export default {
   data () {
     return {
       showSub: false
+    }
+  },
+  computed: {
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   },
   methods: {
@@ -140,4 +163,43 @@ export default {
     height: auto;
   }
 
+</style>
+
+<style scoped>
+  .pwa-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 28px 18px 29px 22px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    margin-bottom: 10px;
+  }
+
+  .pwa-box div {
+    margin-bottom: 10px;
+  }
+
+  .pwa-box .category p {
+    background-color: #d81816;
+    height: 20px;
+    font-weight: bold;
+    color: #fff;
+    width: fit-content;
+    font-size: 12px;
+    border-radius: 4px;
+    padding: 0 4px;
+    line-height: 20px;
+  }
+
+  .pwa-box .post-title p {
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: bold;
+  }
+
+  .pwa-box .excerpt p {
+    font-size: 12px;
+    line-height: 26px;
+  }
 </style>

@@ -821,8 +821,7 @@ export default {
     .product-data .v-image {
       width: 200px !important;
       height: auto !important;
-      margin: auto;
-      margin-bottom: 10px;
+      margin: auto auto 10px;
     }
 
     .product-data .first {

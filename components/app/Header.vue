@@ -8,9 +8,9 @@
     >
       <div class="pwa-appbar">
         <div class="pwa-appbar-item">
-          <v-app-bar-nav-icon />
+          <v-app-bar-nav-icon @click="menuDrawerOpen" />
         </div>
-        <div class="pwa-appbar-item">
+        <div class="pwa-appbar-item" @click="searchDrawerOpen">
           <p>جستجو</p>
         </div>
         <div class="pwa-appbar-item">
@@ -18,7 +18,7 @@
             سبد خرید
           </nuxt-link>
         </div>
-        <div class="pwa-appbar-item">
+        <div class="pwa-appbar-item" @click="AccountDrawerOpen">
           <p>پنل کاربری</p>
         </div>
         <div class="pwa-appbar-item">
@@ -317,6 +317,10 @@
 import HeaderCart from '../HeaderCart'
 import { ProductList } from '../../models/Product'
 import Badge from '../Badge'
+import MainMenu from '../PwaMenus/MainMenu'
+import SearchMenu from '../PwaMenus/SearchMenu'
+import AccountMenu from '../PwaMenus/AccountMenu'
+
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
@@ -328,64 +332,6 @@ export default {
   },
   data () {
     return {
-      books: [
-        {
-          oldPrice: 120000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 1'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 2'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 3'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 4'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 5'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 6'
-        },
-        {
-          oldPrice: 100000,
-          newPrice: 80000,
-          off: 20,
-          imgURL: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg',
-          productURL: '#',
-          productTitle: 'کتاب کمک آموزشی 7'
-        }
-      ],
       mainCarouselSlides: [
         {
           imgurl: 'https://media.chibekhoonam.net/2020/09/nazarsanji-hafte3-shahrivar.jpg',
@@ -407,6 +353,20 @@ export default {
     },
     ispwa () {
       return this.$store.getters.ispwa
+    }
+  },
+  methods: {
+    menuDrawerOpen () {
+      this.$store.commit('updateDrawer', true)
+      this.$emit('drawer-menu', MainMenu)
+    },
+    searchDrawerOpen () {
+      this.$store.commit('updateDrawer', true)
+      this.$emit('drawer-menu', SearchMenu)
+    },
+    AccountDrawerOpen () {
+      this.$store.commit('updateDrawer', true)
+      this.$emit('drawer-menu', AccountMenu)
     }
   }
 }
@@ -706,8 +666,7 @@ a ::after {
 
 .contact-us {
   border-bottom-left-radius: 20px;
-  padding: 0;
-  padding-left: 10px;
+  padding: 0 0 0 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -1031,8 +990,7 @@ a:hover .fa-angle-down {
   height: 340px;
   background-color: #f4f1ec;
   width: 731px;
-  margin: 5px;
-  margin-top: 0;
+  margin: 0 5px 5px;
   position: absolute;
   left: 0;
   right: 0;
@@ -1122,8 +1080,7 @@ a:hover .fa-angle-down {
   width: 15px;
   height: 15px;
   color: #fff;
-  margin: 5px;
-  margin-left: 10px;
+  margin: 5px 5px 5px 10px;
   justify-content: center;
   display: flex;
 }
@@ -1132,9 +1089,7 @@ a:hover .fa-angle-down {
   color: #292929;
   height: 20px;
   width: 20px;
-  margin: auto;
-  margin-right: 0;
-  margin-left: 10px;
+  margin: auto 0 auto 10px;
   transition: all 200ms ease-in-out;
 }
 
@@ -1231,7 +1186,7 @@ a:hover .fa-angle-down {
 .user-cart .cart-details {
   min-height: 55px;
   width: 340px;
-  right: 0%;
+  right: 0;
   padding: 17px;
 }
 
@@ -1247,7 +1202,6 @@ a:hover .fa-angle-down {
   transform: translateY(-15px) !important;
   -webkit-transition: all 400ms ease-in-out !important;
   -moz-transition: all 400ms ease-in-out !important;
-  -ms-transition: all 400ms ease-in-out !important;
   -o-transition: all 400ms ease-in-out !important;
   transition: all 400ms ease-in-out !important;
   z-index: 2400;
@@ -1271,7 +1225,7 @@ a:hover .fa-angle-down {
   text-align: right;
   width: 175px;
   height: 166px;
-  left: 0%;
+  left: 0;
   display: flex;
   flex-flow: column;
   flex-direction: column;
@@ -1312,8 +1266,7 @@ a:hover .fa-angle-down {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
   color: #fff;
-  margin: auto 0;
-  margin-left: 5%;
+  margin: auto 0 auto 5%;
   font-size: 0.8rem;
 }
 

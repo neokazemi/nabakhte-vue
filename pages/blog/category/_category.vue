@@ -1,5 +1,25 @@
 <template>
-  <v-container>
+  <div v-if="ispwa" class="pwa-container">
+    <div class="category-select">
+      <v-menu offset-y auto attach="#category-select-btn">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            id="category-select-btn"
+            color="#d81816"
+            dark
+            v-bind="attrs"
+            block
+            v-on="on"
+          >
+            مقالات
+          </v-btn>
+        </template>
+        <Treeview :tree-view="treeviewItems" />
+      </v-menu>
+    </div>
+    <PostItem v-for="(item, index) in posts.list" :key="index" :post="item" />
+  </div>
+  <v-container v-else>
     <v-row>
       <v-col
         cols="3"
@@ -910,6 +930,9 @@ export default {
   computed: {
     posts () {
       return this.$store.getters.posts
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   },
   created () {
@@ -946,3 +969,28 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .pwa-container {
+    width: 95%;
+    margin: 0 2.5%;
+  }
+
+  .pwa-container .category-select {
+    margin: 10px 0;
+  }
+</style>
+
+<style>
+  .pwa-container .category-select .v-btn__content {
+    justify-content: right;
+  }
+
+  .pwa-container .category-select .v-menu__content {
+    background-color: #d81816;
+    max-height: fit-content !important;
+    min-width: 100% !important;
+    left: 0 !important;
+    top: 46px !important;
+  }
+</style>
