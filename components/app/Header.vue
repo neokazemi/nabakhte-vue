@@ -373,6 +373,15 @@ export default {
 </script>
 
 <style scoped>
+
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: transparent;
+}
+
+.theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: transparent;
+}
+
 header .fixedMenu {
   display: block;
 }
@@ -772,7 +781,7 @@ header a {
   color: #50cbb2;
   text-decoration: none !important;
   width: 120px;
-  border: 2px solid #f8f8f8;
+  border: 2px solid transparent;
   border-bottom-color: #50cbb2;
   justify-content: center;
   display: flex;
@@ -789,7 +798,7 @@ header a {
   color: #fb1616;
   align-items: center;
   width: 120px;
-  border: 2px solid #f8f8f8;
+  border: 2px solid transparent;
   border-bottom-color: #fb1616;
   justify-content: center;
   display: flex;
