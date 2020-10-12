@@ -964,6 +964,7 @@ export default {
       })
     },
 
+
     save () {
       if (this.editedIndex > -1) {
         Object.assign(this.users[this.editedIndex], this.editedItem)
