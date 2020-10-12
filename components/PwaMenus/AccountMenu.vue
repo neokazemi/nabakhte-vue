@@ -10,16 +10,16 @@
       </div>
     </div>
     <div class="pwa-drawer-content">
-      <nuxt-link to="/my-account" class="drawer-item" @click="closeDrawer">
+      <nuxt-link to="/my-account/orders" class="drawer-item" @click="closeDrawer">
         سفارش ها
       </nuxt-link>
-      <nuxt-link to="#" class="drawer-item">
+      <nuxt-link to="/my-account/edit-address" class="drawer-item">
         آدرس ها
       </nuxt-link>
-      <nuxt-link to="#" class="drawer-item">
+      <nuxt-link to="/my-account/edit-account" class="drawer-item">
         اطلاعات حساب کاربری
       </nuxt-link>
-      <nuxt-link to="#" class="drawer-item">
+      <nuxt-link to="/my-account/my-comments" class="drawer-item">
         نظرات من
       </nuxt-link>
       <nuxt-link to="#" class="drawer-item">

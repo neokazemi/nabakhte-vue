@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      v-if="false"
       v-model="drawer"
       :mini-variant="!ispwa"
       :clipped="!ispwa"
@@ -65,7 +66,8 @@ export default {
       miniVariant: false,
       right: false,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      mainMenu: ''
     }
   },
   computed: {
@@ -75,8 +77,13 @@ export default {
     ispwa () {
       return this.$store.getters.ispwa
     },
-    drawer () {
-      return this.$store.getters.drawer
+    drawer: {
+      get () {
+        return this.$store.getters.drawer
+      },
+      set (newValue) {
+        this.$store.commit('updateDrawer', newValue)
+      }
     }
   },
   created () {

@@ -2,7 +2,7 @@ export const state = () => ({
   cart: null,
   posts: [],
   products: [],
-  ispwa: true,
+  ispwa: false,
   footerMargin: '0',
   drawer: false
 })
