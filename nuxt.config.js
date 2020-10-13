@@ -1,6 +1,11 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  server: {
+    port: 3000, // default: 3000
+    host: '0.0.0.0', // default: localhost,
+    timing: false
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -51,6 +56,9 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    // Doc: https://pwa.nuxtjs.org/
+    '@nuxtjs/pwa',
+    'nuxt-user-agent',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
@@ -108,5 +116,20 @@ export default {
     transpile: [
       'js-abstract-model'
     ]
+  },
+  pwa: {
+    icon: false, // disables the icon module
+    meta: {
+      title: 'My PWA',
+      author: 'Me'
+    },
+    manifest: {
+      name: 'Nuxt.js PWAs are so easy',
+      short_name: 'Nuxt.js PWA',
+      lang: 'en'
+    }
+  },
+  router: {
+    middleware: ['DetectDevice']
   }
 }
