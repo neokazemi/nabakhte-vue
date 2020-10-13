@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Users from '../../../components/admin/users'
-import Access from '../../../components/admin/access'
-import Roles from '../../../components/admin/roles'
+import Users from '~/components/admin/users'
+import Access from '~/components/admin/access'
+import Roles from '~/components/admin/roles'
 
 export default {
   components: { Roles, Access, Users }
