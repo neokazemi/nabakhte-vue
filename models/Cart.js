@@ -38,6 +38,7 @@ class Cart extends Collection {
 
   addItem (item) {
     let product = null
+    let qty = 1
     let availableCartItem = null
 
     if (item instanceof Product) {
@@ -50,6 +51,7 @@ class Cart extends Collection {
       }
     } else if (item instanceof CartItem) {
       product = item.product
+      qty = (item.qty !== null) ? item.qty : 1
     } else {
       return
     }
@@ -60,7 +62,7 @@ class Cart extends Collection {
     ) {
       super.addItem({
         product,
-        qty: 1
+        qty
       })
     }
   }
