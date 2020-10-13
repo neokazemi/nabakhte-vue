@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import Footer from '../components/app/footer'
-import Header from '../components/app/Header'
+import Footer from '~/components/app/footer'
+import Header from '~/components/app/Header'
 export default {
   layout: ({ isFromPc }) => isFromPc ? 'default' : 'default',
   components: {
@@ -72,6 +72,9 @@ export default {
     }
   },
   computed: {
+    isFromPc () {
+      return this.$store.getters.isFromPc
+    },
     footerMargin () {
       return this.$store.getters.footerMargin
     },
@@ -88,6 +91,7 @@ export default {
     }
   },
   created () {
+    console.log('isFromPc: ', this.isFromPc)
     // console.log('(created)this.drawer: ', this.drawer)
   },
   mounted () {
