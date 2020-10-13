@@ -158,7 +158,8 @@ export default {
     this.$store.commit('updateFooterMargin', '54px')
   },
   destroyed () {
-    this.$store.commit('updateFooterMargin', '0')
+    this.$store.commit('updateFooterMargin', '0'
+    )
   }
 }
 

@@ -31,7 +31,220 @@
         </nuxt-link>
       </div>
     </div>
-    <div v-if="currentTab === 'edit-address'" />
+    <div v-if="currentTab === 'edit-address'">
+      <p>آدرس‌های زیر برای ارسال فاکتور و صورت حساب استفاده خواهند شد.</p>
+      <div class="address-box">
+        <div class="d-flex flex-row address-bar">
+          <h3>آدرس صورتحساب</h3>
+          <v-dialog
+            v-model="billingDialog"
+            :max-width="800"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="#2bbb28"
+                tile
+                :elevation="3"
+                v-bind="attrs"
+                v-on="on"
+              >
+                افزودن
+              </v-btn>
+            </template>
+            <v-card>
+              <v-btn icon class="close-button-address-dialog" @click="closeModal">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <v-card-title>
+                آدرس صورت حساب
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row class="flex-column flex-sm-row">
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="نام" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                    </v-col>
+                    <v-col :sm="12" class="input-field">
+                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="تلفن همراه" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field label="آدرس ایمیل" hint="اختیاری" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field submit-address">
+                      <v-btn color="rgb(43, 187, 40)">
+                        ذخیره آدرس
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-dialog>
+        </div>
+        <p>شما هنوز آدرسی ثبت نکرده اید.</p>
+      </div>
+      <div class="address-box">
+        <div class="d-flex flex-row address-bar">
+          <h3>آدرس برای ارسال بار</h3>
+          <v-dialog
+            v-model="shippingDialog"
+            :max-width="800"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                color="#2bbb28"
+                tile
+                :elevation="3"
+                v-bind="attrs"
+                v-on="on"
+              >
+                افزودن
+              </v-btn>
+            </template>
+            <v-card>
+              <v-btn icon class="close-button-address-dialog" @click="closeModal">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <v-card-title>
+                آدرس برای ارسال بار
+              </v-card-title>
+              <v-card-text>
+                <v-container>
+                  <v-row class="flex-column flex-sm-row">
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="نام" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="12" class="input-field">
+                      <v-text-field label="نام شرکت" hint="اختیاری" />
+                    </v-col>
+                    <v-col :sm="12" class="input-field">
+                      <v-text-field label="منطقه / کشور" value="ایران" readonly />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                    </v-col>
+                    <v-col :sm="12" class="input-field">
+                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field">
+                      <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                    </v-col>
+                    <v-col :sm="6" class="input-field submit-address">
+                      <v-btn color="rgb(43, 187, 40)">
+                        ذخیره آدرس
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+            </v-card>
+          </v-dialog>
+        </div>
+        <p>شما هنوز آدرسی ثبت نکرده اید.</p>
+      </div>
+    </div>
+    <div v-if="currentTab === 'edit-account'">
+      <v-container>
+        <v-row class="flex-column">
+          <v-col>
+            <v-text-field required label="نام" :rules="notEmptyRule" />
+          </v-col>
+          <v-col>
+            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+          </v-col>
+          <v-col>
+            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" value="neo.kazemi79" hint="به این صورت اسم شما در حساب کاربری و نظرات دیده خواهد شد" />
+          </v-col>
+          <v-col>
+            <v-text-field required label="آدرس ایمیل" :rules="notEmptyRule" value="neo.kazemi79@gmail.com" />
+          </v-col>
+          <v-col>
+            <v-text-field label="شمار همراه" />
+          </v-col>
+          <v-col>
+            <div class="input-row">
+              <div class="input-field-radio">
+                <p>نقش شما</p>
+                <v-radio-group v-model="selectedRadio" row dense>
+                  <v-radio v-for="(item, index) in radioOptions" :key="index" :label="item.name" :value="item.value" />
+                </v-radio-group>
+              </div>
+            </div>
+          </v-col>
+          <v-col>
+            <div v-if="selectedRadio !== '' && selectedRadio !== 'other'" class="input-row">
+              <div v-if="selectedRadio === 'student'" class="input-field">
+                <p>
+                  پايه و رشته تحصيلي براي دانش آموزان
+                </p>
+                <div class="full-width">
+                  <v-select :items="studentSelectItems" outlined :value="studentSelectItems[0]" dense eager />
+                </div>
+              </div>
+              <div v-if="selectedRadio === 'teacher'" class="input-field">
+                <div class="full-width">
+                  <v-select
+                    :items="studentSelectItems"
+                    label="درس هایی که تدریس می کنید"
+                    dense
+                    multiple
+                    chips
+                    eager
+                  />
+                </div>
+              </div>
+              <div v-if="selectedRadio === 'counselor'" class="input-field">
+                <div class="full-width">
+                  <v-select
+                    :items="studentSelectItems"
+                    label="پایه و رشته تحصیلی برای مشاوران"
+                    dense
+                    multiple
+                    chips
+                    eager
+                  />
+                </div>
+              </div>
+            </div>
+          </v-col>
+          <v-col>
+            <v-text-field label="رمز عبور پیشین" type="password" hint="(در صورتی که قصد تغییر ندارید خالی بگذارید)" />
+          </v-col>
+          <v-col>
+            <v-text-field label="رمز عبور جدید" type="password" hint="(در صورتی که قصد تغییر ندارید خالی بگذارید)" />
+          </v-col>
+          <v-col>
+            <v-text-field label="تکرار رمز عبور" type="password" />
+          </v-col>
+          <v-col class="submit">
+            <v-btn block color="#2bbb28">
+              ذخیره تغییرات
+            </v-btn>
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
   </div>
   <v-container v-else>
     <v-row>
@@ -96,6 +309,9 @@
                     </v-btn>
                   </template>
                   <v-card>
+                    <v-btn icon class="close-button-address-dialog" @click="closeModal">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
                     <v-card-title>
                       آدرس صورت حساب
                     </v-card-title>
@@ -142,64 +358,65 @@
             <div class="half-width address-box">
               <div class="d-flex flex-row address-bar">
                 <h3>آدرس برای ارسال بار</h3>
-                <nuxt-link to="#">
-                  <v-dialog
-                    v-model="shippingDialog"
-                    :max-width="800"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                        color="#2bbb28"
-                        tile
-                        :elevation="3"
-                        v-bind="attrs"
-                        v-on="on"
-                      >
-                        افزودن
-                      </v-btn>
-                    </template>
-                    <v-card>
-                      <v-card-title>
-                        آدرس برای ارسال بار
-                      </v-card-title>
-                      <v-card-text>
-                        <v-container>
-                          <v-row class="flex-column flex-sm-row">
-                            <v-col :sm="6" class="input-field">
-                              <v-text-field required label="نام" :rules="notEmptyRule" />
-                            </v-col>
-                            <v-col :sm="6" class="input-field">
-                              <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
-                            </v-col>
-                            <v-col :sm="12" class="input-field">
-                              <v-text-field label="نام شرکت" hint="اختیاری" />
-                            </v-col>
-                            <v-col :sm="12" class="input-field">
-                              <v-text-field label="منطقه / کشور" value="ایران" readonly />
-                            </v-col>
-                            <v-col :sm="6" class="input-field">
-                              <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
-                            </v-col>
-                            <v-col :sm="6" class="input-field">
-                              <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
-                            </v-col>
-                            <v-col :sm="12" class="input-field">
-                              <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
-                            </v-col>
-                            <v-col :sm="6" class="input-field">
-                              <v-text-field required label="کد پستی" :rules="notEmptyRule" />
-                            </v-col>
-                            <v-col :sm="6" class="input-field submit-address">
-                              <v-btn color="rgb(43, 187, 40)">
-                                ذخیره آدرس
-                              </v-btn>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-card-text>
-                    </v-card>
-                  </v-dialog>
-                </nuxt-link>
+                <v-dialog
+                  v-model="shippingDialog"
+                  :max-width="800"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      color="#2bbb28"
+                      tile
+                      :elevation="3"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      افزودن
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-btn icon class="close-button-address-dialog" @click="closeModal">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                    <v-card-title>
+                      آدرس برای ارسال بار
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row class="flex-column flex-sm-row">
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="نام" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="12" class="input-field">
+                            <v-text-field label="نام شرکت" hint="اختیاری" />
+                          </v-col>
+                          <v-col :sm="12" class="input-field">
+                            <v-text-field label="منطقه / کشور" value="ایران" readonly />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                          </v-col>
+                          <v-col :sm="12" class="input-field">
+                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field submit-address">
+                            <v-btn color="rgb(43, 187, 40)">
+                              ذخیره آدرس
+                            </v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </v-dialog>
               </div>
               <p>شما هنوز آدرسی ثبت نکرده اید.</p>
             </div>
@@ -395,6 +612,12 @@ export default {
     ispwa () {
       return this.$store.getters.ispwa
     }
+  },
+  methods: {
+    closeModal () {
+      this.shippingDialog = false
+      this.billingDialog = false
+    }
   }
 }
 </script>
@@ -532,6 +755,7 @@ export default {
 
   .pwa-container {
     margin: 20px;
+    background-color: #f8f8f8;
   }
 
   .pwa-breadcrumbs {
@@ -574,6 +798,11 @@ export default {
 
     .address-box {
       margin-bottom: 40px;
+    }
+
+    .pwa-container .address-bar {
+      margin-bottom: 0;
+      margin-top: 20px;
     }
   }
 
@@ -660,5 +889,16 @@ export default {
 
   .page-content .input-field .v-text-field--filled > .v-input__control > .v-input__slot {
     min-height: 30px;
+  }
+
+  .v-dialog .v-card .close-button-address-dialog {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+
+  .pwa-container .submit .v-btn .v-btn__content {
+    color: #fff;
+    font-size: 16px;
   }
 </style>
