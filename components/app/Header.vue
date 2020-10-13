@@ -622,7 +622,7 @@ mark {
   font-size: inherit;
 }
 
-html,
+/* html,
 body,
 button,
 input,
@@ -630,7 +630,7 @@ optgroup,
 select,
 textarea {
   background-color: #f8f8f8;
-}
+} */
 
 a ::after {
   -webkit-box-sizing: inherit;
