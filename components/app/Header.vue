@@ -320,10 +320,12 @@ import Badge from '../Badge'
 import MainMenu from '../PwaMenus/MainMenu'
 import SearchMenu from '../PwaMenus/SearchMenu'
 import AccountMenu from '../PwaMenus/AccountMenu'
+import mixinStore from '~/plugins/mixinStore'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
+  mixins: [mixinStore],
   asyncData (context) {
     return (new ProductList()).fetch()
       .then((response) => {
@@ -347,9 +349,6 @@ export default {
   computed: {
     products () {
       return new ProductList(this.$store.getters.products)
-    },
-    cart () {
-      return this.$store.getters.products
     },
     ispwa () {
       return this.$store.getters.ispwa
