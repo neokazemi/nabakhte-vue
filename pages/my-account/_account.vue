@@ -82,7 +82,7 @@
                 <h3>آدرس صورتحساب</h3>
                 <v-dialog
                   v-model="billingDialog"
-                  max-width="800"
+                  :max-width="800"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
@@ -145,7 +145,7 @@
                 <nuxt-link to="#">
                   <v-dialog
                     v-model="shippingDialog"
-                    max-width="800"
+                    :max-width="800"
                   >
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn

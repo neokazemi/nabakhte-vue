@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      v-if="false"
+      v-if="ispwa"
       v-model="drawer"
       :mini-variant="!ispwa"
       :clipped="!ispwa"
