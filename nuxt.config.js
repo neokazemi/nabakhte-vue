@@ -5,7 +5,7 @@ export default {
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
   */
-  mode: 'universal',
+  // mode: 'universal',
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -82,10 +82,10 @@ export default {
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
+    rtl: true,
     customVariables: ['~/assets/variables.scss'],
     treeShake: true,
     theme: {
-      rtl: true,
       dark: false,
       themes: {
         dark: {

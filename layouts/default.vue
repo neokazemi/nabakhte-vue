@@ -3,30 +3,17 @@
     <v-navigation-drawer
       v-if="false"
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      :right="true"
+      :mini-variant="!ispwa"
+      :clipped="!ispwa"
+      :right="!ispwa"
       fixed
-      app
+      :app="!ispwa"
+      :bottom="ispwa"
+      :class="{ 'pwa-drawer': ispwa }"
     >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      <Component :is="mainMenu" />
     </v-navigation-drawer>
-    <Header />
+    <Header @drawer-menu="component => mainMenu = component" />
     <v-main>
       <nuxt />
     </v-main>
@@ -63,7 +50,6 @@ export default {
   data () {
     return {
       clipped: true,
-      drawer: false,
       fixed: false,
       items: [
         {
@@ -80,12 +66,24 @@ export default {
       miniVariant: false,
       right: false,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Vuetify.js',
+      mainMenu: ''
     }
   },
   computed: {
     footerMargin () {
       return this.$store.getters.footerMargin
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
+    },
+    drawer: {
+      get () {
+        return this.$store.getters.drawer
+      },
+      set (newValue) {
+        this.$store.commit('updateDrawer', newValue)
+      }
     }
   },
   created () {
@@ -94,6 +92,17 @@ export default {
   mounted () {
     // console.log('(mounted)this.drawer: ', this.drawer)
     this.drawer = false
+  },
+  methods: {
+    closeDrawer () {
+      this.$store.commit('updateDrawer', false)
+    }
   }
 }
 </script>
+
+<style>
+  .pwa-drawer {
+    opacity: 0.9;
+  }
+</style>

@@ -10,7 +10,7 @@
         <p>
           {{ cartItem.product.price.toman('final', false) }}
           <span>تومان</span>
-          <span>{{ cartItem.qty }} عدد </span>
+          <span>{{ cartItem.qty }} عدد  </span>
         </p>
       </div>
     </div>
@@ -88,7 +88,6 @@ export default {
     opacity: 0;
     -webkit-transition: all 300ms ease-in-out !important;
     -moz-transition: all 300ms ease-in-out !important;
-    -ms-transition: all 300ms ease-in-out !important;
     -o-transition: all 300ms ease-in-out !important;
     transition: all 300ms ease-in-out !important;
     font-size: 1.5rem;
