@@ -6,6 +6,7 @@
           :open-all="true"
           :items="treeView"
           :dense="true"
+          :class="{ 'pwa-treeview': ispwa }"
         >
           <template slot="label" slot-scope="props">
             <nuxt-link v-if="props.item.slug" :to="'/blog/category/' + props.item.slug">
@@ -30,6 +31,11 @@ export default {
         return []
       }
     }
+  },
+  computed: {
+    ispwa () {
+      return this.$store.getters.ispwa
+    }
   }
 }
 </script>
@@ -38,6 +44,11 @@ export default {
   .v-treeview {
     font-weight: bold;
     font-size: 1rem;
+  }
+
+  .pwa-treeview {
+    text-align: right;
+    color: #fff;
   }
 
   .v-treeview .v-treeview-node .v-icon {
@@ -50,6 +61,10 @@ export default {
 
   .v-treeview a {
     color: #000;
+  }
+
+  .pwa-treeview a {
+    color: #fff;
   }
 
   .v-treeview a:hover {

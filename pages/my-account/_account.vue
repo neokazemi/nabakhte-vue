@@ -1,5 +1,39 @@
 <template>
-  <v-container>
+  <div v-if="ispwa" class="pwa-container page-content">
+    <Breadcrumbs :items="breadcrumbsItems" class="pwa-breadcrumbs" />
+    <p>
+      برای استفاده بهینه از خدمات سایت اطلاعات <nuxt-link to="/my-account/edit-address">
+        حساب کاربری
+      </nuxt-link> خود را تکمیل کنید.
+    </p>
+    <div v-if="currentTab === ''">
+      <p>سلام <span class="bold">{{ username }} ({{ username }}</span> نیستید؟ <a href="#">خارج شوید</a>)</p>
+      <p class="margin-top">
+        به حساب کاربری خود در چی بخونم خوش آمدید . در این بخش می توانید <nuxt-link to="/my-account/orders">
+          سفارش های قبلی خود
+        </nuxt-link> را ببینید و یا, <nuxt-link to="/my-account/edit-address">
+          آدرس ها
+        </nuxt-link> و <nuxt-link to="/my-account/edit-account">
+          سایر اطلاعات
+        </nuxt-link> خود را ویرایش کنید.
+      </p>
+    </div>
+    <div v-if="currentTab === 'orders'" class="orders">
+      <a>
+        پیگیری مرسوله های پستی (شهرستان)
+      </a>
+      <div class="info-box">
+        <p>هیچ سفارشی در اینجا یافت نشد</p>
+        <nuxt-link class="shop-button" to="/shop">
+          <v-btn depressed rounded color="#43454b" class="bold">
+            نمایش محصولات
+          </v-btn>
+        </nuxt-link>
+      </div>
+    </div>
+    <div v-if="currentTab === 'edit-address'" />
+  </div>
+  <v-container v-else>
     <v-row>
       <v-col>
         <Breadcrumbs :items="breadcrumbsItems" />
@@ -46,11 +80,62 @@
             <div class="half-width address-box">
               <div class="d-flex flex-row address-bar">
                 <h3>آدرس صورتحساب</h3>
-                <nuxt-link to="#">
-                  <v-btn color="#2bbb28" tile :elevation="3">
-                    افزودن
-                  </v-btn>
-                </nuxt-link>
+                <v-dialog
+                  v-model="billingDialog"
+                  max-width="800"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                      color="#2bbb28"
+                      tile
+                      :elevation="3"
+                      v-bind="attrs"
+                      v-on="on"
+                    >
+                      افزودن
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-title>
+                      آدرس صورت حساب
+                    </v-card-title>
+                    <v-card-text>
+                      <v-container>
+                        <v-row class="flex-column flex-sm-row">
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="نام" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                          </v-col>
+                          <v-col :sm="12" class="input-field">
+                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field required label="تلفن همراه" :rules="notEmptyRule" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field">
+                            <v-text-field label="آدرس ایمیل" hint="اختیاری" />
+                          </v-col>
+                          <v-col :sm="6" class="input-field submit-address">
+                            <v-btn color="rgb(43, 187, 40)">
+                              ذخیره آدرس
+                            </v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </v-dialog>
               </div>
               <p>شما هنوز آدرسی ثبت نکرده اید.</p>
             </div>
@@ -58,9 +143,62 @@
               <div class="d-flex flex-row address-bar">
                 <h3>آدرس برای ارسال بار</h3>
                 <nuxt-link to="#">
-                  <v-btn color="#2bbb28" tile :elevation="3">
-                    افزودن
-                  </v-btn>
+                  <v-dialog
+                    v-model="shippingDialog"
+                    max-width="800"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        color="#2bbb28"
+                        tile
+                        :elevation="3"
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        افزودن
+                      </v-btn>
+                    </template>
+                    <v-card>
+                      <v-card-title>
+                        آدرس برای ارسال بار
+                      </v-card-title>
+                      <v-card-text>
+                        <v-container>
+                          <v-row class="flex-column flex-sm-row">
+                            <v-col :sm="6" class="input-field">
+                              <v-text-field required label="نام" :rules="notEmptyRule" />
+                            </v-col>
+                            <v-col :sm="6" class="input-field">
+                              <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                            </v-col>
+                            <v-col :sm="12" class="input-field">
+                              <v-text-field label="نام شرکت" hint="اختیاری" />
+                            </v-col>
+                            <v-col :sm="12" class="input-field">
+                              <v-text-field label="منطقه / کشور" value="ایران" readonly />
+                            </v-col>
+                            <v-col :sm="6" class="input-field">
+                              <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                            </v-col>
+                            <v-col :sm="6" class="input-field">
+                              <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                            </v-col>
+                            <v-col :sm="12" class="input-field">
+                              <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                            </v-col>
+                            <v-col :sm="6" class="input-field">
+                              <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                            </v-col>
+                            <v-col :sm="6" class="input-field submit-address">
+                              <v-btn color="rgb(43, 187, 40)">
+                                ذخیره آدرس
+                              </v-btn>
+                            </v-col>
+                          </v-row>
+                        </v-container>
+                      </v-card-text>
+                    </v-card>
+                  </v-dialog>
                 </nuxt-link>
               </div>
               <p>شما هنوز آدرسی ثبت نکرده اید.</p>
@@ -240,7 +378,10 @@ export default {
       ],
       notEmptyRule: [
         v => !!v || 'پر کردن این فیلد الزامی میباشد'
-      ]
+      ],
+      billingDialog: false,
+      shippingDialog: false,
+      states: ['تهران', 'خراسان رضوی', 'اصفهان', 'فارس', 'خوزستان', 'آذربایجان شرقی', 'مازندران', 'آذربایجان غربی', 'کرمان', 'سیستان و بلوچستان', 'البرز']
     }
   },
   computed: {
@@ -250,6 +391,9 @@ export default {
       } else {
         return ''
       }
+    },
+    ispwa () {
+      return this.$store.getters.ispwa
     }
   }
 }
@@ -258,6 +402,12 @@ export default {
 <style scoped>
   .page-content {
     background-color: #fff;
+    font-size: 14px;
+  }
+
+  .pwa-container p {
+    line-height: 24px;
+    font-size: 14px;
   }
 
   .input-field p {
@@ -267,6 +417,12 @@ export default {
   .page-content .tab-content p {
     line-height: 25px;
     margin-bottom: 10px;
+  }
+
+  .pwa-container a {
+    color: #e42828;
+    font-weight: bold;
+    font-size: 14px;
   }
 
   .page-content .tab-content a {
@@ -296,6 +452,10 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .pwa-container .info-box {
+    margin-top: 10px;
   }
 
   .shop-button button {
@@ -370,6 +530,28 @@ export default {
     padding: 20px;
   }
 
+  .pwa-container {
+    margin: 20px;
+  }
+
+  .pwa-breadcrumbs {
+    margin-bottom: 20px;
+  }
+
+  .pwa-container .margin-top {
+    margin-top: 20px;
+  }
+
+  .submit-address {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .submit-address button {
+    color: #fff;
+  }
+
   @media only screen and (max-width: 960px) {
     .half-width {
       width: 95%;
@@ -394,6 +576,20 @@ export default {
       margin-bottom: 40px;
     }
   }
+
+  @media only screen and (max-width: 400px) {
+    .pwa-container .info-box {
+      flex-direction: column;
+    }
+
+    .pwa-container .info-box a {
+      width: 100%;
+    }
+
+    .pwa-container .info-box button {
+      width: 100%;
+    }
+  }
 </style>
 
 <style>
@@ -409,6 +605,23 @@ export default {
 
   .bold {
     font-weight: bold;
+  }
+
+  .page-content .input-field .v-label {
+    font-size: 1rem;
+  }
+
+  .v-application--is-ltr .v-text-field .v-label {
+    transform-origin: top right !important;
+  }
+
+  .input-field .v-text-field .v-label {
+    left: auto !important;
+    right: 5px !important;
+  }
+
+  .input-field .v-autocomplete:not(.v-input--is-disabled).v-select.v-text-field input {
+    background-color: transparent;
   }
 
   .input-field .v-select.v-text-field--outlined:not(.v-text-field--single-line) .v-select__selections input {
@@ -432,10 +645,6 @@ export default {
     display: none;
   }
 
-  .v-application--is-ltr .v-text-field .v-label {
-    transform-origin: top right !important;
-  }
-
   .input-field .v-text-field--filled .v-label--active {
     transform: translateY(-10px) scale(0.75);
   }
@@ -447,10 +656,6 @@ export default {
 
   .input-field .v-select.v-input--dense .v-chip {
     margin: 2px 4px;
-  }
-
-  .page-content .input-field .v-label {
-    font-size: 1rem;
   }
 
   .page-content .input-field .v-text-field--filled > .v-input__control > .v-input__slot {
