@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="the-card">
+    <v-card>
       <div class="the-div">
         <v-row>
           <v-col>
@@ -356,9 +356,7 @@
         </v-row>
       </div>
     </v-card>
-    <v-card
-      class="the-card"
-    >
+    <v-card>
       <v-data-table
         :headers="headers"
         :items="users"
@@ -946,6 +944,7 @@ export default {
 .the-card {
   margin-bottom: 20px;
   padding: 8px;
+  float: top;
 }
 
 .the-card-search {

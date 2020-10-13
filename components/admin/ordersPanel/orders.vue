@@ -40,7 +40,8 @@
     </v-row>
     <hr>
     <v-row>
-      <v-col>
+      <v-col cols="1" />
+      <v-col cols="5">
         <v-select
           class="the-select"
           :items="items"
@@ -48,7 +49,8 @@
           solo
         />
       </v-col>
-      <v-col>
+      <v-col cols="1" />
+      <v-col cols="5">
         <v-select
           class="the-select"
           :items="items"
@@ -58,11 +60,13 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col>
+      <v-col cols="1">
         <v-switch
           v-model="switch1"
           class="the-switch"
         />
+      </v-col>
+      <v-col cols="5">
         <v-select
           class="the-select"
           :items="items"
@@ -70,11 +74,13 @@
           solo
         />
       </v-col>
-      <v-col>
+      <v-col cols="1">
         <v-switch
           v-model="switch1"
           class="the-switch"
         />
+      </v-col>
+      <v-col cols="5">
         <v-select
           class="the-select"
           :items="items"
@@ -86,20 +92,13 @@
     <hr>
     <v-row>
       <v-col>
-        <v-text-field
-          class="the-text-field"
-          label="آدرس"
-          outlined
-        />
-      </v-col>
-      <v-col>
         <v-switch
           v-model="switch1"
           class="the-switch"
         />
         <v-text-field
           class="the-text-field"
-          label="مدرسه"
+          label="آدرس"
           outlined
         />
       </v-col>
@@ -111,7 +110,7 @@
           class="the-switch"
         />
         <v-text-field
-          class="the-text-field"
+          class="the-text-field1"
           label="کد پستی"
           outlined
         />
@@ -122,7 +121,7 @@
           class="the-switch"
         />
         <v-text-field
-          class="the-text-field"
+          class="the-text-field1"
           label="استان"
           outlined
         />
@@ -133,8 +132,19 @@
           class="the-switch"
         />
         <v-text-field
-          class="the-text-field"
+          class="the-text-field1"
           label="شهر"
+          outlined
+        />
+      </v-col>
+      <v-col>
+        <v-switch
+          v-model="switch1"
+          class="the-switch"
+        />
+        <v-text-field
+          class="the-text-field1"
+          label="مدرسه"
           outlined
         />
       </v-col>
@@ -317,35 +327,71 @@
       </v-col>
     </v-row>
     <v-row>
-      <p>
-        قیمت سفارش
-      </p>
-      <v-select
-        :items="items"
-        label="برابر با"
-        solo
-      />
-      <v-text-field
-        class="the-text-field"
-        style="float: right;"
-        filled
-        dense
-      />
-      <p>
-        تخفیف سفارش
-      </p>
-      <v-select
-        class="the-select"
-        :items="items"
-        label="برابر با"
-        solo
-      />
-      <v-text-field
-        class="the-text-field"
-        style="float: right;"
-        filled
-        dense
-      />
+      <v-col>
+        <p
+          class="the-p"
+        >
+          قیمت سفارش:
+        </p>
+      </v-col>
+      <v-col>
+        <v-select
+          class="the-select"
+          :items="items"
+          label="برابر با"
+          solo
+        />
+      </v-col>
+      <v-col>
+        <v-text-field
+          class="the-text-field"
+          filled
+          dense
+        />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <p
+          class="the-p"
+        >
+          تخفیف سفارش:
+        </p>
+      </v-col>
+      <v-col>
+        <v-select
+          class="the-select"
+          :items="items"
+          label="برابر با"
+          solo
+        />
+      </v-col>
+      <v-col>
+        <v-text-field
+          class="the-text-field"
+          filled
+          dense
+        />
+      </v-col>
+    </v-row>
+    <v-row />
+    <v-row />
+    <v-row>
+      <v-col />
+      <v-col />
+      <v-col />
+      <v-col>
+        <v-btn
+          color="white"
+          class="the-btn"
+          elevation="3"
+          x-large
+          outlined
+          rounded
+        >
+          فیلتر
+        </v-btn>
+      </v-col>
     </v-row>
   </v-card>
 </template>
@@ -368,6 +414,14 @@ export default {
 .the-text-field {
   float: right;
   margin-top: 9px;
+  margin-right: 7px;
+}
+
+.the-text-field1 {
+  float: right;
+  margin-top: 9px;
+  margin-right: 7px;
+  width: 70%;
 }
 
 .the-select {
@@ -379,4 +433,14 @@ export default {
   float: right;
 }
 
+.the-p {
+  float: right;
+  margin-top: 9px;
+  margin-right: 10px;
+}
+
+.the-btn {
+  background-color: #004d40;
+  width: 100%;
+}
 </style>
