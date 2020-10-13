@@ -2,23 +2,41 @@
   <v-expansion-panel>
     <v-expansion-panel-header>مدیریت کاربران</v-expansion-panel-header>
     <v-expansion-panel-content>
+      <v-card class="the-card" />
+      <v-row>
+        <v-col>
+          <v-switch
+            v-model="switch1"
+          />
+          <v-select
+            :items="items"
+            label="محصولات دیده شده"
+            solo
+          />
+        </v-col>
+        <v-col>
+          <v-switch
+            v-model="switch1"
+          />
+          <v-select
+            :items="items"
+            label="محصولات سفارش داده شده"
+            solo
+          />
+        </v-col>
+      </v-row>
       <v-card
-        class="the-card">
-        <v-toolbar-title>
-          <h3
-            class="the-toolbar-title">
-            لیست کاربران
-          </h3>
-        </v-toolbar-title>
+        class="the-card"
+      >
         <v-card-title>
           <v-text-field
-            class="the-card-title"
             v-model="search"
+            class="the-card-title"
             append-icon="mdi-magnify"
             label="Search"
             single-line
             hide-details
-          ></v-text-field>
+          />
         </v-card-title>
         <v-data-table
           :headers="headers"
@@ -38,10 +56,10 @@
             <v-toolbar
               flat
             >
-              <v-spacer></v-spacer>
+              <v-spacer />
               <v-dialog
-                class="thedialog"
                 v-model="dialog"
+                class="thedialog"
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
@@ -49,6 +67,7 @@
                     dark
                     class="mb-2 adding-btn"
                     v-bind="attrs"
+                    @click="addItem"
                     v-on="on"
                   >
                     افزودن کاربر
@@ -61,227 +80,261 @@
                   <v-card-title v-if="detailshow">
                     <span class="headline">جزییات اطلاعات کاربر</span>
                   </v-card-title>
-                  <table v-if="changeshow">
-                    <tr>
-                      <td
-                        class="thetd">
+                  <div>
+                    <v-row>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
                         <v-text-field
-                          class="thetextfield"
                           v-model="editedItem.name"
+                          class="thetextfield"
                           label="نام کاربر"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.phone"
-                          label="شماره تلفن"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.address"
-                          label="آدرس"
-                        ></v-text-field>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.email"
-                          label="ایمیل"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.status"
-                          label="وضعیت"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.signdate"
-                          label="زمان ثبت نام"
-                        ></v-text-field>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.school"
-                          label="مدرسه"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.code"
-                          label="کد ملی"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.field"
-                          label="رشته"
-                        ></v-text-field>
-                      </td>
-                    <tr>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.function"
-                          label="عملیات"
-                        ></v-text-field>
-                      </td>
-                      <td
-                        class="thetd">
-                        <v-text-field
-                          class="thetextfield"
-                          v-model="editedItem.changetime"
-                          label="زمان آخرین تغییر"
-                        ></v-text-field>
-                      </td>
-                    </tr>
-                  </table>
-                  <table v-if="detailshow">
-                    <tr>
-                      <td
-                        class="thetd">
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           نام کاربر
-                          <hr/>
-                          {{editedItem.name}}
+                          <hr>
+                          {{ editedItem.name }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.phone"
+                          class="thetextfield"
+                          label="شماره تلفن"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           موبایل
-                          <hr/>
-                          {{editedItem.phone}}
+                          <hr>
+                          {{ editedItem.phone }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.address"
+                          class="thetextfield"
+                          label="آدرس"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           آدرس
-                          <hr/>
-                          {{editedItem.address}}
+                          <hr>
+                          {{ editedItem.address }}
                         </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        class="thetd">
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.email"
+                          class="thetextfield"
+                          label="ایمیل"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           ایمیل
-                          <hr/>
-                          {{editedItem.email}}
+                          <hr>
+                          {{ editedItem.email }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.status"
+                          class="thetextfield"
+                          label="وضعیت"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           وضعیت
-                          <hr/>
-                          {{editedItem.status}}
+                          <hr>
+                          {{ editedItem.status }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.signdate"
+                          class="thetextfield"
+                          label="زمان ثبت نام"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           زمان ثبت نام
-                          <hr/>
-                          {{editedItem.signdate}}
+                          <hr>
+                          {{ editedItem.signdate }}
                         </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        class="thetd">
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.school"
+                          class="thetextfield"
+                          label="مدرسه"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           مدرسه
-                          <hr/>
-                          {{editedItem.school}}
+                          <hr>
+                          {{ editedItem.school }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.code"
+                          class="thetextfield"
+                          label="کد ملی"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           کد ملی
-                          <hr/>
-                          {{editedItem.code}}
+                          <hr>
+                          {{ editedItem.code }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.field"
+                          class="thetextfield"
+                          label="رشته"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           رشته
-                          <hr/>
-                          {{editedItem.field}}
+                          <hr>
+                          {{ editedItem.field }}
                         </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td
-                        class="thetd">
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.function"
+                          class="thetextfield"
+                          label="عملیات"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           عملیات
-                          <hr/>
-                          {{editedItem.function}}
+                          <hr>
+                          {{ editedItem.function }}
                         </div>
-                      </td>
-                      <td
-                        class="thetd">
+                      </v-col>
+                      <v-col
+                        v-if="changeshow"
+                        class="thetd"
+                      >
+                        <v-text-field
+                          v-model="editedItem.changetime"
+                          class="thetextfield"
+                          label="زمان آخرین تغییر"
+                        />
+                      </v-col>
+                      <v-col
+                        v-if="detailshow"
+                        class="thetd"
+                      >
                         <div
                           class="thetextfield"
                         >
                           زمان آخرین تغییر
-                          <hr/>
-                          {{editedItem.changetime}}
+                          <hr>
+                          {{ editedItem.changetime }}
                         </div>
-                      </td>
-                    </tr>
-                  </table>
+                      </v-col>
+                      <v-col />
+                    </v-row>
+                  </div>
                   <v-card-actions>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
                     <v-btn
                       color="blue darken-1"
                       text
@@ -302,12 +355,18 @@
               </v-dialog>
               <v-dialog v-model="dialogDelete" max-width="500px">
                 <v-card>
-                  <v-card-title class="headline">Are you sure you want to delete this item?</v-card-title>
+                  <v-card-title class="headline">
+                    Are you sure you want to delete this item?
+                  </v-card-title>
                   <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-                    <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
+                    <v-btn color="blue darken-1" text @click="closeDelete">
+                      Cancel
+                    </v-btn>
+                    <v-btn color="blue darken-1" text @click="deleteItemConfirm">
+                      OK
+                    </v-btn>
+                    <v-spacer />
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -318,13 +377,14 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
-                  v-on="on"
                   class="mx-2"
                   fab
                   dark
                   x-small
                   color="#FFCA28"
-                  @click="detailItem(item)">
+                  v-on="on"
+                  @click="detailItem(item)"
+                >
                   <v-icon dark>
                     mdi-format-list-bulleted-square
                   </v-icon>
@@ -336,19 +396,18 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
-                  v-on="on"
                   class="mx-2"
                   fab
                   dark
                   x-small
                   color="#9575CD"
+                  v-on="on"
                   @click="editItem(item)"
                 >
                   <v-icon dark>
                     mdi-pencil
                   </v-icon>
                 </v-btn>
-
               </template>
               <span>تغییر کاربر</span>
             </v-tooltip>
@@ -356,20 +415,18 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
-                  v-on="on"
                   class="mx-2"
                   fab
                   dark
                   x-small
                   color="#455A64"
+                  v-on="on"
                   @click="deleteItem(item)"
                 >
                   <v-icon dark>
                     mdi-delete
                   </v-icon>
-
                 </v-btn>
-
               </template>
               <span>حذف کاربر</span>
             </v-tooltip>
@@ -386,42 +443,23 @@
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
-
 </template>
 
 <script>
+
 export default {
-  name: 'users',
+  name: 'Users',
   data: () => ({
+    items: ['item1', 'item2', 'item3', 'item4'],
+    switch1: false,
+
     changeshow: false,
     detailshow: false,
     search: '',
     dialog: false,
-    dialog2: false,
-    dialog3: false,
+
     dialogDelete: false,
-    headers2: [
-      {
-        text: 'نام دسترسی',
-        align: 'start',
-        sortable: false,
-        value: 'name'
-      },
-      { text: 'زمان درج', value: 'entertime', sortable: false },
 
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
-    ],
-    headers3: [
-      {
-        text: 'نام (اصلی)',
-        align: 'start',
-        sortable: false,
-        value: 'name'
-      },
-      { text: 'نام نقش', value: 'rolename', sortable: false },
-
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
-    ],
     headers: [
       {
         text: 'نام و نام خانوادگی',
@@ -435,19 +473,11 @@ export default {
       { text: 'وضعیت', value: 'status', sortable: false },
       { text: 'فعالیت ها', value: 'actions', sortable: false }
     ],
-    accesses: [],
+
     users: [],
-    roles: [],
+
     editedIndex: -1,
-    editedAccessIndex: -1,
-    editedRoleIndex: -1,
-    editedAccesc: {
-      name: ''
-    },
-    editedRole: {
-      name: '',
-      rolename: ''
-    },
+
     editedItem: {
       name: '',
       phone: 0,
@@ -463,27 +493,15 @@ export default {
       signdate: '',
       accesses: ''
     },
-    editedAccess: {
-      name: ''
-    },
-    editedRoles: {
-      name: '',
-      rolename: ''
-    },
+
     defaultItem: {
       name: '',
       phone: 0,
       address: 0,
       email: 0,
       status: 0
-    },
-    defaultAccess: {
-      name: ''
-    },
-    defaultRole: {
-      name: '',
-      rolename: ''
     }
+
   }),
   computed: {
     formTitle () {
@@ -505,6 +523,11 @@ export default {
   },
 
   methods: {
+    addItem () {
+      this.dialog = true
+      this.changeshow = true
+      this.detailshow = false
+    },
     closeDelete () {
       this.dialogDelete = false
       this.$nextTick(() => {
@@ -560,28 +583,6 @@ export default {
       this.close()
     },
     initialize () {
-      this.roles = [
-        {
-          name: 'employmentSupportDepartment',
-          rolename: 'پشتیبان استخدام'
-
-        },
-        {
-          name: 'publicRelationManager',
-          rolename: 'مدیر روابط عمومی'
-
-        }
-      ]
-      this.accesses = [
-        {
-          name: 'دانلود فایل کارنامه نتایج کنکور',
-          entertime: '۱۳۹۹/۰۶/۲۶'
-        },
-        {
-          name: 'مشاهده سفارش های یک کاربر دیگر',
-          entertime: '۱۳۹۹/۰۵/۲۲'
-        }
-      ]
       this.users = [
         {
           name: 'هلیا محمدی',
@@ -665,4 +666,5 @@ export default {
 .thedialog {
   width: fit-content;
 }
+
 </style>

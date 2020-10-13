@@ -3,22 +3,24 @@
     <v-expansion-panel-header>مدیریت دسترسی ها</v-expansion-panel-header>
     <v-expansion-panel-content>
       <v-card
-        class="the-card">
+        class="the-card"
+      >
         <v-toolbar-title>
           <h3
-            class="the-toolbar-title">
+            class="the-toolbar-title"
+          >
             مدیریت دسترسی ها
           </h3>
         </v-toolbar-title>
         <v-card-title>
           <v-text-field
-            class="the-card-title"
             v-model="search"
+            class="the-card-title"
             append-icon="mdi-magnify"
             label="Search"
             single-line
             hide-details
-          ></v-text-field>
+          />
         </v-card-title>
         <v-data-table
           :headers="headers2"
@@ -38,7 +40,7 @@
             <v-toolbar
               flat
             >
-              <v-spacer></v-spacer>
+              <v-spacer />
               <v-dialog
                 v-model="dialog2"
                 max-width="500px"
@@ -49,6 +51,7 @@
                     dark
                     class="mb-2 adding-btn"
                     v-bind="attrs"
+                    @click="addItem"
                     v-on="on"
                   >
                     افزودن دسترسی
@@ -70,14 +73,14 @@
                           <v-text-field
                             v-model="editedAccess.name"
                             label="نام دسترسی"
-                          ></v-text-field>
+                          />
                         </v-col>
                       </v-row>
                     </v-container>
                   </v-card-text>
 
                   <v-card-actions>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
                     <v-btn
                       color="blue darken-1"
                       text
@@ -97,12 +100,18 @@
               </v-dialog>
               <v-dialog v-model="dialogDelete" max-width="500px">
                 <v-card>
-                  <v-card-title class="headline">Are you sure you want to delete this item?</v-card-title>
+                  <v-card-title class="headline">
+                    Are you sure you want to delete this item?
+                  </v-card-title>
                   <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-                    <v-btn color="blue darken-1" text @click="deleteaccessConfirm">OK</v-btn>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
+                    <v-btn color="blue darken-1" text @click="closeDelete">
+                      Cancel
+                    </v-btn>
+                    <v-btn color="blue darken-1" text @click="deleteaccessConfirm">
+                      OK
+                    </v-btn>
+                    <v-spacer />
                   </v-card-actions>
                 </v-card>
               </v-dialog>
@@ -113,20 +122,18 @@
               <template v-slot:activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
-                  v-on="on"
                   class="mx-2"
                   fab
                   dark
                   x-small
                   color="#455A64"
+                  v-on="on"
                   @click="deleteAccess(item)"
                 >
                   <v-icon dark>
                     mdi-delete
                   </v-icon>
-
                 </v-btn>
-
               </template>
               <span>حذف دسترسی</span>
             </v-tooltip>
@@ -143,19 +150,17 @@
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
-
 </template>
 
 <script>
 export default {
-  name: 'access',
+  name: 'Access',
   data: () => ({
     changeshow: false,
     detailshow: false,
     search: '',
     dialog: false,
     dialog2: false,
-    dialog3: false,
     dialogDelete: false,
     headers2: [
       {
@@ -168,79 +173,20 @@ export default {
 
       { text: 'فعالیت ها', value: 'actions', sortable: false }
     ],
-    headers3: [
-      {
-        text: 'نام (اصلی)',
-        align: 'start',
-        sortable: false,
-        value: 'name'
-      },
-      { text: 'نام نقش', value: 'rolename', sortable: false },
 
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
-    ],
-    headers: [
-      {
-        text: 'نام و نام خانوادگی',
-        align: 'start',
-        sortable: false,
-        value: 'name'
-      },
-      { text: 'موبایل', value: 'phone', sortable: false },
-      { text: 'آدرس', value: 'address', sortable: false },
-      { text: 'ایمیل', value: 'email', sortable: false },
-      { text: 'وضعیت', value: 'status', sortable: false },
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
-    ],
     accesses: [],
-    users: [],
-    roles: [],
     editedIndex: -1,
     editedAccessIndex: -1,
     editedRoleIndex: -1,
-    editedAccesc: {
-      name: ''
-    },
-    editedRole: {
-      name: '',
-      rolename: ''
-    },
-    editedItem: {
-      name: '',
-      phone: 0,
-      address: 0,
-      email: 0,
-      status: 0,
-      code: 0,
-      field: '',
-      changetime: '',
-      function: '',
-      phonestatus: '',
-      school: '',
-      signdate: '',
-      accesses: ''
-    },
+
     editedAccess: {
       name: ''
     },
-    editedRoles: {
-      name: '',
-      rolename: ''
-    },
-    defaultItem: {
-      name: '',
-      phone: 0,
-      address: 0,
-      email: 0,
-      status: 0
-    },
+
     defaultAccess: {
       name: ''
-    },
-    defaultRole: {
-      name: '',
-      rolename: ''
     }
+
   }),
   computed: {
     formTitle () {
@@ -262,6 +208,11 @@ export default {
   },
 
   methods: {
+    addItem () {
+      this.dialog = true
+      this.changeshow = true
+      this.detailshow = false
+    },
     closeDelete () {
       this.dialogDelete = false
       this.$nextTick(() => {
@@ -294,18 +245,6 @@ export default {
       this.closeaccess()
     },
     initialize () {
-      this.roles = [
-        {
-          name: 'employmentSupportDepartment',
-          rolename: 'پشتیبان استخدام'
-
-        },
-        {
-          name: 'publicRelationManager',
-          rolename: 'مدیر روابط عمومی'
-
-        }
-      ]
       this.accesses = [
         {
           name: 'دانلود فایل کارنامه نتایج کنکور',
@@ -314,47 +253,6 @@ export default {
         {
           name: 'مشاهده سفارش های یک کاربر دیگر',
           entertime: '۱۳۹۹/۰۵/۲۲'
-        }
-      ]
-      this.users = [
-        {
-          name: 'هلیا محمدی',
-          phone: 9365491835,
-          address: 'شهران-خیابان مدرسه-کوچه دانش',
-          email: 'helia.mhmdi@gmail.com',
-          status: 'فعال',
-          field: 'ریاضی',
-          code: 20890222,
-          changetime: '۱۳۹۹/۰۷/۱۹',
-          function: 'ثبت نام',
-          phonestatus: 'تایید شده',
-          school: 'فرزانگان',
-          signdate: '۱۳۹۹/۰۷/۱۹',
-          accesses: 'ادمین'
-
-        },
-        {
-          name: 'هلیا محمدی',
-          phone: 9365491835,
-          address: 'شهران-خیابان مدرسه-کوچه دانش',
-          email: 'helia.mhmdi@gmail.com',
-          status: 'فعال',
-          field: 'ریاضی',
-          code: 20890222
-        },
-        {
-          name: 'هلیا محمدی',
-          phone: 9365491835,
-          address: 'شهران-خیابان مدرسه-کوچه دانش',
-          email: 'helia.mhmdi@gmail.com',
-          status: 'فعال'
-        },
-        {
-          name: 'هلیا محمدی',
-          phone: 9365491835,
-          address: 'شهران-خیابان مدرسه-کوچه دانش',
-          email: 'helia.mhmdi@gmail.com',
-          status: 'فعال'
         }
       ]
     }
