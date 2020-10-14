@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Filter />
     <v-card>
       <div class="the-div">
         <v-row>
@@ -762,8 +763,10 @@
 
 <script>
 
+import Filter from './filter'
 export default {
   name: 'Users',
+  components: { Filter },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
