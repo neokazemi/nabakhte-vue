@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app-bar
-      v-if="ispwa === true"
+      v-if="!isFromPc"
       color="#fff"
       app
       class="pwa-header"
