@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import PostItem from '../../../components/PostItem'
-import Treeview from '../../../components/Treeview'
+import PostItem from '~/components/PostItem'
+import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import { PostList } from '~/models/Post'
@@ -60,6 +60,9 @@ export default {
     return (new PostList()).fetch()
       .then((response) => {
         context.store.commit('updatePosts', new PostList(response.data))
+      })
+      .catch(function (e) {
+        context.store.commit('updatePosts', new PostList())
       })
   },
   data () {

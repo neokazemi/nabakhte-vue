@@ -5,7 +5,7 @@
         <a href="#" class="remove">حذف ×</a>
       </v-col>
       <v-col :sm="1" class="product-card-image-cart">
-        <v-img :src="product.image.url" contain :width="56" :height="75" />
+        <v-img :src="cartItem.product.image.url" contain :width="56" :height="75" />
       </v-col>
       <v-col :sm="4" class="justify-sm-center justify-start">
         <p class="name justify-start">
@@ -16,53 +16,44 @@
       <v-col :sm="2">
         <div class="price justify-sm-center justify-start">
           <span class="title d-inline-block d-sm-none">قیمت: </span>
-          <span v-if="type === 1" class="old-price">{{ product.price.toman('base', false) }}</span>
-          <span class="percent">{{ product.price.discountInPercent() }}%</span>
-          <span class="new-price">{{ product.price.toman('final', false) }}</span>
+          <span v-if="type === 1" class="old-price">{{ cartItem.product.price.toman('base', false) }}</span>
+          <span class="percent">{{ cartItem.product.price.discountInPercent() }}%</span>
+          <span class="new-price">{{ cartItem.product.price.toman('final', false) }}</span>
           <span class="toman"> تومان</span>
         </div>
       </v-col>
       <v-col :sm="2" class="count justify-sm-center justify-start">
         <span class="title d-inline-block d-sm-none">تعداد: </span>
         <v-select
+          v-model="cartItem.qty"
           :items="items"
+          item-text="title"
+          item-value="value"
           outlined
           background-color="#fff"
           dense
           eager
           flat
-          :value="items[0]"
           :height="20"
         />
       </v-col>
       <v-col :sm="2" class="final-price justify-sm-center justify-start">
-        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ product.price.toman('final', false) }} <span> تومان </span></p>
+        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ cartItem.totalPrice().toman('final', false) }} <span> تومان </span></p>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import { Product } from '../../models/Product'
+import { CartItem } from '~/models/Cart'
 
 export default {
   name: 'ProductCard4',
   props: {
-    product: {
-      type: Product,
+    cartItem: {
+      type: CartItem,
       default () {
-        return new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        })
+        return new CartItem()
       }
     },
     type: {
@@ -74,16 +65,46 @@ export default {
   data () {
     return {
       items: [
-        '1 عدد',
-        '2 عدد',
-        '3 عدد',
-        '4 عدد',
-        '5 عدد',
-        '6 عدد',
-        '7 عدد',
-        '8 عدد',
-        '9 عدد',
-        '100 عدد'
+        {
+          title: '1 عدد',
+          value: 1
+        },
+        {
+          title: '2 عدد',
+          value: 2
+        },
+        {
+          title: '3 عدد',
+          value: 3
+        },
+        {
+          title: '4 عدد',
+          value: 4
+        },
+        {
+          title: '5 عدد',
+          value: 5
+        },
+        {
+          title: '6 عدد',
+          value: 6
+        },
+        {
+          title: '7 عدد',
+          value: 7
+        },
+        {
+          title: '8 عدد',
+          value: 8
+        },
+        {
+          title: '9 عدد',
+          value: 9
+        },
+        {
+          title: '100 عدد',
+          value: 100
+        }
       ]
     }
   }

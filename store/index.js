@@ -4,7 +4,8 @@ export const state = () => ({
   products: [],
   ispwa: false,
   footerMargin: '0',
-  drawer: false
+  drawer: false,
+  isFromPc: true
 })
 
 export const mutations = {
@@ -22,6 +23,9 @@ export const mutations = {
   },
   updateDrawer (state, newInfo) {
     state.drawer = newInfo
+  },
+  updateIsFromPc (state, newInfo) {
+    state.isFromPc = newInfo
   }
   // updateAppProps(state, newInfo) {
   //   if (typeof newInfo === 'function') {
@@ -59,6 +63,9 @@ export const getters = {
   },
   drawer (state) {
     return state.drawer
+  },
+  isFromPc (state) {
+    return state.isFromPc
   }
   // url_crud_model: (state) => (object) => {
   //   // let modelName = object.constructor.name;

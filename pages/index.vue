@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { ProductList } from '../models/Product'
+import mixinProduct from '~/plugins/mixinProduct'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import TopView from '~/components/TopView/TopView'
 
@@ -53,12 +53,7 @@ export default {
     TopView,
     ProductSliderCarousel
   },
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
-  },
+  mixins: [mixinProduct],
   data () {
     return {
       mainCarouselSlides: [
@@ -75,9 +70,6 @@ export default {
     }
   },
   computed: {
-    products () {
-      return new ProductList(this.$store.getters.products)
-    },
     ispwa () {
       return this.$store.getters.ispwa
     }
