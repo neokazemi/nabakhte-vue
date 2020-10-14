@@ -385,11 +385,11 @@
 </template>
 
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
-import { ProductList } from '../../models/Product'
-import ProductSliderCarousel from '../../components/ProductSliderCarousel'
-import ProductSpecs from '../../components/ProductSpecs'
-import Comment from '../../components/Comment'
+import mixinProduct from '~/plugins/mixinProduct'
+import Breadcrumbs from '~/components/Breadcrumbs'
+import ProductSliderCarousel from '~/components/ProductSliderCarousel'
+import ProductSpecs from '~/components/ProductSpecs'
+import Comment from '~/components/Comment'
 
 export default {
   name: 'Product',
@@ -404,6 +404,7 @@ export default {
     ProductSpecs,
     Comment
   },
+  mixins: [mixinProduct],
   props: {
     productData: {
       type: Object,
@@ -424,12 +425,6 @@ export default {
         }
       }
     }
-  },
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
   },
   data () {
     return {
@@ -496,9 +491,6 @@ export default {
     }
   },
   computed: {
-    products () {
-      return this.$store.getters.products
-    },
     ispwa () {
       return this.$store.getters.ispwa
     }

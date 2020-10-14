@@ -107,12 +107,12 @@
   </div>
 </template>
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
-import ProductCard from '../../components/ProductCard/ProductCard'
-import { ProductList } from '../../models/Product'
-import Sidebar from '../../components/app/Sidebar'
-import ExpansionPanel from '../../components/ExpansionPanel'
-import ToggleButton from '../../components/ToggleButton'
+import mixinProduct from '~/plugins/mixinProduct'
+import Breadcrumbs from '~/components/Breadcrumbs'
+import ProductCard from '~/components/ProductCard/ProductCard'
+import Sidebar from '~/components/app/Sidebar'
+import ExpansionPanel from '~/components/ExpansionPanel'
+import ToggleButton from '~/components/ToggleButton'
 
 export default {
   name: 'Shop',
@@ -123,12 +123,7 @@ export default {
     ExpansionPanel,
     ToggleButton
   },
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
-  },
+  mixins: [mixinProduct],
   data () {
     return {
       breadcrumbsItems: [
@@ -243,9 +238,6 @@ export default {
     }
   },
   computed: {
-    products () {
-      return this.$store.getters.products
-    },
     ispwa () {
       return this.$store.getters.ispwa
     }

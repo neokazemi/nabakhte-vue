@@ -9,8 +9,8 @@
     <ProductCard3 v-else-if="type === 6" :cart-item="cartItem">
       {{ cartItem.product.name }}
     </ProductCard3>
-    <ProductCard4 v-else-if="type === 7" :product="product">
-      {{ product.name }}
+    <ProductCard4 v-else-if="type === 7" :cart-item="cartItem">
+      {{ cartItem.product.name }}
     </ProductCard4>
     <ProductCard5 v-else-if="type === 8" :product="product" :box-shadow="boxShadow">
       {{ product.name }}
