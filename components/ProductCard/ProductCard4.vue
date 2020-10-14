@@ -38,7 +38,7 @@
         />
       </v-col>
       <v-col :sm="2" class="final-price justify-sm-center justify-start">
-        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ cartItem.product.price.toman('final', false) }} <span> تومان </span></p>
+        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ cartItem.totalPrice().toman('final', false) }} <span> تومان </span></p>
       </v-col>
     </v-row>
   </v-container>
