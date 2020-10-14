@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="ispwa" class="pwa-container">
-      <ProductCard v-for="(item, index) in products.list" :key="index" :type="9" :details="item" />
+      <ProductCard v-for="(item, index) in cart.list" :key="index" :type="9" :details="item" />
       <div class="discount-container">
         <v-text-field
           label="کد تخفیف خود را وارد نمایید"
@@ -33,7 +33,7 @@
       </v-row>
       <v-row class="cart-container">
         <v-col class="cart-content">
-          <div v-if="products.list.length === 0" class="empty-cart">
+          <div v-if="cart.list.length === 0" class="empty-cart">
             <p>سبد خرید شما در حال حاضر خالی است.</p>
             <nuxt-link to="/shop">
               بازگشت به فروشگاه
@@ -58,7 +58,7 @@
                 </v-col>
               </v-row>
             </v-container>
-            <ProductCard v-for="(item, index) in products.list" :key="index" :type="7" :details="item" />
+            <ProductCard v-for="(item, index) in cart.list" :key="index" :type="7" :cart-item="item" />
             <div class="discount-code">
               <input class="discount-input" placeholder="کد تخفیف:">
               <button class="apply-discount">
@@ -104,9 +104,10 @@
 </template>
 
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
-import { ProductList } from '../../models/Product'
-import ProductCard from '../../components/ProductCard/ProductCard'
+import Breadcrumbs from '~/components/Breadcrumbs'
+import ProductCard from '~/components/ProductCard/ProductCard'
+import mixinStore from '~/plugins/mixinStore'
+
 export default {
   name: 'Cart',
   components: {
@@ -118,12 +119,7 @@ export default {
       return value.toLocaleString('ar-SA')
     }
   },
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
-  },
+  mixins: [mixinStore],
   data () {
     return {
       breadcrumbsItems: [
@@ -147,9 +143,6 @@ export default {
     }
   },
   computed: {
-    products () {
-      return this.$store.getters.products
-    },
     ispwa () {
       return this.$store.getters.ispwa
     }

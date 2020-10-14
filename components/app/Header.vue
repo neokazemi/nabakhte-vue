@@ -326,12 +326,6 @@ export default {
   name: 'Header',
   components: { HeaderCart, Badge },
   mixins: [mixinStore],
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
-  },
   data () {
     return {
       mainCarouselSlides: [
