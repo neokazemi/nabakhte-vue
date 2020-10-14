@@ -320,17 +320,13 @@ import Badge from '../Badge'
 import MainMenu from '../PwaMenus/MainMenu'
 import SearchMenu from '../PwaMenus/SearchMenu'
 import AccountMenu from '../PwaMenus/AccountMenu'
+import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.scss'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
-  asyncData (context) {
-    return (new ProductList()).fetch()
-      .then((response) => {
-        context.store.commit('updateProducts', new ProductList(response.data[0].data.data))
-      })
-  },
+  mixins: [mixinStore],
   data () {
     return {
       mainCarouselSlides: [
@@ -348,9 +344,6 @@ export default {
   computed: {
     products () {
       return new ProductList(this.$store.getters.products)
-    },
-    cart () {
-      return this.$store.getters.products
     },
     ispwa () {
       return this.$store.getters.ispwa
