@@ -2,7 +2,71 @@
   <v-card
     class="the-card"
   >
+    <v-row>
+      <v-col />
+      <v-col>
+        <v-btn
+          class="the-btns"
+          small
+          elevation="2"
+          outlined
+          rounded
+          color="#212121"
+        >
+          Print
+        </v-btn>
+        <v-btn
+          class="the-btns"
+          small
+          elevation="2"
+          outlined
+          rounded
+          color="#c62828"
+        >
+          Copy
+        </v-btn>
+        <v-btn
+          class="the-btns"
+          small
+          elevation="2"
+          outlined
+          rounded
+          color="#00e676"
+        >
+          PDF
+        </v-btn>
+        <v-btn
+          class="the-btns"
+          small
+          elevation="2"
+          outlined
+          rounded
+          color="#ff6f00"
+        >
+          Excel
+        </v-btn>
+        <v-btn
+          class="the-btns"
+          small
+          elevation="2"
+          outlined
+          rounded
+          color="#03a9f4"
+        >
+          CSV
+        </v-btn>
+      </v-col>
+    </v-row>
+
     <v-data-table
+      :footer-props="{
+        showFirstLastPage: true,
+        firstIcon: 'mdi-arrow-collapse-left',
+        lastIcon: 'mdi-arrow-collapse-right',
+        itemsPerPageText: 'تعداد ردیف در هر صفحه',
+        pageText: '',
+        itemsPerPageAllText: 'همه'
+      }"
       :headers="headers3"
       :items="roles"
       :search="search"
@@ -40,7 +104,7 @@
                 v-model="search"
                 class="the-card-search"
                 append-icon="mdi-magnify"
-                label="Search"
+                label="جستجو"
                 single-line
                 hide-details
               />
@@ -49,23 +113,17 @@
               <v-card-text>
                 <v-container>
                   <v-row>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                      md="4"
-                    >
+                    <v-col>
                       <v-text-field
                         v-model="editedRoles.name"
+                        class="thetextfield"
                         label="نام اصلی"
                       />
                     </v-col>
-                    <v-col
-                      cols="12"
-                      sm="6"
-                      md="4"
-                    >
+                    <v-col>
                       <v-text-field
                         v-model="editedRoles.rolename"
+                        class="thetextfield"
                         label="نام نقش"
                       />
                     </v-col>
@@ -113,6 +171,26 @@
         </v-toolbar>
       </template>
       <template v-slot:item.actions="{ item }">
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              class="mx-2"
+              fab
+              dark
+              x-small
+              color="#9575CD"
+              v-on="on"
+              @click="editItem(item)"
+            >
+              <v-icon dark>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+          </template>
+          <span>تغییر نقش</span>
+        </v-tooltip>
+
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -190,6 +268,13 @@ export default {
   },
 
   methods: {
+    editItem (item) {
+      this.editedIndex = this.roles.indexOf(item)
+      this.editedRoles = Object.assign({}, item)
+      this.dialog3 = true
+      this.changeshow = true
+      this.detailshow = false
+    },
     addItem () {
       this.dialog3 = true
       this.changeshow = true
@@ -246,6 +331,12 @@ export default {
 </script>
 
 <style scoped>
+.thetextfield {
+  margin: 10px;
+  width: 500px;
+  font-size: small;
+}
+
 .the-card {
   margin-bottom: 20px;
   padding: 8px;
@@ -264,6 +355,10 @@ export default {
 
 .adding-btn {
   margin: 30px;
+}
+
+.the-btns {
+  width: 15%;
 }
 
 </style>

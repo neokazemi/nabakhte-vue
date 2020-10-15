@@ -1,7 +1,7 @@
 <template>
-  <v-card>
+  <v-card class="the-card">
     <div class="the-div">
-      <v-row>
+      <v-row class="the-row">
         <v-col>
           <v-text-field
             class="the-text-field"
@@ -35,7 +35,7 @@
           />
         </v-col>
       </v-row>
-      <v-row>
+      <v-row class="the-row">
         <v-col>
           <v-select
             class="the-select"
@@ -74,7 +74,7 @@
         </v-col>
       </v-row>
 
-      <v-row>
+      <v-row class="the-row">
         <v-col>
           <v-select
             class="the-select2"
@@ -104,12 +104,15 @@
         </v-col>
       </v-row>
 
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+
+        <v-col>
           <v-select
             class="the-select1"
             :items="items"
@@ -118,12 +121,14 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
 
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select1"
             :items="items"
@@ -133,12 +138,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
@@ -147,26 +154,31 @@
             dense
           />
         </v-col>
-        <v-col>
+
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
 
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
-            label="وضعیت پرداخت"
+            label="وضعیت  پرداخت"
             solo
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
 
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
@@ -176,12 +188,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
@@ -190,12 +204,15 @@
             dense
           />
         </v-col>
-        <v-col>
+
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
 
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
@@ -204,12 +221,14 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
 
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-select
             class="the-select3"
             :items="items"
@@ -219,12 +238,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="کد پستی"
@@ -232,11 +253,13 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="استان"
@@ -244,11 +267,13 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="شهر"
@@ -257,12 +282,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="آدرس"
@@ -270,11 +297,13 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="مدرسه"
@@ -282,11 +311,13 @@
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-text-field
             class="the-text-field"
             label="ایمیل"
@@ -295,12 +326,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-col>
             <p class="the-p">
               تاریخ ثبت نام:
@@ -324,12 +357,14 @@
           />
         </v-col>
       </v-row>
-      <v-row>
-        <v-col>
+      <v-row class="the-row">
+        <v-col cols="1">
           <v-switch
             v-model="switch1"
             class="the-switch"
           />
+        </v-col>
+        <v-col>
           <v-col>
             <p class="the-p">
               تاریخ اصلاح:
@@ -353,6 +388,25 @@
           />
         </v-col>
       </v-row>
+      <br>
+      <br>
+      <v-row>
+        <v-col />
+        <v-col />
+        <v-col />
+        <v-col>
+          <v-btn
+            color="white"
+            class="the-btn"
+            elevation="3"
+            x-large
+            outlined
+            rounded
+          >
+            فیلتر
+          </v-btn>
+        </v-col>
+      </v-row>
     </div>
   </v-card>
 </template>
@@ -364,7 +418,79 @@ export default {
 </script>
 
 <style scoped>
+.the-row {
+  height: 50px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.the-card {
+  margin-bottom: 20px;
+}
+
+.the-switch {
+  float: right;
+  width: 10%;
+}
+
+.the-select {
+  float: right;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-select1 {
+  float: right;
+  width: 100%;
+  margin-top: 9px;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-select3 {
+  float: right;
+  margin-top: 9px;
+  width: 100%;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-select2 {
+  float: right;
+  margin-top: 9px;
+  width: 100%;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-text-field {
+  float: right;
+  margin-top: 9px;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
 .the-div {
-  margin: 40px;
+  margin: 10px;
+}
+
+.the-p {
+  float: right;
+  margin-top: 7px;
+  margin-right: 10px;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-filled-text-field {
+  float: right;
+  height: 50%;
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.the-btn {
+  background-color: #00bfa5;
+  width: 100%;
 }
 </style>

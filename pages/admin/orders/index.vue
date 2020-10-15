@@ -4,13 +4,15 @@
       <v-expansion-panel>
         <v-expansion-panel-header>مدیریت سفارش ها</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <orders />
+          <Orders />
+          <OrdersTable />
         </v-expansion-panel-content>
       </v-expansion-panel>
       <v-expansion-panel>
         <v-expansion-panel-header>مدیریت تراکنش ها</v-expansion-panel-header>
         <v-expansion-panel-content>
           <transactions />
+          <TransactionsTable />
         </v-expansion-panel-content>
       </v-expansion-panel>
 
@@ -18,6 +20,7 @@
         <v-expansion-panel-header>مدیریت بن کاربران</v-expansion-panel-header>
         <v-expansion-panel-content>
           <coupons />
+          <CouponsTable />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -25,12 +28,15 @@
 </template>
 
 <script>
-import Orders from '~/components/admin/ordersPanel/orders'
-import Transactions from '~/components/admin/ordersPanel/transactions'
-import Coupons from '~/components/admin/ordersPanel/coupons'
+import Orders from '~/components/admin/ordersPanel/filters/orders'
+import OrdersTable from '~/components/admin/ordersPanel/tables/ordersTable'
+import TransactionsTable from '~/components/admin/ordersPanel/tables/transactionsTable'
+import CouponsTable from '~/components/admin/ordersPanel/tables/couponsTable'
+import Transactions from '~/components/admin/ordersPanel/filters/transactions'
+import Coupons from '~/components/admin/ordersPanel/filters/coupons'
 export default {
   name: 'Index',
-  components: { Coupons, Transactions, Orders }
+  components: { Orders, CouponsTable, TransactionsTable, OrdersTable, Coupons, Transactions }
 }
 </script>
 
