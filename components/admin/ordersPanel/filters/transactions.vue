@@ -1,10 +1,10 @@
 <template>
   <v-card class="the-card">
     <div class="the-div">
-      <v-row class="the-row">
+      <v-row>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="نام"
             outlined
             dense
@@ -12,7 +12,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="نام خانوادگی"
             outlined
             dense
@@ -20,7 +20,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="شماره موبایل"
             outlined
             dense
@@ -28,7 +28,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="کد ملی"
             outlined
             dense
@@ -36,10 +36,10 @@
         </v-col>
       </v-row>
 
-      <v-row class="the-row">
+      <v-row>
         <v-col>
           <v-select
-            class="the-select"
+            class="the-row"
             :items="items"
             label="وضعیت سفارش"
             solo
@@ -48,7 +48,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-select"
+            class="the-row"
             :items="items"
             label="نحوه پرداخت"
             solo
@@ -57,7 +57,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-select"
+            class="the-row"
             :items="items"
             label="وضعیت پرداخت"
             solo
@@ -66,7 +66,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-select"
+            class="the-row"
             :items="items"
             label="درگاه پرداخت"
             solo
@@ -74,17 +74,17 @@
           />
         </v-col>
       </v-row>
-      <v-row class="the-row">
+      <v-row>
         <v-col>
           <p
-            class="the-p2"
+            class="the-p mt-4 mr-10"
           >
             وضعیت تراکنش:
           </p>
         </v-col>
         <v-col>
           <v-select
-            class="the-last-select"
+            class="the-row"
             :items="items"
             label="موفق / ناموفق"
             solo
@@ -93,7 +93,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="کد تراکنش"
             outlined
             dense
@@ -101,69 +101,61 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-text-field"
+            class="the-row"
             label="توضیح مدیریتی"
             outlined
             dense
           />
         </v-col>
       </v-row>
-      <v-row class="the-row2">
+      <v-row>
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch"
+            class="the-switch mt-4"
           />
         </v-col>
-        <v-col>
-          <v-col>
-            <p class="the-p">
-              تاریخ پرداخت:
-            </p>
-          </v-col>
-        </v-col>
-        <v-col>
+        <p class="mt-8 ml-8 the-p mr-6">
+          تاریخ پرداخت:
+        </p>
+        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field"
+            class="the-row"
             label="از تاریخ"
             filled
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field"
+            class="the-row"
             label="تا تاریخ"
             filled
             dense
           />
         </v-col>
       </v-row>
-      <v-row class="the-row">
+      <v-row>
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch"
+            class="the-switch mt-4"
           />
         </v-col>
-        <v-col>
-          <v-col>
-            <p class="the-p">
-              مهلت پرداخت:
-            </p>
-          </v-col>
-        </v-col>
-        <v-col>
+        <p class="mt-8 ml-8 the-p mr-6">
+          مهلت پرداخت:
+        </p>
+        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field"
+            class="the-row"
             label="از تاریخ"
             filled
             dense
           />
         </v-col>
-        <v-col>
+        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field"
+            class="the-row"
             label="تا تاریخ"
             filled
             dense
@@ -174,16 +166,15 @@
       <v-row>
         <v-col>
           <v-select
-            class="the-select1"
+            class="the-row"
             :items="items"
             label="انتخاب ستون های اصلی"
             solo
             dense
           />
         </v-col>
+        <v-col />
       </v-row>
-      <v-row />
-      <v-row />
       <v-row>
         <v-col />
         <v-col />
@@ -230,62 +221,8 @@ export default {
 </script>
 
 <style scoped>
-.the-last-select {
-  float: right;
-  margin-top: 12px;
-  transform: scale(0.875);
-  transform-origin: left;
-}
-
-.the-p2 {
-  float: right;
-  margin-top: 25px;
-  margin-right: 10px;
-  width: 100%;
-  transform: scale(0.875);
-  transform-origin: left;
-}
-
-.the-row {
-  height: 50px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
-
-.the-row2 {
-  height: 50px;
-  margin-top: 4px;
-  margin-bottom: 2px;
-}
-
 .the-card {
   margin-bottom: 20px;
-}
-
-.the-switch {
-  float: right;
-  width: 10%;
-}
-
-.the-select {
-  float: right;
-  transform: scale(0.875);
-  transform-origin: left;
-}
-
-.the-select1 {
-  float: right;
-  width: 80%;
-  margin-top: 9px;
-  transform: scale(0.875);
-  transform-origin: left;
-}
-
-.the-text-field {
-  float: right;
-  margin-top: 9px;
-  transform: scale(0.875);
-  transform-origin: left;
 }
 
 .the-div {
@@ -293,18 +230,8 @@ export default {
 }
 
 .the-p {
-  float: right;
-  margin-top: 7px;
-  margin-right: 10px;
-  transform: scale(0.875);
-  transform-origin: left;
-}
-
-.the-filled-text-field {
-  float: right;
-  height: 50%;
-  transform: scale(0.875);
-  transform-origin: left;
+  font-size: 14px;
+  width: 120px;
 }
 
 .the-btn-2 {
@@ -321,4 +248,37 @@ export default {
   height: 50px;
   padding: 5px;
 }
+
+.the-row {
+  height: 20px;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  width: 100%;
+  right: 0;
+  padding-right: 0;
+  float: right;
+}
+
+.the-switch {
+  float: left;
+  margin-top: 8px;
+  height: 20px;
+}
+
+.v-text-field--filled > .v-input__control > .v-input__slot .the-row,
+.v-text-field--full-width > .v-input__control > .v-input__slot .the-row,
+.v-text-field--outlined > .v-input__control > .v-input__slot .the-row {
+  min-height: 30px !important;
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
+
 </style>
