@@ -1,0 +1,53 @@
+.height {
+  height: 20px;
+}
+
+.the-row {
+  @extend .height;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  width: 100%;
+  right: 0;
+  padding-right: 0;
+  float: right;
+}
+
+.the-card {
+  margin-bottom: 20px;
+}
+
+.the-switch {
+  float: left;
+  margin-top: 8px;
+  height: 20px;
+}
+
+.the-div {
+  margin: 5px;
+}
+
+.the-p {
+  font-size: 14px;
+  width: 80px;
+}
+
+.the-btn {
+  background-color: #00bfa5;
+  width: 100%;
+}
+
+.v-text-field--filled > .v-input__control > .v-input__slot .the-row,
+.v-text-field--full-width > .v-input__control > .v-input__slot .the-row,
+.v-text-field--outlined > .v-input__control > .v-input__slot .the-row {
+  min-height: 30px !important;
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
