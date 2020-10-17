@@ -683,5 +683,4 @@ export default {
 .the-btns {
   width: 15%;
 }
-
 </style>
