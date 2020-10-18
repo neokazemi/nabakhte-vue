@@ -518,17 +518,17 @@ export default {
 
   .product-details {
     background-color: #fff;
-    width: 99%;
-    margin-right: 1%;
     box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
     display: flex;
     flex-direction: row;
+    margin-right: 1%;
     position: relative;
+    width: 99%;
   }
 
   .product-details-col {
-    width: 100%;
     padding-top: 30px;
+    width: 100%;
   }
 
   .product-details-col button {
@@ -544,24 +544,24 @@ export default {
   }
 
   .product-details .middle {
-    border-right: 1px solid #ebe4e4;
     border-left: 1px solid #ebe4e4;
+    border-right: 1px solid #ebe4e4;
     padding-right: 20px;
   }
 
   .product-details .last {
-    padding: 25px 15px;
     font-size: 0.8rem;
     font-weight: bold;
     line-height: 2.5;
+    padding: 25px 15px;
   }
 
   .price,
   .buy-options {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     font-weight: bold;
+    justify-content: center;
     margin-bottom: 8px;
   }
 
@@ -570,8 +570,8 @@ export default {
   }
 
   .product-details .name {
-    font-weight: bold;
     font-size: 0.8rem;
+    font-weight: bold;
     margin-bottom: 18px;
   }
 
@@ -580,10 +580,10 @@ export default {
   }
 
   .price .discount {
-    padding: 0 3px;
     background-color: #fb1616;
-    color: #fff;
     border-radius: 3px;
+    color: #fff;
+    padding: 0 3px;
   }
 
   .price .new-price {
@@ -591,28 +591,28 @@ export default {
   }
 
   .buy-options button {
-    color: #fff;
-    font-size: 0.8rem;
     background-color: #2bbb28;
     border-radius: 5px;
     box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
-    padding: 0 10px;
+    color: #fff;
+    font-size: 0.8rem;
     line-height: 30px;
     margin-left: 5px;
+    padding: 0 10px;
   }
 
   .buy-options select {
-    border-radius: 5px;
-    height: 30px;
-    text-align: center;
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    -webkit-user-select: none;
-    -moz-user-select: none;
     background-color: #fff;
     border: 1px solid #222;
-    font-weight: normal;
+    border-radius: 5px;
     font-size: 0.8rem;
+    font-weight: normal;
+    height: 30px;
+    text-align: center;
+    -moz-appearance: button;
+    -moz-user-select: none;
+    -webkit-appearance: button;
+    -webkit-user-select: none;
   }
 
   .buy-options select:focus {
@@ -627,8 +627,8 @@ export default {
   }
 
   .tab-content p {
-    font-weight: normal;
     font-size: 0.9rem;
+    font-weight: normal;
   }
 
   .product-details .middle p {
@@ -642,45 +642,45 @@ export default {
   }
 
   .product-details .share {
-    position: absolute;
-    bottom: 0;
-    height: 42px;
     background-color: #f8f8f8;
+    bottom: 0;
     box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    height: 42px;
+    position: absolute;
     width: 100%;
   }
 
   .related-books {
-    text-align: right;
-    padding: 20px 10px;
-    font-size: 0.85rem;
-    font-weight: bold;
     display: flex;
     flex-direction: column;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 20px 10px;
+    text-align: right;
   }
 
   .related-book {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
-    position: relative;
     border-radius: 8px;
-    padding: 10px;
-    font-size: 0.65rem;
-    margin: 10px auto;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: row;
+    font-size: 0.65rem;
+    margin: 10px auto;
+    padding: 10px;
+    position: relative;
   }
 
   .related-book a {
     color: #000;
-    width: 85%;
     margin: auto 5px;
+    width: 85%;
   }
 
   .add-to-cart {
     background-color: rgb(43, 187, 40);
     border-radius: 50%;
-    line-height: 23px;
     height: 20px;
+    line-height: 23px;
     width: 20px;
   }
 
@@ -690,15 +690,15 @@ export default {
 
   .last ul li {
     color: #989898;
-    font-weight: normal;
     font-size: 0.75rem;
+    font-weight: normal;
   }
 
   .last ul li::before {
-    content: "\2714" !important;
     color: #2bbb28;
-    margin-left: 10px;
+    content: '\2714' !important;
     font-weight: bold;
+    margin-left: 10px;
   }
 
   .v-tabs {
@@ -707,9 +707,9 @@ export default {
   }
 
   .product .tabs .v-item-group .v-slide-group__wrapper .v-tabs-bar__content .v-tab {
+    color: #000;
     font-size: 1.05rem;
     font-weight: bold;
-    color: #000;
   }
 
   .product .tabs .v-item-group .v-slide-group__wrapper .v-tabs-bar__content .v-tab:hover {
@@ -722,13 +722,13 @@ export default {
   }
 
   .tab-content {
-    min-height: 100px;
     background-color: #fff;
     border: 1px solid #f1eeee;
     box-shadow: rgba(4, 5, 5, 0.15) 0 1px 2px;
-    padding: 0 30px;
     height: auto;
+    min-height: 100px;
     overflow: hidden;
+    padding: 0 30px;
   }
 
   .bold {
@@ -768,7 +768,7 @@ export default {
   }
 
   .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot fieldset {
-    border: none;
+    border: 0;
   }
 
   .mobile-container .buy-options-and-price .quantity .v-input__control .v-text-field__details {
@@ -776,10 +776,10 @@ export default {
   }
 
   .mobile-container .buy-options-and-price .quantity .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
-    padding: 0 5px;
+    color: #fff;
     font-size: 12px;
     font-weight: bold;
-    color: #fff;
+    padding: 0 5px;
   }
 
   .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections .v-select__selection {
@@ -811,9 +811,9 @@ export default {
     }
 
     .product-data .v-image {
-      width: 200px !important;
       height: auto !important;
       margin: auto auto 10px;
+      width: 200px !important;
     }
 
     .product-data .first {
@@ -840,8 +840,8 @@ export default {
 <style scoped>
 
   .mobile-container {
-    width: 90%;
     margin: 0 auto;
+    width: 90%;
   }
 
   .product-info {
@@ -852,89 +852,89 @@ export default {
 
   .product-pic-container {
     background-color: #fff;
+    border: 1px solid #e2e2e2;
     border-radius: 5px;
     position: relative;
-    border: 1px solid #e2e2e2;
   }
 
   .product-pic {
     border-radius: 5px;
-    width: 75%;
     float: left;
     margin: 10px 0 10px 8%;
     overflow: hidden;
+    width: 75%;
   }
 
   .discount {
+    align-items: flex-start;
+    background-color: #fb1616;
+    border-radius: 5px 0 100px;
     color: #fff;
+    display: flex;
     font-size: 1.7rem;
     font-weight: bold;
-    background-color: #fb1616;
-    position: absolute;
     height: 70px;
-    width: 70px;
-    top: 0;
-    left: 0;
-    border-radius: 5px 0 100px;
-    display: flex;
     justify-content: flex-end;
-    align-items: flex-start;
+    left: 0;
     padding: 10px;
+    position: absolute;
+    top: 0;
+    width: 70px;
   }
 
   .buy-options-and-price {
-    height: 50px;
+    align-items: center;
     background-color: #2bbb28;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
-    margin-top: 20px;
     border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: row;
+    height: 50px;
     justify-content: space-between;
-    align-items: center;
+    margin-top: 20px;
   }
 
   .buy-options-and-price .quantity {
-    width: 100px;
-    min-width: 75px;
-    height: 100%;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    background-color: rgb(38, 171, 36);
-    display: flex;
     align-items: center;
+    background-color: rgb(38, 171, 36);
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    display: flex;
+    height: 100%;
+    min-width: 75px;
+    width: 100px;
   }
 
   .buy-options-and-price .buy-button {
-    width: 100%;
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     padding: 0 16px;
+    width: 100%;
   }
 
   .mobile-container .plus-icon {
-    width: 20px;
-    height: 20px;
+    align-items: center;
     background-color: #fff;
     border-radius: 50%;
-    font-weight: bold;
     color: #2bbb28;
     display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 2rem;
+    font-weight: bold;
+    height: 20px;
+    justify-content: center;
     padding-top: 3px;
+    width: 20px;
   }
 
   .buy-options-and-price .buy-button .price {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
     color: #fff;
+    display: flex;
+    flex-direction: row;
     font-size: 16px;
+    justify-content: center;
     height: 100%;
     margin: 0;
   }
@@ -952,16 +952,16 @@ export default {
   }
 
   .mobile-container .product-details-container {
+    background-color: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
-    border-radius: 5px;
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #e2e2e2;
+    font-size: 12px;
     font-weight: bold;
     line-height: 3;
-    font-size: 12px;
+    margin-top: 20px;
+    padding: 10px;
   }
 
   .mobile-container .product-details-container span {
@@ -969,22 +969,22 @@ export default {
   }
 
   .fixed-add-to-cart {
+    align-items: center;
     background-color: #2bbb28;
-    font-weight: bold;
-    position: fixed;
     bottom: 0;
-    z-index: 20000;
-    padding: 15px;
-    width: 100%;
-    right: 0;
-    left: 0;
-    text-align: center;
-    font-size: 16px;
     color: #fff;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: row;
+    font-size: 16px;
+    font-weight: bold;
+    justify-content: center;
+    left: 0;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 20000;
   }
 
   .fixed-add-to-cart div {
