@@ -43,11 +43,11 @@
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
 export default {
-  layout: ({ isFromPc }) => isFromPc ? 'default' : 'default',
   components: {
     Header,
     Footer
   },
+  // layout: ({ isFromPc }) => isFromPc ? 'default' : 'default',
   data () {
     return {
       clipped: true,
@@ -91,7 +91,7 @@ export default {
     }
   },
   created () {
-    console.log('isFromPc: ', this.isFromPc)
+    // console.log('isFromPc: ', this.isFromPc)
     // console.log('(created)this.drawer: ', this.drawer)
   },
   mounted () {

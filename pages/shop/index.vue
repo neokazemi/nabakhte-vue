@@ -86,7 +86,7 @@
           <transition name="fade">
             <v-row v-if="grid === 'square'">
               <v-col v-for="(product, index) in products.list" :key="index" :sm="3" class="product-card-col">
-                <ProductCard :type="4" :details="product">
+                <ProductCard :type="4" :product="product">
                   {{ product.name }}
                 </ProductCard>
               </v-col>

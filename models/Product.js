@@ -1,10 +1,6 @@
 import { Model, Collection } from 'js-abstract-model'
-// import OrderStatsu from './OrderStatsu';
-// import PaymentStatsu from './PaymentStatsu';
-// import User from './User';
 import Price from './Price'
 import Image from './Image'
-// import {Set, SetList} from '../Model/Set';
 
 class Product extends Model {
   constructor (data) {
@@ -29,13 +25,7 @@ class Product extends Model {
         relatedModel: Price
       },
       { key: 'link' },
-      {
-        key: 'tags',
-        value (itemVal) {
-          return null
-          // return (itemVal) ? JSON.parse(itemVal) : null
-        }
-      },
+      { key: 'tags' },
       { key: 'enable' },
       { key: 'created_at' },
       { key: 'updated_at' },
