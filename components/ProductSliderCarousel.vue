@@ -14,7 +14,7 @@
               مشاهده بیشتر >
             </nuxt-link>
           </div>
-          <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2, 'pwa-slider-carousel': type === 3 }">
+          <div :class="{ 'slider-carousel': true, 'shorter-slider-carousel': type === 2, 'mobile-slider-carousel': type === 3 }">
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products.list" :key="index">
                 <ProductCard :product="product" :type="productCardType" :box-shadow="boxShadow">
@@ -235,7 +235,7 @@ export default {
     height: 350px;
   }
 
-  .pwa-slider-carousel {
+  .mobile-slider-carousel {
     height: fit-content !important;
   }
 

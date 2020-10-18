@@ -33,11 +33,11 @@ export default {
 
 <style scoped>
   .details {
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
     max-height: 300px;
     overflow-y: auto;
-    font-size: 0.75rem;
-    color: #000;
-    font-weight: bold;
   }
 
   button {
@@ -49,10 +49,10 @@ export default {
   }
 
   .name {
-    font-size: 1rem;
-    line-height: 30px;
-    font-weight: bold;
     color: #7b7777;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 30px;
   }
 
   .v-expansion-panel::before {
@@ -62,14 +62,14 @@ export default {
 
 <style>
   .name .v-expansion-panel-header__icon {
+    left: 10px;
     margin: 0;
     position: absolute;
-    left: 10px;
   }
 
   .name .v-expansion-panel-header__icon i {
-    font-style: normal;
     font-size: 14px;
+    font-style: normal;
   }
 
   .v-application .elevation-5 {

@@ -81,32 +81,32 @@ export default {
 
 <style scoped>
   .product-card6 {
-    padding: 13px 14px 13px 19px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff;
     border-radius: 8px;
-    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: row;
     height: 105px;
+    margin-bottom: 10px;
+    padding: 13px 14px 13px 19px;
   }
 
   .image-container {
-    display: flex;
     align-items: center;
+    display: flex;
   }
 
   .product-info-container {
-    margin-right: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-right: 10px;
     width: 100%;
   }
 
   .product-title {
-    font-weight: bold;
     font-size: 12px;
+    font-weight: bold;
   }
 
   .product-buy-info {
@@ -116,27 +116,27 @@ export default {
   }
 
   .quantity {
-    width: 100%;
     display: flex;
+    width: 100%;
   }
 
   .price {
-    width: 100%;
     display: flex;
-    justify-content: flex-end;
     font-size: 15px;
     font-weight: bold;
+    justify-content: flex-end;
+    width: 100%;
   }
 
   .quantity .delete-button {
-    border-radius: 6px;
     border: 1px solid #e3e3e3;
-    width: 41px;
-    height: 25px;
-    font-size: 12px;
+    border-radius: 6px;
     color: #8d8d8d;
-    padding: 1px 5px;
+    font-size: 12px;
+    height: 25px;
     margin: 0 5px;
+    padding: 1px 5px;
+    width: 41px;
   }
 </style>
 
@@ -156,8 +156,8 @@ export default {
   .product-card6 .quantity .v-text-field--enclosed.v-input--dense:not(.v-text-field--solo).v-text-field--outlined .v-input__append-inner,
   .product-card6 .quantity .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot,
   .product-card6 .quantity .v-select.v-text-field--outlined:not(.v-text-field--single-line).v-input--dense .v-select__selections {
-    padding: 0;
     margin: 0;
+    padding: 0;
   }
 
   .product-card6 .quantity .v-text-field--outlined.v-input--is-focused fieldset {
@@ -174,9 +174,9 @@ export default {
   }
 
   .product-card6 .quantity .v-input {
-    max-width: 70px;
     margin: 0;
     max-height: 25px;
+    max-width: 70px;
   }
 
   .product-card6 .quantity .v-select__slot {

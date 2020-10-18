@@ -1,9 +1,5 @@
-%height20px {
-  height: 20px;
-}
-
 .height {
-  @extend %height20px;
+  height: 20px;
 }
 
 .the-row {
@@ -41,19 +37,11 @@
   width: 100%;
 }
 
-.v-text-field--filled,
-.v-text-field--full-width,
-.v-text-field--outlined {
-  .the-row {
-    min-height: 30px !important;
-  }
-}
-
-/* .v-text-field--filled > .v-input__control > .v-input__slot .the-row,
+.v-text-field--filled > .v-input__control > .v-input__slot .the-row,
 .v-text-field--full-width > .v-input__control > .v-input__slot .the-row,
 .v-text-field--outlined > .v-input__control > .v-input__slot .the-row {
   min-height: 30px !important;
-} */
+}
 
 .v-text-field >>> input {
   font-size: 14px;

@@ -38,27 +38,27 @@ export default {
   .comment {
     background-color: #f8f8f8;
     border: 1px dashed #d4d4d4;
-    padding: 15px;
-    margin: 25px 0;
     border-radius: 14px;
     display: flex;
     flex-direction: row;
+    margin: 25px 0;
+    padding: 15px;
   }
 
   .comment-details {
     background-color: #9b9b9b;
-    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
     border-radius: 4px;
+    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
     color: #fff;
-    margin-left: 20px;
     display: flex;
     flex-direction: row;
+    margin-left: 20px;
     padding: 7px;
   }
 
   .likes {
-    width: 50px;
     text-align: center;
+    width: 50px;
   }
 
   .author-details {
@@ -72,11 +72,11 @@ export default {
   }
 
   .author-details a {
-    text-decoration: none;
     color: #fff;
     font-size: 0.7rem;
     font-weight: bold;
     margin: 0 10px;
+    text-decoration: none;
   }
 
   .author-details div p {

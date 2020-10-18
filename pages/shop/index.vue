@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="ispwa" class="pwa-container">
+    <div v-if="!isFromPc" class="mobile-container">
       <div class="products">
         <div v-for="(item, index) in products.list" :key="index" class="half-width">
           <ProductCard :type="8" :details="item" />
@@ -238,8 +238,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   methods: {
@@ -265,10 +265,10 @@ export default {
   }
 
   .sort {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    margin: 0 0 20px 0;
-    align-items: center;
+    margin: 0 0 20px;
   }
 
   .sort-by {
@@ -277,18 +277,18 @@ export default {
   }
 
   .sort select {
-    width: 170px;
-    -webkit-appearance: button;
     -moz-appearance: button;
+    -moz-user-select: none;
+    -webkit-appearance: button;
     -webkit-user-select: none;
     line-height: 30px;
-    -moz-user-select: none;
+    width: 170px;
   }
 
   .page-fields {
     background-color: #fff;
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
     border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0 15px;
@@ -312,31 +312,31 @@ export default {
   }
 
   .select-sort {
-    max-width: 170px;
     margin: 0 10px;
+    max-width: 170px;
   }
 
   .sort-by-container {
+    align-items: center;
     display: flex;
     flex-direction: row;
     min-width: 300px;
-    align-items: center;
   }
 
-  .pwa-container {
-    width: 95%;
+  .mobile-container {
     margin: 20px 2.5%;
+    width: 95%;
   }
 
-  .pwa-container .products {
+  .mobile-container .products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
 
   .half-width {
-    width: 50%;
     margin-bottom: 20px;
+    width: 50%;
   }
 
   @media only screen and (max-width: 1260px) {
@@ -374,8 +374,8 @@ export default {
     }
 
     .sort-by-container {
-      width: 100%;
       justify-content: center;
+      width: 100%;
     }
 
     .pagination {
@@ -419,8 +419,8 @@ export default {
   }
 
   .sort .v-text-field.v-text-field--solo .v-input__append-inner {
-    padding-left: 0;
     margin-left: -10px;
+    padding-left: 0;
   }
 
   @media only screen and (max-width: 959.5px) {

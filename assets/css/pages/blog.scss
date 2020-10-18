@@ -1,0 +1,15 @@
+.mobile-container {
+  .category-select {
+    .v-btn__content {
+      justify-content: right;
+    }
+
+    .v-menu__content {
+      background-color: #d81816;
+      left: 0 !important;
+      max-height: fit-content !important;
+      min-width: 100% !important;
+      top: 46px !important;
+    }
+  }
+}

@@ -1,0 +1,218 @@
+
+.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background-color: transparent;
+}
+
+.theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: transparent;
+}
+
+header .fixedMenu {
+  display: block;
+}
+
+header .scrolledMenu {
+  display: none;
+}
+
+header {
+  background-color: #f8f8f8;
+  box-shadow: none !important;
+}
+
+header.v-app-bar--is-scrolled {
+  background-color: #fff !important;
+  box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1) !important;
+}
+
+header.v-app-bar--is-scrolled .fixedMenu {
+  display: none;
+}
+
+header.v-app-bar--is-scrolled .scrolledMenu {
+  display: flex;
+}
+
+header.v-app-bar--is-scrolled .scrolledMenu .leftSide {
+  display: flex;
+}
+
+header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
+  display: flex;
+  flex: 1;
+}
+
+header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
+  margin: auto 5px;
+}
+
+.scrolledMenu .leftSide .leftSide-btn {
+  border-radius: 3px;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  margin-right: 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none !important;
+  width: 25px;
+}
+
+.top-menu {
+  padding-top: 0;
+}
+
+.search-button {
+  background-color: #33b130;
+}
+
+.cart-logo {
+  background-color: #fb1616;
+}
+
+.account-logo {
+  background-color: #50cbb2;
+}
+
+.leftSide-btn-arrow {
+  border-radius: 3px;
+  height: 25px;
+  position: relative;
+  width: 25px;
+}
+
+.leftSide-btn-arrow::before {
+  content: ' ';
+  border: 4px solid transparent;
+  border-top: 4px solid;
+  bottom: -8px;
+  height: 0;
+  margin-right: -4px;
+  position: absolute;
+  right: 50%;
+  width: 0;
+}
+
+.account-logo::before {
+  border-top-color: #50cbb2;
+}
+
+.cart-logo::before {
+  border-top-color: #fb1616;
+}
+
+.fixed-search-input {
+  background-color: #ececec;
+  border: 0;
+  border-radius: 7px;
+  color: #252525;
+  font-size: 12px;
+  height: 25px;
+  min-width: 200px;
+  padding-right: 15px;
+}
+
+.consulting-mega-menu-bg {
+  background-color: #fff;
+  border-top-left-radius: 50%;
+  height: 250%;
+  position: absolute;
+  right: 0;
+  top: -10%;
+  width: 97%;
+}
+
+.mobile-appbar {
+  border-bottom: 1px solid #2bbb28;
+  display: flex;
+  flex-direction: row;
+  height: inherit;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.mobile-appbar-item {
+  align-items: center;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: bold;
+  justify-content: center;
+  width: 20%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.mobile-header a {
+  color: #000;
+}
+
+.cart-scrolled-menu {
+  position: relative;
+}
+
+.cart-scrolled-menu .cart-details {
+  left: 0;
+  min-height: 55px;
+  padding: 17px;
+  top: 45px;
+  width: 340px;
+}
+
+.cart-scrolled-menu:hover .cart-details {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media only screen and (max-width: 1264px) {
+  .navbar-container {
+    width: 950px;
+  }
+
+  .nav-item {
+    margin: auto 0;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 950px;
+  }
+
+  .menu-nav {
+    padding: 10px 0;
+  }
+
+  .searchbar-container input {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 959.5px) {
+  .navbar-container {
+    width: 600px;
+  }
+
+  .top-menu .menu .top-menu-col {
+    max-width: 600px;
+  }
+
+  header .fixedMenu {
+    display: none;
+  }
+
+  .mobile-appbar-item {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mobile-appbar-item {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .mobile-appbar-item {
+    font-size: 0.9rem;
+  }
+}
