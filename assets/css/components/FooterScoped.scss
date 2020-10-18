@@ -11,13 +11,13 @@ a {
 }
 
 .logo-container {
-  width: 190px;
   padding: 0 15px;
+  width: 190px;
 }
 
 .footer-info {
-  font-size: 0.75rem;
   color: #525252;
+  font-size: 0.75rem;
 }
 
 .footer {
@@ -38,17 +38,17 @@ a {
 }
 
 .ft-contact-us-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  justify-content: center;
 }
 
 .phone {
-  margin-top: 5px;
   font-size: 1.2rem;
   text-align: center;
+  margin-top: 5px;
 }
 
 .email {
@@ -57,9 +57,9 @@ a {
 }
 
 .e-namad {
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   justify-content: flex-start;
 }
 
@@ -70,13 +70,13 @@ a {
 
 .rights,
 .contact-us {
-  width: 100%;
   display: flex;
   flex-direction: row;
-  text-align: left;
-  font-size: 0.6rem;
   height: 50%;
   justify-content: flex-end;
+  font-size: 0.6rem;
+  text-align: left;
+  width: 100%;
 }
 
 .under-footer {
@@ -84,9 +84,9 @@ a {
 }
 
 .mobile-footer {
-  padding: 30px;
   display: flex;
   flex-direction: column;
+  padding: 30px;
 
   .logo {
     padding: 0;
@@ -98,8 +98,8 @@ a {
     .about-cb {
       font-size: 0.9rem;
       font-weight: bold;
-      text-align: justify;
       line-height: 1.6;
+      text-align: justify;
     }
   }
 
@@ -109,12 +109,12 @@ a {
     margin: 0 -30px;
 
     .mobile-contact-us-box {
-      width: 100%;
+      align-items: center;
       border: 1px solid #cfcfcf;
-      padding: 10px;
       display: flex;
       justify-content: center;
-      align-items: center;
+      padding: 10px;
+      width: 100%;
     }
   }
 }

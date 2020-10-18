@@ -331,10 +331,10 @@ header a {
   background-color: #f8f8f8;
   height: 36px;
   margin: 0;
-  right: 100%;
-  top: 0;
   overflow: hidden;
   position: absolute;
+  right: 100%;
+  top: 0;
   width: 500px;
   z-index: 2;
 }
@@ -347,10 +347,10 @@ header a {
   height: 340px;
   left: 0;
   margin: 0 5px 5px;
-  position: absolute;
-  right: 0;
   opacity: 0;
   overflow: hidden;
+  position: absolute;
+  right: 0;
   transition: all 0.3s ease;
   visibility: hidden;
   width: 731px;
@@ -359,35 +359,35 @@ header a {
   -o-transition: all 0.3s ease;
 
   .option-selection {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 166px;
-    height: 100px;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
     align-items: center;
-    padding: 20px;
     border-left: 1px solid #e2dcd3;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-evenly;
+    padding: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 166px;
   }
 
   .option-selection .option {
-    height: 28px;
-    width: 125px;
-    border-radius: 20px;
-    padding: 0 10px;
-    margin: 5px 0;
-    display: flex;
-    justify-content: center;
     align-items: center;
     background: transparent;
-    text-decoration: none;
+    border-radius: 20px;
+    display: flex;
     flex-direction: row;
+    height: 28px;
+    justify-content: center;
+    margin: 5px 0;
+    padding: 0 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    width: 125px;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
   }
 
   .option-selection .option p {
@@ -401,24 +401,24 @@ header a {
   }
 
   .megaMenuIMG {
-    position: absolute;
+    bottom: 0;
+    display: block;
     left: 60px;
     margin: auto;
-    display: block;
+    position: absolute;
     top: 0;
-    bottom: 0;
   }
 
   .offline-consulting-menu {
-    position: absolute;
-    top: 0;
-    right: 166px;
-    height: 330px;
-    width: 250px;
-    padding: 20px;
     display: flex;
     flex-direction: column;
+    height: 330px;
     justify-content: right;
+    padding: 20px;
+    position: absolute;
+    right: 166px;
+    top: 0;
+    width: 250px;
   }
 }
 
@@ -427,27 +427,27 @@ header a {
 }
 
 .consulting:hover .consulting-mega-menu {
-  visibility: visible;
-  opacity: 1;
   margin-top: 5px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .fixed-nav-options {
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: center;
 
   .search-button {
+    align-items: center;
     background-color: #33b130;
-    height: 64%;
-    width: 30px;
-    border: none;
+    border: 0;
     border-radius: 5px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    height: 64%;
+    width: 30px;
   }
 
   a:hover {
@@ -456,55 +456,55 @@ header a {
 }
 
 .account-management {
-  height: 83px;
-  margin-top: 26px;
-  margin-right: 5px;
-  color: #50cbb2;
-  text-decoration: none !important;
-  width: 120px;
+  align-items: center;
   border: 2px solid transparent;
   border-bottom-color: #50cbb2;
-  justify-content: center;
+  color: #50cbb2;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 83px;
+  justify-content: center;
+  margin-right: 5px;
+  margin-top: 26px;
   position: relative;
+  text-decoration: none !important;
+  width: 120px;
 
   .account-options {
+    align-items: stretch;
     border-radius: 4px;
-    text-align: right;
-    width: 175px;
-    height: 166px;
-    left: 0;
     display: flex;
     flex-direction: column;
+    height: 166px;
     justify-content: stretch;
-    align-items: stretch;
+    left: 0;
+    text-align: right;
+    width: 175px;
 
     a {
-      font-size: 0.95rem;
-      width: 100%;
-      color: #000 !important;
-      margin: 0;
-      height: 100%;
       align-items: center;
+      color: #000 !important;
+      display: flex;
+      font-size: 0.95rem;
+      flex-direction: row;
+      height: 100%;
+      justify-content: flex-start;
+      margin: 0;
       padding: 0 15px;
       transition: all 200ms ease-in-out;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
+      width: 100%;
     }
 
     a:hover {
-      text-decoration: none;
-      color: #fff !important;
       background-color: #50cbb2;
+      color: #fff !important;
+      text-decoration: none;
     }
 
     .first-option {
-      border-top-right-radius: 4px;
-      border-top-left-radius: 4px;
       border-bottom: 1px solid #f4f4f4;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
     }
 
     .middle-option {
@@ -519,83 +519,83 @@ header a {
 }
 
 .user-button {
-  height: 120px;
-  flex-direction: row;
   display: flex;
-  width: 285px;
-  padding: 0 20px;
+  flex-direction: row;
+  height: 120px;
   justify-content: space-between;
+  padding: 0 20px;
+  width: 285px;
 
   .account-management:hover a {
-    text-decoration: none;
     color: #50cbb2;
+    text-decoration: none;
   }
 
   .user-cart:hover a {
-    text-decoration: none;
     color: #fb1616;
+    text-decoration: none;
   }
 }
 
 .consulting-menu-sub-option {
   color: #000 !important;
   direction: rtl;
-  float: right;
   display: flex;
-  padding: 0 10px;
+  float: right;
   margin: 7px 0;
+  padding: 0 10px;
 }
 
 .consulting-menu-sub-option:hover {
-  text-decoration: none;
   color: #ff3737 !important;
+  text-decoration: none;
 }
 
 .user-button-details,
 .cart-scrolled-menu .cart-details {
+  align-items: center;
+  background-color: #fff !important;
+  box-shadow: 0 3px 7px rgba(103, 82, 57, 0.1) !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  opacity: 0;
+  padding: 0;
   position: absolute;
   top: 85%;
-  margin-top: 5px;
-  padding: 0;
+  transform: translateY(-15px) !important;
+  transition: all 400ms ease-in-out !important;
+  visibility: hidden;
+  z-index: 2400;
   -webkit-transform: translateY(-15px) !important;
   -moz-transform: translateY(-15px) !important;
   -ms-transform: translateY(-15px) !important;
   -o-transform: translateY(-15px) !important;
-  transform: translateY(-15px) !important;
   -webkit-transition: all 400ms ease-in-out !important;
   -moz-transition: all 400ms ease-in-out !important;
   -o-transition: all 400ms ease-in-out !important;
-  transition: all 400ms ease-in-out !important;
-  z-index: 2400;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-  opacity: 0;
-  background-color: #fff !important;
-  box-shadow: 0 3px 7px rgba(103, 82, 57, 0.1) !important;
 }
 
 .user-cart:hover .user-button-details {
-  visibility: visible;
-  top: 100%;
   opacity: 1;
+  top: 100%;
+  visibility: visible;
 }
 
 .account-management:hover .account-options {
-  visibility: visible;
   opacity: 1;
   top: 100%;
+  visibility: visible;
 }
 
 .nav-bar-options {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
   color: #fff;
-  margin: auto 0 auto 5%;
   font-size: 0.8rem;
+  margin: auto 0 auto 5%;
+  transition: all 0.3s ease;
 }
 
 .nav-bar-options:hover {
@@ -604,11 +604,11 @@ header a {
 
 .instagram,
 .telegram {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
 }
 
 .instagram:hover,
@@ -618,13 +618,13 @@ header a {
 
 .fixed-navbar {
   background-color: #fff;
+  box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1);
+  display: flex;
+  height: 41px;
+  justify-content: center;
   position: fixed;
   top: 0;
   z-index: 2600;
-  height: 41px;
-  box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1);
-  display: flex;
-  justify-content: center;
 
   .fixed-navbar-content {
     height: 41px;
@@ -632,22 +632,22 @@ header a {
 
     .row .nav-menu a {
       margin: auto 0;
-      text-align: center;
       padding-right: 20px;
+      text-align: center;
     }
 
     .row .nav-menu {
+      align-items: center;
       display: flex;
       flex-direction: row;
-      padding: 0;
-      align-items: center;
       justify-content: flex-start;
+      padding: 0;
 
       a:hover {
-        text-decoration: none;
-        color: #000;
         background-color: #fff;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        color: #000;
+        text-decoration: none;
       }
     }
   }
