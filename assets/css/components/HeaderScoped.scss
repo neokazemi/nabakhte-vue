@@ -148,10 +148,16 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   color: #000;
 }
 
+.cart-scrolled-menu {
+  position: relative;
+}
+
 .cart-scrolled-menu .cart-details {
   min-height: 55px;
   width: 340px;
   padding: 17px;
+  left: 0;
+  top: 45px;
 }
 
 .cart-scrolled-menu:hover .cart-details {
