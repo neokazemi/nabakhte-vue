@@ -250,24 +250,24 @@ export default {
 }
 
 .the-row {
-  height: 20px;
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
-  width: 100%;
-  right: 0;
-  padding-right: 0;
   float: right;
+  height: 20px;
+  margin-bottom: 2.5px;
+  margin-top: 2.5px;
+  padding-right: 0;
+  right: 0;
+  width: 100%;
 }
 
 .the-switch {
   float: left;
-  margin-top: 8px;
   height: 20px;
+  margin-top: 8px;
 }
 
-.v-text-field--filled > .v-input__control > .v-input__slot .the-row,
-.v-text-field--full-width > .v-input__control > .v-input__slot .the-row,
-.v-text-field--outlined > .v-input__control > .v-input__slot .the-row {
+.v-text-field--filled > .v-input__control > .v-input__slot,
+.v-text-field--full-width > .v-input__control > .v-input__slot,
+.v-text-field--outlined > .v-input__control > .v-input__slot {
   min-height: 30px !important;
 }
 
