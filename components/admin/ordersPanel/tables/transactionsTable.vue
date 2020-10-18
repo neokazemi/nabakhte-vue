@@ -409,8 +409,8 @@ export default {
 }
 
 .the-data-table {
-  width: 100%;
   margin-top: 30px;
+  width: 100%;
 }
 
 .adding-btn {
@@ -422,9 +422,9 @@ export default {
 }
 
 .thetextfield {
+  font-size: small;
   margin: 10px;
   width: 260px;
-  font-size: small;
 }
 
 .thedialog {
