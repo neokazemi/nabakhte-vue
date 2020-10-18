@@ -332,9 +332,9 @@ export default {
 
 <style scoped>
 .thetextfield {
+  font-size: small;
   margin: 10px;
   width: 500px;
-  font-size: small;
 }
 
 .the-card {
@@ -349,8 +349,8 @@ export default {
 }
 
 .the-data-table {
-  width: 100%;
   margin-top: 30px;
+  width: 100%;
 }
 
 .adding-btn {
