@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TopView v-if="ispwa" :products="products" :main-carousel-slides="mainCarouselSlides" />
+    <TopView v-if="!isFromPc" :products="products" :main-carousel-slides="mainCarouselSlides" />
     <v-layout
       v-else
       column
@@ -18,7 +18,7 @@
         </v-col>
       </v-row>
     </v-layout>
-    <div v-if="ispwa">
+    <div v-if="!isFromPc">
       <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
         جدید ترین کتاب های کمک آموزشی
       </ProductSliderCarousel>
@@ -39,6 +39,40 @@
       <ProductSliderCarousel :products="products" main-bg="#6130a4" bottom-bg="#6d3ab3">
         محبوب ترین محصولات
       </ProductSliderCarousel>
+      <v-container>
+        <v-row>
+          <v-col :md="4" class="recent-articles">
+            <div class="recent-articles-header">
+              <h4>مقالات اخیر</h4>
+              <nuxt-link class="more-info" to="/blog/category/maghalat">
+                مشاهده بیشتر
+              </nuxt-link>
+            </div>
+            <div class="recent-articles-content">
+              <div class="item">
+                <nuxt-link to="#">
+                  بهترین کتاب های کمک آموزشی پایه دوازدهم بر اساس نظرسنجی مهرماه 1399
+                </nuxt-link>
+              </div>
+              <div class="item">
+                <nuxt-link to="#">
+                  بهترین کتاب های کمک آموزشی پایه یازدهم بر اساس نظرسنجی مهرماه 1399
+                </nuxt-link>
+              </div>
+              <div class="item">
+                <nuxt-link to="#">
+                  بهترین کتاب های کمک آموزشی پایه دهم بر اساس نظرسنجی مهرماه 1399
+                </nuxt-link>
+              </div>
+              <div class="item">
+                <nuxt-link to="#">
+                  چگونه در مقطع متوسطه اول (دبیرستان) انتخاب رشته کنیم؟
+                </nuxt-link>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </div>
   </div>
 </template>
@@ -70,9 +104,49 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   }
 }
 </script>
+
+<style scoped>
+  .recent-articles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recent-articles .recent-articles-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .recent-articles .recent-articles-content {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recent-articles .recent-articles-content .item {
+    padding: 5px 10px;
+    text-align: center;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid #fff;
+  }
+
+  .recent-articles .recent-articles-content .item a {
+    color: #fff;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .more-info {
+    color: #a2a2a1;
+    font-size: 0.8rem;
+  }
+</style>

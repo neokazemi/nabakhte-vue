@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="ispwa" class="pwa-container">
+    <div v-if="!isFromPc" class="mobile-container">
       <div class="products">
         <div v-for="(item, index) in products.list" :key="index" class="half-width">
           <ProductCard :type="8" :details="item" />
@@ -238,8 +238,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   methods: {
@@ -323,12 +323,12 @@ export default {
     align-items: center;
   }
 
-  .pwa-container {
+  .mobile-container {
     width: 95%;
     margin: 20px 2.5%;
   }
 
-  .pwa-container .products {
+  .mobile-container .products {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

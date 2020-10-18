@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="pwa-drawer-header-container">
+    <div class="mobile-drawer-header-container">
       <div class="close-button" @click="closeDrawer">
         <p>✕</p>
       </div>
@@ -8,7 +8,7 @@
         <v-img src="https://www.chibekhoonam.net/wp-content/themes/chib-pwa/assets/images/logo-site-mobile.svg" :width="89" :height="34" contain />
       </div>
     </div>
-    <div class="pwa-drawer-content">
+    <div class="mobile-drawer-content">
       <nuxt-link to="/" class="drawer-item">
         خانه
       </nuxt-link>
@@ -195,7 +195,7 @@ export default {
     opacity: 0.9;
   }
 
-  .menu .pwa-drawer-header-container {
+  .menu .mobile-drawer-header-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -203,17 +203,17 @@ export default {
     margin-bottom: 20px;
   }
 
-  .menu .pwa-drawer-header-container .close-button p {
+  .menu .mobile-drawer-header-container .close-button p {
     font-weight: bold;
     font-size: 24px;
   }
 
-  .menu .pwa-drawer-content {
+  .menu .mobile-drawer-content {
     display: flex;
     flex-direction: column;
   }
 
-  .menu .pwa-drawer-content .drawer-item {
+  .menu .mobile-drawer-content .drawer-item {
     font-size: 13px;
     font-weight: bold;
     border-bottom: 1px solid #e4e4e4;
@@ -224,22 +224,22 @@ export default {
     margin: 0 8px 0 12px;
   }
 
-  .menu .pwa-drawer-content . {
+  .menu .mobile-drawer-content . {
     color: #f00;
   }
 </style>
 
 <style>
 
-  .menu .pwa-drawer-content .v-treeview--dense .v-treeview-node__root {
+  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root {
     min-height: 42px;
   }
 
-  .menu .pwa-drawer-content .v-treeview--dense .v-treeview-node__root .v-icon.v-icon.v-icon--link {
+  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root .v-icon.v-icon.v-icon--link {
     display: none;
   }
 
-  .menu .pwa-drawer-content .v-treeview--dense .v-treeview-node__content .v-treeview-node__label {
+  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__content .v-treeview-node__label {
     font-size: 13px;
     font-weight: bold;
     border-bottom: 1px solid #e4e4e4;

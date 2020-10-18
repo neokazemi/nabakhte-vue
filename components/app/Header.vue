@@ -4,24 +4,24 @@
       v-if="!isFromPc"
       color="#fff"
       app
-      class="pwa-header"
+      class="mobile-header"
     >
-      <div class="pwa-appbar">
-        <div class="pwa-appbar-item">
+      <div class="mobile-appbar">
+        <div class="mobile-appbar-item">
           <v-app-bar-nav-icon @click="menuDrawerOpen" />
         </div>
-        <div class="pwa-appbar-item" @click="searchDrawerOpen">
+        <div class="mobile-appbar-item" @click="searchDrawerOpen">
           <p>جستجو</p>
         </div>
-        <div class="pwa-appbar-item">
+        <div class="mobile-appbar-item">
           <nuxt-link to="/سبد-خرید">
             سبد خرید
           </nuxt-link>
         </div>
-        <div class="pwa-appbar-item" @click="AccountDrawerOpen">
+        <div class="mobile-appbar-item" @click="AccountDrawerOpen">
           <p>پنل کاربری</p>
         </div>
-        <div class="pwa-appbar-item">
+        <div class="mobile-appbar-item">
           <nuxt-link to="/" class="full-height d-flex align-center">
             <v-img src="./images/logo3.png" contain :height="'70%'" :min-width="50" />
           </nuxt-link>
@@ -297,11 +297,16 @@
               <i class="fas fa-shopping-cart" />
             </div>
           </a>
-          <nuxt-link to="/سبد-خرید">
-            <div class="leftSide-btn leftSide-btn-arrow cart-logo">
-              <i class="fas fa-shopping-cart" />
+          <div class="cart-scrolled-menu">
+            <nuxt-link to="/سبد-خرید">
+              <div class="leftSide-btn leftSide-btn-arrow cart-logo">
+                <i class="fas fa-shopping-cart" />
+              </div>
+            </nuxt-link>
+            <div class="cart-details">
+              <HeaderCart :products="products" />
             </div>
-          </nuxt-link>
+          </div>
           <a href="#">
             <div class="leftSide-btn leftSide-btn-arrow account-logo">
               <i class="fas fa-user" />
@@ -317,9 +322,9 @@
 import HeaderCart from '../HeaderCart'
 import { ProductList } from '../../models/Product'
 import Badge from '../Badge'
-import MainMenu from '../PwaMenus/MainMenu'
-import SearchMenu from '../PwaMenus/SearchMenu'
-import AccountMenu from '../PwaMenus/AccountMenu'
+import MainMenu from '../MobileMenus/MainMenu'
+import SearchMenu from '../MobileMenus/SearchMenu'
+import AccountMenu from '../MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.scss'
 
@@ -345,8 +350,8 @@ export default {
     products () {
       return new ProductList(this.$store.getters.products)
     },
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   methods: {
@@ -366,6 +371,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   @import '../../assets/css/components/HeaderScoped.scss';
 </style>

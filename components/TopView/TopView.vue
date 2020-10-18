@@ -1,13 +1,13 @@
 <template>
   <div class="container body-head">
     <div class="row">
-      <div :class="{ 'col-md-9': !ispwa, col: ispwa }">
+      <div :class="{ 'col-md-9': isFromPc, col: !isFromPc }">
         <div class="row big-carousel">
           <MainCarousel :slides="mainCarouselSlides" />
-          <CarouselButtons v-if="!ispwa" />
+          <CarouselButtons v-if="isFromPc" />
         </div>
       </div>
-      <div v-if="!ispwa" class="col-3">
+      <div v-if="isFromPc" class="col-3">
         <v-carousel hide-delimiters class="product-card">
           <v-carousel-item
             v-for="(product,index) in products.list"
@@ -50,8 +50,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   }
 }

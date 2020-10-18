@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="ispwa" class="pwa-box">
+    <div v-if="isFromPc" class="mobile-box">
       <div class="category">
         <p>مقالات</p>
       </div>
@@ -83,8 +83,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   methods: {
@@ -166,7 +166,7 @@ export default {
 </style>
 
 <style scoped>
-  .pwa-box {
+  .mobile-box {
     display: flex;
     flex-direction: column;
     border-radius: 8px;
@@ -176,11 +176,11 @@ export default {
     margin-bottom: 10px;
   }
 
-  .pwa-box div {
+  .mobile-box div {
     margin-bottom: 10px;
   }
 
-  .pwa-box .category p {
+  .mobile-box .category p {
     background-color: #d81816;
     height: 20px;
     font-weight: bold;
@@ -192,13 +192,13 @@ export default {
     line-height: 20px;
   }
 
-  .pwa-box .post-title p {
+  .mobile-box .post-title p {
     font-size: 16px;
     line-height: 32px;
     font-weight: bold;
   }
 
-  .pwa-box .excerpt p {
+  .mobile-box .excerpt p {
     font-size: 12px;
     line-height: 26px;
   }

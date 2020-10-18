@@ -1,5 +1,5 @@
 <template>
-  <div v-if="ispwa" class="pwa-container">
+  <div v-if="!isFromPc" class="mobile-container">
     <div class="category-select">
       <v-menu offset-y auto attach="#category-select-btn">
         <template v-slot:activator="{ on, attrs }">
@@ -47,6 +47,7 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
+import '~/assets/css/pages/blog.scss'
 export default {
   name: 'Category',
   components: {
@@ -924,8 +925,8 @@ export default {
     posts () {
       return this.$store.getters.posts
     },
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   created () {
@@ -964,26 +965,5 @@ export default {
 </script>
 
 <style scoped>
-  .pwa-container {
-    width: 95%;
-    margin: 0 2.5%;
-  }
-
-  .pwa-container .category-select {
-    margin: 10px 0;
-  }
-</style>
-
-<style>
-  .pwa-container .category-select .v-btn__content {
-    justify-content: right;
-  }
-
-  .pwa-container .category-select .v-menu__content {
-    background-color: #d81816;
-    max-height: fit-content !important;
-    min-width: 100% !important;
-    left: 0 !important;
-    top: 46px !important;
-  }
+  @import '../../../assets/css/pages/blogScoped.scss';
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="ispwa" class="pwa-container">
+    <div v-if="!isFromPc" class="mobile-container">
       <ProductCard v-for="(item, index) in cart.list" :key="index" :type="9" :details="item" />
       <div class="discount-container">
         <v-text-field
@@ -143,8 +143,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   created () {
@@ -324,7 +324,7 @@ export default {
     background-color: #00b722;
   }
 
-  .pwa-container {
+  .mobile-container {
     margin: 0 2.5%;
     width: 95%;
     display: flex;
@@ -332,7 +332,7 @@ export default {
     justify-content: center;
   }
 
-  .pwa-container .discount-container {
+  .mobile-container .discount-container {
     height: 48px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff;
@@ -360,7 +360,7 @@ export default {
     border-radius: 6px;
   }
 
-  .pwa-container .final-price-container {
+  .mobile-container .final-price-container {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff;
     border-radius: 10px;
@@ -370,15 +370,15 @@ export default {
     padding: 30px 10px;
   }
 
-  .pwa-container .final-price-container .cart-subtotal,
-  .pwa-container .final-price-container .subtotal-price {
+  .mobile-container .final-price-container .cart-subtotal,
+  .mobile-container .final-price-container .subtotal-price {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  .pwa-container .final-price-container .cart-subtotal {
+  .mobile-container .final-price-container .cart-subtotal {
     font-size: 16px;
     font-weight: bold;
     border-bottom: 1px solid #dfdfdf;
@@ -386,11 +386,11 @@ export default {
     padding-bottom: 10px;
   }
 
-  .pwa-container .final-price-container .cart-subtotal span {
+  .mobile-container .final-price-container .cart-subtotal span {
     font-size: 12px;
   }
 
-  .pwa-container .final-price-container .subtotal-price {
+  .mobile-container .final-price-container .subtotal-price {
     border-top: 1px solid #dfdfdf;
     margin-top: 0;
     padding-top: 10px;
@@ -398,7 +398,7 @@ export default {
     font-weight: bold;
   }
 
-  .pwa-container .final-price-container .subtotal-price span {
+  .mobile-container .final-price-container .subtotal-price span {
     font-size: 12px;
   }
 
@@ -569,16 +569,16 @@ export default {
 </style>
 
 <style>
-  .pwa-container .discount-container .v-input {
+  .mobile-container .discount-container .v-input {
     padding-left: 5px;
     border-radius: 6px;
   }
 
-  .pwa-container .discount-container .theme--light.v-text-field > .v-input__control > .v-input__slot::before {
+  .mobile-container .discount-container .theme--light.v-text-field > .v-input__control > .v-input__slot::before {
     border-color: transparent;
   }
 
-  .pwa-container .discount-container .v-text-field .v-label {
+  .mobile-container .discount-container .v-text-field .v-label {
     transform-origin: top right !important;
     left: auto !important;
     right: 0 !important;
@@ -587,24 +587,24 @@ export default {
     font-weight: bold;
   }
 
-  .pwa-container .discount-container .v-text-field input {
+  .mobile-container .discount-container .v-text-field input {
     padding: 0;
   }
 
-  .pwa-container .discount-container .v-text-field--filled:not(.v-text-field--single-line) input {
+  .mobile-container .discount-container .v-text-field--filled:not(.v-text-field--single-line) input {
     background-color: transparent;
     margin: 0;
   }
 
-  .pwa-container .discount-container .v-text-field.v-text-field--enclosed .v-text-field__details {
+  .mobile-container .discount-container .v-text-field.v-text-field--enclosed .v-text-field__details {
     display: none;
   }
 
-  .pwa-container .discount-container .v-input__slot {
+  .mobile-container .discount-container .v-input__slot {
     margin: 4px 0 0 0;
   }
 
-  .pwa-container .discount-container .v-text-field--filled > .v-input__control > .v-input__slot {
+  .mobile-container .discount-container .v-text-field--filled > .v-input__control > .v-input__slot {
     min-height: 42px;
   }
 </style>

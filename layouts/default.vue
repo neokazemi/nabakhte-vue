@@ -1,15 +1,15 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      v-if="ispwa"
+      v-if="!isFromPc"
       v-model="drawer"
-      :mini-variant="!ispwa"
-      :clipped="!ispwa"
-      :right="!ispwa"
+      :mini-variant="isFromPc"
+      :clipped="isFromPc"
+      :right="isFromPc"
       fixed
-      :app="!ispwa"
-      :bottom="ispwa"
-      :class="{ 'pwa-drawer': ispwa }"
+      :app="isFromPc"
+      :bottom="!isFromPc"
+      :class="{ 'mobile-drawer': !isFromPc }"
     >
       <Component :is="mainMenu" />
     </v-navigation-drawer>
@@ -107,7 +107,11 @@ export default {
 </script>
 
 <style>
-  .pwa-drawer {
+  .mobile-drawer {
     opacity: 0.9;
+  }
+
+  .v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
+    min-height: 100%;
   }
 </style>

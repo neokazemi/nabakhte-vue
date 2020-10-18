@@ -1,6 +1,6 @@
 <template>
   <div class="product-page">
-    <div v-if="ispwa" class="pwa-container">
+    <div v-if="!isFromPc" class="mobile-container">
       <Breadcrumbs :items="breadcrumbsItems" />
       <div class="product-info">
         <h2 class="product-title">
@@ -491,8 +491,8 @@ export default {
     }
   },
   computed: {
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   created () {
@@ -763,35 +763,35 @@ export default {
     margin: 15px;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections input {
+  .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections input {
     display: none;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-input__control .v-input__slot fieldset {
+  .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot fieldset {
     border: none;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-input__control .v-text-field__details {
+  .mobile-container .buy-options-and-price .quantity .v-input__control .v-text-field__details {
     display: none;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+  .mobile-container .buy-options-and-price .quantity .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
     padding: 0 5px;
     font-size: 12px;
     font-weight: bold;
     color: #fff;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections .v-select__selection {
+  .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections .v-select__selection {
     color: #fff;
   }
 
-  .pwa-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .mdi-menu-down::before {
+  .mobile-container .buy-options-and-price .quantity .v-input__control .v-input__slot .v-select__slot .mdi-menu-down::before {
     color: #fff;
   }
 
-  .pwa-container .v-tabs .v-slide-group__prev,
-  .pwa-container .v-tabs .v-slide-group__next {
+  .mobile-container .v-tabs .v-slide-group__prev,
+  .mobile-container .v-tabs .v-slide-group__next {
     display: none !important;
   }
 
@@ -839,7 +839,7 @@ export default {
 
 <style scoped>
 
-  .pwa-container {
+  .mobile-container {
     width: 90%;
     margin: 0 auto;
   }
@@ -914,7 +914,7 @@ export default {
     padding: 0 16px;
   }
 
-  .pwa-container .plus-icon {
+  .mobile-container .plus-icon {
     width: 20px;
     height: 20px;
     background-color: #fff;
@@ -939,19 +939,19 @@ export default {
     margin: 0;
   }
 
-  .pwa-container .price * {
+  .mobile-container .price * {
     margin: auto 3px;
   }
 
-  .pwa-container .price .old-price {
+  .mobile-container .price .old-price {
     color: #237521;
   }
 
-  .pwa-container .price .new-price {
+  .mobile-container .price .new-price {
     font-size: 20px;
   }
 
-  .pwa-container .product-details-container {
+  .mobile-container .product-details-container {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -964,7 +964,7 @@ export default {
     font-size: 12px;
   }
 
-  .pwa-container .product-details-container span {
+  .mobile-container .product-details-container span {
     color: #676767;
   }
 

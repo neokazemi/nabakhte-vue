@@ -122,7 +122,7 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   border-top-left-radius: 50%;
 }
 
-.pwa-appbar {
+.mobile-appbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -131,7 +131,7 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   border-bottom: 1px solid #2bbb28;
 }
 
-.pwa-appbar-item {
+.mobile-appbar-item {
   width: 20%;
   display: flex;
   align-items: center;
@@ -144,8 +144,19 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   height: 100%;
 }
 
-.pwa-header a {
+.mobile-header a {
   color: #000;
+}
+
+.cart-scrolled-menu .cart-details {
+  min-height: 55px;
+  width: 340px;
+  padding: 17px;
+}
+
+.cart-scrolled-menu:hover .cart-details {
+  visibility: visible;
+  opacity: 1;
 }
 
 @media only screen and (max-width: 1264px) {
@@ -183,19 +194,19 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
     display: none;
   }
 
-  .pwa-appbar-item {
+  .mobile-appbar-item {
     font-size: 1rem;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .pwa-appbar-item {
+  .mobile-appbar-item {
     font-size: 1.2rem;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .pwa-appbar-item {
+  .mobile-appbar-item {
     font-size: 0.9rem;
   }
 }
