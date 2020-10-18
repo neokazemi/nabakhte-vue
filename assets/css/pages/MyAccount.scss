@@ -13,8 +13,8 @@
   }
 
   .v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot label {
-    right: 5px !important;
     left: auto !important;
+    right: 5px !important;
   }
 
   .v-text-field__details .v-messages .v-messages__wrapper {
@@ -72,8 +72,8 @@
 }
 
 .v-dialog .v-card .close-button-address-dialog {
-  position: absolute;
   left: 10px;
+  position: absolute;
   top: 10px;
 }
 

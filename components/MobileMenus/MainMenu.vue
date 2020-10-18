@@ -191,21 +191,21 @@ export default {
   .menu {
     display: flex;
     flex-direction: column;
-    padding: 16px;
     opacity: 0.9;
+    padding: 16px;
   }
 
   .menu .mobile-drawer-header-container {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
   }
 
   .menu .mobile-drawer-header-container .close-button p {
-    font-weight: bold;
     font-size: 24px;
+    font-weight: bold;
   }
 
   .menu .mobile-drawer-content {
@@ -214,13 +214,13 @@ export default {
   }
 
   .menu .mobile-drawer-content .drawer-item {
-    font-size: 13px;
-    font-weight: bold;
+    align-items: center;
     border-bottom: 1px solid #e4e4e4;
-    height: 42px;
     color: #000;
     display: flex;
-    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+    height: 42px;
     margin: 0 8px 0 12px;
   }
 
@@ -240,9 +240,9 @@ export default {
   }
 
   .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__content .v-treeview-node__label {
+    border-bottom: 1px solid #e4e4e4;
     font-size: 13px;
     font-weight: bold;
-    border-bottom: 1px solid #e4e4e4;
     line-height: 42px;
   }
 </style>

@@ -115,12 +115,12 @@ export default {
   }
 
   .post .post-meta div {
-    margin: auto 20px auto 0;
     display: inline-block;
+    margin: auto 20px auto 0;
   }
 
   .post .post-meta div::after {
-    content: "|";
+    content: '|';
     margin: auto 20px auto 0;
   }
 
@@ -129,51 +129,51 @@ export default {
   }
 
   .post .v-card__subtitle {
-    padding-top: 0;
-    visibility: hidden;
-    opacity: 1;
-    height: 0;
-    transition: all 0.3s ease;
     font-size: 0.7rem;
+    height: 0;
+    opacity: 1;
+    padding-top: 0;
+    transition: all 0.3s ease;
+    visibility: hidden;
   }
 
   .post:hover .v-card__subtitle {
-    visibility: visible;
     height: 75px;
     opacity: 1;
+    visibility: visible;
   }
 
   .post .more-info {
-    transition: all 0.3s ease;
-    opacity: 0;
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
     display: block;
     float: left;
-    background-color: #fff;
-    line-height: 28px;
-    color: #000;
-    padding: 0 15px;
-    border-radius: 5px;
-    margin-top: 10px;
-    margin-right: 50px;
     height: 0;
+    line-height: 28px;
+    margin-right: 50px;
+    margin-top: 10px;
+    opacity: 0;
+    padding: 0 15px;
+    transition: all 0.3s ease;
   }
 
   .post:hover .more-info {
-    opacity: 1;
     height: auto;
+    opacity: 1;
   }
 
 </style>
 
 <style scoped>
   .mobile-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
-    background-color: #fff;
-    padding: 28px 18px 29px 22px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
     margin-bottom: 10px;
+    padding: 28px 18px 29px 22px;
   }
 
   .mobile-box div {
@@ -182,20 +182,20 @@ export default {
 
   .mobile-box .category p {
     background-color: #d81816;
-    height: 20px;
-    font-weight: bold;
-    color: #fff;
-    width: fit-content;
-    font-size: 12px;
     border-radius: 4px;
-    padding: 0 4px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    height: 20px;
     line-height: 20px;
+    padding: 0 4px;
+    width: fit-content;
   }
 
   .mobile-box .post-title p {
     font-size: 16px;
-    line-height: 32px;
     font-weight: bold;
+    line-height: 32px;
   }
 
   .mobile-box .excerpt p {
