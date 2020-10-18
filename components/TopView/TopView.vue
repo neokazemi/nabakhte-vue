@@ -61,13 +61,13 @@ export default {
   .product-card .v-window__prev,
   .product-card .v-window__next {
     background: #50cbb2;
-    position: absolute;
     border-radius: 0;
-    margin: 0;
-    top: calc(60% - 20px);
-    z-index: 1;
-    width: 20px;
     height: 20px;
+    margin: 0;
+    position: absolute;
+    top: calc(60% - 20px);
+    width: 20px;
+    z-index: 1;
   }
 
   .product-card .v-window__prev {
@@ -85,7 +85,7 @@ export default {
 
   .product-card .v-window__prev button,
   .product-card .v-window__next button {
-    width: 20px;
     height: 20px;
+    width: 20px;
   }
 </style>

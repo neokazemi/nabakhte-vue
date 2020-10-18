@@ -81,29 +81,29 @@ export default {
 <style scoped>
   .product-card5 {
     box-sizing: border-box;
-    width: 100%;
     padding: 0 5px;
     position: relative;
+    width: 100%;
   }
 
   .product-card5-bg {
     background-color: #fff;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 8px;
   }
 
   .product-img {
-    width: 95%;
     margin: 2.5%;
+    width: 95%;
   }
 
   .product-name {
-    text-align: right;
     font-size: 0.8rem;
-    padding: 3px 10px;
     height: 40px;
+    padding: 3px 10px;
+    text-align: right;
   }
 
   .rating {
@@ -113,24 +113,24 @@ export default {
   }
 
   .final-price-and-buy {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0 10px;
-    align-items: center;
   }
 
   .final-price {
+    align-items: center;
     color: #6f6f6f;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
   }
 
   .bold {
-    font-weight: bold;
     font-size: 1.2rem;
+    font-weight: bold;
   }
 
   .black-font {
@@ -138,11 +138,11 @@ export default {
   }
 
   .discount-price {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    align-items: center;
-    margin: 10px 10px;
+    margin: 10px;
   }
 
   .discount-price p {
@@ -155,9 +155,9 @@ export default {
 
   .discount-price .discount {
     background-color: #fb1616;
-    padding: 5px 1px;
-    font-weight: bold;
     color: #fff;
+    font-weight: bold;
+    padding: 5px 1px;
   }
 
   .box-shadow {
@@ -168,9 +168,9 @@ export default {
 <style>
   .product-card5 .final-price-and-buy a {
     background-color: #2bbb28;
-    width: 20px;
+    border-radius: 50%;
     height: 20px;
     margin: 5px 0;
-    border-radius: 50%;
+    width: 20px;
   }
 </style>

@@ -32,21 +32,21 @@ export default {
   .menu {
     display: flex;
     flex-direction: column;
-    padding: 16px;
     opacity: 0.9;
+    padding: 16px;
   }
 
   .menu .mobile-drawer-header-container {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
   }
 
   .menu .mobile-drawer-header-container .close-button p {
-    font-weight: bold;
     font-size: 24px;
+    font-weight: bold;
   }
 
   .menu .mobile-drawer-content .v-application--is-ltr .v-text-field .v-label {

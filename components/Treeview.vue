@@ -42,13 +42,13 @@ export default {
 
 <style>
   .v-treeview {
-    font-weight: bold;
     font-size: 1rem;
+    font-weight: bold;
   }
 
   .mobile-treeview {
-    text-align: right;
     color: #fff;
+    text-align: right;
   }
 
   .v-treeview .v-treeview-node .v-icon {

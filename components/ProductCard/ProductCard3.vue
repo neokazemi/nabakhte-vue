@@ -47,9 +47,9 @@ export default {
   }
 
   .full-width {
-    width: 100%;
     box-sizing: border-box;
     padding: 20px 0;
+    width: 100%;
   }
 
   .product-image {
@@ -58,9 +58,9 @@ export default {
   }
 
   .card-product-details {
+    color: #000;
     display: flex;
     flex-direction: column;
-    color: #000;
     font-size: 0.8rem;
     font-weight: bold;
     margin-right: 10px;
@@ -78,28 +78,28 @@ export default {
   }
 
   .cart-item-image-hover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    align-items: center;
     background-color: #fb1616;
-    visibility: hidden;
+    color: #fff !important;
+    display: flex;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 100%;
+    justify-content: center;
+    left: 0;
     opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: all 300ms ease-in-out !important;
+    visibility: hidden;
+    width: 100%;
     -webkit-transition: all 300ms ease-in-out !important;
     -moz-transition: all 300ms ease-in-out !important;
     -o-transition: all 300ms ease-in-out !important;
-    transition: all 300ms ease-in-out !important;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #fff !important;
   }
 
   .product-image:hover .cart-item-image-hover {
-    visibility: visible;
     opacity: 1;
+    visibility: visible;
   }
 </style>
