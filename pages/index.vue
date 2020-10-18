@@ -155,19 +155,19 @@ export default {
   }
 
   .recent-articles .recent-articles-content .item {
-    padding: 5px 10px;
-    text-align: center;
-    height: 80px;
-    display: flex;
-    justify-content: center;
     align-content: center;
     border: 1px solid #fff;
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    padding: 5px 10px;
+    text-align: center;
   }
 
   .recent-articles .recent-articles-content .item a {
     color: #fff;
-    text-align: center;
     font-size: 0.8rem;
+    text-align: center;
   }
 
   .left-side-bottom {
@@ -182,16 +182,16 @@ export default {
 
   .buy-book-guide {
     background-color: #fff;
-    width: 100%;
-    padding: 15px;
-    margin: 30px 0;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     border-radius: 0 0 5px 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    margin: 30px 0;
+    padding: 15px;
+    width: 100%;
   }
 
   .buy-book-guide p {
     font-size: 0.85rem;
-    margin: 15px 0;
     line-height: 1.6;
+    margin: 15px 0;
   }
 </style>

@@ -55,16 +55,16 @@ export default {
 
 <style scoped>
   .context {
-    min-height: 50px;
     background-color: #fff;
-    padding: 20px;
     box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
     margin-bottom: 20px;
+    min-height: 50px;
+    padding: 20px;
   }
 
   .context h2 {
-    font-weight: bold;
     font-size: 1.2rem;
+    font-weight: bold;
     margin: 10px 0;
   }
 

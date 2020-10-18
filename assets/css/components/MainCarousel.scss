@@ -1,13 +1,13 @@
 .big-carousel {
   .v-window__prev,
   .v-window__next {
-    border-radius: 0;
     background-color: #50cbb2;
-    position: absolute;
+    border-radius: 0;
     bottom: 0;
+    height: 20px;
+    position: absolute;
     top: auto;
     width: 20px;
-    height: 20px;
   }
 
   .v-window__next {
@@ -17,8 +17,8 @@
 
   .v-btn--icon {
     &.v-size--default {
-      width: 20px;
       height: 20px;
+      width: 20px;
     }
 
     &.v-size--default .v-icon {

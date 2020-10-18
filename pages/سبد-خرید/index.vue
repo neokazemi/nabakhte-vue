@@ -165,31 +165,31 @@ export default {
   }
 
   .cart-content {
-    min-height: 50px;
     background-color: #fff;
     box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    min-height: 50px;
     position: relative;
   }
 
   .empty-cart p {
     background-color: #2bbb28;
+    border-radius: 2px;
     border-right: 0.6180469716em solid rgba(0, 0, 0, 0.15);
-    margin: 15px 20px;
-    padding: 15px 25px;
-    font-size: 0.95rem;
     color: #fff;
     display: block;
-    border-radius: 2px;
+    font-size: 0.95rem;
+    margin: 15px 20px;
+    padding: 15px 25px;
   }
 
   .empty-cart a {
-    color: #fff;
-    font-weight: bold;
     background-color: #43454b;
-    padding: 12px 20px;
-    margin: 0 20px;
-    font-size: 0.9rem;
+    color: #fff;
     display: inline-block;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0 20px;
+    padding: 12px 20px;
   }
 
   .cart-with-products {
@@ -197,17 +197,17 @@ export default {
   }
 
   .table-header {
-    padding: 0;
     height: 40px;
+    padding: 0;
   }
 
   .table-header .col {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    font-weight: bold;
-    font-size: 0.8rem;
     color: #868686;
+    display: flex;
+    font-size: 0.8rem;
+    font-weight: bold;
+    justify-content: center;
   }
 
   .table-header .product-names {
@@ -226,14 +226,14 @@ export default {
   }
 
   .discount-input {
-    border: solid 1px #dedede;
     background-color: #fff;
-    height: 42px;
-    min-width: 300px;
-    padding: 0 30px;
+    border: solid 1px #dedede;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: bold;
+    height: 42px;
+    min-width: 300px;
+    padding: 0 30px;
   }
 
   .discount-input:focus {
@@ -241,16 +241,16 @@ export default {
   }
 
   .discount-input:focus::-webkit-input-placeholder {
-    transition: opacity 0.5s 0.5s ease !important;
     opacity: 0;
+    transition: opacity 0.5s 0.5s ease !important;
   }
 
   .apply-discount {
-    color: #25a522;
+    background-color: #fff;
     border: solid 1px #2bbb28;
     border-radius: 4px;
+    color: #25a522;
     height: 42px;
-    background-color: #fff;
     margin: 0 5px;
     padding: 0 10px;
   }
@@ -261,12 +261,12 @@ export default {
 
   .purchase-details {
     background-color: #f2f2f2;
-    min-height: 50px;
-    width: calc(100% + 24px);
-    margin-right: -12px;
-    margin-bottom: -12px;
     display: flex;
     flex-direction: column;
+    margin-bottom: -12px;
+    margin-right: -12px;
+    min-height: 50px;
+    width: calc(100% + 24px);
   }
 
   .purchase-details .container {
@@ -274,18 +274,18 @@ export default {
   }
 
   .total-price {
+    align-items: center;
     background-color: #fff;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 12px 15px;
-    align-items: center;
   }
 
   .total-price .p-1 {
-    font-weight: bold;
     font-size: 0.8rem;
+    font-weight: bold;
     line-height: 1.8;
   }
 
@@ -294,13 +294,13 @@ export default {
   }
 
   .total-price2 {
-    margin-top: 10px;
     color: #24a822;
+    margin-top: 10px;
   }
 
   .total-price .p-2 {
-    font-weight: bold;
     font-size: 1.1rem;
+    font-weight: bold;
     height: 20px;
     line-height: 20px;
   }
@@ -310,14 +310,14 @@ export default {
   }
 
   .purchase {
-    margin-right: -15px;
     background-color: #2c2d33;
-    color: #fff;
-    padding: 10px 25px;
-    font-weight: bold;
-    font-size: 1.3rem;
-    display: inline-block;
     border-radius: 4px;
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: -15px;
+    padding: 10px 25px;
   }
 
   .purchase:hover {
@@ -325,63 +325,63 @@ export default {
   }
 
   .mobile-container {
-    margin: 0 2.5%;
-    width: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0 2.5%;
+    width: 95%;
   }
 
   .mobile-container .discount-container {
-    height: 48px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff;
     border-radius: 8px;
-    padding: 0 3px;
-    margin-bottom: -10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
+    height: 48px;
+    margin-bottom: -10px;
+    padding: 0 3px;
     z-index: 2;
   }
 
   .discount-container input {
-    width: 100%;
     height: 100%;
+    width: 100%;
   }
 
   .discount-button {
-    padding: 0 9px !important;
-    width: 80px;
-    height: 42px !important;
-    margin: 3px 0;
+    border-radius: 6px;
+    color: #fff;
     font-size: 12px;
     font-weight: bold;
-    color: #fff;
+    height: 42px !important;
     letter-spacing: 0;
-    border-radius: 6px;
+    margin: 3px 0;
+    padding: 0 9px !important;
+    width: 80px;
   }
 
   .mobile-container .final-price-container {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     background-color: #fff;
     border-radius: 10px;
-    margin-bottom: 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: column;
+    margin-bottom: 14px;
     padding: 30px 10px;
   }
 
   .mobile-container .final-price-container .cart-subtotal,
   .mobile-container .final-price-container .subtotal-price {
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
   }
 
   .mobile-container .final-price-container .cart-subtotal {
+    border-bottom: 1px solid #dfdfdf;
     font-size: 16px;
     font-weight: bold;
-    border-bottom: 1px solid #dfdfdf;
     margin-bottom: 5px;
     padding-bottom: 10px;
   }
@@ -392,10 +392,10 @@ export default {
 
   .mobile-container .final-price-container .subtotal-price {
     border-top: 1px solid #dfdfdf;
-    margin-top: 0;
-    padding-top: 10px;
     font-size: 20px;
     font-weight: bold;
+    margin-top: 0;
+    padding-top: 10px;
   }
 
   .mobile-container .final-price-container .subtotal-price span {
@@ -403,37 +403,36 @@ export default {
   }
 
   .fixed-buy-button {
+    align-items: center;
     background-color: #2bbb28;
-    font-weight: bold;
-    position: fixed;
     bottom: 0;
-    z-index: 20000;
-    padding: 15px;
-    width: 100%;
-    right: 0;
-    left: 0;
-    text-align: center;
-    font-size: 16px;
     color: #fff;
     display: flex;
+    font-size: 16px;
+    font-weight: bold;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
+    left: 0;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    z-index: 20000;
   }
 
   @media screen and (max-width: 1264px) {
     .breadcrumbs-container,
     .cart-container {
-      width: 950px;
       align-self: center;
+      width: 950px;
     }
   }
 
   @media screen and (max-width: 959.5px) {
     .breadcrumbs-container,
     .cart-container {
-      max-width: 600px;
       align-self: center;
+      max-width: 600px;
     }
 
     .discount-input {
@@ -442,10 +441,10 @@ export default {
 
     .purchase {
       display: block;
-      text-align: center;
-      margin: 0 -12px;
-      line-height: 30px;
       font-size: 1.5rem;
+      line-height: 30px;
+      margin: 0 -12px;
+      text-align: center;
     }
 
     .total-price .p-1 {
@@ -502,8 +501,8 @@ export default {
   @media screen and (max-width: 600px) {
     .breadcrumbs-container,
     .cart-container {
-      max-width: 90%;
       align-self: center;
+      max-width: 90%;
     }
 
     .discount-input {
@@ -570,8 +569,8 @@ export default {
 
 <style>
   .mobile-container .discount-container .v-input {
-    padding-left: 5px;
     border-radius: 6px;
+    padding-left: 5px;
   }
 
   .mobile-container .discount-container .theme--light.v-text-field > .v-input__control > .v-input__slot::before {
@@ -579,12 +578,12 @@ export default {
   }
 
   .mobile-container .discount-container .v-text-field .v-label {
-    transform-origin: top right !important;
+    font-size: 12px;
+    font-weight: bold;
     left: auto !important;
     right: 0 !important;
     top: 12px;
-    font-size: 12px;
-    font-weight: bold;
+    transform-origin: top right !important;
   }
 
   .mobile-container .discount-container .v-text-field input {
@@ -601,7 +600,7 @@ export default {
   }
 
   .mobile-container .discount-container .v-input__slot {
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
   }
 
   .mobile-container .discount-container .v-text-field--filled > .v-input__control > .v-input__slot {
