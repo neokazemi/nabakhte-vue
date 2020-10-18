@@ -1,10 +1,10 @@
 <template>
-  <v-card class="the-card">
-    <div class="the-div">
+  <v-card class="mb-20">
+    <div class="ma-10">
       <v-row>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="نام"
             outlined
             dense
@@ -12,7 +12,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="نام خانوادگی"
             outlined
             dense
@@ -20,7 +20,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="شماره موبایل"
             outlined
             dense
@@ -28,7 +28,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="کد ملی"
             outlined
             dense
@@ -39,7 +39,7 @@
       <v-row>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="وضعیت سفارش"
             solo
@@ -48,7 +48,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="نحوه پرداخت"
             solo
@@ -57,7 +57,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="وضعیت پرداخت"
             solo
@@ -66,7 +66,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="درگاه پرداخت"
             solo
@@ -84,7 +84,7 @@
         </v-col>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="موفق / ناموفق"
             solo
@@ -93,7 +93,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="کد تراکنش"
             outlined
             dense
@@ -101,7 +101,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="توضیح مدیریتی"
             outlined
             dense
@@ -112,7 +112,7 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch mt-4"
+            class="switches-position mt-12"
           />
         </v-col>
         <p class="mt-8 ml-8 the-p mr-6">
@@ -120,7 +120,7 @@
         </p>
         <v-col cols="2">
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="از تاریخ"
             filled
             dense
@@ -128,7 +128,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="تا تاریخ"
             filled
             dense
@@ -139,7 +139,7 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch mt-4"
+            class="switches-position mt-12"
           />
         </v-col>
         <p class="mt-8 ml-8 the-p mr-6">
@@ -147,7 +147,7 @@
         </p>
         <v-col cols="2">
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="از تاریخ"
             filled
             dense
@@ -155,7 +155,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             label="تا تاریخ"
             filled
             dense
@@ -166,7 +166,7 @@
       <v-row>
         <v-col>
           <v-select
-            class="the-row"
+            class="filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
             label="انتخاب ستون های اصلی"
             solo
@@ -194,7 +194,7 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-card class="the-card2">
+          <v-card class="the-card2 pa-5">
             مجموع مبالغ تراکنش ها
           </v-card>
         </v-col>
@@ -221,64 +221,5 @@ export default {
 </script>
 
 <style scoped>
-.the-card {
-  margin-bottom: 20px;
-}
-
-.the-div {
-  margin: 10px;
-}
-
-.the-p {
-  font-size: 14px;
-  width: 120px;
-}
-
-.the-btn-2 {
-  background-color: #e57373;
-  width: 100%;
-}
-
-.the-btn {
-  background-color: #00bfa5;
-  width: 100%;
-}
-
-.the-card2 {
-  height: 50px;
-  padding: 5px;
-}
-
-.the-row {
-  float: right;
-  height: 20px;
-  margin-bottom: 2.5px;
-  margin-top: 2.5px;
-  padding-right: 0;
-  right: 0;
-  width: 100%;
-}
-
-.the-switch {
-  float: left;
-  height: 20px;
-  margin-top: 8px;
-}
-
-.v-text-field--filled > .v-input__control > .v-input__slot,
-.v-text-field--full-width > .v-input__control > .v-input__slot,
-.v-text-field--outlined > .v-input__control > .v-input__slot {
-  min-height: 30px !important;
-}
-
-.v-text-field >>> input {
-  font-size: 14px;
-  font-weight: 100;
-  text-transform: capitalize;
-}
-
-.v-text-field >>> label {
-  font-size: 14px;
-}
-
+/* @import "assets/scss/components/admin/ordersPanel/filters/transactions.scss"; */
 </style>
