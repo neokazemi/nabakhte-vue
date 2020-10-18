@@ -16,13 +16,13 @@ header .scrolledMenu {
 }
 
 header {
-  box-shadow: none !important;
   background-color: #f8f8f8;
+  box-shadow: none !important;
 }
 
 header.v-app-bar--is-scrolled {
-  box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1) !important;
   background-color: #fff !important;
+  box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1) !important;
 }
 
 header.v-app-bar--is-scrolled .fixedMenu {
@@ -38,8 +38,8 @@ header.v-app-bar--is-scrolled .scrolledMenu .leftSide {
 }
 
 header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks {
-  flex: 1;
   display: flex;
+  flex: 1;
 }
 
 header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
@@ -47,15 +47,15 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .scrolledMenu .leftSide .leftSide-btn {
-  text-decoration: none !important;
-  text-align: center;
-  position: relative;
   border-radius: 3px;
   display: flex;
-  justify-content: center;
   height: 25px;
-  width: 25px;
+  justify-content: center;
   margin-right: 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none !important;
+  width: 25px;
 }
 
 .top-menu {
@@ -75,22 +75,22 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .leftSide-btn-arrow {
-  width: 25px;
-  height: 25px;
   border-radius: 3px;
+  height: 25px;
   position: relative;
+  width: 25px;
 }
 
 .leftSide-btn-arrow::before {
-  content: " ";
-  position: absolute;
-  bottom: -8px;
-  right: 50%;
-  margin-right: -4px;
-  height: 0;
-  width: 0;
+  content: ' ';
   border: 4px solid transparent;
   border-top: 4px solid;
+  bottom: -8px;
+  height: 0;
+  margin-right: -4px;
+  position: absolute;
+  right: 50%;
+  width: 0;
 }
 
 .account-logo::before {
@@ -102,42 +102,42 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .fixed-search-input {
-  min-width: 200px;
-  border: none;
-  border-radius: 7px;
   background-color: #ececec;
-  height: 25px;
+  border: 0;
+  border-radius: 7px;
   color: #252525;
   font-size: 12px;
+  height: 25px;
+  min-width: 200px;
   padding-right: 15px;
 }
 
 .consulting-mega-menu-bg {
   background-color: #fff;
-  position: absolute;
-  top: -10%;
-  right: 0;
-  width: 97%;
-  height: 250%;
   border-top-left-radius: 50%;
+  height: 250%;
+  position: absolute;
+  right: 0;
+  top: -10%;
+  width: 97%;
 }
 
 .mobile-appbar {
+  border-bottom: 1px solid #2bbb28;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   height: inherit;
+  justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid #2bbb28;
 }
 
 .mobile-appbar-item {
-  width: 20%;
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   font-size: 0.8rem;
   font-weight: bold;
+  justify-content: center;
+  width: 20%;
 }
 
 .full-height {
@@ -153,16 +153,16 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .cart-scrolled-menu .cart-details {
-  min-height: 55px;
-  width: 340px;
-  padding: 17px;
   left: 0;
+  min-height: 55px;
+  padding: 17px;
   top: 45px;
+  width: 340px;
 }
 
 .cart-scrolled-menu:hover .cart-details {
-  visibility: visible;
   opacity: 1;
+  visibility: visible;
 }
 
 @media only screen and (max-width: 1264px) {

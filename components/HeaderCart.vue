@@ -43,8 +43,8 @@ export default {
 
 <style scoped>
   .full-width {
-    width: 100%;
     text-align: center;
+    width: 100%;
   }
 
   .empty-cart {
@@ -62,12 +62,12 @@ export default {
   }
 
   .header-cart-buttons {
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: space-between;
     align-items: flex-end;
+    display: flex;
+    font-size: 0.9rem;
     font-weight: bold;
     height: 50px;
+    justify-content: space-between;
   }
 
   .see-cart {
@@ -79,11 +79,11 @@ export default {
 
   .finalize-purchase {
     background-color: #2bbb28;
-    box-shadow: 1px 2px 3px rgba(4, 5, 5, 0.15);
     border-radius: 7px;
+    box-shadow: 1px 2px 3px rgba(4, 5, 5, 0.15);
+    color: #fff;
     line-height: 30px;
     padding: 5px 20px;
-    color: #fff;
   }
 
 </style>
