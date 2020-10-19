@@ -1,0 +1,45 @@
+.the-p {
+  font-size: 14px;
+  width: 120px;
+}
+
+.the-btn-2 {
+  background-color: #e57373;
+  width: 100%;
+}
+
+.the-btn {
+  background-color: #00bfa5;
+  width: 100%;
+}
+
+.the-card2 {
+  height: 50px;
+}
+
+.filter-elements {
+  float: right;
+  height: 20px;
+  width: 100%;
+}
+
+.switches-position {
+  float: left;
+  height: 20px;
+}
+
+.v-text-field--filled > .v-input__control > .v-input__slot,
+.v-text-field--full-width > .v-input__control > .v-input__slot,
+.v-text-field--outlined > .v-input__control > .v-input__slot {
+  min-height: 30px !important;
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}

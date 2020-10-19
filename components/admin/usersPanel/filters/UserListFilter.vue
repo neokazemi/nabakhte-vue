@@ -1,10 +1,10 @@
 <template>
-  <v-card class="the-card">
-    <div class="the-div">
+  <v-card class="mb-20">
+    <div class="ma-5">
       <v-row>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="نام"
             outlined
             dense
@@ -12,7 +12,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="نام خانوادگی"
             outlined
             dense
@@ -20,7 +20,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="شماره موبایل"
             outlined
             dense
@@ -28,7 +28,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="کد ملی"
             outlined
             dense
@@ -38,7 +38,7 @@
       <v-row>
         <v-col>
           <v-select
-            class=" the-row"
+            class=" filter-elements"
             :items="items"
             label="انتخاب جنسیت"
             solo
@@ -47,7 +47,7 @@
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="انتخاب پروفایل"
             solo
@@ -56,7 +56,7 @@
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="انتخاب شماره"
             solo
@@ -65,7 +65,7 @@
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="انتخاب وضعیت"
             solo
@@ -77,7 +77,7 @@
       <v-row>
         <v-col>
           <v-select
-            class=" the-row "
+            class=" filter-elements "
             :items="items"
             label="انتخاب ستون های اصلی"
             solo
@@ -86,7 +86,7 @@
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="مرتب سازی بر اساس"
             solo
@@ -95,7 +95,7 @@
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="نزولی/صعودی"
             solo
@@ -109,13 +109,13 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch mt-2 "
+            class="switches-position mt-10 "
           />
         </v-col>
 
         <v-col>
           <v-select
-            class=" the-row "
+            class=" filter-elements "
             :items="items"
             label="محصولات دیده شده"
             solo
@@ -126,12 +126,12 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch mt-2 "
+            class="switches-position mt-10 "
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="محصولات سفارش داده شده"
             solo
@@ -143,12 +143,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8 "
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="وضعیت سفارش"
             solo
@@ -160,12 +160,12 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="وضعیت  پرداخت"
             solo
@@ -176,12 +176,12 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="وضعیت تسویه"
             solo
@@ -193,12 +193,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="نقش ها"
             solo
@@ -210,12 +210,12 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="رشته ها"
             solo
@@ -226,12 +226,12 @@
           <v-switch
             v-model="switch1"
 
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-select
-            class=" the-row  "
+            class=" filter-elements  "
             :items="items"
             label="انتخاب کپن"
             solo
@@ -243,12 +243,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="کد پستی"
             outlined
             dense
@@ -257,12 +257,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="استان"
             outlined
             dense
@@ -271,12 +271,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="شهر"
             outlined
             dense
@@ -287,12 +287,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="آدرس"
             outlined
             dense
@@ -301,12 +301,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="مدرسه"
             outlined
             dense
@@ -315,12 +315,12 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch "
+            class="switches-position mt-8"
           />
         </v-col>
         <v-col>
           <v-text-field
-            class=" the-row"
+            class=" filter-elements"
             label="ایمیل"
             outlined
             dense
@@ -331,15 +331,15 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch mt-4 "
+            class="switches-position mt-12 "
           />
         </v-col>
-        <p class="mt-8 ml-8 the-p mr-6">
+        <p class="mt-8 ml-8 p-tag-size mr-6">
           تاریخ ثبت نام:
         </p>
         <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field the-row"
+            class="the-filled-text-field filter-elements"
             label="از تاریخ"
             filled
             dense
@@ -347,7 +347,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field the-row"
+            class="the-filled-text-field filter-elements"
             label="تا تاریخ"
             filled
             dense
@@ -359,15 +359,15 @@
         <v-col cols="1">
           <v-switch
             v-model="switch1"
-            class="the-switch mt-4 "
+            class="switches-position mt-12 "
           />
         </v-col>
-        <p class="mt-8 ml-8 the-p mr-6">
+        <p class="mt-8 ml-8 p-tag-size mr-6">
           تاریخ اصلاح:
         </p>
         <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field the-row"
+            class="the-filled-text-field filter-elements"
             label="از تاریخ"
             filled
             dense
@@ -375,7 +375,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field the-row"
+            class="the-filled-text-field filter-elements"
             label="تا تاریخ"
             filled
             dense
@@ -393,7 +393,7 @@
         <v-col>
           <v-btn
             color="white"
-            class="the-btn"
+            class="filter-btn"
             elevation="3"
             x-large
             outlined
@@ -414,6 +414,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../../../../assets/scss/components/admin/usersPanel/tables/users.scss";
-
+/* @import '../../../../assets/scss/components/admin/usersPanel/filters/userListFilter.scss'; */
 </style>

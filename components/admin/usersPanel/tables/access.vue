@@ -1,12 +1,12 @@
 <template>
   <v-card
-    class="the-card"
+    class="mb-20 pa-8"
   >
     <v-row>
       <v-col />
       <v-col>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -16,7 +16,7 @@
           Print
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -26,7 +26,7 @@
           Copy
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -36,7 +36,7 @@
           PDF
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -46,7 +46,7 @@
           Excel
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -70,7 +70,7 @@
       :headers="headers2"
       :items="accesses"
       :search="search"
-      class="elevation-1 the-data-table"
+      class="elevation-1 mt-30"
     >
       <template v-slot:top>
         <v-toolbar
@@ -85,7 +85,7 @@
               <v-btn
                 color="primary"
                 dark
-                class="mb-2 adding-btn"
+                class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
                 v-on="on"
@@ -94,7 +94,7 @@
               </v-btn>
               <v-text-field
                 v-model="search"
-                class="the-card-search"
+                class="the-card-search ml-120 mt-25"
                 append-icon="mdi-magnify"
                 label="جستجو"
                 single-line
@@ -107,7 +107,7 @@
                   <v-row>
                     <v-text-field
                       v-model="editedAccess.name"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="نام دسترسی"
                     />
                   </v-row>
@@ -307,34 +307,5 @@ export default {
 </script>
 
 <style scoped>
-.thetextfield {
-  font-size: small;
-  margin: 10px;
-  width: 500px;
-}
-
-.the-card {
-  margin-bottom: 20px;
-  padding: 8px;
-}
-
-.the-card-search {
-  margin-left: 120px;
-  margin-top: 25px;
-  width: 50px;
-}
-
-.the-data-table {
-  margin-top: 30px;
-  width: 100%;
-}
-
-.adding-btn {
-  margin: 30px;
-}
-
-.the-btns {
-  width: 15%;
-}
-
+/* @import "assets/scss/components/admin/usersPanel/tables/access.scss"; */
 </style>
