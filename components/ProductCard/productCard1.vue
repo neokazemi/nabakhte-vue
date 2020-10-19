@@ -122,8 +122,8 @@ export default {
 
 .product-card-1 .product-title {
   color: #fff;
-  height: auto;
   font-size: 0.8rem;
+  height: auto;
   line-height: 1.4rem;
   margin: 4% 0;
   text-align: center;
@@ -133,7 +133,7 @@ export default {
 .product-card-2 .product-title {
   color: #207c69;
   font-size: 0.9rem;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
   padding: 0 15px;
   text-align: center;
   width: 100%;
@@ -266,9 +266,6 @@ export default {
   transition: all 0.3s ease;
   visibility: hidden;
   width: 100%;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
 }
 
 .product-card-image:hover .image-hover {
@@ -307,11 +304,11 @@ export default {
 }
 
 .card-button {
-  color: #fff;
-  display: inline-block;
   border: 0;
   border-radius: 10px;
   bottom: 15%;
+  color: #fff;
+  display: inline-block;
   height: 32px;
   position: absolute;
   width: 32px;
