@@ -22,22 +22,19 @@ export default {
 
 <style scoped>
   .specs {
-    align-items: center;
-    box-shadow: 0 1px 0 #e8e8e8;
-    display: flex;
-    flex-direction: row;
     font-size: 0.9rem;
     line-height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 1px 0 #e8e8e8;
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
   }
 
   .specs:hover {
-    box-shadow: 0 0 12px rgba(4, 5, 5, 0.1);
     margin: 0 -30px;
     padding: 0 30px;
+    box-shadow: 0 0 12px rgba(4, 5, 5, 0.1);
   }
 
   .subject {
