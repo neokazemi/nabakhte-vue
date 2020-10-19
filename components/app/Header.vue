@@ -42,7 +42,7 @@
               <div class="col-7">
                 <ul class=" nav navigation-bar">
                   <li class="nav-item">
-                    <nuxt-link id="home-page" class="nav-link" to="/">
+                    <nuxt-link class="home-page nav-link" to="/">
                       چی بخونم
                     </nuxt-link>
                   </li>
@@ -372,5 +372,5 @@ export default {
 </script>
 
 <style>
-  @import '../../assets/css/components/HeaderScoped.scss';
+  @import url('../../assets/css/components/HeaderScoped.scss');
 </style>
