@@ -265,32 +265,32 @@ export default {
   }
 
   .sort {
-    align-items: center;
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 0 0 20px;
   }
 
   .sort-by {
-    color: #878787;
     font-size: 0.7rem;
+    color: #878787;
   }
 
   .sort select {
-    appearance: auto;
     line-height: 30px;
-    user-select: none;
     width: 170px;
+    user-select: none;
+    appearance: auto;
   }
 
   .page-fields {
-    background-color: #fff;
-    border-radius: 2px;
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
     font-size: 0.8rem;
     font-weight: bold;
     margin: 0 15px;
     padding: 4px 15px;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    border-radius: 2px;
+    background-color: #fff;
   }
 
   .product-card-col {
@@ -310,20 +310,20 @@ export default {
   }
 
   .select-sort {
-    margin: 0 10px;
     max-width: 170px;
+    margin: 0 10px;
   }
 
   .sort-by-container {
-    align-items: center;
     display: flex;
     flex-direction: row;
+    align-items: center;
     min-width: 300px;
   }
 
   .mobile-container {
-    margin: 20px 2.5%;
     width: 95%;
+    margin: 20px 2.5%;
   }
 
   .mobile-container .products {
@@ -333,17 +333,17 @@ export default {
   }
 
   .half-width {
-    margin-bottom: 20px;
     width: 50%;
+    margin-bottom: 20px;
   }
 
-  @media only screen and (max-width: 1260px) {
+  @media only screen and ( max-width: 1260px ) {
     .container {
       width: 950px;
     }
   }
 
-  @media only screen and (max-width: 959.5px) {
+  @media only screen and ( max-width: 959.5px ) {
     .container {
       width: 600px;
     }
@@ -357,7 +357,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and ( max-width: 600px ) {
     .container {
       max-width: 95%;
     }
@@ -400,7 +400,7 @@ export default {
     flex-direction: column;
   }
 
-  .sort .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+  .sort .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
     max-width: 170px;
   }
 
@@ -421,13 +421,13 @@ export default {
     padding-left: 0;
   }
 
-  @media only screen and (max-width: 959.5px) {
+  @media only screen and ( max-width: 959.5px ) {
     .sort .v-select__selection {
       font-size: 1.2rem;
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and ( max-width: 600px ) {
     .sort .v-select__selection {
       font-size: 0.9rem;
     }

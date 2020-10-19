@@ -15,19 +15,19 @@ $grid-breakpoints: (
   'xl': 1920px - 16px
 ) !default;
 
-@media (min-width: map-get($grid-breakpoints, 'xl')) {
+@media ( min-width: map-get( $grid-breakpoints, 'xl' ) ) {
   .container {
     max-width: 1170px !important;
   }
 }
 
-@media (min-width: map-get($grid-breakpoints, 'lg')) {
+@media ( min-width: map-get( $grid-breakpoints, 'lg' ) ) {
   .container {
     max-width: 1170px !important;
   }
 }
 
-@media (min-width: map-get($grid-breakpoints, 'md')) {
+@media ( min-width: map-get( $grid-breakpoints, 'md' ) ) {
   .container {
     max-width: 1170px !important;
   }
