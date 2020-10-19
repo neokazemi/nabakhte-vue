@@ -35,31 +35,31 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-left: 5%;
-    padding-right: 6px;
     padding-top: 15px;
+    padding-right: 6px;
+    padding-left: 5%;
   }
 
   .under-carousel-buttons .type2 {
-    background-color: #ededed;
-    box-shadow: none;
     justify-content: center !important;
     width: 16% !important;
+    box-shadow: none;
+    background-color: #ededed;
   }
 
   .under-carousel-button {
-    align-items: center;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     color: #000 !important;
-    display: flex;
-    flex-direction: row;
-    height: 60px;
-    overflow: hidden;
     position: relative;
-    transition: all 0.3s ease;
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+    align-items: center;
     width: 19.8%;
+    height: 60px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    background-color: #fff;
   }
 
   .under-carousel-button:hover {
@@ -80,30 +80,30 @@
   }
 
   .under-carousel-button .after-hover-text {
-    color: #269b24;
     font-size: 1px;
+    color: #269b24;
+    position: absolute;
+    top: 50%;
+    right: 65px;
     height: 100%;
     margin-right: 49px;
     opacity: 0;
-    position: absolute;
-    right: 65px;
-    top: 50%;
     transition: all 0.3s ease;
   }
 
   .under-carousel-button:hover .after-hover-text {
     font-size: 0.9rem;
+    top: 30%;
+    right: 65px;
     margin-right: 0;
     opacity: 1;
-    right: 65px;
-    top: 30%;
   }
 
   .under-carousel-button img {
+    width: auto;
     height: 38px;
     margin-right: 10px;
     transition: all 0.3s ease;
-    width: auto;
   }
 
   .under-carousel-button:hover img {

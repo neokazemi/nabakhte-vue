@@ -103,16 +103,16 @@ export default {
   }
 
   .product-image {
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
-    margin-left: 10px;
     width: 25%;
+    margin-left: 10px;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
   }
 
   .product-info {
-    background-color: #fff;
-    box-shadow: 1px 2px rgba(4, 5, 5, 0.25);
     display: flex;
     padding: 10px;
+    box-shadow: 1px 2px rgba(4, 5, 5, 0.25);
+    background-color: #fff;
   }
 
   .product-info .left-part {
@@ -121,13 +121,13 @@ export default {
 
   .product-info .right-part,
   .product-info .left-part {
-    display: flex;
-    flex-direction: column;
     font-size: 0.75rem;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
     height: 100%;
     padding-top: 30px;
-    width: 50%;
   }
 
   .product-info .right-part {
@@ -136,11 +136,11 @@ export default {
   }
 
   .product-info .right-part .price {
-    align-items: center;
     display: flex;
     flex-direction: row;
-    height: 50px;
     justify-content: center;
+    align-items: center;
+    height: 50px;
   }
 
   .product-info .right-part .price * {
@@ -148,13 +148,13 @@ export default {
   }
 
   .product-info .right-part .price .percent {
-    background-color: #fb1616;
-    border-radius: 3px;
-    color: #fff !important;
     font-size: 0.85rem;
     line-height: 17px;
+    color: #fff !important;
     margin: 0 3px;
     padding: 0 3px;
+    border-radius: 3px;
+    background-color: #fb1616;
   }
 
   .product-info .right-part .price .toman {

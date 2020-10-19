@@ -3,7 +3,7 @@
   background-color: transparent;
 }
 
-.theme--light.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+.theme--light.v-btn:not( .v-btn--flat ):not( .v-btn--text ):not( .v-btn--outlined ) {
   background-color: transparent;
 }
 
@@ -16,13 +16,13 @@ header .scrolledMenu {
 }
 
 header {
-  background-color: #f8f8f8;
   box-shadow: none !important;
+  background-color: #f8f8f8;
 }
 
 header.v-app-bar--is-scrolled {
-  background-color: #fff !important;
   box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1) !important;
+  background-color: #fff !important;
 }
 
 header.v-app-bar--is-scrolled .fixedMenu {
@@ -47,15 +47,15 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .scrolledMenu .leftSide .leftSide-btn {
-  border-radius: 3px;
-  display: flex;
-  height: 25px;
-  justify-content: center;
-  margin-right: 12px;
-  position: relative;
   text-align: center;
   text-decoration: none !important;
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 25px;
+  height: 25px;
+  margin-right: 12px;
+  border-radius: 3px;
 }
 
 .top-menu {
@@ -75,22 +75,22 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .leftSide-btn-arrow {
-  border-radius: 3px;
-  height: 25px;
   position: relative;
   width: 25px;
+  height: 25px;
+  border-radius: 3px;
 }
 
 .leftSide-btn-arrow::before {
-  border: 4px solid transparent;
-  border-top: 4px solid;
-  bottom: -8px;
-  content: ' ';
-  height: 0;
-  margin-right: -4px;
   position: absolute;
   right: 50%;
+  bottom: -8px;
   width: 0;
+  height: 0;
+  margin-right: -4px;
+  content: ' ';
+  border: 4px solid transparent;
+  border-top: 4px solid;
 }
 
 .account-logo::before {
@@ -102,41 +102,41 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .fixed-search-input {
-  background-color: #ececec;
+  font-size: 12px;
+  color: #252525;
+  min-width: 200px;
+  height: 25px;
+  padding-right: 15px;
   border: 0;
   border-radius: 7px;
-  color: #252525;
-  font-size: 12px;
-  height: 25px;
-  min-width: 200px;
-  padding-right: 15px;
+  background-color: #ececec;
 }
 
 .consulting-mega-menu-bg {
-  background-color: #fff;
-  border-top-left-radius: 50%;
-  height: 250%;
   position: absolute;
-  right: 0;
   top: -10%;
+  right: 0;
   width: 97%;
+  height: 250%;
+  border-top-left-radius: 50%;
+  background-color: #fff;
 }
 
 .mobile-appbar {
-  border-bottom: 1px solid #2bbb28;
   display: flex;
   flex-direction: row;
-  height: inherit;
   justify-content: space-between;
   width: 100%;
+  height: inherit;
+  border-bottom: 1px solid #2bbb28;
 }
 
 .mobile-appbar-item {
-  align-items: center;
-  display: flex;
   font-size: 0.8rem;
   font-weight: bold;
+  display: flex;
   justify-content: center;
+  align-items: center;
   width: 20%;
 }
 
@@ -153,19 +153,19 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
 }
 
 .cart-scrolled-menu .cart-details {
+  top: 45px;
   left: 0;
+  width: 340px;
   min-height: 55px;
   padding: 17px;
-  top: 45px;
-  width: 340px;
 }
 
 .cart-scrolled-menu:hover .cart-details {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 
-@media only screen and (max-width: 1264px) {
+@media only screen and ( max-width: 1264px ) {
   .navbar-container {
     width: 950px;
   }
@@ -187,7 +187,7 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   }
 }
 
-@media only screen and (max-width: 959.5px) {
+@media only screen and ( max-width: 959.5px ) {
   .navbar-container {
     width: 600px;
   }
@@ -205,13 +205,13 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and ( max-width: 768px ) {
   .mobile-appbar-item {
     font-size: 1.2rem;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and ( max-width: 600px ) {
   .mobile-appbar-item {
     font-size: 0.9rem;
   }

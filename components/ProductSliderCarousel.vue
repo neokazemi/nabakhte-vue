@@ -163,19 +163,19 @@ export default {
 <style scoped>
 
   .new-books-container {
-    margin: 40px 0;
     position: relative;
-    width: 100%;
     z-index: 2;
+    width: 100%;
+    margin: 40px 0;
   }
 
   .slider-bg {
-    bottom: 0;
-    height: 290px;
-    left: 0;
     position: absolute;
-    right: 0;
     z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 290px;
   }
 
   .shorter-slider-bg {
@@ -183,18 +183,18 @@ export default {
   }
 
   .price-bg {
-    bottom: 0;
-    height: 38px;
-    left: 0;
     position: absolute;
-    right: 0;
     z-index: -1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 38px;
   }
 
   .slider-title {
+    font-size: 1rem;
     display: flex;
     flex-direction: row;
-    font-size: 1rem;
     justify-content: space-between;
     padding: 0 10px;
   }
@@ -204,31 +204,31 @@ export default {
   }
 
   .slider-title a {
-    align-items: center;
+    font-size: 0.7rem;
     color: #8e8e8e;
     display: flex;
-    font-size: 0.7rem;
+    align-items: center;
   }
 
   .slider-title .more-info3 {
-    color: #000;
     font-size: 1rem;
+    color: #000;
   }
 
   .more-info-icon {
-    border: 2px solid #d4d4d4;
-    border-radius: 50%;
     display: inline-flex;
+    width: 20px;
     height: 20px;
     margin: 0 10px;
-    width: 20px;
+    border: 2px solid #d4d4d4;
+    border-radius: 50%;
   }
 
   .slider-carousel {
+    position: relative;
     display: flex;
     flex-direction: row;
     height: 405px;
-    position: relative;
   }
 
   .shorter-slider-carousel {
@@ -249,14 +249,14 @@ export default {
 
   .swiper-button-prev::after,
   .swiper-button-next::after {
-    color: #fff;
     font-weight: 800;
+    color: #fff;
     text-shadow: 0 0 10px #424242;
   }
 
   .swiper-button-prev {
-    left: 40px;
     position: absolute;
+    left: 40px;
   }
 
   .swiper-button-next {
@@ -266,29 +266,29 @@ export default {
 
   .swiper-button-next2::after,
   .swiper-button-prev2::after {
-    color: #fff;
     font-size: 0.9rem;
     font-weight: 800;
+    color: #fff;
   }
 
   .swiper-button-next2,
   .swiper-button-prev2 {
-    height: 20px;
-    position: absolute;
     text-align: center;
+    position: absolute;
+    z-index: 10;
     top: 120px;
     width: 20px;
-    z-index: 10;
+    height: 20px;
   }
 
   .swiper-button-prev2 {
-    background-color: #50cbb2;
     left: -10px;
+    background-color: #50cbb2;
   }
 
   .swiper-button-next2 {
-    background-color: #fb1616;
     right: -10px;
+    background-color: #fb1616;
   }
 
   .swiper-button-next2::after {
@@ -300,11 +300,11 @@ export default {
   }
 
   .slider-container3 {
-    max-width: 100% !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
-  @media only screen and (max-width: 1260px) {
+  @media only screen and ( max-width: 1260px ) {
     .slider-container {
       width: 930px;
     }
@@ -314,7 +314,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 959.5px) {
+  @media only screen and ( max-width: 959.5px ) {
     .slider-container {
       max-width: 600px;
     }
@@ -328,7 +328,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 599.5px) {
+  @media only screen and ( max-width: 599.5px ) {
     .slider-container {
       width: 350px;
     }
@@ -342,7 +342,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and ( max-width: 400px ) {
     .slider-container {
       width: 200px;
     }
