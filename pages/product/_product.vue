@@ -602,6 +602,7 @@ export default {
   }
 
   .buy-options select {
+    appearance: auto;
     background-color: #fff;
     border: 1px solid #222;
     border-radius: 5px;
@@ -609,10 +610,7 @@ export default {
     font-weight: normal;
     height: 30px;
     text-align: center;
-    -moz-appearance: button;
-    -moz-user-select: none;
-    -webkit-appearance: button;
-    -webkit-user-select: none;
+    user-select: none;
   }
 
   .buy-options select:focus {
@@ -934,8 +932,8 @@ export default {
     display: flex;
     flex-direction: row;
     font-size: 16px;
-    justify-content: center;
     height: 100%;
+    justify-content: center;
     margin: 0;
   }
 
