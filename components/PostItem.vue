@@ -60,6 +60,8 @@
 </template>
 
 <script>
+import '~/assets/css/components/PostItem.css'
+
 export default {
   name: 'PostItem',
   filters: {
@@ -95,111 +97,6 @@ export default {
 }
 </script>
 
-<style>
-
-  .post .v-card__title {
-    font-size: 0.9rem;
-  }
-
-  .post .v-card__title,
-  .post .v-card__subtitle,
-  .post .post-meta {
-    color: #fff !important;
-    background-color: #d81816;
-  }
-
-  .post .post-meta {
-    font-size: 0.65rem;
-    line-height: 30px;
-    padding-bottom: 20px;
-  }
-
-  .post .post-meta div {
-    display: inline-block;
-    margin: auto 20px auto 0;
-  }
-
-  .post .post-meta div::after {
-    margin: auto 20px auto 0;
-    content: '|';
-  }
-
-  .post .post-meta div:last-child::after {
-    display: none;
-  }
-
-  .post .v-card__subtitle {
-    font-size: 0.7rem;
-    visibility: hidden;
-    height: 0;
-    padding-top: 0;
-    opacity: 1;
-    transition: all 0.3s ease;
-  }
-
-  .post:hover .v-card__subtitle {
-    visibility: visible;
-    height: 75px;
-    opacity: 1;
-  }
-
-  .post .more-info {
-    line-height: 28px;
-    color: #000;
-    display: block;
-    float: left;
-    height: 0;
-    margin-top: 10px;
-    margin-right: 50px;
-    padding: 0 15px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    border-radius: 5px;
-    background-color: #fff;
-  }
-
-  .post:hover .more-info {
-    height: auto;
-    opacity: 1;
-  }
-
-</style>
-
 <style scoped>
-  .mobile-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    padding: 28px 18px 29px 22px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-    border-radius: 8px;
-    background-color: #fff;
-  }
-
-  .mobile-box div {
-    margin-bottom: 10px;
-  }
-
-  .mobile-box .category p {
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 20px;
-    color: #fff;
-    width: fit-content;
-    height: 20px;
-    padding: 0 4px;
-    border-radius: 4px;
-    background-color: #d81816;
-  }
-
-  .mobile-box .post-title p {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 32px;
-  }
-
-  .mobile-box .excerpt p {
-    font-size: 12px;
-    line-height: 26px;
-  }
+  @import url('../assets/css/components/PostItemScoped.css');
 </style>

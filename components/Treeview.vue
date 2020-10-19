@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import '~/assets/css/components/Treeview.css'
+
 export default {
   name: 'Treeview',
   props: {
@@ -39,40 +41,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .v-treeview {
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  .mobile-treeview {
-    color: #fff;
-    text-align: right;
-  }
-
-  .v-treeview .v-treeview-node .v-icon {
-    display: none;
-  }
-
-  .v-treeview .v-treeview-node__level {
-    width: 10px;
-  }
-
-  .v-treeview a {
-    color: #000;
-  }
-
-  .mobile-treeview a {
-    color: #fff;
-  }
-
-  .v-treeview a:hover {
-    color: #d81816;
-  }
-
-  .v-treeview-node__children .v-treeview-node__root {
-    font-size: 0.8rem;
-  }
-
-</style>

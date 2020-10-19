@@ -326,7 +326,7 @@ import MainMenu from '../MobileMenus/MainMenu'
 import SearchMenu from '../MobileMenus/SearchMenu'
 import AccountMenu from '../MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
-import '~/assets/css/components/Header.scss'
+import '~/assets/css/components/Header.css'
 
 export default {
   name: 'Header',
@@ -372,5 +372,5 @@ export default {
 </script>
 
 <style>
-  @import url('../../assets/css/components/HeaderScoped.scss');
+  @import url('../../assets/css/components/HeaderScoped.css');
 </style>

@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import '~/assets/css/components/MainMenu.css'
+
 export default {
   name: 'MainMenu',
   data () {
@@ -188,61 +190,5 @@ export default {
 </script>
 
 <style scoped>
-  .menu {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    opacity: 0.9;
-  }
-
-  .menu .mobile-drawer-header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .menu .mobile-drawer-header-container .close-button p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .menu .mobile-drawer-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .menu .mobile-drawer-content .drawer-item {
-    font-size: 13px;
-    font-weight: bold;
-    color: #000;
-    display: flex;
-    align-items: center;
-    height: 42px;
-    margin: 0 8px 0 12px;
-    border-bottom: 1px solid #e4e4e4;
-  }
-
-  .menu .mobile-drawer-content . {
-    color: #f00;
-  }
-</style>
-
-<style>
-
-  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root {
-    min-height: 42px;
-  }
-
-  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root .v-icon.v-icon.v-icon--link {
-    display: none;
-  }
-
-  .menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__content .v-treeview-node__label {
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 42px;
-    border-bottom: 1px solid #e4e4e4;
-  }
+  @import url('../../assets/css/components/MainMenuScoped.css');
 </style>

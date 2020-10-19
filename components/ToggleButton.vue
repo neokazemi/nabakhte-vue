@@ -7,6 +7,8 @@
   </div>
 </template>
 <script>
+import '~/assets/css/components/ToggleButton.css'
+
 export default {
   name: 'ToggleButton',
   props: {
@@ -27,26 +29,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .toggle-button-container {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .toggle-button-item {
-    font-weight: bold;
-    color: #7b7777;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  }
-
-  .toggle-button-container .v-input--switch {
-    direction: ltr;
-    float: left;
-  }
-</style>

@@ -29,28 +29,5 @@ export default {
 </script>
 
 <style scoped>
-  .menu {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    opacity: 0.9;
-  }
-
-  .menu .mobile-drawer-header-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .menu .mobile-drawer-header-container .close-button p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .menu .mobile-drawer-content .v-application--is-ltr .v-text-field .v-label {
-    right: 5px;
-    left: auto;
-  }
+  @import url('../../assets/css/components/SearchMenuScoped.css');
 </style>
