@@ -86,34 +86,34 @@ export default {
 
 <style>
 .product-card {
-  background: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  background: transparent;
 }
 
 .product-card-image {
-  margin: 2.5%;
   position: relative;
   width: 95%;
+  margin: 2.5%;
 }
 
 .product-card-2 .analysis {
-  background-color: #ff4342;
-  border-radius: 0 10px 10px 0;
   color: #fff;
+  position: absolute;
+  z-index: 1;
+  top: 8px;
   left: 0;
   padding: 2px 10px;
-  position: absolute;
-  top: 8px;
-  z-index: 1;
+  border-radius: 0 10px 10px 0;
+  background-color: #ff4342;
 }
 
 .product-card-image img {
   display: block;
-  height: auto;
   width: 100%;
+  height: auto;
 }
 
 .font-black .product-title {
@@ -121,35 +121,35 @@ export default {
 }
 
 .product-card-1 .product-title {
-  color: #fff;
-  height: auto;
   font-size: 0.8rem;
   line-height: 1.4rem;
-  margin: 4% 0;
+  color: #fff;
   text-align: center;
   width: 100%;
+  height: auto;
+  margin: 4% 0;
 }
 
 .product-card-2 .product-title {
-  color: #207c69;
   font-size: 0.9rem;
-  margin: 30px auto 0 auto;
-  padding: 0 15px;
+  color: #207c69;
   text-align: center;
   width: 100%;
+  margin: 30px auto 0;
+  padding: 0 15px;
 }
 
 .product-card-4 {
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
   position: relative;
+  box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+  border-radius: 2px;
+  background-color: #fff;
 }
 
 .product-card-4 a {
-  color: #000;
   font-size: 0.8rem;
   font-weight: bold;
+  color: #000;
 }
 
 .product-card-4 .product-title {
@@ -158,13 +158,13 @@ export default {
 }
 
 .product-card-4 .rating {
-  margin-bottom: 10px;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 .product-card-4 .product-card-image {
-  margin: 0;
   width: 100%;
+  margin: 0;
 }
 
 .rating button {
@@ -176,26 +176,26 @@ export default {
 }
 
 .product-card .price {
-  align-items: center;
+  position: absolute;
   bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position: absolute;
+  align-items: center;
   width: 100%;
 }
 
 .product-card-1 .price {
-  bottom: -8px;
-  color: #fff;
   font-size: 1rem;
-  height: 38px;
   line-height: 2.3rem;
+  color: #fff;
+  bottom: -8px;
+  height: 38px;
 }
 
 .product-card-2 .price {
-  color: #799992;
   font-size: 1.1rem;
+  color: #799992;
   position: relative;
 }
 
@@ -204,18 +204,18 @@ export default {
 }
 
 .product-card-1 .price .old-price {
-  color: #fff;
   font-size: 12px;
-  margin: 0 3px;
+  color: #fff;
   text-decoration: line-through;
+  margin: 0 3px;
 }
 
 .product-card .price .percent {
-  background-color: #fb1616;
-  color: #fff !important;
   font-family: inherit;
+  color: #fff !important;
   margin: 0 3px;
   padding: 0 3px;
+  background-color: #fb1616;
 }
 
 .product-card-1 .price .percent {
@@ -226,24 +226,24 @@ export default {
 
 .product-card-2 .price .percent {
   color: #fff;
-  left: calc(50% - 25px);
-  position: absolute;
   text-align: center;
+  position: absolute;
   top: -75px;
+  left: calc(50% - 25px);
   width: 50px;
 }
 
 .product-card-2 .price .percent::after {
-  background-color: #fb1616;
-  border: 4px solid #fff;
-  border-top: 4px solid #fb1616;
-  bottom: -8px;
-  content: ' ';
-  height: 0;
-  margin-right: -4px;
   position: absolute;
   right: 50%;
+  bottom: -8px;
   width: 0;
+  height: 0;
+  margin-right: -4px;
+  content: ' ';
+  border: 4px solid #fff;
+  border-top: 4px solid #fb1616;
+  background-color: #fb1616;
 }
 
 .product-card-1 .price .new-price {
@@ -254,38 +254,35 @@ export default {
 }
 
 .product-card-image .image-hover {
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.75);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  opacity: 0;
   position: absolute;
   top: 0;
-  transition: all 0.3s ease;
+  display: flex;
   visibility: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
+  height: 100%;
+  opacity: 0;
+  transition: all 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
 .product-card-image:hover .image-hover {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
 }
 
 .product-card-image .image-hover .more-info {
-  align-items: center;
-  color: #fff !important;
-  display: flex;
   font-family: inherit;
   font-size: 0.8rem;
-  height: 100%;
-  justify-content: center;
+  color: #fff !important;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .font-black .product-card-image .image-hover .more-info {
@@ -308,13 +305,13 @@ export default {
 
 .card-button {
   color: #fff;
+  position: absolute;
+  bottom: 15%;
   display: inline-block;
+  width: 32px;
+  height: 32px;
   border: 0;
   border-radius: 10px;
-  bottom: 15%;
-  height: 32px;
-  position: absolute;
-  width: 32px;
 }
 
 .card-button:hover {
@@ -322,19 +319,19 @@ export default {
 }
 
 .image-hover .like {
-  background-color: #50cbb2;
   right: calc(50% - 40px);
+  background-color: #50cbb2;
 }
 
 .image-hover .buy {
-  background-color: #fb1616;
   left: calc(50% - 40px);
+  background-color: #fb1616;
 }
 
 .font-black {
-  color: #000 !important;
   font-size: 0.8rem;
   font-weight: bold;
+  color: #000 !important;
   text-align: center;
 }
 
