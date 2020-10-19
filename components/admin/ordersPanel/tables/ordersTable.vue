@@ -1,10 +1,10 @@
 <template>
-  <v-card class="the-card">
+  <v-card class="mb-20 pa-8">
     <v-row>
       <v-col />
       <v-col>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -14,7 +14,7 @@
           Print
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -24,7 +24,7 @@
           Copy
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -34,7 +34,7 @@
           PDF
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -44,7 +44,7 @@
           Excel
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -67,7 +67,7 @@
       :headers="headers"
       :items="orders"
       :search="search"
-      class="elevation-1 the-data-table"
+      class="elevation-1 data-table-width mt-30"
     >
       <template v-slot:item.status="{ item }">
         <v-chip
@@ -84,13 +84,13 @@
           <v-spacer />
           <v-dialog
             v-model="dialog"
-            class="thedialog"
+            class="dialog-width"
           >
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 color="primary"
                 dark
-                class="mb-2 adding-btn"
+                class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
                 v-on="on"
@@ -99,7 +99,7 @@
               </v-btn>
               <v-text-field
                 v-model="search"
-                class="the-card-search"
+                class="the-card-search ml-120 mt-25"
                 append-icon="mdi-magnify"
                 label="جستجو"
                 single-line
@@ -110,58 +110,58 @@
               <div>
                 <v-row>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="نام و نام خانوادگی"
                     />
                   </v-col>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.phone"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="موبایل"
                     />
                   </v-col>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.city"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="شهر"
                     />
                   </v-col>
                 </v-row>
                 <v-row>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.code"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="کد ملی"
                     />
                   </v-col>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.city"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="مبلغ"
                     />
                   </v-col>
                   <v-col
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.ispayed"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="پرداخت شده"
                     />
                   </v-col>
@@ -169,31 +169,31 @@
                 <v-row>
                   <v-col
                     v-if="changeshow"
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.description"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="توضیخات مسئول"
                     />
                   </v-col>
                   <v-col
                     v-if="changeshow"
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.orderstatus"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="وضعیت سفارش"
                     />
                   </v-col>
                   <v-col
                     v-if="changeshow"
-                    class="thetd"
+                    class="form-elements-column-width"
                   >
                     <v-text-field
                       v-model="editedItem.paymentstatus"
-                      class="thetextfield"
+                      class="form-elements-size ma-10"
                       label="وضعیت پرداخت"
                     />
                   </v-col>
@@ -244,7 +244,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 v-bind="attrs"
-                class="mx-2 the-bt"
+                class="mx-2 edit-delete-btns"
                 fab
                 dark
                 x-small
@@ -264,7 +264,7 @@
             <template v-slot:activator="{ on, attrs }">
               <v-btn
                 v-bind="attrs"
-                class="mx-2 the-bt"
+                class="mx-2 edit-delete-btns"
                 fab
                 dark
                 x-small
@@ -464,45 +464,5 @@ export default {
 </script>
 
 <style scoped>
-.the-bt {
-  float: right;
-}
-
-.the-card {
-  margin-bottom: 20px;
-  padding: 8px;
-}
-
-.the-card-search {
-  margin-left: 120px;
-  margin-top: 25px;
-  width: 50px;
-}
-
-.the-data-table {
-  margin-top: 30px;
-  width: 100%;
-}
-
-.adding-btn {
-  margin: 30px;
-}
-
-.thetd {
-  width: fit-content;
-}
-
-.thetextfield {
-  font-size: small;
-  margin: 10px;
-  width: 260px;
-}
-
-.thedialog {
-  width: fit-content;
-}
-
-.the-btns {
-  width: 15%;
-}
+/* @import "assets/scss/components/admin/ordersPanel/tables/ordersTable.scss"; */
 </style>

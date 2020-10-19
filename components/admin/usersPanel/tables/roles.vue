@@ -1,12 +1,12 @@
 <template>
   <v-card
-    class="the-card"
+    class="mb-20 pa-8"
   >
     <v-row>
       <v-col />
       <v-col>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -16,7 +16,7 @@
           Print
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -26,7 +26,7 @@
           Copy
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -36,7 +36,7 @@
           PDF
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -46,7 +46,7 @@
           Excel
         </v-btn>
         <v-btn
-          class="the-btns"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -70,7 +70,7 @@
       :headers="headers3"
       :items="roles"
       :search="search"
-      class="elevation-1 the-data-table"
+      class="elevation-1 data-table-width mt-30"
     >
       <template v-slot:item.status="{ item }">
         <v-chip
@@ -93,7 +93,7 @@
               <v-btn
                 color="primary"
                 dark
-                class="mb-2 adding-btn"
+                class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
                 v-on="on"
@@ -102,7 +102,7 @@
               </v-btn>
               <v-text-field
                 v-model="search"
-                class="the-card-search"
+                class="card-search-width ml-120 mt-25"
                 append-icon="mdi-magnify"
                 label="جستجو"
                 single-line
@@ -116,14 +116,14 @@
                     <v-col>
                       <v-text-field
                         v-model="editedRoles.name"
-                        class="thetextfield"
+                        class="text-fields-size ma-10"
                         label="نام اصلی"
                       />
                     </v-col>
                     <v-col>
                       <v-text-field
                         v-model="editedRoles.rolename"
-                        class="thetextfield"
+                        class="text-fields-size ma-10"
                         label="نام نقش"
                       />
                     </v-col>
@@ -331,34 +331,5 @@ export default {
 </script>
 
 <style scoped>
-.thetextfield {
-  font-size: small;
-  margin: 10px;
-  width: 500px;
-}
-
-.the-card {
-  margin-bottom: 20px;
-  padding: 8px;
-}
-
-.the-card-search {
-  margin-left: 120px;
-  margin-top: 25px;
-  width: 50px;
-}
-
-.the-data-table {
-  margin-top: 30px;
-  width: 100%;
-}
-
-.adding-btn {
-  margin: 30px;
-}
-
-.the-btns {
-  width: 15%;
-}
-
+/* @import "assets/scss/components/admin/usersPanel/tables/roles.scss"; */
 </style>
