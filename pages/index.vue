@@ -106,13 +106,14 @@
 import mixinProduct from '~/plugins/mixinProduct'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import TopView from '~/components/TopView/TopView'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   components: {
     TopView,
     ProductSliderCarousel
   },
-  mixins: [mixinProduct],
+  mixins: [mixinProduct, mixinDetectDevice],
   data () {
     return {
       mainCarouselSlides: [
@@ -126,11 +127,6 @@ export default {
         }
       ]
 
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   }
 }

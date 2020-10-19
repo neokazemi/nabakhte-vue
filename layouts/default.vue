@@ -42,11 +42,13 @@
 <script>
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 export default {
   components: {
     Header,
     Footer
   },
+  mixins: [mixinDetectDevice],
   // layout: ({ isFromPc }) => isFromPc ? 'default' : 'default',
   data () {
     return {
@@ -72,14 +74,8 @@ export default {
     }
   },
   computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
-    },
     footerMargin () {
       return this.$store.getters.footerMargin
-    },
-    ispwa () {
-      return this.$store.getters.ispwa
     },
     drawer: {
       get () {

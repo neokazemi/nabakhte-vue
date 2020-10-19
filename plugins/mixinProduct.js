@@ -12,16 +12,16 @@ const mixinProduct = {
   created () {
     const that = this
     const productList = new ProductList()
-    this.$store.commit('updateProducts', productList)
+    this.$store.commit('products/updateProducts', productList)
     productList.fetch()
       .then((response) => {
-        that.$store.commit('updateProducts', new ProductList(response.data[0].data.data))
+        that.$store.commit('products/updateProducts', new ProductList(response.data[0].data.data))
       })
   },
   computed: {
     products () {
-      if (this.$store.getters.products instanceof ProductList) {
-        return this.$store.getters.products
+      if (this.$store.getters['products/products'] instanceof ProductList) {
+        return this.$store.getters['products/products']
       } else {
         return new ProductList()
       }
