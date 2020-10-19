@@ -1,0 +1,79 @@
+.input-field .v-text-field .v-label {
+  right: 5px !important;
+  left: auto !important;
+}
+
+.input-field .v-autocomplete:not( .v-input--is-disabled ).v-select.v-text-field input {
+  background-color: transparent;
+}
+
+.input-field .v-select.v-text-field--outlined:not( .v-text-field--single-line ) .v-select__selections input {
+  display: none;
+}
+
+.input-field .v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot label {
+  right: 5px !important;
+  left: auto !important;
+}
+
+.input-field .v-text-field__details .v-messages .v-messages__wrapper {
+  text-align: right;
+}
+
+.input-field .v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot input {
+  background-color: transparent;
+}
+
+.input-field .v-select.v-select--chips:not( .v-text-field--single-line ).v-text-field--enclosed.v-input--dense .v-select__selections input {
+  display: none;
+}
+
+.input-field .v-text-field--filled .v-label--active {
+  transform: translateY(-10px) scale(0.75);
+}
+
+.input-field .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__slot label {
+  right: 5px !important;
+  left: auto !important;
+}
+
+.input-field .v-select.v-input--dense .v-chip {
+  margin: 2px 4px;
+}
+
+.page-content {
+  font-size: 0.9rem;
+}
+
+.page-content .v-list-item__content {
+  height: 55px;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+}
+
+.page-content .input-field .v-label {
+  font-size: 1rem;
+}
+
+.page-content .input-field .v-text-field--filled > .v-input__control > .v-input__slot {
+  min-height: 30px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.v-application--is-ltr .v-text-field .v-label {
+  transform-origin: top right !important;
+}
+
+.v-dialog .v-card .close-button-address-dialog {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.mobile-container .submit .v-btn .v-btn__content {
+  font-size: 16px;
+  color: #fff;
+}

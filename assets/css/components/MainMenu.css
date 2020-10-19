@@ -1,0 +1,15 @@
+
+.menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root {
+  min-height: 42px;
+}
+
+.menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__root .v-icon.v-icon.v-icon--link {
+  display: none;
+}
+
+.menu .mobile-drawer-content .v-treeview--dense .v-treeview-node__content .v-treeview-node__label {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 42px;
+  border-bottom: 1px solid #e4e4e4;
+}

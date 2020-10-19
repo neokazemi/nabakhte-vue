@@ -1,0 +1,38 @@
+.mobile-container .discount-container .v-input {
+  padding-left: 5px;
+  border-radius: 6px;
+}
+
+.mobile-container .discount-container .theme--light.v-text-field > .v-input__control > .v-input__slot::before {
+  border-color: transparent;
+}
+
+.mobile-container .discount-container .v-text-field .v-label {
+  font-size: 12px;
+  font-weight: bold;
+  top: 12px;
+  right: 0 !important;
+  left: auto !important;
+  transform-origin: top right !important;
+}
+
+.mobile-container .discount-container .v-text-field input {
+  padding: 0;
+}
+
+.mobile-container .discount-container .v-text-field--filled:not( .v-text-field--single-line ) input {
+  margin: 0;
+  background-color: transparent;
+}
+
+.mobile-container .discount-container .v-text-field.v-text-field--enclosed .v-text-field__details {
+  display: none;
+}
+
+.mobile-container .discount-container .v-input__slot {
+  margin: 4px 0 0;
+}
+
+.mobile-container .discount-container .v-text-field--filled > .v-input__control > .v-input__slot {
+  min-height: 42px;
+}
