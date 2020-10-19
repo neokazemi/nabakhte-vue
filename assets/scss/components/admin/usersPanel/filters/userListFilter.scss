@@ -1,0 +1,48 @@
+.filter-elements {
+  height: 20px;
+  float: right;
+  margin-bottom: 2.5px;
+  margin-top: 2.5px;
+  padding-right: 0;
+  right: 0;
+  width: 100%;
+}
+
+.switches-position {
+  height: 20px;
+  float: left;
+}
+
+.p-tag-size {
+  font-size: 14px;
+  width: 80px;
+}
+
+.filter-btn {
+  background-color: #00bfa5;
+  width: 100%;
+}
+
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .the-row {
+    min-height: 30px !important;
+  }
+}
+
+/* .v-text-field--filled > .v-input__control > .v-input__slot .the-row,
+.v-text-field--full-width > .v-input__control > .v-input__slot .the-row,
+.v-text-field--outlined > .v-input__control > .v-input__slot .the-row {
+  min-height: 30px !important;
+} */
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
