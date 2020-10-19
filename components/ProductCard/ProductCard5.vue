@@ -80,30 +80,30 @@ export default {
 
 <style scoped>
   .product-card5 {
-    box-sizing: border-box;
-    padding: 0 5px;
     position: relative;
+    box-sizing: border-box;
     width: 100%;
+    padding: 0 5px;
   }
 
   .product-card5-bg {
-    background-color: #fff;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 8px;
+    background-color: #fff;
   }
 
   .product-img {
-    margin: 2.5%;
     width: 95%;
+    margin: 2.5%;
   }
 
   .product-name {
     font-size: 0.8rem;
+    text-align: right;
     height: 40px;
     padding: 3px 10px;
-    text-align: right;
   }
 
   .rating {
@@ -113,19 +113,19 @@ export default {
   }
 
   .final-price-and-buy {
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: 0 10px;
   }
 
   .final-price {
-    align-items: center;
     color: #6f6f6f;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
   }
 
   .bold {
@@ -138,10 +138,10 @@ export default {
   }
 
   .discount-price {
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     margin: 10px;
   }
 
@@ -154,10 +154,10 @@ export default {
   }
 
   .discount-price .discount {
-    background-color: #fb1616;
-    color: #fff;
     font-weight: bold;
+    color: #fff;
     padding: 5px 1px;
+    background-color: #fb1616;
   }
 
   .box-shadow {
@@ -167,10 +167,10 @@ export default {
 
 <style>
   .product-card5 .final-price-and-buy a {
-    background-color: #2bbb28;
-    border-radius: 50%;
+    width: 20px;
     height: 20px;
     margin: 5px 0;
-    width: 20px;
+    border-radius: 50%;
+    background-color: #2bbb28;
   }
 </style>

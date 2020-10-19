@@ -113,14 +113,14 @@ export default {
 
 <style scoped>
   .col {
-    align-items: center;
+    text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    padding-bottom: 0;
     padding-top: 0;
-    text-align: center;
+    padding-bottom: 0;
   }
 
   .name {
@@ -128,9 +128,9 @@ export default {
   }
 
   .container {
-    border-bottom: 1px solid #f0f0f0;
-    border-top: 1px solid #f8f8f8;
     padding: 6px 12px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .price {
@@ -144,18 +144,18 @@ export default {
   }
 
   .percent {
-    background-color: #fb1616;
-    border-radius: 3px;
-    color: #fff;
     font-size: 0.8rem;
-    padding: 0 5px;
     line-height: 20px !important;
+    color: #fff;
+    padding: 0 5px;
+    border-radius: 3px;
+    background-color: #fb1616;
   }
 
   .final-price {
-    color: #24a822;
     font-size: 1.5rem;
     font-weight: bold;
+    color: #24a822;
   }
 
   .final-price span {
@@ -163,8 +163,8 @@ export default {
   }
 
   .remove {
-    color: #8d8d8d;
     font-size: 0.8rem;
+    color: #8d8d8d;
   }
 
   .product-card .title {
@@ -173,7 +173,7 @@ export default {
     margin-left: 10px;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and ( max-width: 600px ) {
     .product-card {
       padding: 0 12px;
     }
@@ -186,8 +186,8 @@ export default {
   }
 
   .product-card .count .v-input__slot {
-    padding: 0 5px !important;
     width: 50%;
+    padding: 0 5px !important;
   }
 
   .product-card .count .v-select__slot {
@@ -202,29 +202,29 @@ export default {
     display: none;
   }
 
-  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__selections input {
+  .product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__selections input {
     display: none;
   }
 
-  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot fieldset {
+  .product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot fieldset {
     height: 30px;
   }
 
-  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-input__append-inner {
+  .product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-input__append-inner {
     margin-top: 0;
     padding: 0;
   }
 
-  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__selections {
+  .product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__selections {
     font-size: 0.75rem;
     font-weight: bold;
   }
 
-  .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+  .product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
     min-height: 20px;
   }
 
-  @media only screen and (max-width: 960px) {
+  @media only screen and ( max-width: 960px ) {
     .product-card .count .v-input__slot {
       width: 80%;
     }
@@ -234,7 +234,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and ( max-width: 768px ) {
     .product-card .count .v-input__slot {
       width: 100%;
     }
@@ -244,17 +244,17 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and ( max-width: 600px ) {
     .product-card .col {
-      border-bottom: 1px solid #f8f8f8;
-      border-top: 1px solid #f8f8f8;
       line-height: 50px;
       padding: 5px 0;
+      border-top: 1px solid #f8f8f8;
+      border-bottom: 1px solid #f8f8f8;
     }
 
     .product-card .count .v-input__slot {
-      align-self: start;
       font-size: 1rem;
+      align-self: start;
       width: 30%;
     }
 
@@ -263,10 +263,10 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and ( max-width: 400px ) {
     .product-card .count .v-input__slot {
-      align-self: start;
       font-size: 1rem;
+      align-self: start;
       width: 50%;
     }
   }

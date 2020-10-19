@@ -36,7 +36,7 @@ export default {
   }
 
   .v-breadcrumbs .v-breadcrumbs__item {
-    color: #000;
     font-weight: bold;
+    color: #000;
   }
 </style>

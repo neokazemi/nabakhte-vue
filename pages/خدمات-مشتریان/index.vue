@@ -55,11 +55,11 @@ export default {
 
 <style scoped>
   .context {
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
-    margin-bottom: 20px;
     min-height: 50px;
+    margin-bottom: 20px;
     padding: 20px;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    background-color: #fff;
   }
 
   .context h2 {
@@ -74,7 +74,7 @@ export default {
   }
 
   a {
-    color: #fb1616;
     font-weight: bold;
+    color: #fb1616;
   }
 </style>

@@ -44,22 +44,22 @@ export default {
   .menu {
     display: flex;
     flex-direction: column;
-    opacity: 0.9;
     padding: 16px;
+    opacity: 0.9;
   }
 
   .menu .mobile-drawer-header-container {
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
   }
 
   .menu .mobile-drawer-header-container .header-info {
-    align-content: flex-start;
     display: flex;
     flex-direction: row;
+    align-content: flex-start;
   }
 
   .menu .mobile-drawer-header-container .header-info p {
@@ -78,14 +78,14 @@ export default {
   }
 
   .menu .mobile-drawer-content .drawer-item {
-    align-items: center;
-    border-bottom: 1px solid #e4e4e4;
-    color: #000;
-    display: flex;
     font-size: 13px;
     font-weight: bold;
+    color: #000;
+    display: flex;
+    align-items: center;
     height: 42px;
     margin: 0 8px 0 12px;
+    border-bottom: 1px solid #e4e4e4;
   }
 
   .menu .mobile-drawer-content . {

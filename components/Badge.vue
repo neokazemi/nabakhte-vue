@@ -31,13 +31,13 @@ export default {
 
 <style>
   .v-badge__badge::before {
-    border: 4px solid #ff3737;
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    content: '';
     position: absolute;
-    right: -4px;
-    top: 9px;
     z-index: -1;
+    top: 9px;
+    right: -4px;
+    content: '';
+    border: 4px solid #ff3737;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
   }
 </style>

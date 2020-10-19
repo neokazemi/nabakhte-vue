@@ -165,17 +165,17 @@ export default {
   .new-books-container {
     position: relative;
     z-index: 2;
-    margin: 40px 0;
     width: 100%;
+    margin: 40px 0;
   }
 
   .slider-bg {
     position: absolute;
+    z-index: -1;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     height: 290px;
-    z-index: -1;
   }
 
   .shorter-slider-bg {
@@ -184,11 +184,11 @@ export default {
 
   .price-bg {
     position: absolute;
+    z-index: -1;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
     height: 38px;
-    z-index: -1;
   }
 
   .slider-title {
@@ -216,19 +216,19 @@ export default {
   }
 
   .more-info-icon {
-    border: 2px solid #d4d4d4;
-    border-radius: 50%;
+    display: inline-flex;
     width: 20px;
     height: 20px;
-    display: inline-flex;
     margin: 0 10px;
+    border: 2px solid #d4d4d4;
+    border-radius: 50%;
   }
 
   .slider-carousel {
+    position: relative;
     display: flex;
     flex-direction: row;
     height: 405px;
-    position: relative;
   }
 
   .shorter-slider-carousel {
@@ -266,19 +266,19 @@ export default {
 
   .swiper-button-next2::after,
   .swiper-button-prev2::after {
-    font-weight: 800;
     font-size: 0.9rem;
+    font-weight: 800;
     color: #fff;
   }
 
   .swiper-button-next2,
   .swiper-button-prev2 {
-    width: 20px;
-    height: 20px;
+    text-align: center;
     position: absolute;
     z-index: 10;
     top: 120px;
-    text-align: center;
+    width: 20px;
+    height: 20px;
   }
 
   .swiper-button-prev2 {
@@ -287,8 +287,8 @@ export default {
   }
 
   .swiper-button-next2 {
-    background-color: #fb1616;
     right: -10px;
+    background-color: #fb1616;
   }
 
   .swiper-button-next2::after {
@@ -304,7 +304,7 @@ export default {
     max-width: 100% !important;
   }
 
-  @media only screen and (max-width: 1260px) {
+  @media only screen and ( max-width: 1260px ) {
     .slider-container {
       width: 930px;
     }
@@ -314,7 +314,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 959.5px) {
+  @media only screen and ( max-width: 959.5px ) {
     .slider-container {
       max-width: 600px;
     }
@@ -328,7 +328,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 599.5px) {
+  @media only screen and ( max-width: 599.5px ) {
     .slider-container {
       width: 350px;
     }
@@ -342,7 +342,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and ( max-width: 400px ) {
     .slider-container {
       width: 200px;
     }
