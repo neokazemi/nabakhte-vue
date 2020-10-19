@@ -1,0 +1,49 @@
+.pagination .v-pagination .v-pagination__navigation {
+  display: none !important;
+}
+
+.v-input .v-input__control .v-select__slot .v-select__selections input {
+  display: none;
+}
+
+.relative {
+  position: relative;
+}
+
+.v-navigation-drawer__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.sort .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
+  max-width: 170px;
+}
+
+.sort .v-text-field.v-text-field--solo.v-input--dense > .v-input__control {
+  min-height: 30px;
+}
+
+.sort .v-text-field__details {
+  display: none;
+}
+
+.sort .v-select__selection {
+  font-size: 0.8rem;
+}
+
+.sort .v-text-field.v-text-field--solo .v-input__append-inner {
+  margin-left: -10px;
+  padding-left: 0;
+}
+
+@media only screen and ( max-width: 959.5px ) {
+  .sort .v-select__selection {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and ( max-width: 600px ) {
+  .sort .v-select__selection {
+    font-size: 0.9rem;
+  }
+}

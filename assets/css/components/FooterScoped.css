@@ -20,17 +20,15 @@ a {
   color: #525252;
 }
 
-.footer {
-  .text-h6 {
-    font-size: 0.9rem !important;
-    font-weight: bold;
-    margin: 10px auto;
-  }
+.footer .text-h6 {
+  font-size: 0.9rem !important;
+  font-weight: bold;
+  margin: 10px auto;
+}
 
-  .text--secondary {
-    font-size: 0.7rem;
-    color: #646464;
-  }
+.footer .text--secondary {
+  font-size: 0.7rem;
+  color: #646464;
 }
 
 .footer-dir {
@@ -87,36 +85,36 @@ a {
   display: flex;
   flex-direction: column;
   padding: 30px;
+}
 
-  .logo {
-    padding: 0;
-  }
+.mobile-footer .logo {
+  padding: 0;
+}
 
-  .mobile-footer-box {
-    margin-bottom: 10px;
+.mobile-footer .mobile-footer-box {
+  margin-bottom: 10px;
+}
 
-    .about-cb {
-      font-size: 0.9rem;
-      font-weight: bold;
-      line-height: 1.6;
-      text-align: justify;
-    }
-  }
+.mobile-footer .mobile-footer-box .about-cb {
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.6;
+  text-align: justify;
+}
 
-  .mobile-contact-us {
-    display: flex;
-    flex-direction: row;
-    margin: 0 -30px;
+.mobile-footer .mobile-contact-us {
+  display: flex;
+  flex-direction: row;
+  margin: 0 -30px;
+}
 
-    .mobile-contact-us-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #cfcfcf;
-    }
-  }
+.mobile-footer .mobile-contact-us .mobile-contact-us-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cfcfcf;
 }
 
 @media only screen and ( max-width: 960px ) {

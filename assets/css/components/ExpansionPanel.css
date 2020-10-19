@@ -1,0 +1,19 @@
+.name .v-expansion-panel-header__icon {
+  position: absolute;
+  left: 10px;
+  margin: 0;
+}
+
+.name .v-expansion-panel-header__icon i {
+  font-size: 14px;
+  font-style: normal;
+}
+
+.v-application .elevation-5 {
+  box-shadow: none !important;
+}
+
+.v-expansion-panel:hover .name,
+.v-expansion-panels .v-expansion-panel:hover .name .v-expansion-panel-header__icon .v-icon {
+  color: #2bbb28 !important;
+}

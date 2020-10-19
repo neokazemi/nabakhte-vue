@@ -2,6 +2,8 @@
   <v-badge :content="content" :color="color" :offset-x="x" :offset-y="y" />
 </template>
 <script>
+import '~/assets/css/components/Header.css'
+
 export default {
   name: 'Badge',
   props: {
@@ -28,16 +30,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .v-badge__badge::before {
-    position: absolute;
-    z-index: -1;
-    top: 9px;
-    right: -4px;
-    content: '';
-    border: 4px solid #ff3737;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-  }
-</style>

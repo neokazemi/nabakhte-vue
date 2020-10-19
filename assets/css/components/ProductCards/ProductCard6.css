@@ -1,0 +1,41 @@
+.product-card6 .quantity .v-input__control .v-text-field__details {
+  display: none;
+}
+
+.product-card6 .quantity .v-input__control .v-input__slot .v-select__slot .v-select__selections input {
+  display: none;
+}
+
+.product-card6 .quantity .v-input__slot .v-select__selection {
+  font-size: 13px;
+}
+
+.product-card6 .quantity .v-text-field--enclosed.v-input--dense:not( .v-text-field--solo ).v-text-field--outlined .v-input__append-inner,
+.product-card6 .quantity .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot,
+.product-card6 .quantity .v-select.v-text-field--outlined:not( .v-text-field--single-line ).v-input--dense .v-select__selections {
+  margin: 0;
+  padding: 0;
+}
+
+.product-card6 .quantity .v-text-field--outlined.v-input--is-focused fieldset {
+  max-height: 30px;
+  padding: 0;
+}
+
+.product-card6 .quantity .theme--light.v-text-field--outlined:not( .v-input--is-focused ):not( .v-input--has-state ) > .v-input__control > .v-input__slot fieldset {
+  height: 30px;
+}
+
+.product-card6 .quantity .v-select.v-input--dense .v-select__selection--comma {
+  margin: 4px 5px 0 0;
+}
+
+.product-card6 .quantity .v-input {
+  max-width: 70px;
+  max-height: 25px;
+  margin: 0;
+}
+
+.product-card6 .quantity .v-select__slot {
+  align-items: flex-start;
+}

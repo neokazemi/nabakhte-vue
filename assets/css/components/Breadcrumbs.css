@@ -1,0 +1,12 @@
+.bread-col {
+  padding: 0 12px;
+}
+
+.bread-col ul {
+  padding: 0 12px;
+}
+
+.v-breadcrumbs .v-breadcrumbs__item {
+  font-weight: bold;
+  color: #000;
+}

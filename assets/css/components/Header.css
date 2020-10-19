@@ -111,29 +111,29 @@ a ::after {
 
 .searchbar-container {
   height: 32px;
+}
 
-  input {
-    font-size: 0.8rem;
-    font-weight: 400;
-    width: 90%;
-    margin-right: 20px;
-    padding: 0 6px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    border: 0;
-    border-left: 1px solid #ececec;
-    background-color: #fff;
-  }
+.searchbar-container input {
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 90%;
+  margin-right: 20px;
+  padding: 0 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  border: 0;
+  border-left: 1px solid #ececec;
+  background-color: #fff;
+}
 
-  .search-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    padding: 1px 6px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    border: 1px;
-    background-color: #fff;
-  }
+.searchbar-container .search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  padding: 1px 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  border: 1px;
+  background-color: #fff;
 }
 
 header a {
@@ -144,16 +144,16 @@ header a {
   display: flex;
   flex-direction: row;
   height: 120px;
+}
 
-  .right-bar {
-    width: calc(100% - 470px);
-  }
+.menu-bar .right-bar {
+  width: calc(100% - 470px);
+}
 
-  .left-bar {
-    display: flex;
-    flex-direction: row;
-    width: 480px;
-  }
+.menu-bar .left-bar {
+  display: flex;
+  flex-direction: row;
+  width: 480px;
 }
 
 .menu-nav {
@@ -182,18 +182,18 @@ header a {
   margin-left: 5px;
   border: 2px solid transparent;
   border-bottom-color: #fb1616;
+}
 
-  .cart-details {
-    right: 0;
-    width: 340px;
-    min-height: 55px;
-    padding: 17px;
+.user-cart .cart-details {
+  right: 0;
+  width: 340px;
+  min-height: 55px;
+  padding: 17px;
+}
 
-    p {
-      font-size: 0.9rem;
-      color: #000;
-    }
-  }
+.user-cart .cart-details p {
+  font-size: 0.9rem;
+  color: #000;
 }
 
 .cart-scrolled-menu .cart-details p {
@@ -354,66 +354,66 @@ header a {
   opacity: 0;
   transition: all 0.3s ease;
   background-color: #f4f1ec;
+}
 
-  .option-selection {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 166px;
-    height: 100px;
-    padding: 20px;
-    border-left: 1px solid #e2dcd3;
-  }
+.consulting-mega-menu .option-selection {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 166px;
+  height: 100px;
+  padding: 20px;
+  border-left: 1px solid #e2dcd3;
+}
 
-  .option-selection .option {
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 125px;
-    height: 28px;
-    margin: 5px 0;
-    padding: 0 10px;
-    transition: all 0.3s ease;
-    border-radius: 20px;
-    background: transparent;
-  }
+.consulting-mega-menu .option-selection .option {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  height: 28px;
+  margin: 5px 0;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  background: transparent;
+}
 
-  .option-selection .option p {
-    color: #000;
-    display: flex;
-    margin-bottom: 0;
-  }
+.consulting-mega-menu .option-selection .option p {
+  color: #000;
+  display: flex;
+  margin-bottom: 0;
+}
 
-  .option-selection .option:hover {
-    background-color: #2bbb28;
-  }
+.consulting-mega-menu .option-selection .option:hover {
+  background-color: #2bbb28;
+}
 
-  .megaMenuIMG {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 60px;
-    display: block;
-    margin: auto;
-  }
+.consulting-mega-menu .megaMenuIMG {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  display: block;
+  margin: auto;
+}
 
-  .offline-consulting-menu {
-    position: absolute;
-    top: 0;
-    right: 166px;
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
-    width: 250px;
-    height: 330px;
-    padding: 20px;
-  }
+.consulting-mega-menu .offline-consulting-menu {
+  position: absolute;
+  top: 0;
+  right: 166px;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  width: 250px;
+  height: 330px;
+  padding: 20px;
 }
 
 .scrolledMenu .consulting-mega-menu {
@@ -431,22 +431,22 @@ header a {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
 
-  .search-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 64%;
-    cursor: pointer;
-    border: 0;
-    border-radius: 5px;
-    background-color: #33b130;
-  }
+.fixed-nav-options .search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 64%;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  background-color: #33b130;
+}
 
-  a:hover {
-    text-decoration: none !important;
-  }
+.fixed-nav-options a:hover {
+  text-decoration: none !important;
 }
 
 .account-management {
@@ -463,53 +463,53 @@ header a {
   margin-right: 5px;
   border: 2px solid transparent;
   border-bottom-color: #50cbb2;
+}
 
-  .account-options {
-    text-align: right;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: stretch;
-    align-items: stretch;
-    width: 175px;
-    height: 166px;
-    border-radius: 4px;
+.account-management .account-options {
+  text-align: right;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  width: 175px;
+  height: 166px;
+  border-radius: 4px;
+}
 
-    a {
-      font-size: 0.95rem;
-      color: #000 !important;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0 15px;
-      transition: all 200ms ease-in-out;
-    }
+.account-management .account-options a {
+  font-size: 0.95rem;
+  color: #000 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 15px;
+  transition: all 200ms ease-in-out;
+}
 
-    a:hover {
-      color: #fff !important;
-      text-decoration: none;
-      background-color: #50cbb2;
-    }
+.account-management .account-options a:hover {
+  color: #fff !important;
+  text-decoration: none;
+  background-color: #50cbb2;
+}
 
-    .first-option {
-      border-bottom: 1px solid #f4f4f4;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-    }
+.account-management .account-options .first-option {
+  border-bottom: 1px solid #f4f4f4;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
 
-    .middle-option {
-      border-bottom: 1px solid #f4f4f4;
-    }
+.account-management .account-options .middle-option {
+  border-bottom: 1px solid #f4f4f4;
+}
 
-    .last-option {
-      border-bottom-right-radius: 4px;
-      border-bottom-left-radius: 4px;
-    }
-  }
+.account-management .account-options .last-option {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
 
 .user-button {
@@ -519,16 +519,16 @@ header a {
   width: 285px;
   height: 120px;
   padding: 0 20px;
+}
 
-  .account-management:hover a {
-    color: #50cbb2;
-    text-decoration: none;
-  }
+.user-button .account-management:hover a {
+  color: #50cbb2;
+  text-decoration: none;
+}
 
-  .user-cart:hover a {
-    color: #fb1616;
-    text-decoration: none;
-  }
+.user-button .user-cart:hover a {
+  color: #fb1616;
+  text-decoration: none;
 }
 
 .consulting-menu-sub-option {
@@ -610,30 +610,30 @@ header a {
   height: 41px;
   box-shadow: 1px 3px 7px rgba(103, 82, 57, 0.1);
   background-color: #fff;
+}
 
-  .fixed-navbar-content {
-    height: 41px;
-    padding: 0;
+.fixed-navbar .fixed-navbar-content {
+  height: 41px;
+  padding: 0;
+}
 
-    .row .nav-menu a {
-      text-align: center;
-      margin: auto 0;
-      padding-right: 20px;
-    }
+.fixed-navbar .fixed-navbar-content .row .nav-menu a {
+  text-align: center;
+  margin: auto 0;
+  padding-right: 20px;
+}
 
-    .row .nav-menu {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 0;
+.fixed-navbar .fixed-navbar-content .row .nav-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+}
 
-      a:hover {
-        color: #000;
-        text-decoration: none;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-        background-color: #fff;
-      }
-    }
-  }
+.fixed-navbar .fixed-navbar-content .row .nav-menu a:hover {
+  color: #000;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
 }

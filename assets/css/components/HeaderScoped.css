@@ -1,4 +1,3 @@
-
 .theme--light.v-app-bar.v-toolbar.v-sheet {
   background-color: transparent;
 }
@@ -186,7 +185,6 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
     width: 400px;
   }
 }
-
 @media only screen and ( max-width: 959.5px ) {
   .navbar-container {
     width: 600px;
@@ -204,15 +202,14 @@ header.v-app-bar--is-scrolled .scrolledMenu .scrolledMenuLinks button {
     font-size: 1rem;
   }
 }
-
 @media only screen and ( max-width: 768px ) {
   .mobile-appbar-item {
     font-size: 1.2rem;
   }
 }
-
 @media only screen and ( max-width: 600px ) {
   .mobile-appbar-item {
     font-size: 0.9rem;
   }
 }
+

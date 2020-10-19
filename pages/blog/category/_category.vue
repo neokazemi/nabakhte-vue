@@ -47,7 +47,7 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import '~/assets/css/pages/blog.scss'
+import '~/assets/css/pages/blog.css'
 import { PostList } from '~/models/Post'
 export default {
   name: 'Category',
@@ -975,5 +975,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import url('../../../assets/css/pages/_blogScoped.scss');
+  @import url('../../../assets/css/pages/_blogScoped.css');
 </style>
