@@ -93,9 +93,6 @@ export default {
     transition: all 300ms ease-in-out !important;
     visibility: hidden;
     width: 100%;
-    -webkit-transition: all 300ms ease-in-out !important;
-    -moz-transition: all 300ms ease-in-out !important;
-    -o-transition: all 300ms ease-in-out !important;
   }
 
   .product-image:hover .cart-item-image-hover {
