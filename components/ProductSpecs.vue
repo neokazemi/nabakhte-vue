@@ -29,9 +29,6 @@ export default {
     font-size: 0.9rem;
     line-height: 40px;
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
   }
 
   .specs:hover {

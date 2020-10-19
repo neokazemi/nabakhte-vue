@@ -148,8 +148,8 @@ export default {
     border-radius: 3px;
     color: #fff;
     font-size: 0.8rem;
-    padding: 0 5px;
     line-height: 20px !important;
+    padding: 0 5px;
   }
 
   .final-price {

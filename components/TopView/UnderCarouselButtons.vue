@@ -60,9 +60,6 @@
     position: relative;
     transition: all 0.3s ease;
     width: 19.8%;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
   }
 
   .under-carousel-button:hover {
@@ -71,9 +68,6 @@
   }
 
   .under-carousel-button p {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
     font-size: 0.8rem;
     margin-right: 10px;
     transition: all 0.3s ease;
@@ -95,9 +89,6 @@
     right: 65px;
     top: 50%;
     transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
   }
 
   .under-carousel-button:hover .after-hover-text {
@@ -113,9 +104,6 @@
     margin-right: 10px;
     transition: all 0.3s ease;
     width: auto;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
   }
 
   .under-carousel-button:hover img {

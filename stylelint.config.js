@@ -7,7 +7,8 @@ module.exports = {
   // https://stylelint.io/user-guide/configuration
   rules: {
     'selector-class-pattern': null,
-    'selector-max-universal': 5,
-    'selector-max-compound-selectors': 5
+    'selector-max-universal': 10,
+    'selector-max-compound-selectors': 10,
+    'max-nesting-depth': 5
   }
 }

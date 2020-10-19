@@ -277,11 +277,9 @@ export default {
   }
 
   .sort select {
-    -moz-appearance: button;
-    -moz-user-select: none;
-    -webkit-appearance: button;
-    -webkit-user-select: none;
+    appearance: auto;
     line-height: 30px;
+    user-select: none;
     width: 170px;
   }
 

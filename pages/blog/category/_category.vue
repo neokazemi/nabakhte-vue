@@ -935,8 +935,8 @@ export default {
     posts () {
       return this.$store.getters.posts
     },
-    ispwa () {
-      return this.$store.getters.ispwa
+    isFromPc () {
+      return this.$store.getters.isFromPc
     }
   },
   created () {
@@ -975,5 +975,5 @@ export default {
 </script>
 
 <style scoped>
-  @import '../../../assets/css/pages/blogScoped.scss';
+  @import url('../../../assets/css/pages/blogScoped.scss');
 </style>

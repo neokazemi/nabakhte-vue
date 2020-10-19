@@ -240,10 +240,10 @@ export default {
     outline: none;
   }
 
-  .discount-input:focus::-webkit-input-placeholder {
+  /* .discount-input:focus::input-placeholder {
     opacity: 0;
     transition: opacity 0.5s 0.5s ease !important;
-  }
+  } */
 
   .apply-discount {
     background-color: #fff;

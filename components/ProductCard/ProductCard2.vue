@@ -139,8 +139,8 @@ export default {
     align-items: center;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     height: 50px;
+    justify-content: center;
   }
 
   .product-info .right-part .price * {
