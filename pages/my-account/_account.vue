@@ -623,6 +623,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   @import url('../../assets/css/pages/MyAccountScoped.scss');
 </style>
