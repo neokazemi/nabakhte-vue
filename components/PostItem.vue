@@ -61,7 +61,7 @@
 
 <script>
 import '~/assets/css/components/PostItem.css'
-
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 export default {
   name: 'PostItem',
   filters: {
@@ -73,6 +73,7 @@ export default {
       } else { return input }
     }
   },
+  mixins: [mixinDetectDevice],
   props: {
     post: {
       type: Object,
@@ -82,11 +83,6 @@ export default {
   data () {
     return {
       showSub: false
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   methods: {
