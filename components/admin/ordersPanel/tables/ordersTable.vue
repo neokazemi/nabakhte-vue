@@ -463,6 +463,6 @@ export default {
 }
 </script>
 
-<style scoped>
-/* @import "assets/scss/components/admin/ordersPanel/tables/ordersTable.scss"; */
+<style lang="scss" scoped>
+  @import url('~/assets/scss/components/admin/ordersPanel/tables/ordersTable.scss');
 </style>

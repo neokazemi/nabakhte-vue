@@ -413,6 +413,6 @@ export default {
 }
 </script>
 
-<style scoped>
-/* @import '../../../../assets/scss/components/admin/usersPanel/filters/userListFilter.scss'; */
+<style lang="scss" scoped>
+@import url('~/assets/scss/components/admin/usersPanel/filters/userListFilter.scss');
 </style>
