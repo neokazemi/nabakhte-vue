@@ -624,5 +624,5 @@ export default {
 </script>
 
 <style scoped>
-  @import '../../assets/css/pages/MyAccountScoped.scss';
+  @import url('../../assets/css/pages/MyAccountScoped.scss');
 </style>
