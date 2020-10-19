@@ -17,15 +17,6 @@ export const mutations = {
   //     state.appProps = newInfo;
   //   }
   // },
-  // updateUrl(state, newInfo) {
-  //   state.url = newInfo;
-  // },
-  // updateStudyPlanDays(state, newInfo) {
-  //   state.studyPlanDays = newInfo;
-  // },
-  // updateStudyPlanEvents(state, newInfo) {
-  //   state.studyPlanEvents = newInfo;
-  // }
 }
 
 export const getters = {
