@@ -163,18 +163,18 @@ export default {
 <style scoped>
 
   .new-books-container {
-    position: relative;
-    z-index: 2;
     margin: 40px 0;
+    position: relative;
     width: 100%;
+    z-index: 2;
   }
 
   .slider-bg {
-    position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
     height: 290px;
+    left: 0;
+    position: absolute;
+    right: 0;
     z-index: -1;
   }
 
@@ -183,18 +183,18 @@ export default {
   }
 
   .price-bg {
-    position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
     height: 38px;
+    left: 0;
+    position: absolute;
+    right: 0;
     z-index: -1;
   }
 
   .slider-title {
-    font-size: 1rem;
     display: flex;
     flex-direction: row;
+    font-size: 1rem;
     justify-content: space-between;
     padding: 0 10px;
   }
@@ -204,24 +204,24 @@ export default {
   }
 
   .slider-title a {
-    font-size: 0.7rem;
+    align-items: center;
     color: #8e8e8e;
     display: flex;
-    align-items: center;
+    font-size: 0.7rem;
   }
 
   .slider-title .more-info3 {
-    font-size: 1rem;
     color: #000;
+    font-size: 1rem;
   }
 
   .more-info-icon {
     border: 2px solid #d4d4d4;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
     display: inline-flex;
+    height: 20px;
     margin: 0 10px;
+    width: 20px;
   }
 
   .slider-carousel {
@@ -249,14 +249,14 @@ export default {
 
   .swiper-button-prev::after,
   .swiper-button-next::after {
-    font-weight: 800;
     color: #fff;
+    font-weight: 800;
     text-shadow: 0 0 10px #424242;
   }
 
   .swiper-button-prev {
-    position: absolute;
     left: 40px;
+    position: absolute;
   }
 
   .swiper-button-next {
@@ -266,24 +266,24 @@ export default {
 
   .swiper-button-next2::after,
   .swiper-button-prev2::after {
-    font-weight: 800;
-    font-size: 0.9rem;
     color: #fff;
+    font-size: 0.9rem;
+    font-weight: 800;
   }
 
   .swiper-button-next2,
   .swiper-button-prev2 {
-    width: 20px;
     height: 20px;
     position: absolute;
-    z-index: 10;
-    top: 120px;
     text-align: center;
+    top: 120px;
+    width: 20px;
+    z-index: 10;
   }
 
   .swiper-button-prev2 {
-    left: -10px;
     background-color: #50cbb2;
+    left: -10px;
   }
 
   .swiper-button-next2 {
@@ -300,8 +300,8 @@ export default {
   }
 
   .slider-container3 {
-    width: 100% !important;
     max-width: 100% !important;
+    width: 100% !important;
   }
 
   @media only screen and (max-width: 1260px) {
