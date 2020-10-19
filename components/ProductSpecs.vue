@@ -22,16 +22,16 @@ export default {
 
 <style scoped>
   .specs {
+    align-items: center;
+    box-shadow: 0 1px 0 #e8e8e8;
     display: flex;
     flex-direction: row;
-    box-shadow: 0 1px 0 #e8e8e8;
     font-size: 0.9rem;
-    align-items: center;
     line-height: 40px;
+    transition: all 0.3s ease;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
   }
 
   .specs:hover {
@@ -41,8 +41,8 @@ export default {
   }
 
   .subject {
-    width: 30%;
     font-size: 0.9rem;
+    width: 30%;
   }
 
   .specs .subject {

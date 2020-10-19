@@ -1,6 +1,6 @@
 <template>
   <div class="menu">
-    <div class="pwa-drawer-header-container">
+    <div class="mobile-drawer-header-container">
       <div class="close-button" @click="closeDrawer">
         <p>✕</p>
       </div>
@@ -8,7 +8,7 @@
         <v-img src="https://www.chibekhoonam.net/wp-content/themes/chib-pwa/assets/images/logo-site-mobile.svg" :width="89" :height="34" contain />
       </div>
     </div>
-    <div class="pwa-drawer-content">
+    <div class="mobile-drawer-content">
       <v-text-field
         label="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)"
         full-width
@@ -32,24 +32,24 @@ export default {
   .menu {
     display: flex;
     flex-direction: column;
-    padding: 16px;
     opacity: 0.9;
+    padding: 16px;
   }
 
-  .menu .pwa-drawer-header-container {
+  .menu .mobile-drawer-header-container {
+    align-items: center;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
   }
 
-  .menu .pwa-drawer-header-container .close-button p {
-    font-weight: bold;
+  .menu .mobile-drawer-header-container .close-button p {
     font-size: 24px;
+    font-weight: bold;
   }
 
-  .menu .pwa-drawer-content .v-application--is-ltr .v-text-field .v-label {
+  .menu .mobile-drawer-content .v-application--is-ltr .v-text-field .v-label {
     left: auto;
     right: 5px;
   }

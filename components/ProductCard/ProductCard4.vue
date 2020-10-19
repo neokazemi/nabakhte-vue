@@ -113,14 +113,14 @@ export default {
 
 <style scoped>
   .col {
-    text-align: center;
-    margin: 0 auto;
-    padding-top: 0;
-    padding-bottom: 0;
+    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    margin: 0 auto;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
   }
 
   .name {
@@ -128,9 +128,9 @@ export default {
   }
 
   .container {
-    padding: 6px 12px;
-    border-top: 1px solid #f8f8f8;
     border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f8f8f8;
+    padding: 6px 12px;
   }
 
   .price {
@@ -139,16 +139,16 @@ export default {
   }
 
   .old-price {
-    text-decoration: line-through;
     font-size: 0.9rem;
+    text-decoration: line-through;
   }
 
   .percent {
     background-color: #fb1616;
     border-radius: 3px;
-    padding: 0 5px;
-    font-size: 0.8rem;
     color: #fff;
+    font-size: 0.8rem;
+    padding: 0 5px;
     line-height: 20px !important;
   }
 
@@ -168,8 +168,8 @@ export default {
   }
 
   .product-card .title {
-    font-weight: bold;
     font-size: 0.7rem;
+    font-weight: bold;
     margin-left: 10px;
   }
 
@@ -186,8 +186,8 @@ export default {
   }
 
   .product-card .count .v-input__slot {
-    width: 50%;
     padding: 0 5px !important;
+    width: 50%;
   }
 
   .product-card .count .v-select__slot {
@@ -211,8 +211,8 @@ export default {
   }
 
   .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-input__append-inner {
-    padding: 0;
     margin-top: 0;
+    padding: 0;
   }
 
   .product-card .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__selections {
@@ -246,16 +246,16 @@ export default {
 
   @media only screen and (max-width: 600px) {
     .product-card .col {
-      padding: 5px 0;
-      border-top: 1px solid #f8f8f8;
       border-bottom: 1px solid #f8f8f8;
+      border-top: 1px solid #f8f8f8;
       line-height: 50px;
+      padding: 5px 0;
     }
 
     .product-card .count .v-input__slot {
-      width: 30%;
-      font-size: 1rem;
       align-self: start;
+      font-size: 1rem;
+      width: 30%;
     }
 
     .product-card-image-cart .v-image {
@@ -265,9 +265,9 @@ export default {
 
   @media only screen and (max-width: 400px) {
     .product-card .count .v-input__slot {
-      width: 50%;
-      font-size: 1rem;
       align-self: start;
+      font-size: 1rem;
+      width: 50%;
     }
   }
 </style>
