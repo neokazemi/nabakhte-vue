@@ -60,14 +60,14 @@ export default {
 <style>
   .product-card .v-window__prev,
   .product-card .v-window__next {
-    background: #50cbb2;
-    border-radius: 0;
-    height: 20px;
-    margin: 0;
     position: absolute;
+    z-index: 1;
     top: calc(60% - 20px);
     width: 20px;
-    z-index: 1;
+    height: 20px;
+    margin: 0;
+    border-radius: 0;
+    background: #50cbb2;
   }
 
   .product-card .v-window__prev {
@@ -85,7 +85,7 @@ export default {
 
   .product-card .v-window__prev button,
   .product-card .v-window__next button {
-    height: 20px;
     width: 20px;
+    height: 20px;
   }
 </style>

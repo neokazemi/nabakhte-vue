@@ -1,20 +1,20 @@
 .input-field {
   .v-text-field .v-label {
-    left: auto !important;
     right: 5px !important;
+    left: auto !important;
   }
 
-  .v-autocomplete:not(.v-input--is-disabled).v-select.v-text-field input {
+  .v-autocomplete:not( .v-input--is-disabled ).v-select.v-text-field input {
     background-color: transparent;
   }
 
-  .v-select.v-text-field--outlined:not(.v-text-field--single-line) .v-select__selections input {
+  .v-select.v-text-field--outlined:not( .v-text-field--single-line ) .v-select__selections input {
     display: none;
   }
 
   .v-text-field > .v-input__control > .v-input__slot > .v-text-field__slot label {
-    left: auto !important;
     right: 5px !important;
+    left: auto !important;
   }
 
   .v-text-field__details .v-messages .v-messages__wrapper {
@@ -25,7 +25,7 @@
     background-color: transparent;
   }
 
-  .v-select.v-select--chips:not(.v-text-field--single-line).v-text-field--enclosed.v-input--dense .v-select__selections input {
+  .v-select.v-select--chips:not( .v-text-field--single-line ).v-text-field--enclosed.v-input--dense .v-select__selections input {
     display: none;
   }
 
@@ -33,9 +33,9 @@
     transform: translateY(-10px) scale(0.75);
   }
 
-  .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot .v-select__slot label {
-    left: auto !important;
+  .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__slot label {
     right: 5px !important;
+    left: auto !important;
   }
 
   .v-select.v-input--dense .v-chip {
@@ -47,9 +47,9 @@
   font-size: 0.9rem;
 
   .v-list-item__content {
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
-    border-top: 0.5px solid rgba(0, 0, 0, 0.05);
     height: 55px;
+    border-top: 0.5px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
   }
 
   .input-field {
@@ -72,12 +72,12 @@
 }
 
 .v-dialog .v-card .close-button-address-dialog {
-  left: 10px;
   position: absolute;
   top: 10px;
+  left: 10px;
 }
 
 .mobile-container .submit .v-btn .v-btn__content {
-  color: #fff;
   font-size: 16px;
+  color: #fff;
 }
