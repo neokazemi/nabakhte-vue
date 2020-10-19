@@ -517,18 +517,18 @@ export default {
   }
 
   .product-details {
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    position: relative;
     display: flex;
     flex-direction: row;
-    margin-right: 1%;
-    position: relative;
     width: 99%;
+    margin-right: 1%;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    background-color: #fff;
   }
 
   .product-details-col {
-    padding-top: 30px;
     width: 100%;
+    padding-top: 30px;
   }
 
   .product-details-col button {
@@ -544,9 +544,9 @@ export default {
   }
 
   .product-details .middle {
-    border-left: 1px solid #ebe4e4;
-    border-right: 1px solid #ebe4e4;
     padding-right: 20px;
+    border-right: 1px solid #ebe4e4;
+    border-left: 1px solid #ebe4e4;
   }
 
   .product-details .last {
@@ -558,9 +558,9 @@ export default {
 
   .price,
   .buy-options {
+    font-weight: bold;
     display: flex;
     flex-direction: row;
-    font-weight: bold;
     justify-content: center;
     margin-bottom: 8px;
   }
@@ -580,10 +580,10 @@ export default {
   }
 
   .price .discount {
-    background-color: #fb1616;
-    border-radius: 3px;
     color: #fff;
     padding: 0 3px;
+    border-radius: 3px;
+    background-color: #fb1616;
   }
 
   .price .new-price {
@@ -591,28 +591,26 @@ export default {
   }
 
   .buy-options button {
-    background-color: #2bbb28;
-    border-radius: 5px;
-    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
-    color: #fff;
     font-size: 0.8rem;
     line-height: 30px;
+    color: #fff;
     margin-left: 5px;
     padding: 0 10px;
+    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
+    border-radius: 5px;
+    background-color: #2bbb28;
   }
 
   .buy-options select {
-    background-color: #fff;
-    border: 1px solid #222;
-    border-radius: 5px;
     font-size: 0.8rem;
     font-weight: normal;
-    height: 30px;
     text-align: center;
-    -moz-appearance: button;
-    -moz-user-select: none;
-    -webkit-appearance: button;
-    -webkit-user-select: none;
+    height: 30px;
+    user-select: none;
+    border: 1px solid #222;
+    border-radius: 5px;
+    background-color: #fff;
+    appearance: auto;
   }
 
   .buy-options select:focus {
@@ -622,8 +620,8 @@ export default {
   .tab-content h3 {
     font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 15px;
     margin-top: 30px;
+    margin-bottom: 15px;
   }
 
   .tab-content p {
@@ -642,46 +640,46 @@ export default {
   }
 
   .product-details .share {
-    background-color: #f8f8f8;
-    bottom: 0;
-    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
-    height: 42px;
     position: absolute;
+    bottom: 0;
     width: 100%;
+    height: 42px;
+    box-shadow: 0 1px 2px rgba(4, 5, 5, 0.25);
+    background-color: #f8f8f8;
   }
 
   .related-books {
-    display: flex;
-    flex-direction: column;
     font-size: 0.85rem;
     font-weight: bold;
-    padding: 20px 10px;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
   }
 
   .related-book {
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    font-size: 0.65rem;
+    position: relative;
     display: flex;
     flex-direction: row;
-    font-size: 0.65rem;
     margin: 10px auto;
     padding: 10px;
-    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 8px;
   }
 
   .related-book a {
     color: #000;
-    margin: auto 5px;
     width: 85%;
+    margin: auto 5px;
   }
 
   .add-to-cart {
-    background-color: rgb(43, 187, 40);
-    border-radius: 50%;
-    height: 20px;
     line-height: 23px;
     width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(43, 187, 40);
   }
 
   .last ul {
@@ -689,16 +687,16 @@ export default {
   }
 
   .last ul li {
-    color: #989898;
     font-size: 0.75rem;
     font-weight: normal;
+    color: #989898;
   }
 
   .last ul li::before {
-    color: #2bbb28;
-    content: '\2714' !important;
     font-weight: bold;
+    color: #2bbb28;
     margin-left: 10px;
+    content: '\2714' !important;
   }
 
   .v-tabs {
@@ -707,9 +705,9 @@ export default {
   }
 
   .product .tabs .v-item-group .v-slide-group__wrapper .v-tabs-bar__content .v-tab {
-    color: #000;
     font-size: 1.05rem;
     font-weight: bold;
+    color: #000;
   }
 
   .product .tabs .v-item-group .v-slide-group__wrapper .v-tabs-bar__content .v-tab:hover {
@@ -722,13 +720,13 @@ export default {
   }
 
   .tab-content {
-    background-color: #fff;
-    border: 1px solid #f1eeee;
-    box-shadow: rgba(4, 5, 5, 0.15) 0 1px 2px;
+    overflow: hidden;
     height: auto;
     min-height: 100px;
-    overflow: hidden;
     padding: 0 30px;
+    box-shadow: rgba(4, 5, 5, 0.15) 0 1px 2px;
+    border: 1px solid #f1eeee;
+    background-color: #fff;
   }
 
   .bold {
@@ -775,10 +773,10 @@ export default {
     display: none;
   }
 
-  .mobile-container .buy-options-and-price .quantity .v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
-    color: #fff;
+  .mobile-container .buy-options-and-price .quantity .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
     font-size: 12px;
     font-weight: bold;
+    color: #fff;
     padding: 0 5px;
   }
 
@@ -795,13 +793,13 @@ export default {
     display: none !important;
   }
 
-  @media only screen and (max-width: 1260px) {
+  @media only screen and ( max-width: 1260px ) {
     .product {
       width: 950px;
     }
   }
 
-  @media only screen and (max-width: 960px) {
+  @media only screen and ( max-width: 960px ) {
     .product {
       width: 650px;
     }
@@ -811,9 +809,9 @@ export default {
     }
 
     .product-data .v-image {
+      width: 200px !important;
       height: auto !important;
       margin: auto auto 10px;
-      width: 200px !important;
     }
 
     .product-data .first {
@@ -821,7 +819,7 @@ export default {
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and ( max-width: 600px ) {
     .product {
       width: 90%;
     }
@@ -840,8 +838,8 @@ export default {
 <style scoped>
 
   .mobile-container {
-    margin: 0 auto;
     width: 90%;
+    margin: 0 auto;
   }
 
   .product-info {
@@ -851,90 +849,90 @@ export default {
   }
 
   .product-pic-container {
-    background-color: #fff;
+    position: relative;
     border: 1px solid #e2e2e2;
     border-radius: 5px;
-    position: relative;
+    background-color: #fff;
   }
 
   .product-pic {
-    border-radius: 5px;
     float: left;
-    margin: 10px 0 10px 8%;
     overflow: hidden;
     width: 75%;
+    margin: 10px 0 10px 8%;
+    border-radius: 5px;
   }
 
   .discount {
-    align-items: flex-start;
-    background-color: #fb1616;
-    border-radius: 5px 0 100px;
-    color: #fff;
-    display: flex;
     font-size: 1.7rem;
     font-weight: bold;
-    height: 70px;
-    justify-content: flex-end;
-    left: 0;
-    padding: 10px;
+    color: #fff;
     position: absolute;
     top: 0;
+    left: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
     width: 70px;
+    height: 70px;
+    padding: 10px;
+    border-radius: 5px 0 100px;
+    background-color: #fb1616;
   }
 
   .buy-options-and-price {
-    align-items: center;
-    background-color: #2bbb28;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: row;
-    height: 50px;
     justify-content: space-between;
+    align-items: center;
+    height: 50px;
     margin-top: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 8px;
+    background-color: #2bbb28;
   }
 
   .buy-options-and-price .quantity {
-    align-items: center;
-    background-color: rgb(38, 171, 36);
-    border-bottom-left-radius: 8px;
-    border-top-left-radius: 8px;
     display: flex;
-    height: 100%;
-    min-width: 75px;
+    align-items: center;
     width: 100px;
+    min-width: 75px;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    background-color: rgb(38, 171, 36);
   }
 
   .buy-options-and-price .buy-button {
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 16px;
+    align-items: center;
     width: 100%;
+    padding: 0 16px;
   }
 
   .mobile-container .plus-icon {
-    align-items: center;
-    background-color: #fff;
-    border-radius: 50%;
-    color: #2bbb28;
-    display: flex;
     font-size: 2rem;
     font-weight: bold;
-    height: 20px;
+    color: #2bbb28;
+    display: flex;
     justify-content: center;
-    padding-top: 3px;
+    align-items: center;
     width: 20px;
+    height: 20px;
+    padding-top: 3px;
+    border-radius: 50%;
+    background-color: #fff;
   }
 
   .buy-options-and-price .buy-button .price {
-    align-items: center;
+    font-size: 16px;
     color: #fff;
     display: flex;
     flex-direction: row;
-    font-size: 16px;
     justify-content: center;
+    align-items: center;
     height: 100%;
     margin: 0;
   }
@@ -952,16 +950,16 @@ export default {
   }
 
   .mobile-container .product-details-container {
-    background-color: #fff;
-    border: 1px solid #e2e2e2;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
     font-size: 12px;
     font-weight: bold;
     line-height: 3;
+    display: flex;
+    flex-direction: column;
     margin-top: 20px;
     padding: 10px;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+    background-color: #fff;
   }
 
   .mobile-container .product-details-container span {
@@ -969,29 +967,29 @@ export default {
   }
 
   .fixed-add-to-cart {
-    align-items: center;
-    background-color: #2bbb28;
-    bottom: 0;
-    color: #fff;
-    display: flex;
-    flex-direction: row;
     font-size: 16px;
     font-weight: bold;
-    justify-content: center;
-    left: 0;
-    padding: 15px;
-    position: fixed;
-    right: 0;
+    color: #fff;
     text-align: center;
-    width: 100%;
+    position: fixed;
     z-index: 20000;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 15px;
+    background-color: #2bbb28;
   }
 
   .fixed-add-to-cart div {
     margin: 0 5px;
   }
 
-  @media only screen and (max-width: 350px) {
+  @media only screen and ( max-width: 350px ) {
     .buy-options-and-price .buy-button .price {
       font-size: 12px;
     }
