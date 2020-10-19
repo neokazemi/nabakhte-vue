@@ -1,0 +1,26 @@
+.details {
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #000;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+button {
+  background-color: #fff !important;
+}
+
+.v-expansion-panels {
+  border-radius: 0;
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 30px;
+  color: #7b7777;
+}
+
+.v-expansion-panel::before {
+  box-shadow: none;
+}

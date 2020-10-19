@@ -1,21 +1,21 @@
 .mobile-container {
   margin: 20px;
   background-color: #f8f8f8;
+}
 
-  p {
-    font-size: 14px;
-    line-height: 24px;
-  }
+.mobile-container p {
+  font-size: 14px;
+  line-height: 24px;
+}
 
-  a {
-    font-size: 14px;
-    font-weight: bold;
-    color: #e42828;
-  }
+.mobile-container a {
+  font-size: 14px;
+  font-weight: bold;
+  color: #e42828;
+}
 
-  .margin-top {
-    margin-top: 20px;
-  }
+.mobile-container .margin-top {
+  margin-top: 20px;
 }
 
 .input-field p {
@@ -25,22 +25,20 @@
 .page-content {
   font-size: 14px;
   background-color: #fff;
+}
 
-  .tab-content {
-    p {
-      line-height: 25px;
-      margin-bottom: 10px;
-    }
+.page-content .tab-content p {
+  line-height: 25px;
+  margin-bottom: 10px;
+}
 
-    a {
-      color: #fb1616;
-    }
+.page-content .tab-content a {
+  color: #fb1616;
+}
 
-    .info-box p {
-      color: #fff;
-      margin: 0;
-    }
-  }
+.page-content .tab-content .info-box p {
+  color: #fff;
+  margin: 0;
 }
 
 .complete-info {
@@ -162,7 +160,6 @@
     flex-direction: column;
   }
 }
-
 @media only screen and ( max-width: 600px ) {
   .page-content {
     flex-direction: column;
@@ -181,7 +178,6 @@
     margin-bottom: 0;
   }
 }
-
 @media only screen and ( max-width: 400px ) {
   .mobile-container .info-box {
     flex-direction: column;

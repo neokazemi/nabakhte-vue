@@ -27,6 +27,7 @@ import ProductCard from '../ProductCard/ProductCard'
 import { ProductList } from '../../models/Product'
 import MainCarousel from './MainCarousel'
 import CarouselButtons from './UnderCarouselButtons'
+import '~/assets/css/components/TopView.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
@@ -53,36 +54,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .product-card .v-window__prev,
-  .product-card .v-window__next {
-    position: absolute;
-    z-index: 1;
-    top: calc(60% - 20px);
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    border-radius: 0;
-    background: #50cbb2;
-  }
-
-  .product-card .v-window__prev {
-    right: 20px;
-  }
-
-  .product-card .v-window__next {
-    right: -1px;
-  }
-
-  .product-card .v-window__prev i,
-  .product-card .v-window__next i {
-    font-size: 20px !important;
-  }
-
-  .product-card .v-window__prev button,
-  .product-card .v-window__next button {
-    width: 20px;
-    height: 20px;
-  }
-</style>

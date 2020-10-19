@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import '~/assets/css/components/MainCarousel.scss'
+import '~/assets/css/components/MainCarousel.css'
 export default {
   name: 'MainCarousel',
   props: {

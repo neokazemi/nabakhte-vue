@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import '~/assets/css/components/ExpansionPanel.css'
+
 export default {
   name: 'ExpansionPanel',
   props: {
@@ -32,52 +34,5 @@ export default {
 </script>
 
 <style scoped>
-  .details {
-    font-size: 0.75rem;
-    font-weight: bold;
-    color: #000;
-    overflow-y: auto;
-    max-height: 300px;
-  }
-
-  button {
-    background-color: #fff !important;
-  }
-
-  .v-expansion-panels {
-    border-radius: 0;
-  }
-
-  .name {
-    font-size: 1rem;
-    font-weight: bold;
-    line-height: 30px;
-    color: #7b7777;
-  }
-
-  .v-expansion-panel::before {
-    box-shadow: none;
-  }
-</style>
-
-<style>
-  .name .v-expansion-panel-header__icon {
-    position: absolute;
-    left: 10px;
-    margin: 0;
-  }
-
-  .name .v-expansion-panel-header__icon i {
-    font-size: 14px;
-    font-style: normal;
-  }
-
-  .v-application .elevation-5 {
-    box-shadow: none !important;
-  }
-
-  .v-expansion-panel:hover .name,
-  .v-expansion-panels .v-expansion-panel:hover .name .v-expansion-panel-header__icon .v-icon {
-    color: #2bbb28 !important;
-  }
+  @import url('../assets/css/components/ExpansionPanelScoped.css');
 </style>

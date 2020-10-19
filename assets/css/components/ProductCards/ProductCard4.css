@@ -1,0 +1,89 @@
+.count input {
+  background-color: #fff;
+}
+
+.product-card .count .v-input__slot {
+  width: 50%;
+  padding: 0 5px !important;
+}
+
+.product-card .count .v-select__slot {
+  height: 25px;
+}
+
+.product-card .count .v-input__control {
+  align-items: center;
+}
+
+.product-card .count .v-text-field__details {
+  display: none;
+}
+
+.product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__selections input {
+  display: none;
+}
+
+.product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot fieldset {
+  height: 30px;
+}
+
+.product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-input__append-inner {
+  margin-top: 0;
+  padding: 0;
+}
+
+.product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot .v-select__selections {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.product-card .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
+  min-height: 20px;
+}
+
+@media only screen and ( max-width: 960px ) {
+  .product-card .count .v-input__slot {
+    width: 80%;
+  }
+
+  .product-card-image-cart {
+    padding: 0;
+  }
+}
+
+@media only screen and ( max-width: 768px ) {
+  .product-card .count .v-input__slot {
+    width: 100%;
+  }
+
+  .product-card-image-cart {
+    padding: 0;
+  }
+}
+
+@media only screen and ( max-width: 600px ) {
+  .product-card .col {
+    line-height: 50px;
+    padding: 5px 0;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid #f8f8f8;
+  }
+
+  .product-card .count .v-input__slot {
+    font-size: 1rem;
+    align-self: start;
+    width: 30%;
+  }
+
+  .product-card-image-cart .v-image {
+    height: 150px !important;
+  }
+}
+
+@media only screen and ( max-width: 400px ) {
+  .product-card .count .v-input__slot {
+    font-size: 1rem;
+    align-self: start;
+    width: 50%;
+  }
+}

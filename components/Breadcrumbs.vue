@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import '~/assets/css/components/Breadcrumbs.css'
+
 export default {
   name: 'Breadcrumbs',
   props: {
@@ -25,18 +27,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .bread-col {
-    padding: 0 12px;
-  }
-
-  .bread-col ul {
-    padding: 0 12px;
-  }
-
-  .v-breadcrumbs .v-breadcrumbs__item {
-    font-weight: bold;
-    color: #000;
-  }
-</style>
