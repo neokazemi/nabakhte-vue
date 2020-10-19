@@ -149,24 +149,24 @@ export default {
   }
 
   .recent-articles .recent-articles-content {
-    background-color: #000;
     display: flex;
     flex-direction: column;
+    background-color: #000;
   }
 
   .recent-articles .recent-articles-content .item {
-    align-content: center;
-    border: 1px solid #fff;
-    display: flex;
-    height: 80px;
-    justify-content: center;
-    padding: 5px 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 80px;
+    padding: 5px 10px;
+    border: 1px solid #fff;
   }
 
   .recent-articles .recent-articles-content .item a {
-    color: #fff;
     font-size: 0.8rem;
+    color: #fff;
     text-align: center;
   }
 
@@ -176,17 +176,17 @@ export default {
   }
 
   .more-info {
-    color: #a2a2a1;
     font-size: 0.8rem;
+    color: #a2a2a1;
   }
 
   .buy-book-guide {
-    background-color: #fff;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    width: 100%;
     margin: 30px 0;
     padding: 15px;
-    width: 100%;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 5px 5px;
+    background-color: #fff;
   }
 
   .buy-book-guide p {

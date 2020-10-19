@@ -35,14 +35,14 @@ export default {
   }
 
   .toggle-button-item {
-    align-items: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    font-weight: bold;
     color: #7b7777;
     display: flex;
     flex-direction: row;
-    font-weight: bold;
     justify-content: space-between;
+    align-items: center;
     padding: 0 25px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .toggle-button-container .v-input--switch {

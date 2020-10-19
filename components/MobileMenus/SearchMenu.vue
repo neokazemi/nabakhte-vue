@@ -32,15 +32,15 @@ export default {
   .menu {
     display: flex;
     flex-direction: column;
-    opacity: 0.9;
     padding: 16px;
+    opacity: 0.9;
   }
 
   .menu .mobile-drawer-header-container {
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
   }
 
@@ -50,7 +50,7 @@ export default {
   }
 
   .menu .mobile-drawer-content .v-application--is-ltr .v-text-field .v-label {
-    left: auto;
     right: 5px;
+    left: auto;
   }
 </style>

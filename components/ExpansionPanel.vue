@@ -33,11 +33,11 @@ export default {
 
 <style scoped>
   .details {
-    color: #000;
     font-size: 0.75rem;
     font-weight: bold;
-    max-height: 300px;
+    color: #000;
     overflow-y: auto;
+    max-height: 300px;
   }
 
   button {
@@ -49,10 +49,10 @@ export default {
   }
 
   .name {
-    color: #7b7777;
     font-size: 1rem;
     font-weight: bold;
     line-height: 30px;
+    color: #7b7777;
   }
 
   .v-expansion-panel::before {
@@ -62,9 +62,9 @@ export default {
 
 <style>
   .name .v-expansion-panel-header__icon {
+    position: absolute;
     left: 10px;
     margin: 0;
-    position: absolute;
   }
 
   .name .v-expansion-panel-header__icon i {

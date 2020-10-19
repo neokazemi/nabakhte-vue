@@ -36,24 +36,24 @@ export default {
 
 <style scoped>
   .comment {
-    background-color: #f8f8f8;
-    border: 1px dashed #d4d4d4;
-    border-radius: 14px;
     display: flex;
     flex-direction: row;
     margin: 25px 0;
     padding: 15px;
+    border: 1px dashed #d4d4d4;
+    border-radius: 14px;
+    background-color: #f8f8f8;
   }
 
   .comment-details {
-    background-color: #9b9b9b;
-    border-radius: 4px;
-    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
     color: #fff;
     display: flex;
     flex-direction: row;
     margin-left: 20px;
     padding: 7px;
+    box-shadow: 0 2px 3px rgba(4, 5, 5, 0.15);
+    border-radius: 4px;
+    background-color: #9b9b9b;
   }
 
   .likes {
@@ -72,11 +72,11 @@ export default {
   }
 
   .author-details a {
-    color: #fff;
     font-size: 0.7rem;
     font-weight: bold;
-    margin: 0 10px;
+    color: #fff;
     text-decoration: none;
+    margin: 0 10px;
   }
 
   .author-details div p {

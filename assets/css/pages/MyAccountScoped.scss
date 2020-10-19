@@ -1,6 +1,6 @@
 .mobile-container {
-  background-color: #f8f8f8;
   margin: 20px;
+  background-color: #f8f8f8;
 
   p {
     font-size: 14px;
@@ -8,9 +8,9 @@
   }
 
   a {
-    color: #e42828;
     font-size: 14px;
     font-weight: bold;
+    color: #e42828;
   }
 
   .margin-top {
@@ -23,8 +23,8 @@
 }
 
 .page-content {
-  background-color: #fff;
   font-size: 14px;
+  background-color: #fff;
 
   .tab-content {
     p {
@@ -44,13 +44,13 @@
 }
 
 .complete-info {
-  background-color: #2bbb28;
-  border-radius: 5px;
-  border-right: 10px solid #036e01;
-  color: #fff;
   font-weight: bold;
-  padding: 10px 25px;
+  color: #fff;
   width: fit-content;
+  padding: 10px 25px;
+  border-right: 10px solid #036e01;
+  border-radius: 5px;
+  background-color: #2bbb28;
 }
 
 .xs-font {
@@ -58,14 +58,14 @@
 }
 
 .info-box {
-  align-items: center;
-  background-color: #2bbb28;
-  border-radius: 2px;
-  border-right: 8px solid rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 1.6rem;
+  border-right: 8px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  background-color: #2bbb28;
 }
 
 .mobile-container .info-box {
@@ -73,16 +73,16 @@
 }
 
 .shop-button button {
-  color: #fff;
   font-weight: bold;
+  color: #fff;
 }
 
 .address-bar {
-  align-items: center;
-  border-bottom: 1px solid #e7e7e7;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
   padding-bottom: 20px;
+  border-bottom: 1px solid #e7e7e7;
 }
 
 .address-bar h3 {
@@ -90,14 +90,14 @@
 }
 
 .address-bar button {
-  color: #fff;
   font-weight: bold;
+  color: #fff;
 }
 
 .half-width {
   box-sizing: border-box;
-  margin: 20px;
   width: 50%;
+  margin: 20px;
 }
 
 .input-field p span {
@@ -110,10 +110,10 @@
 }
 
 .input-fields-top .input-row {
-  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .full-width {
@@ -121,9 +121,9 @@
 }
 
 .input-field input {
-  border-radius: 2px;
   line-height: 1.15;
   padding: 0.6rem;
+  border-radius: 2px;
 }
 
 .input-field input:focus {
@@ -143,19 +143,19 @@
 }
 
 .submit-address {
-  align-items: center;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .submit-address button {
   color: #fff;
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and ( max-width: 960px ) {
   .half-width {
-    margin: 0 20px;
     width: 95%;
+    margin: 0 20px;
   }
 
   .input-fields-top .input-row {
@@ -163,7 +163,7 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and ( max-width: 600px ) {
   .page-content {
     flex-direction: column;
   }
@@ -177,12 +177,12 @@
   }
 
   .mobile-container .address-bar {
-    margin-bottom: 0;
     margin-top: 20px;
+    margin-bottom: 0;
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and ( max-width: 400px ) {
   .mobile-container .info-box {
     flex-direction: column;
   }

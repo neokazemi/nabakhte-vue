@@ -104,8 +104,8 @@ export default {
   .post .v-card__title,
   .post .v-card__subtitle,
   .post .post-meta {
-    background-color: #d81816;
     color: #fff !important;
+    background-color: #d81816;
   }
 
   .post .post-meta {
@@ -120,8 +120,8 @@ export default {
   }
 
   .post .post-meta div::after {
-    content: '|';
     margin: auto 20px auto 0;
+    content: '|';
   }
 
   .post .post-meta div:last-child::after {
@@ -130,32 +130,32 @@ export default {
 
   .post .v-card__subtitle {
     font-size: 0.7rem;
-    height: 0;
-    opacity: 1;
-    padding-top: 0;
-    transition: all 0.3s ease;
     visibility: hidden;
+    height: 0;
+    padding-top: 0;
+    opacity: 1;
+    transition: all 0.3s ease;
   }
 
   .post:hover .v-card__subtitle {
+    visibility: visible;
     height: 75px;
     opacity: 1;
-    visibility: visible;
   }
 
   .post .more-info {
-    background-color: #fff;
-    border-radius: 5px;
+    line-height: 28px;
     color: #000;
     display: block;
     float: left;
     height: 0;
-    line-height: 28px;
-    margin-right: 50px;
     margin-top: 10px;
-    opacity: 0;
+    margin-right: 50px;
     padding: 0 15px;
+    opacity: 0;
     transition: all 0.3s ease;
+    border-radius: 5px;
+    background-color: #fff;
   }
 
   .post:hover .more-info {
@@ -167,13 +167,13 @@ export default {
 
 <style scoped>
   .mobile-box {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
     padding: 28px 18px 29px 22px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 8px;
+    background-color: #fff;
   }
 
   .mobile-box div {
@@ -181,15 +181,15 @@ export default {
   }
 
   .mobile-box .category p {
-    background-color: #d81816;
-    border-radius: 4px;
-    color: #fff;
     font-size: 12px;
     font-weight: bold;
-    height: 20px;
     line-height: 20px;
-    padding: 0 4px;
+    color: #fff;
     width: fit-content;
+    height: 20px;
+    padding: 0 4px;
+    border-radius: 4px;
+    background-color: #d81816;
   }
 
   .mobile-box .post-title p {

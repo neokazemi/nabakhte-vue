@@ -57,33 +57,33 @@ export default {
   }
 
   .in-cart-products {
-    max-height: 300px;
     overflow-y: auto;
+    max-height: 300px;
   }
 
   .header-cart-buttons {
-    align-items: flex-end;
-    display: flex;
     font-size: 0.9rem;
     font-weight: bold;
-    height: 50px;
+    display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+    height: 50px;
   }
 
   .see-cart {
-    background: transparent;
-    color: #9a9a9a;
     line-height: 30px;
+    color: #9a9a9a;
     padding: 5px;
+    background: transparent;
   }
 
   .finalize-purchase {
-    background-color: #2bbb28;
-    border-radius: 7px;
-    box-shadow: 1px 2px 3px rgba(4, 5, 5, 0.15);
-    color: #fff;
     line-height: 30px;
+    color: #fff;
     padding: 5px 20px;
+    box-shadow: 1px 2px 3px rgba(4, 5, 5, 0.15);
+    border-radius: 7px;
+    background-color: #2bbb28;
   }
 
 </style>
