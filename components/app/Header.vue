@@ -327,7 +327,6 @@ import SearchMenu from '../MobileMenus/SearchMenu'
 import AccountMenu from '../MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.css'
-import '~/assets/css/components/Header.scss'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
