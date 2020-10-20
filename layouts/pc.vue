@@ -20,8 +20,6 @@ export default {
   mixins: [mixinDetectDevice],
   data () {
     return {
-      clipped: true,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',
@@ -34,11 +32,7 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
-      right: false,
-      rightDrawer: false,
-      title: 'Vuetify.js',
-      mainMenu: ''
+      title: 'Vuetify.js'
     }
   },
   computed: {
