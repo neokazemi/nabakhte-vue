@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { Product } from '../../models/Product'
+import { Product } from '~/models/Product'
 import '~/assets/css/components/ProductCards/ProductCard5.css'
 
 export default {
@@ -80,5 +80,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/ProductCards/ProductCard5Scoped.css');
+  @import url('~/assets/css/components/ProductCards/ProductCard5Scoped.css');
 </style>

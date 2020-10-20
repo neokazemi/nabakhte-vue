@@ -81,5 +81,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/ProductCards/ProductCard6Scoped.css');
+  @import url('~/assets/css/components/ProductCards/ProductCard6Scoped.css');
 </style>
