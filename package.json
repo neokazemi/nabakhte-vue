@@ -30,7 +30,8 @@
     "nuxt-user-agent": "^1.2.2",
     "swiper": "^6.3.2",
     "vue": "^2.6.12",
-    "vue-awesome-swiper": "^4.1.1"
+    "vue-awesome-swiper": "^4.1.1",
+    "vue-persian-datetime-picker": "^2.4.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

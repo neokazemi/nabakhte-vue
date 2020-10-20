@@ -22,9 +22,11 @@
 
 <script>
 import '~/assets/css/components/Treeview.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'Treeview',
+  mixins: [mixinDetectDevice],
   props: {
     treeView: {
       type: Array,
@@ -32,11 +34,6 @@ export default {
       default () {
         return []
       }
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   }
 }

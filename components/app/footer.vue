@@ -206,18 +206,15 @@
 </template>
 
 <script>
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 export default {
   name: 'Footer',
+  mixins: [mixinDetectDevice],
   props: {
     margin: {
       type: String,
       default: '0',
       required: false
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   }
 }

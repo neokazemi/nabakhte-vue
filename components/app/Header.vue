@@ -341,11 +341,12 @@ import SearchMenu from '~/components/MobileMenus/SearchMenu'
 import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
-  mixins: [mixinStore],
+  mixins: [mixinStore, mixinDetectDevice],
   data () {
     return {
       mainCarouselSlides: [
@@ -363,9 +364,6 @@ export default {
   computed: {
     products () {
       return new ProductList(this.$store.getters.products)
-    },
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   methods: {

@@ -28,6 +28,7 @@ import CarouselButtons from './UnderCarouselButtons'
 import ProductCard from '~/components/ProductCard/ProductCard'
 import { ProductList } from '~/models/Product'
 import '~/assets/css/components/TopView.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'TopView',
@@ -36,6 +37,7 @@ export default {
     MainCarousel,
     CarouselButtons
   },
+  mixins: [mixinDetectDevice],
   props: {
     products: {
       type: ProductList,
@@ -48,11 +50,6 @@ export default {
       default () {
         return []
       }
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   }
 }
