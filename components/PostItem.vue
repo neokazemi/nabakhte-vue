@@ -98,5 +98,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../assets/css/components/PostItemScoped.css');
+  @import url('~/assets/css/components/PostItemScoped.css');
 </style>

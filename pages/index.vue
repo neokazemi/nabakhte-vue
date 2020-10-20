@@ -105,7 +105,7 @@
 </template>
 
 <script>
-import ExpandTransition from '../components/ExpandTransition'
+import ExpandTransition from '~/components/ExpandTransition'
 import mixinProduct from '~/plugins/mixinProduct'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import TopView from '~/components/TopView/TopView'
@@ -141,12 +141,12 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../assets/css/pages/Main.css');
+  @import url('~/assets/css/pages/Main.css');
 </style>
 
 <style>
   .buy-book-guide {
     overflow: hidden;
-    max-height: 100px;
+    max-height: 100%;
   }
 </style>

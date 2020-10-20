@@ -255,5 +255,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/pages/ShopScoped.css');
+  @import url('~/assets/css/pages/ShopScoped.css');
 </style>
