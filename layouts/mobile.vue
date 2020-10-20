@@ -1,15 +1,14 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      v-if="!isFromPc"
       v-model="drawer"
-      :mini-variant="isFromPc"
-      :clipped="isFromPc"
-      :right="isFromPc"
+      :mini-variant="false"
+      :clipped="false"
+      :right="false"
       fixed
-      :app="isFromPc"
-      :bottom="!isFromPc"
-      :class="{ 'mobile-drawer': !isFromPc }"
+      :app="false"
+      :bottom="true"
+      :class="{ 'mobile-drawer': true }"
     >
       <Component :is="mainMenu" />
     </v-navigation-drawer>
@@ -17,24 +16,6 @@
     <v-main>
       <nuxt />
     </v-main>
-    <v-navigation-drawer
-      v-if="false"
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
     <Footer :margin="footerMargin" />
   </v-app>
 </template>
