@@ -41,5 +41,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/AccountMenuScoped.css');
+  @import url('~/assets/css/components/AccountMenuScoped.css');
 </style>

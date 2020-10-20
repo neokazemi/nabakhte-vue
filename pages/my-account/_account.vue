@@ -510,7 +510,7 @@
 </template>
 
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
+import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/MyAccount.css'
 
 export default {
@@ -624,5 +624,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url('../../assets/css/pages/MyAccountScoped.css');
+  @import url('~/assets/css/pages/MyAccountScoped.css');
 </style>
