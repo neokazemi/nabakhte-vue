@@ -1,6 +1,18 @@
 export const state = () => ({
   footerMargin: '0',
-  drawer: false
+  drawer: false,
+  linksOf404: [
+    {
+      title: 'گزارش خطا',
+      imgLink: '',
+      link: '#'
+    },
+    {
+      title: 'بازگشت به صفحه اصلی',
+      imgLink: '',
+      link: '/'
+    }
+  ]
 })
 
 export const mutations = {
@@ -25,6 +37,9 @@ export const getters = {
   },
   drawer (state) {
     return state.drawer
+  },
+  linksOf404 (state) {
+    return state.linksOf404
   }
   // url_crud_model: (state) => (object) => {
   //   // let modelName = object.constructor.name;

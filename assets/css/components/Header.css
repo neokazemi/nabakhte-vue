@@ -100,7 +100,7 @@ a ::after {
 }
 
 .menu {
-  background-color: inherit;
+  background-color: transparent;
 }
 
 .menu-options-container {

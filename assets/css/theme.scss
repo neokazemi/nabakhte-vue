@@ -55,6 +55,18 @@ a {
   text-decoration: none;
 }
 
+.mobile-drawer {
+  opacity: 0.9;
+}
+
+.v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
+  min-height: 100%;
+}
+
+header.theme--light.v-app-bar.v-toolbar.v-sheet {
+  background: transparent;
+}
+
 @media only screen and ( max-width: 1264px ) {
   :root {
     font-size: 15px;

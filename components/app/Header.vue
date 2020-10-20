@@ -209,13 +209,13 @@
       <div class="container scrolledMenu">
         <v-item-group class="scrolledMenuLinks" active-class="primary">
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               دسته بندی محصولات
             </v-btn>
           </v-item>
           <v-item>
             <div class="consulting">
-              <v-btn small depressed>
+              <v-btn small depressed color="transparent">
                 مشاوره
               </v-btn>
               <div class="consulting-mega-menu">
@@ -244,12 +244,12 @@
             </div>
           </v-item>
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               آموزش خرید کتاب
             </v-btn>
           </v-item>
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               پیگیری سفارش
             </v-btn>
           </v-item>
