@@ -373,7 +373,7 @@
 </template>
 
 <script>
-import Test from '../../test'
+import Test from '~/components/admin/Test'
 
 export default {
   name: 'UserListFilter',
