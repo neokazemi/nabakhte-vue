@@ -404,7 +404,7 @@ header a {
   margin: auto;
 }
 
-.consulting-mega-menu .offline-consulting-menu {
+.consulting-mega-menu .consulting-menu-tab {
   position: absolute;
   top: 0;
   right: 166px;
@@ -414,6 +414,7 @@ header a {
   width: 250px;
   height: 330px;
   padding: 20px;
+  transition: all 400ms ease-in-out;
 }
 
 .scrolledMenu .consulting-mega-menu {
@@ -538,6 +539,7 @@ header a {
   float: right;
   margin: 7px 0;
   padding: 0 10px;
+  transition: all 400ms ease-in-out;
 }
 
 .consulting-menu-sub-option:hover {
