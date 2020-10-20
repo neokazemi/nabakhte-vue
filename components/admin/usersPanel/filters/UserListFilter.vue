@@ -105,15 +105,12 @@
       </v-row>
 
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-10 "
+            class="switches-position mt-2 "
           />
-        </v-col>
-
-        <v-col>
           <v-select
             class=" filter-elements "
             :items="items"
@@ -122,14 +119,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-10 "
+            class="switches-position mt-2 "
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -140,13 +135,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8 "
+            class="switches-position mt-2 "
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -156,14 +149,12 @@
           />
         </v-col>
 
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -172,14 +163,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -190,13 +179,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -206,14 +193,12 @@
           />
         </v-col>
 
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -222,14 +207,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements  "
             :items="items"
@@ -240,13 +223,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-text-field
             class=" filter-elements"
             label="کد پستی"
@@ -254,13 +235,11 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-text-field
             class=" filter-elements"
             label="استان"
@@ -268,13 +247,11 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-text-field
             class=" filter-elements"
             label="شهر"
@@ -284,13 +261,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-text-field
             class=" filter-elements"
             label="آدرس"
@@ -298,13 +273,11 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
           <v-text-field
             class=" filter-elements"
             label="مدرسه"
@@ -312,13 +285,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements"
             label="ایمیل"
@@ -328,60 +300,52 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12 "
+            class="switches-position mt-4"
           />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ ثبت نام:
-        </p>
-        <v-col cols="2">
+          <p class="mt-5" style="float: right; width: 150px;">
+            تاریخ ثبت نام:
+          </p>
           <v-text-field
-            class="the-filled-text-field filter-elements"
+            style="float: right;"
+            class=" mb-2.5 mt-2.5 pr-0"
             label="از تاریخ"
             filled
             dense
           />
-        </v-col>
-        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field filter-elements"
+            style="float: right;"
+            class=" mb-2.5 mt-2.5 pr-0 mr-2"
             label="تا تاریخ"
             filled
             dense
           />
         </v-col>
-        <v-col />
-      </v-row>
-      <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12 "
+            class="switches-position mt-4"
           />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ اصلاح:
-        </p>
-        <v-col cols="2">
+          <p class="mt-5" style="float: right; width: 150px;">
+            تاریخ اصلاح:
+          </p>
           <v-text-field
-            class="the-filled-text-field filter-elements"
+            style="float: right;"
+            class=" mb-2.5 mt-2.5 pr-0"
             label="از تاریخ"
             filled
             dense
           />
-        </v-col>
-        <v-col cols="2">
           <v-text-field
-            class="the-filled-text-field filter-elements"
+            style="float: right;"
+            class=" mb-2.5 mt-2.5 pr-0 mr-2"
             label="تا تاریخ"
             filled
             dense
           />
         </v-col>
-        <v-col />
       </v-row>
 
       <br>
@@ -404,15 +368,24 @@
         </v-col>
       </v-row>
     </div>
+    <test />
   </v-card>
 </template>
 
 <script>
+import Test from '~/components/admin/Test'
+
 export default {
-  name: 'UserListFilter'
+  name: 'UserListFilter',
+  components: { Test },
+  data: () => ({
+    items: ['item1', 'item2', 'item3', 'item4'],
+    switch1: false
+  })
 }
+
 </script>
 
-<style scoped>
-/* @import '../../../../assets/scss/components/admin/usersPanel/filters/userListFilter.scss'; */
+<style lang="scss" scoped>
+@import url('~/assets/scss/components/admin/usersPanel/filters/userListFilter.scss');
 </style>

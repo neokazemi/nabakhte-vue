@@ -1,5 +1,7 @@
+import { ProductList } from '~/models/Product'
+
 export const state = () => ({
-  products: []
+  products: null
 })
 
 export const mutations = {
@@ -10,6 +12,6 @@ export const mutations = {
 
 export const getters = {
   products (state) {
-    return state.products
+    return new ProductList(state.products)
   }
 }
