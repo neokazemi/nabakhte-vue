@@ -1,16 +1,19 @@
 <template>
   <div>
     <transition
+      ref="highlight"
       name="expand"
-      @clicked="enter"
+      @clicked="expanded = true"
       @after-enter="afterEnter"
       @leave="leave"
     >
-      <slot />
+      <div ref="expandContainer" class="fixedheight">
+        <slot />
+      </div>
     </transition>
-    <button @click="cl">
+    <v-btn @click="cl">
       click
-    </button>
+    </v-btn>
   </div>
 </template>
 
@@ -25,16 +28,18 @@ export default {
   methods: {
     cl () {
       this.$emit('clicked')
+      this.enter(this.$refs.expandContainer)
+      this.afterEnter((this.$refs.expandContainer))
     },
     enter (element) {
-      const width = getComputedStyle(element).width
+      const width = element.clientWidth
 
       element.style.width = width
       element.style.position = 'absolute'
       element.style.visibility = 'hidden'
       element.style.height = 'auto'
 
-      const height = getComputedStyle(element).height
+      const height = element.clientHeight
 
       element.style.width = null
       element.style.position = null
@@ -82,10 +87,11 @@ export default {
     transition-property: opacity, height;
   }
 
-  .expand-enter,
-  .expand-leave-to {
+  .fixedheight {
+    overflow: hidden;
     height: 100px;
-    opacity: 1;
+    transition: height 1s ease-in-out;
+    transition-property: opacity, height;
   }
 </style>
 
