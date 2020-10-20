@@ -4,8 +4,17 @@
   height: 20px;
 }
 
+.columns-display {
+  display: flex;
+}
+
+.last-line-columns-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .main-card-height {
-  height: 900px;
+  height: fit-content;
 }
 
 .filter-btn {
@@ -15,7 +24,8 @@
 
 .p-tag-size {
   font-size: 14px;
-  width: 120px;
+  float: right;
+  width: 300px;
 }
 
 .text-areas-size {
@@ -29,10 +39,23 @@
   height: 20px;
 }
 
-.v-text-field--filled > .v-input__control > .v-input__slot,
-.v-text-field--full-width > .v-input__control > .v-input__slot,
-.v-text-field--outlined > .v-input__control > .v-input__slot {
-  min-height: 30px !important;
+.last-line-inputs {
+  float: right;
+
+}
+
+.last-line-p-tags {
+  float: right;
+  width: 150px;
+}
+
+
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .filter-elements {
+    min-height: 30px !important;
+  }
 }
 
 .v-text-field >>> input {

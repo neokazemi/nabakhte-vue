@@ -75,33 +75,27 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col>
+        <v-col class="columns-display">
           <p
-            class="the-p mt-4 mr-10"
+            class="p-tag-size mt-4 mr-6"
           >
             وضعیت تراکنش:
           </p>
-        </v-col>
-        <v-col>
           <v-select
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
+            class="filter-elements mb-2.5 mt-2.5 pr-0 mr-2"
             :items="items"
             label="موفق / ناموفق"
             solo
             dense
           />
-        </v-col>
-        <v-col>
           <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
+            class="filter-elements mb-2.5 mt-2.5 pr-0 mr-2"
             label="کد تراکنش"
             outlined
             dense
           />
-        </v-col>
-        <v-col>
           <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
+            class="filter-elements mb-2.5 mt-2.5 pr-0 mr-2"
             label="توضیح مدیریتی"
             outlined
             dense
@@ -109,60 +103,81 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12"
+            class="switches-position mt-2"
           />
-        </v-col>
-        <p class="mt-8 ml-8 the-p mr-6">
-          تاریخ پرداخت:
-        </p>
-        <v-col cols="2">
+          <p class="mt-3 date-p-tag-size">
+            تاریخ پرداخت:
+          </p>
           <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
+            id="my-custom-input"
+            v-model="date"
+            placeholder="از تاریخ"
+            outlined
             dense
+            class="filter-elements ml-2"
           />
-        </v-col>
-        <v-col cols="2">
-          <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
-            dense
-          />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col cols="1">
-          <v-switch
-            v-model="switch1"
-            class="switches-position mt-12"
-          />
-        </v-col>
-        <p class="mt-8 ml-8 the-p mr-6">
-          مهلت پرداخت:
-        </p>
-        <v-col cols="2">
-          <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
-            dense
-          />
-        </v-col>
-        <v-col cols="2">
-          <v-text-field
-            class="filter-elements mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
-            dense
-          />
-        </v-col>
-      </v-row>
 
+          <date-picker
+            v-model="date"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input"
+            width="10px"
+          />
+          <v-text-field
+            id="my-custom-input2"
+            v-model="date2"
+            placeholder="تا تاریخ"
+            outlined
+            dense
+            class="filter-elements "
+          />
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
+          />
+        </v-col>
+        <v-col class="columns-display">
+          <v-switch
+            v-model="switch1"
+            class="switches-position mt-2"
+          />
+          <p class="mt-3 date-p-tag-size">
+            مهلت پرداخت:
+          </p>
+          <v-text-field
+            id="my-custom-input3"
+            v-model="date3"
+            placeholder="از تاریخ"
+            outlined
+            dense
+            class="filter-elements ml-2"
+          />
+          <date-picker
+            v-model="date3"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input3"
+            width="10px"
+          /> <v-text-field
+            id="my-custom-input4"
+            v-model="date4"
+            placeholder="تا تاریخ"
+            outlined
+            dense
+            class="filter-elements"
+          />
+          <date-picker
+            v-model="date4"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input4"
+            width="10px"
+          />
+        </v-col>
+      </v-row>
       <v-row>
         <v-col>
           <v-select
@@ -175,6 +190,8 @@
         </v-col>
         <v-col />
       </v-row>
+      <br>
+      <br>
       <v-row>
         <v-col />
         <v-col />
@@ -182,7 +199,7 @@
         <v-col>
           <v-btn
             color="white"
-            class="the-btn"
+            class="filter-btn"
             elevation="3"
             x-large
             outlined
@@ -194,13 +211,13 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-card class="the-card2 pa-5">
+          <v-card class="sum-card pa-5">
             مجموع مبالغ تراکنش ها
           </v-card>
         </v-col>
         <v-col>
           <v-btn
-            class="the-btn-2"
+            class="zarinpal-btn"
             color="white"
             elevation="3"
             x-large
@@ -216,10 +233,21 @@
 
 <script>
 export default {
-  name: 'Transactions'
+  name: 'Transactions',
+  components: {
+    datePicker: () => import('vue-persian-datetime-picker')
+  },
+  data: () => ({
+    items: ['item1', 'item2', 'item3', 'item4'],
+    switch1: false,
+    date: '',
+    date2: '',
+    date3: '',
+    date4: ''
+  })
 }
 </script>
 
-<style scoped>
-/* @import "assets/scss/components/admin/ordersPanel/filters/transactions.scss"; */
+<style lang="scss" scoped>
+@import url('~/assets/scss/components/admin/ordersPanel/filters/transactions.scss');
 </style>
