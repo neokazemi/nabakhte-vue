@@ -307,11 +307,25 @@
               <HeaderCart :products="products" />
             </div>
           </div>
-          <a href="#">
-            <div class="leftSide-btn leftSide-btn-arrow account-logo">
-              <i class="fas fa-user" />
+          <div class="account-scrolled-menu">
+            <nuxt-link to="/my-account">
+              <div class="leftSide-btn leftSide-btn-arrow account-logo">
+                <i class="fas fa-user" />
+              </div>
+            </nuxt-link>
+            <div class="account-options">
+              <nuxt-link class="first-option" to="/my-account/orders">
+                <i class="fas fa-shopping-basket" />سفارش ها
+              </nuxt-link>
+              <nuxt-link class="middle-option" to="/my-account/edit-address">
+                <i class="fas fa-truck" />آدرس ها
+              </nuxt-link>
+              <nuxt-link class="middle-option" to="/my-account/edit-account">
+                ویرایش پروفایل
+              </nuxt-link>
+              <a class="last-option" href="#">خروج</a>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </v-app-bar>
@@ -319,12 +333,12 @@
 </template>
 
 <script>
-import HeaderCart from '../HeaderCart'
-import { ProductList } from '../../models/Product'
-import Badge from '../Badge'
-import MainMenu from '../MobileMenus/MainMenu'
-import SearchMenu from '../MobileMenus/SearchMenu'
-import AccountMenu from '../MobileMenus/AccountMenu'
+import HeaderCart from '~/components/HeaderCart'
+import { ProductList } from '~/models/Product'
+import Badge from '~/components/Badge'
+import MainMenu from '~/components/MobileMenus/MainMenu'
+import SearchMenu from '~/components/MobileMenus/SearchMenu'
+import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.css'
 
@@ -372,5 +386,5 @@ export default {
 </script>
 
 <style>
-  @import url('../../assets/css/components/HeaderScoped.css');
+  @import url('~/assets/css/components/HeaderScoped.css');
 </style>

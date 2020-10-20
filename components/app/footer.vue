@@ -224,5 +224,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/FooterScoped.css');
+  @import url('~/assets/css/components/FooterScoped.css');
 </style>
