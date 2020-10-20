@@ -2,20 +2,29 @@
   width: fit-content;
 }
 
-.the-card-search {
-  width: 50px;
-  margin-left: 120px;
+.the-card-search{
+  float: right;
+  width: 80%;
 }
 
 .form-elements-size {
   font-size: small;
-  width: 260px;
+  width: 200px;
 }
 
 .dialog-width {
   width: fit-content;
 }
 
+.columns-display {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+}
+
 .output-btns-width {
+  float: left;
   width: 15%;
+  margin-top: 19px;
+  margin-right: 2px;
 }

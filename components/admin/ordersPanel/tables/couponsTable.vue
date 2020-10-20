@@ -1,7 +1,16 @@
 <template>
   <v-card class="mb-20 pa-8">
     <v-row>
-      <v-col />
+      <v-col>
+        <v-text-field
+          v-model="search"
+          class="the-card-search"
+          append-icon="mdi-magnify"
+          label="جستجو"
+          single-line
+          hide-details
+        />
+      </v-col>
       <v-col>
         <v-btn
           class="output-btns-width"
@@ -97,14 +106,6 @@
               >
                 افزودن بن
               </v-btn>
-              <v-text-field
-                v-model="search"
-                class="the-card-search mt-25"
-                append-icon="mdi-magnify"
-                label="جستجو"
-                single-line
-                hide-details
-              />
             </template>
             <v-card>
               <div>
@@ -114,7 +115,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="نام کاربر"
                     />
                   </v-col>
@@ -123,7 +124,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.couponscount"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="تعداد بن تخصیص داده شده"
                     />
                   </v-col>
@@ -132,7 +133,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.couponstatus"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="وضعیت بن"
                     />
                   </v-col>
@@ -143,7 +144,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.functions"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="عملیات"
                     />
                   </v-col>
