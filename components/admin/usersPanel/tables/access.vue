@@ -128,7 +128,7 @@
                   text
                   @click="saveaccess"
                 >
-                  دخیره
+                  ذخیره
                 </v-btn>
               </v-card-actions>
             </v-card>

@@ -165,7 +165,7 @@
                   text
                   @click="save"
                 >
-                  دخیره
+                  ذخیره
                 </v-btn>
               </v-card-actions>
             </v-card>
