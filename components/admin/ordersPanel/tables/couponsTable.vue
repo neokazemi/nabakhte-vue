@@ -4,7 +4,7 @@
       <v-col />
       <v-col>
         <v-btn
-          class="output"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -14,7 +14,7 @@
           Print
         </v-btn>
         <v-btn
-          class="output"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -24,7 +24,7 @@
           Copy
         </v-btn>
         <v-btn
-          class="output"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -34,7 +34,7 @@
           PDF
         </v-btn>
         <v-btn
-          class="output"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -44,7 +44,7 @@
           Excel
         </v-btn>
         <v-btn
-          class="output"
+          class="output-btns-width"
           small
           elevation="2"
           outlined
@@ -99,7 +99,7 @@
               </v-btn>
               <v-text-field
                 v-model="search"
-                class="ml-120 mt-25"
+                class="the-card-search mt-25"
                 append-icon="mdi-magnify"
                 label="جستجو"
                 single-line

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-20 pa-8">
+  <v-card class="mb-20 pa-3">
     <v-row>
       <v-col />
       <v-col>
@@ -90,7 +90,6 @@
               <v-btn
                 color="primary"
                 dark
-                class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
                 v-on="on"
@@ -99,7 +98,7 @@
               </v-btn>
               <v-text-field
                 v-model="search"
-                class="the-card-search ml-120 mt-25"
+                class="the-card-search mt-25"
                 append-icon="mdi-magnify"
                 label="جستجو"
                 single-line

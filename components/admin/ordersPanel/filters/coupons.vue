@@ -58,34 +58,6 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
-          <v-switch
-            v-model="switch1"
-            class="switches-position mt-12"
-          />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ درج:
-        </p>
-
-        <v-col cols="2">
-          <v-text-field
-            class="form-elements-size mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
-            dense
-          />
-        </v-col>
-        <v-col cols="2">
-          <v-text-field
-            class="form-elements-size mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
-            dense
-          />
-        </v-col>
-      </v-row>
-      <v-row>
         <v-col>
           <v-select
             class="form-elements-size mb-2.5 mt-2.5 pr-0"
@@ -97,6 +69,49 @@
         </v-col>
         <v-col />
       </v-row>
+      <v-row>
+        <v-col class="columns-display">
+          <v-switch
+            v-model="switch1"
+            class="switches-position mt-2"
+          />
+          <p class="mt-3 p-tag-size">
+            تاریخ درج:
+          </p>
+          <v-text-field
+            id="my-custom-input"
+            v-model="date"
+            placeholder="از تاریخ"
+            outlined
+            dense
+            class="filter-elements ml-2"
+          />
+
+          <date-picker
+            v-model="date"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input"
+            width="10px"
+          />
+          <v-text-field
+            id="my-custom-input2"
+            v-model="date2"
+            placeholder="تا تاریخ"
+            outlined
+            dense
+            class="filter-elements "
+          />
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
+          />
+        </v-col>
+      </v-row>
+
+      <br>
+      <br>
       <v-row>
         <v-col />
         <v-col />
@@ -121,13 +136,20 @@
 <script>
 export default {
   name: 'Coupons',
+  components: {
+    datePicker: () => import('vue-persian-datetime-picker')
+  },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
-    switch1: false
+    switch1: false,
+    date: '',
+    date2: '',
+    date3: '',
+    date4: ''
   })
 }
 </script>
 
-<style scoped>
-/* @import "assets/scss/components/admin/ordersPanel/filters/coupons.scss"; */
+<style lang="scss" scoped>
+@import url('~/assets/scss/components/admin/ordersPanel/filters/coupons.scss');
 </style>

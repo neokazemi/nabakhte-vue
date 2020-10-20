@@ -1,19 +1,30 @@
-.the-p {
+.p-tag-size {
   font-size: 14px;
-  width: 120px;
+  float: right;
+  width: 400px;
 }
 
-.the-btn-2 {
+.date-p-tag-size {
+  font-size: 14px;
+  float: right;
+  width: 300px;
+}
+
+.columns-display {
+  display: flex;
+}
+
+.zarinpal-btn {
   width: 100%;
   background-color: #e57373;
 }
 
-.the-btn {
+.filter-btn {
   width: 100%;
   background-color: #00bfa5;
 }
 
-.the-card2 {
+.sum-card {
   height: 50px;
 }
 
@@ -28,10 +39,12 @@
   height: 20px;
 }
 
-.v-text-field--filled > .v-input__control > .v-input__slot,
-.v-text-field--full-width > .v-input__control > .v-input__slot,
-.v-text-field--outlined > .v-input__control > .v-input__slot {
-  min-height: 30px !important;
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .filter-elements {
+    min-height: 30px !important;
+  }
 }
 
 .v-text-field >>> input {
@@ -42,4 +55,14 @@
 
 .v-text-field >>> label {
   font-size: 14px;
+}
+
+.date-line-inputs-position {
+  float: right;
+
+}
+
+.last-line-p-tags {
+  float: right;
+  width: 150px;
 }
