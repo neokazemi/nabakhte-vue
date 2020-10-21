@@ -74,7 +74,7 @@
         itemsPerPageAllText: 'همه'
       }"
       :headers="headers"
-      :items="coupons"
+      :items="attributes"
       :search="search"
       class="elevation-1 data-table-width mt-30"
     >
@@ -104,7 +104,7 @@
                 @click="addItem"
                 v-on="on"
               >
-                افزودن بن
+                افزودن صفت
               </v-btn>
             </template>
             <v-card>
@@ -115,37 +115,26 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-3"
-                      label="نام کاربر"
+                      class="text-fields-size"
+                      label="نام (اصلی)"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponscount"
-                      class="form-elements-size ma-3"
-                      label="تعداد بن تخصیص داده شده"
+                      v-model="editedItem.farsiname"
+                      class="text-fields-size"
+                      label="نام قابل نمایش (فارسی)"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponstatus"
-                      class="form-elements-size ma-3"
-                      label="وضعیت بن"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.functions"
-                      class="form-elements-size ma-3"
-                      label="عملیات"
+                      v-model="editedItem.controltype"
+                      class="text-fields-size"
+                      label="نوع کنترل صفت"
                     />
                   </v-col>
                 </v-row>
@@ -173,7 +162,7 @@
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="headline">
-                آیا از حذف این بن مطمئن هستید؟
+                آیا از حذف این صفت مطمئن هستید؟
               </v-card-title>
               <v-card-actions>
                 <v-spacer />
@@ -208,7 +197,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر بن</span>
+            <span>تغییر صفت</span>
           </v-tooltip>
 
           <v-tooltip top>
@@ -228,7 +217,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>حذف بن</span>
+            <span>حذف صفت</span>
           </v-tooltip>
         </v-row>
       </template>
@@ -238,7 +227,7 @@
 
 <script>
 export default {
-  name: 'CouponsTable',
+  name: 'AttributesTable',
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -252,34 +241,31 @@ export default {
 
     headers: [
       {
-        text: 'نام کاربر',
+        text: 'نام (اصلی)',
         align: 'start',
         sortable: false,
         value: 'name'
       },
-      { text: 'تعداد بن تخصیص داده شده', value: 'couponscount', sortable: false },
-      { text: 'وضعیت بن', value: 'couponstatus', sortable: false },
-      { text: 'عملیات', value: 'functions', sortable: false },
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
+      { text: 'نام قابل نمایش (فارسی)', value: 'farsiname', sortable: false },
+      { text: 'نوع کنترل صفت', value: 'controltype', sortable: false },
+      { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
 
-    coupons: [],
+    attributes: [],
 
     editedIndex: -1,
 
     editedItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      farsiname: '',
+      controltype: ''
     },
 
     defaultItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      farsiname: '',
+      controltype: ''
     }
 
   }),
@@ -325,7 +311,7 @@ export default {
       })
     },
     editItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.attributes.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.changeshow = true
@@ -333,7 +319,7 @@ export default {
     },
 
     detailItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.attributes.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
@@ -341,41 +327,38 @@ export default {
     },
 
     deleteItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.attributes.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.coupons.splice(this.editedIndex, 1)
+      this.attributes.splice(this.editedIndex, 1)
       this.closeDelete()
     },
     save () {
       if (this.editedIndex > -1) {
-        Object.assign(this.coupons[this.editedIndex], this.editedItem)
+        Object.assign(this.attributes[this.editedIndex], this.editedItem)
       } else {
-        this.coupons.push(this.editedItem)
+        this.attributes.push(this.editedItem)
       }
       this.close()
     },
     initialize () {
-      this.coupons = [
+      this.attributes = [
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'services',
+          farsiname: 'خدمات دریافتی',
+          controltype: 'GroupedCheckbox'
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'wallet',
+          farsiname: 'کیف پول',
+          controltype: 'select'
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'discount',
+          farsiname: 'تخفیف',
+          controltype: 'select'
         }
       ]
     }
@@ -385,5 +368,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url('~/assets/scss/components/admin/ordersPanel/tables/couponsTable.scss');
+@import url('~/assets/scss/components/admin/productsPanel/tables/attributesTable.scss');
+
 </style>

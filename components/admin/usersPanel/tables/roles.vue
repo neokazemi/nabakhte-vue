@@ -3,7 +3,16 @@
     class="mb-20 pa-8"
   >
     <v-row>
-      <v-col />
+      <v-col>
+        <v-text-field
+          v-model="search"
+          class="the-card-search"
+          append-icon="mdi-magnify"
+          label="جستجو"
+          single-line
+          hide-details
+        />
+      </v-col>
       <v-col>
         <v-btn
           class="output-btns-width"
@@ -57,7 +66,6 @@
         </v-btn>
       </v-col>
     </v-row>
-
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,
@@ -100,14 +108,6 @@
               >
                 افزودن نقش
               </v-btn>
-              <v-text-field
-                v-model="search"
-                class="the-card-search mt-25"
-                append-icon="mdi-magnify"
-                label="جستجو"
-                single-line
-                hide-details
-              />
             </template>
             <v-card>
               <v-card-text>

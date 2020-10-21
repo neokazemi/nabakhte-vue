@@ -1,7 +1,16 @@
 <template>
   <v-card class="mb-20 pa-8">
     <v-row>
-      <v-col />
+      <v-col>
+        <v-text-field
+          v-model="search"
+          class="the-card-search"
+          append-icon="mdi-magnify"
+          label="جستجو"
+          single-line
+          hide-details
+        />
+      </v-col>
       <v-col>
         <v-btn
           class="output-btns-width"
@@ -67,7 +76,7 @@
       :headers="headers"
       :items="users"
       :search="search"
-      class="elevation-1 mt-30"
+      class="elevation-1 mt-50"
     >
       <template v-slot:item.status="{ item }">
         <v-chip
@@ -97,14 +106,6 @@
               >
                 افزودن کاربر
               </v-btn>
-              <v-text-field
-                v-model="search"
-                class="the-card-search mt-25"
-                append-icon="mdi-magnify"
-                label="جستجو"
-                single-line
-                hide-details
-              />
             </template>
             <v-card>
               <v-card-title v-if="detailshow">
@@ -118,7 +119,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="نام کاربر"
                     />
                   </v-col>
@@ -127,7 +128,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       نام کاربر
                       <hr>
@@ -140,7 +141,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.phone"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="موبایل"
                     />
                   </v-col>
@@ -149,7 +150,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       موبایل
                       <hr>
@@ -162,7 +163,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.address"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="آدرس"
                     />
                   </v-col>
@@ -171,7 +172,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       آدرس
                       <hr>
@@ -186,7 +187,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.email"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="ایمیل"
                     />
                   </v-col>
@@ -195,7 +196,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       ایمیل
                       <hr>
@@ -208,7 +209,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.status"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="وضعیت"
                     />
                   </v-col>
@@ -217,7 +218,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       وضعیت
                       <hr>
@@ -230,7 +231,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.signdate"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="زمان ثبت نام"
                     />
                   </v-col>
@@ -239,7 +240,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       زمان ثبت نام
                       <hr>
@@ -254,7 +255,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.school"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="مدرسه"
                     />
                   </v-col>
@@ -263,7 +264,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       مدرسه
                       <hr>
@@ -276,7 +277,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.code"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="کد ملی"
                     />
                   </v-col>
@@ -285,7 +286,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       کد ملی
                       <hr>
@@ -298,7 +299,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.field"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="رشته"
                     />
                   </v-col>
@@ -307,7 +308,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       رشته
                       <hr>
@@ -322,7 +323,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.function"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="عملیات"
                     />
                   </v-col>
@@ -331,7 +332,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       عملیات
                       <hr>
@@ -344,7 +345,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.changetime"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="زمان آخرین تغییر"
                     />
                   </v-col>
@@ -353,7 +354,7 @@
                     class="form-elements-column-width"
                   >
                     <div
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                     >
                       زمان آخرین تغییر
                       <hr>
@@ -378,7 +379,7 @@
                   text
                   @click="save"
                 >
-                  دخیره
+                  ذخیره
                 </v-btn>
               </v-card-actions>
             </v-card>
