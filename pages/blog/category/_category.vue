@@ -975,5 +975,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import url('../../../assets/css/pages/_blogScoped.css');
+  @import url('~/assets/css/pages/_blogScoped.css');
 </style>

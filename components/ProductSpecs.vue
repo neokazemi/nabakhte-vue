@@ -21,6 +21,6 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../assets/css/components/ProductSliderCarouselScoped.css');
+  @import url('~/assets/css/components/ProductSliderCarouselScoped.css');
 
 </style>

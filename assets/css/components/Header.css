@@ -100,7 +100,7 @@ a ::after {
 }
 
 .menu {
-  background-color: inherit;
+  background-color: transparent;
 }
 
 .menu-options-container {
@@ -404,7 +404,7 @@ header a {
   margin: auto;
 }
 
-.consulting-mega-menu .offline-consulting-menu {
+.consulting-mega-menu .consulting-menu-tab {
   position: absolute;
   top: 0;
   right: 166px;
@@ -414,6 +414,7 @@ header a {
   width: 250px;
   height: 330px;
   padding: 20px;
+  transition: all 400ms ease-in-out;
 }
 
 .scrolledMenu .consulting-mega-menu {
@@ -424,6 +425,20 @@ header a {
   visibility: visible;
   margin-top: 5px;
   opacity: 1;
+}
+
+.account-options a {
+  font-size: 0.95rem;
+  color: #000 !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0 15px;
+  transition: all 200ms ease-in-out;
 }
 
 .fixed-nav-options {
@@ -465,7 +480,7 @@ header a {
   border-bottom-color: #50cbb2;
 }
 
-.account-management .account-options {
+.account-options {
   text-align: right;
   left: 0;
   display: flex;
@@ -477,37 +492,23 @@ header a {
   border-radius: 4px;
 }
 
-.account-management .account-options a {
-  font-size: 0.95rem;
-  color: #000 !important;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0 15px;
-  transition: all 200ms ease-in-out;
-}
-
-.account-management .account-options a:hover {
+.account-options a:hover {
   color: #fff !important;
   text-decoration: none;
   background-color: #50cbb2;
 }
 
-.account-management .account-options .first-option {
+.account-options .first-option {
   border-bottom: 1px solid #f4f4f4;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
 
-.account-management .account-options .middle-option {
+.account-options .middle-option {
   border-bottom: 1px solid #f4f4f4;
 }
 
-.account-management .account-options .last-option {
+.account-options .last-option {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
 }
@@ -538,6 +539,7 @@ header a {
   float: right;
   margin: 7px 0;
   padding: 0 10px;
+  transition: all 400ms ease-in-out;
 }
 
 .consulting-menu-sub-option:hover {
@@ -566,6 +568,26 @@ header a {
 
 .user-cart:hover .user-button-details {
   top: 100%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.account-scrolled-menu {
+  position: relative;
+}
+
+.account-scrolled-menu .account-options {
+  position: absolute;
+  top: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 400ms ease-in-out !important;
+  transform: translateY(-15px) !important;
+  background-color: #fff;
+}
+
+.account-scrolled-menu:hover .account-options {
+  top: 170%;
   visibility: visible;
   opacity: 1;
 }

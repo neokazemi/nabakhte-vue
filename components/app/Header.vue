@@ -115,24 +115,27 @@
                           <div
                             class="option-selection"
                           >
-                            <a class="offline-consulting option" href="#">
+                            <a
+                              v-for="(item, index) in consultingMegaMenuItems"
+                              :key="index"
+                              class="offline-consulting option"
+                              :href="item.link"
+                              @mouseenter="changeConsultingMegaMenuTab(item.title)"
+                            >
                               <p>
-                                <i class="fas fa-angle-left" />مشاوره آفلاین
-                              </p>
-                            </a>
-                            <a class="documents option" href="#">
-                              <p>
-                                <i class="fas fa-angle-left" />مجموعه مقالات
+                                <i class="fas fa-angle-left" />{{ item.title }}
                               </p>
                             </a>
                           </div>
-                          <div class="offline-consulting-menu">
-                            <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
-                            <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
-                            <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
-                            <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
-                            <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
-                            <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
+                          <div class="consulting-menu-tab">
+                            <a
+                              v-for="(item, index) in consultingMegaMenuTabContent"
+                              :key="index"
+                              class="consulting-menu-sub-option"
+                              :href="item.link"
+                            >
+                              {{ item.title }}
+                            </a>
                           </div>
                           <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
                         </div>
@@ -209,13 +212,13 @@
       <div class="container scrolledMenu">
         <v-item-group class="scrolledMenuLinks" active-class="primary">
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               دسته بندی محصولات
             </v-btn>
           </v-item>
           <v-item>
             <div class="consulting">
-              <v-btn small depressed>
+              <v-btn small depressed color="transparent">
                 مشاوره
               </v-btn>
               <div class="consulting-mega-menu">
@@ -244,12 +247,12 @@
             </div>
           </v-item>
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               آموزش خرید کتاب
             </v-btn>
           </v-item>
           <v-item>
-            <v-btn small depressed>
+            <v-btn small depressed color="transparent">
               پیگیری سفارش
             </v-btn>
           </v-item>
@@ -307,11 +310,25 @@
               <HeaderCart :products="products" />
             </div>
           </div>
-          <a href="#">
-            <div class="leftSide-btn leftSide-btn-arrow account-logo">
-              <i class="fas fa-user" />
+          <div class="account-scrolled-menu">
+            <nuxt-link to="/my-account">
+              <div class="leftSide-btn leftSide-btn-arrow account-logo">
+                <i class="fas fa-user" />
+              </div>
+            </nuxt-link>
+            <div class="account-options">
+              <nuxt-link class="first-option" to="/my-account/orders">
+                <i class="fas fa-shopping-basket" />سفارش ها
+              </nuxt-link>
+              <nuxt-link class="middle-option" to="/my-account/edit-address">
+                <i class="fas fa-truck" />آدرس ها
+              </nuxt-link>
+              <nuxt-link class="middle-option" to="/my-account/edit-account">
+                ویرایش پروفایل
+              </nuxt-link>
+              <a class="last-option" href="#">خروج</a>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </v-app-bar>
@@ -319,12 +336,12 @@
 </template>
 
 <script>
-import HeaderCart from '../HeaderCart'
-import { ProductList } from '../../models/Product'
-import Badge from '../Badge'
-import MainMenu from '../MobileMenus/MainMenu'
-import SearchMenu from '../MobileMenus/SearchMenu'
-import AccountMenu from '../MobileMenus/AccountMenu'
+import HeaderCart from '~/components/HeaderCart'
+import { ProductList } from '~/models/Product'
+import Badge from '~/components/Badge'
+import MainMenu from '~/components/MobileMenus/MainMenu'
+import SearchMenu from '~/components/MobileMenus/SearchMenu'
+import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
@@ -344,12 +361,67 @@ export default {
           imgurl: 'https://media.chibekhoonam.net/2020/08/%D8%A7%D8%B3%D9%84%D8%A7%DB%8C%D8%AF-%D8%B4%D9%88.jpg',
           url: '#'
         }
-      ]
+      ],
+      consultingMegaMenuItems: [
+        {
+          title: 'مجموعه مقالات',
+          link: '#',
+          children: [
+            {
+              title: 'تحلیل و مشاوره',
+              link: '#'
+            },
+            {
+              title: 'نحوه مطالعه و تست زنی',
+              link: '#'
+            },
+            {
+              title: 'برنامه ریزی تحصیلی',
+              link: '#'
+            },
+            {
+              title: 'انتخاب کتاب',
+              link: '#'
+            },
+            {
+              title: 'انتخاب رشته',
+              link: '#'
+            },
+            {
+              title: 'آشنایی با دانشگاه ها',
+              link: '#'
+            }
+          ]
+        },
+        {
+          title: 'مشاوره',
+          link: '#',
+          children: [
+            {
+              title: 'گزینه 1',
+              link: '#'
+            },
+            {
+              title: 'گزینه 2',
+              link: '#'
+            }
+          ]
+        }
+      ],
+      consultingMegaMenuTab: 'مجموعه مقالات'
     }
   },
   computed: {
     products () {
       return new ProductList(this.$store.getters.products)
+    },
+    consultingMegaMenuTabContent () {
+      for (let i = 0; i < this.consultingMegaMenuItems.length; i++) {
+        if (this.consultingMegaMenuItems[i].title === this.consultingMegaMenuTab) {
+          return this.consultingMegaMenuItems[i].children
+        }
+      }
+      return []
     }
   },
   methods: {
@@ -364,11 +436,16 @@ export default {
     AccountDrawerOpen () {
       this.$store.commit('updateDrawer', true)
       this.$emit('drawer-menu', AccountMenu)
+    },
+    changeConsultingMegaMenuTab (title) {
+      this.consultingMegaMenuTab = title
+      console.log(title)
+      console.log('heheeh')
     }
   }
 }
 </script>
 
 <style>
-  @import url('../../assets/css/components/HeaderScoped.css');
+  @import url('~/assets/css/components/HeaderScoped.css');
 </style>

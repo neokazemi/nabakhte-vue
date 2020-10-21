@@ -29,5 +29,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/SearchMenuScoped.css');
+  @import url('~/assets/css/components/SearchMenuScoped.css');
 </style>

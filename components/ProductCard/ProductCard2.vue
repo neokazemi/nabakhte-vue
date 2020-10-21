@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { Product } from '../../models/Product'
+import { Product } from '~/models/Product'
 
 export default {
   name: 'ProductCard2',
@@ -92,5 +92,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/ProductCards/ProductCard2Scoped.css');
+  @import url('~/assets/css/components/ProductCards/ProductCard2Scoped.css');
 </style>

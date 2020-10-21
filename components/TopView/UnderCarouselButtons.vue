@@ -31,7 +31,7 @@
 </template>
 
 <style scoped>
-  @import url('../../assets/css/components/UnderCarouselButtonsScoped.css');
+  @import url('~/assets/css/components/UnderCarouselButtonsScoped.css');
 </style>
 
 <script>

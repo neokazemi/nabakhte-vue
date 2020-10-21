@@ -43,5 +43,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../assets/css/components/HeaderCartScoped.css');
+  @import url('~/assets/css/components/HeaderCartScoped.css');
 </style>

@@ -23,10 +23,10 @@
   </div>
 </template>
 <script>
-import ProductCard from '../ProductCard/ProductCard'
-import { ProductList } from '../../models/Product'
 import MainCarousel from './MainCarousel'
 import CarouselButtons from './UnderCarouselButtons'
+import ProductCard from '~/components/ProductCard/ProductCard'
+import { ProductList } from '~/models/Product'
 import '~/assets/css/components/TopView.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
