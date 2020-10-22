@@ -156,6 +156,7 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              :to=" `/admin/user-list/edit-access/` + item.id "
               v-bind="attrs"
               class="mx-2"
               fab
@@ -163,7 +164,6 @@
               x-small
               color="#9575CD"
               v-on="on"
-              @click="editItem(item)"
             >
               <v-icon dark>
                 mdi-pencil
@@ -224,7 +224,8 @@ export default {
     editedRoleIndex: -1,
 
     editedAccess: {
-      name: ''
+      name: '',
+      id: null
     },
 
     defaultAccess: {
@@ -246,13 +247,6 @@ export default {
   },
 
   methods: {
-    editItem (item) {
-      this.editedIndex = this.accesses.indexOf(item)
-      this.editedAccess = Object.assign({}, item)
-      this.dialog2 = true
-      this.changeshow = true
-      this.detailshow = false
-    },
     addItem () {
       this.dialog = true
       this.changeshow = true
@@ -293,11 +287,13 @@ export default {
       this.accesses = [
         {
           name: 'دانلود فایل کارنامه نتایج کنکور',
-          entertime: '۱۳۹۹/۰۶/۲۶'
+          entertime: '۱۳۹۹/۰۶/۲۶',
+          id: 1
         },
         {
           name: 'مشاهده سفارش های یک کاربر دیگر',
-          entertime: '۱۳۹۹/۰۵/۲۲'
+          entertime: '۱۳۹۹/۰۵/۲۲',
+          id: 2
         }
       ]
     }

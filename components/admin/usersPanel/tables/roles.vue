@@ -174,6 +174,7 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              :to=" `/admin/user-list/edit-role/` + item.id "
               v-bind="attrs"
               class="mx-2"
               fab
@@ -181,7 +182,6 @@
               x-small
               color="#9575CD"
               v-on="on"
-              @click="editItem(item)"
             >
               <v-icon dark>
                 mdi-pencil
@@ -246,7 +246,8 @@ export default {
 
     editedRoles: {
       name: '',
-      rolename: ''
+      rolename: '',
+      id: null
     },
 
     defaultRole: {
@@ -268,13 +269,6 @@ export default {
   },
 
   methods: {
-    editItem (item) {
-      this.editedIndex = this.roles.indexOf(item)
-      this.editedRoles = Object.assign({}, item)
-      this.dialog3 = true
-      this.changeshow = true
-      this.detailshow = false
-    },
     addItem () {
       this.dialog3 = true
       this.changeshow = true
@@ -315,12 +309,14 @@ export default {
       this.roles = [
         {
           name: 'employmentSupportDepartment',
-          rolename: 'پشتیبان استخدام'
+          rolename: 'پشتیبان استخدام',
+          id: 1
 
         },
         {
           name: 'publicRelationManager',
-          rolename: 'مدیر روابط عمومی'
+          rolename: 'مدیر روابط عمومی',
+          id: 2
 
         }
       ]
