@@ -8,7 +8,11 @@
           <div :class="{ 'slider-title': true, 'slider-title3': type === 3 }" :style="{ color: mainBg }">
             <slot />
             <nuxt-link v-if="type === 1" class="more-info" to="/shop">
-              مشاهده بیشتر <div class="more-info-icon" />
+              مشاهده بیشتر <div class="more-info-icon">
+                <v-icon color="#33b130">
+                  mdi-chevron-left
+                </v-icon>
+              </div>
             </nuxt-link>
             <nuxt-link v-if="type === 3" class="more-info3" to="/shop">
               مشاهده بیشتر >

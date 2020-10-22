@@ -74,10 +74,20 @@
               <div class="col-3 contact-us">
                 <p class="white-font fontIranSans nav-bar-options">
                   021-66979455
-                  <i class="fas fa-phone-volume" />
+                  <v-icon color="#fff">
+                    mdi-phone-classic
+                  </v-icon>
                 </p>
-                <a href="#" class="instagram nav-bar-options"><i class="fab fa-instagram" /></a>
-                <a href="#" class="telegram nav-bar-options"><i class="fab fa-telegram-plane" /></a>
+                <a href="#" class="instagram nav-bar-options">
+                  <v-icon color="#fff">
+                    mdi-instagram
+                  </v-icon>
+                </a>
+                <a href="#" class="telegram nav-bar-options">
+                  <v-icon color="#fff">
+                    mdi-telegram
+                  </v-icon>
+                </a>
                 <div class="header-bg">
                   <div class="header-bg-white" />
                   <div class="header-bg-green" />
@@ -101,8 +111,8 @@
                   <div class="row menu-options-container justify-content-start align-items-center">
                     <ul class="nav">
                       <li class="nav-item">
-                        <a class="nav-link menu-nav" href="#">
-                          <i class="fas fa-ellipsis-v" />دسته بندی محصولات
+                        <a class="nav-link menu-nav" href="#" @click="PcRightDrawerOpen">
+                          <v-icon>mdi-dots-vertical</v-icon>دسته بندی محصولات
                         </a>
                       </li>
                       <li class="nav-item consulting">
@@ -155,7 +165,9 @@
                   <div class="row searchbar-container">
                     <input type="text" placeholder="عنوان، انتشارات، درس یا ... (حداقل 3 حرف)">
                     <button type="submit" class="search-button">
-                      <i class="fas fa-search" />
+                      <v-icon color="#2bbb28">
+                        mdi-magnify
+                      </v-icon>
                     </button>
                   </div>
                 </div>
@@ -164,7 +176,9 @@
                     <div class="user-cart">
                       <nuxt-link to="/سبد-خرید">
                         <div class="cart-logo leftSide-btn-arrow">
-                          <i class="fas fa-shopping-cart" />
+                          <v-icon color="#fff" size="20">
+                            mdi-cart
+                          </v-icon>
                         </div>
                         <h2 class="cart-description">
                           سبد خرید
@@ -178,7 +192,9 @@
                     <div class="account-management">
                       <nuxt-link to="/my-account">
                         <div class="account-logo leftSide-btn-arrow">
-                          <i class="fas fa-user" />
+                          <v-icon color="#fff" size="20">
+                            mdi-account
+                          </v-icon>
                         </div>
                         <h2 class="account-description">
                           حساب کاربری
@@ -297,13 +313,17 @@
           <input class="fixed-search-input" type="text" placeholder="جستجو">
           <a href="#">
             <div class="leftSide-btn search-button">
-              <i class="fas fa-shopping-cart" />
+              <v-icon color="#fff" size="20">
+                mdi-magnify
+              </v-icon>
             </div>
           </a>
           <div class="cart-scrolled-menu">
             <nuxt-link to="/سبد-خرید">
               <div class="leftSide-btn leftSide-btn-arrow cart-logo">
-                <i class="fas fa-shopping-cart" />
+                <v-icon color="#fff" size="20">
+                  mdi-cart
+                </v-icon>
               </div>
             </nuxt-link>
             <div class="cart-details">
@@ -313,7 +333,9 @@
           <div class="account-scrolled-menu">
             <nuxt-link to="/my-account">
               <div class="leftSide-btn leftSide-btn-arrow account-logo">
-                <i class="fas fa-user" />
+                <v-icon color="#fff" size="20">
+                  mdi-account
+                </v-icon>
               </div>
             </nuxt-link>
             <div class="account-options">
@@ -345,6 +367,7 @@ import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/Header.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
 
 export default {
   name: 'Header',
@@ -436,6 +459,10 @@ export default {
     AccountDrawerOpen () {
       this.$store.commit('updateDrawer', true)
       this.$emit('drawer-menu', AccountMenu)
+    },
+    PcRightDrawerOpen () {
+      this.$store.commit('updateRightDrawer', true)
+      this.$emit('drawer-menu', MainPcMenu)
     },
     changeConsultingMegaMenuTab (title) {
       this.consultingMegaMenuTab = title
