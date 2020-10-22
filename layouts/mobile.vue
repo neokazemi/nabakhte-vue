@@ -2,11 +2,7 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="false"
-      :clipped="false"
-      :right="false"
       fixed
-      :app="false"
       :bottom="true"
       :class="{ 'mobile-drawer': true }"
     >

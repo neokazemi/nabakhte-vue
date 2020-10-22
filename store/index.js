@@ -1,6 +1,7 @@
 export const state = () => ({
   footerMargin: '0',
   drawer: false,
+  rightDrawer: false,
   linksOf404: [
     {
       title: 'گزارش خطا',
@@ -21,6 +22,9 @@ export const mutations = {
   },
   updateDrawer (state, newInfo) {
     state.drawer = newInfo
+  },
+  updateRightDrawer (state, newInfo) {
+    state.rightDrawer = newInfo
   }
   // updateAppProps(state, newInfo) {
   //   if (typeof newInfo === 'function') {
@@ -37,6 +41,9 @@ export const getters = {
   },
   drawer (state) {
     return state.drawer
+  },
+  rightDrawer (state) {
+    return state.rightDrawer
   },
   linksOf404 (state) {
     return state.linksOf404

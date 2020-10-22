@@ -1,5 +1,5 @@
 <template>
-  <v-badge :content="content" :color="color" :offset-x="x" :offset-y="y" />
+  <v-badge v-if="content !== 0" :content="content" :color="color" :offset-x="x" :offset-y="y" />
 </template>
 <script>
 import '~/assets/css/components/Badge.css'

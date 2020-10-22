@@ -1,5 +1,15 @@
 <template>
   <v-app>
+    <v-navigation-drawer
+      v-model="rightDrawer"
+      :right="true"
+      :width="320"
+      temporary
+      fixed
+      class="right-drawer"
+    >
+      <Component :is="mainMenu" />
+    </v-navigation-drawer>
     <Header @drawer-menu="component => mainMenu = component" />
     <v-main>
       <nuxt />
@@ -12,6 +22,7 @@
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+
 export default {
   components: {
     Header,
@@ -20,6 +31,7 @@ export default {
   mixins: [mixinDetectDevice],
   data () {
     return {
+      mainMenu: '',
       items: [
         {
           icon: 'mdi-apps',
@@ -39,12 +51,12 @@ export default {
     footerMargin () {
       return this.$store.getters.footerMargin
     },
-    drawer: {
+    rightDrawer: {
       get () {
-        return this.$store.getters.drawer
+        return this.$store.getters.rightDrawer
       },
       set (newValue) {
-        this.$store.commit('updateDrawer', newValue)
+        this.$store.commit('updateRightDrawer', newValue)
       }
     }
   }
