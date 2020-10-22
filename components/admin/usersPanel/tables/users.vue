@@ -426,6 +426,7 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              :to=" `/admin/user-list/edit-user/` + item.id "
               v-bind="attrs"
               class="mx-2"
               fab
@@ -433,7 +434,6 @@
               x-small
               color="#9575CD"
               v-on="on"
-              @click="editItem(item)"
             >
               <v-icon dark>
                 mdi-pencil
@@ -473,7 +473,6 @@ export default {
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
-
     changeshow: false,
     detailshow: false,
     search: '',
@@ -512,7 +511,8 @@ export default {
       phonestatus: '',
       school: '',
       signdate: '',
-      accesses: ''
+      accesses: '',
+      id: null
     },
 
     defaultItem: {
@@ -565,14 +565,6 @@ export default {
         this.editedIndex = -1
       })
     },
-    editItem (item) {
-      this.editedIndex = this.users.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
-      this.changeshow = true
-      this.detailshow = false
-    },
-
     detailItem (item) {
       this.editedIndex = this.users.indexOf(item)
       this.editedItem = Object.assign({}, item)
@@ -613,7 +605,8 @@ export default {
           phonestatus: 'تایید شده',
           school: 'فرزانگان',
           signdate: '۱۳۹۹/۰۷/۱۹',
-          accesses: 'ادمین'
+          accesses: 'ادمین',
+          id: 1
 
         },
         {
@@ -623,21 +616,24 @@ export default {
           email: 'helia.mhmdi@gmail.com',
           status: 'فعال',
           field: 'ریاضی',
-          code: '20890222'
+          code: '20890222',
+          id: 2
         },
         {
           name: 'هلیا محمدی',
           phone: '9365491835',
           address: 'شهران-خیابان مدرسه-کوچه دانش',
           email: 'helia.mhmdi@gmail.com',
-          status: 'فعال'
+          status: 'فعال',
+          id: 3
         },
         {
           name: 'هلیا محمدی',
           phone: '9365491835',
           address: 'شهران-خیابان مدرسه-کوچه دانش',
           email: 'helia.mhmdi@gmail.com',
-          status: 'فعال'
+          status: 'فعال',
+          id: 4
         }
       ]
     }
