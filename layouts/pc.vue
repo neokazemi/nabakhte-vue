@@ -8,7 +8,7 @@
       fixed
       class="right-drawer"
     >
-      <Component :is="mainMenu" />
+      <Component :is="mainMenu" @close="rightDrawer = false" />
     </v-navigation-drawer>
     <Header @drawer-menu="component => mainMenu = component" />
     <v-main>

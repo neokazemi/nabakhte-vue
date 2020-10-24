@@ -7,7 +7,8 @@ class MenuItem extends Model {
       { key: 'title' },
       { key: 'children' },
       { key: 'url' },
-      { key: 'megaMenu' }
+      { key: 'megaMenu' },
+      { key: 'style' }
     ])
     // this.children = new MenuList(this.children)
   }

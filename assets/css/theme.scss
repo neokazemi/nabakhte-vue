@@ -64,7 +64,12 @@ a {
 }
 
 .right-drawer a {
-  color: #000 !important;
+  color: #000;
+}
+
+.right-drawer-header {
+  font-weight: bold;
+  height: 50px;
 }
 
 header.theme--light.v-app-bar.v-toolbar.v-sheet {

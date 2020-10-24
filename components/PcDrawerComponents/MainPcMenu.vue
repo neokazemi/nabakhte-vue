@@ -3,6 +3,16 @@
     <v-window-item v-for="(item, index) in rightDrawerFlatted" :key="index" :value="item.id">
       <v-list dense>
         <v-list-item-group>
+          <v-list-item>
+            <v-list-item-content class="right-drawer-header">
+              {{ item.title }}
+            </v-list-item-content>
+            <v-list-item-icon :style="{ margin: 'auto 5px' }">
+              <v-icon color="#000" @click="closeDrawer">
+                mdi-close
+              </v-icon>
+            </v-list-item-icon>
+          </v-list-item>
           <v-list-item v-if="item.id > 1">
             <v-list-item-content @click="rightDrawerStep = 0">
               بازگشت به صفحه اصلی
@@ -24,16 +34,16 @@
             </v-list-item-icon>
           </v-list-item>
           <v-list-item v-for="(listItem, listIndex) in item.children" :key="listIndex">
-            <v-list-item-content v-if="listItem.children.length !== 0" @click="rightDrawerStep = listItem.id">
+            <v-list-item-content v-if="listItem.children.length !== 0" :style="listItem.style" @click="rightDrawerStep = listItem.id">
               {{ listItem.title }}
             </v-list-item-content>
             <v-list-item-icon v-if="listItem.children.length !== 0" @click="rightDrawerStep = listItem.id">
-              <v-icon color="#000" small>
+              <v-icon color="#000" small :style="listItem.style">
                 mdi-chevron-left
               </v-icon>
             </v-list-item-icon>
-            <v-list-item-content v-else>
-              <nuxt-link :to="listItem.link">
+            <v-list-item-content v-else :style="listItem.style">
+              <nuxt-link :to="listItem.link" :style="listItem.style">
                 {{ listItem.title }}
               </nuxt-link>
             </v-list-item-content>
@@ -58,24 +68,28 @@ export default {
           title: 'موضوعات فروشگاه',
           link: '#',
           megaMenu: false,
+          style: {},
           children: [
             {
               id: 1,
               title: 'کتاب کمک آموزشی بر اساس پایه',
               link: '#',
               megaMenu: false,
+              style: {},
               children: [
                 {
                   id: 2,
                   title: 'دوازدهم ریاضی',
                   link: '#',
                   megaMenu: false,
+                  style: {},
                   children: [
                     {
                       id: 3,
                       title: 'حسابان دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -83,6 +97,7 @@ export default {
                       title: 'هندسه دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -90,6 +105,7 @@ export default {
                       title: 'گسسته دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -97,6 +113,7 @@ export default {
                       title: 'فیزیک دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -104,6 +121,7 @@ export default {
                       title: 'شیمی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -111,6 +129,7 @@ export default {
                       title: 'فارسی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -118,6 +137,7 @@ export default {
                       title: 'عربی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -125,6 +145,7 @@ export default {
                       title: 'دین و زندگی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -132,6 +153,7 @@ export default {
                       title: 'انگلیسی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     },
                     {
@@ -139,6 +161,7 @@ export default {
                       title: 'نگارش دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     }
                   ]
@@ -148,17 +171,27 @@ export default {
                   title: 'دوازدهم تجربی',
                   link: '#',
                   megaMenu: false,
+                  style: {},
                   children: [
                     {
                       id: 14,
                       title: 'ریاضی دوازدهم',
                       link: '#',
                       megaMenu: false,
+                      style: {},
                       children: []
                     }
                   ]
                 }
               ]
+            },
+            {
+              id: 15,
+              title: 'بهترین کتاب های کنکور 1400',
+              link: '#',
+              megaMenu: false,
+              style: { color: 'red' },
+              children: []
             }
           ]
         }
@@ -178,6 +211,9 @@ export default {
     drawerGoToParent (id) {
       const parent = this.rightDrawerObject.getItemParent(id)
       this.rightDrawerStep = parent.id
+    },
+    closeDrawer () {
+      this.$emit('close')
     }
   }
 }
