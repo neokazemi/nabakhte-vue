@@ -6,7 +6,7 @@
           :open-all="true"
           :items="treeView"
           :dense="true"
-          :class="{ 'mobile-treeview': isFromPc }"
+          :class="{ 'mobile-treeview': !isFromPc }"
         >
           <template slot="label" slot-scope="props">
             <nuxt-link v-if="props.item.slug" :to="'/blog/category/' + props.item.slug">

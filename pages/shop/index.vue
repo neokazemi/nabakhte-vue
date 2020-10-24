@@ -114,6 +114,7 @@ import Sidebar from '~/components/app/Sidebar'
 import ExpansionPanel from '~/components/ExpansionPanel'
 import ToggleButton from '~/components/ToggleButton'
 import '~/assets/css/pages/Shop.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'Shop',
@@ -124,7 +125,7 @@ export default {
     ExpansionPanel,
     ToggleButton
   },
-  mixins: [mixinProduct],
+  mixins: [mixinProduct, mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [
@@ -236,11 +237,6 @@ export default {
         'پرفروش ترین'
       ],
       drawer: false
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   methods: {

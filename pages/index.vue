@@ -19,24 +19,24 @@
       </v-row>
     </v-layout>
     <div v-if="!isFromPc">
-      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
         جدید ترین کتاب های کمک آموزشی
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
         جدید ترین نوشت افزار ها
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products" :type="3" main-bg="#000">
+      <ProductSliderCarousel :products="products.list" :type="3" main-bg="#000">
         محبوب ترین محصولات
       </ProductSliderCarousel>
     </div>
     <div v-else>
-      <ProductSliderCarousel :products="products">
+      <ProductSliderCarousel :products="products.list">
         جدید ترین کتاب های کمک آموزشی
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products">
+      <ProductSliderCarousel :products="products.list">
         جدید ترین نوشت افزار ها
       </ProductSliderCarousel>
-      <ProductSliderCarousel :products="products" main-bg="#6130a4" bottom-bg="#6d3ab3">
+      <ProductSliderCarousel :products="products.list" main-bg="#6130a4" bottom-bg="#6d3ab3">
         محبوب ترین محصولات
       </ProductSliderCarousel>
       <v-container>
