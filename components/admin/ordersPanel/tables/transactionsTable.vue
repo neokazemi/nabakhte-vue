@@ -1,7 +1,16 @@
 <template>
   <v-card class="mb-20 pa-8">
     <v-row>
-      <v-col />
+      <v-col>
+        <v-text-field
+          v-model="search"
+          class="the-card-search"
+          append-icon="mdi-magnify"
+          label="جستجو"
+          single-line
+          hide-details
+        />
+      </v-col>
       <v-col>
         <v-btn
           class="output-btns-width"
@@ -97,14 +106,6 @@
               >
                 افزودن تراکنش
               </v-btn>
-              <v-text-field
-                v-model="search"
-                class="the-card-search ml-120 mt-25"
-                append-icon="mdi-magnify"
-                label="جستجو"
-                single-line
-                hide-details
-              />
             </template>
             <v-card>
               <div>
@@ -114,7 +115,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="نام مشتری"
                     />
                   </v-col>
@@ -123,7 +124,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.phone"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="موبایل"
                     />
                   </v-col>
@@ -132,7 +133,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.price"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="مبلغ سفارش"
                     />
                   </v-col>
@@ -143,7 +144,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.transactionprice"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="مبلغ تراکنش"
                     />
                   </v-col>
@@ -152,7 +153,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.transactioncode"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="کد تراکنش"
                     />
                   </v-col>
@@ -174,7 +175,7 @@
                   text
                   @click="save"
                 >
-                  دخیره
+                  ذخیره
                 </v-btn>
               </v-card-actions>
             </v-card>

@@ -4,14 +4,19 @@
   height: 20px;
 }
 
+.columns-display {
+  display: flex;
+}
+
 .switches-position {
-  float: left;
+  float: right;
   height: 20px;
 }
 
 .p-tag-size {
   font-size: 14px;
-  width: 80px;
+  float: right;
+  width: 250px;
 }
 
 .filter-btn {
@@ -22,7 +27,7 @@
 .v-text-field--filled,
 .v-text-field--full-width,
 .v-text-field--outlined {
-  .the-row {
+  .filter-elements {
     min-height: 30px !important;
   }
 }
@@ -35,4 +40,34 @@
 
 .v-text-field >>> label {
   font-size: 14px;
+}
+
+.last-line-p-tags {
+  float: right;
+  width: 150px;
+}
+
+.date-line-inputs-position .date-picker{
+  float: right;
+
+}
+
+.vpd-input-group  {
+  .date-picker {
+    width: 10px !important;
+  }
+}
+
+.vpd-input-group .date-picker >>> input {
+  line-height: 100px !important;
+}
+
+.vpd-controls .date-picker >>> button {
+  width: 10px !important;
+}
+
+.vpd-content  {
+  .date-picker {
+    width: 10px !important;
+  }
 }
