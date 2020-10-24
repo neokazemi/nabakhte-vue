@@ -1,6 +1,9 @@
 <template>
-  <div dir="ltr">
-    <nested-test v-model="elements" class="col-8" />
+  <div class="row">
+    <div class="col-8" dir="ltr">
+      <h3>Nested draggable</h3>
+      <nested-draggable :tasks="list1" />
+    </div>
   </div>
   <!--
     <draggable-->
@@ -23,11 +26,16 @@
 </template>
 
 <script>
+import NestedDraggable from '~/components/admin/menus/NestedDraggable'
 let id = 1
+
 export default {
   name: 'NestedWithVmodel',
   display: 'Nested (v-model & vuex)',
   order: 16,
+  components: {
+    NestedDraggable
+  },
   data () {
     return {
       value: null,
@@ -38,7 +46,7 @@ export default {
         { name: 'Joao', id: 1 },
         { name: 'Jean', id: 2 }
       ],
-      elements: [
+      list1: [
         {
           name: 'task 1',
           tasks: [
