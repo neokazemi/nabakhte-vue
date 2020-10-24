@@ -104,7 +104,7 @@
                 @click="addItem"
                 v-on="on"
               >
-                افزودن بن
+                افزودن کپن
               </v-btn>
             </template>
             <v-card>
@@ -115,26 +115,26 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-3"
-                      label="نام کاربر"
+                      class="text-fields-size"
+                      label="نام کپن"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponscount"
-                      class="form-elements-size ma-3"
-                      label="تعداد بن تخصیص داده شده"
+                      v-model="editedItem.code"
+                      class="text-fields-size"
+                      label="کد کپن"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponstatus"
-                      class="form-elements-size ma-3"
-                      label="وضعیت بن"
+                      v-model="editedItem.active"
+                      class="text-fields-size"
+                      label="فعال"
                     />
                   </v-col>
                 </v-row>
@@ -143,9 +143,39 @@
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.functions"
-                      class="form-elements-size ma-3"
-                      label="عملیات"
+                      v-model="editedItem.discount"
+                      class="text-fields-size"
+                      label="میزان تخفیف (٪)"
+                    />
+                  </v-col>
+                  <v-col
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.maxallowedprice"
+                      class="text-fields-size"
+                      label="حداکثر مبلغ مجاز خرید"
+                    />
+                  </v-col>
+                  <v-col
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.counts"
+                      class="text-fields-size"
+                      label="تعداد این کپن"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col
+                    v-if="changeshow"
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.used"
+                      class="text-fields-size"
+                      label="استفاده شده"
                     />
                   </v-col>
                 </v-row>
@@ -173,7 +203,7 @@
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="headline">
-                آیا از حذف این بن مطمئن هستید؟
+                آیا از حذف این کپن مطمئن هستید؟
               </v-card-title>
               <v-card-actions>
                 <v-spacer />
@@ -208,7 +238,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر بن</span>
+            <span>تغییر کپن</span>
           </v-tooltip>
 
           <v-tooltip top>
@@ -228,7 +258,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>حذف بن</span>
+            <span>حذف کپن</span>
           </v-tooltip>
         </v-row>
       </template>
@@ -238,7 +268,7 @@
 
 <script>
 export default {
-  name: 'CouponsTable',
+  name: 'CouponsManagementTable',
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -252,15 +282,18 @@ export default {
 
     headers: [
       {
-        text: 'نام کاربر',
+        text: 'نام کپن',
         align: 'start',
         sortable: false,
         value: 'name'
       },
-      { text: 'تعداد بن تخصیص داده شده', value: 'couponscount', sortable: false },
-      { text: 'وضعیت بن', value: 'couponstatus', sortable: false },
-      { text: 'عملیات', value: 'functions', sortable: false },
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
+      { text: 'کد کپن', value: 'code', sortable: false },
+      { text: 'فعال', value: 'active', sortable: false },
+      { text: 'میزان تخفیف (٪)', value: 'discount', sortable: false },
+      { text: 'حداکثر مبلغ مجاز خرید', value: 'maxallowedprice', sortable: false },
+      { text: 'تعداد این کپن', value: 'counts', sortable: false },
+      { text: 'استفاده شده', value: 'used', sortable: false },
+      { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
 
@@ -270,16 +303,22 @@ export default {
 
     editedItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      code: '',
+      active: '',
+      discount: null,
+      maxallowedprice: null,
+      counts: null,
+      used: ''
     },
 
     defaultItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      code: '',
+      active: '',
+      discount: null,
+      maxallowedprice: null,
+      counts: null,
+      used: ''
     }
 
   }),
@@ -360,30 +399,38 @@ export default {
     initialize () {
       this.coupons = [
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: '',
+          code: '',
+          active: '',
+          discount: null,
+          maxallowedprice: null,
+          counts: null,
+          used: ''
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: '',
+          code: '',
+          active: '',
+          discount: null,
+          maxallowedprice: null,
+          counts: null,
+          used: ''
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: '',
+          code: '',
+          active: '',
+          discount: null,
+          maxallowedprice: null,
+          counts: null,
+          used: ''
         }
       ]
     }
-
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  @import url('~/assets/scss/components/admin/ordersPanel/tables/couponsTable.scss');
+@import url('~/assets/scss/components/admin/productsPanel/tables/couponsManagementTable.scss');
 </style>

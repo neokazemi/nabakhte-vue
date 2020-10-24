@@ -74,7 +74,7 @@
         itemsPerPageAllText: 'همه'
       }"
       :headers="headers"
-      :items="coupons"
+      :items="products"
       :search="search"
       class="elevation-1 data-table-width mt-30"
     >
@@ -104,7 +104,7 @@
                 @click="addItem"
                 v-on="on"
               >
-                افزودن بن
+                افزودن محصول
               </v-btn>
             </template>
             <v-card>
@@ -115,26 +115,26 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-3"
-                      label="نام کاربر"
+                      class="text-fields-size"
+                      label="نام کالا"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponscount"
-                      class="form-elements-size ma-3"
-                      label="تعداد بن تخصیص داده شده"
+                      v-model="editedItem.price"
+                      class="text-fields-size"
+                      label="قیمت پایه"
                     />
                   </v-col>
                   <v-col
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.couponstatus"
-                      class="form-elements-size ma-3"
-                      label="وضعیت بن"
+                      v-model="editedItem.discount"
+                      class="text-fields-size"
+                      label="تخفیف"
                     />
                   </v-col>
                 </v-row>
@@ -143,9 +143,39 @@
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.functions"
-                      class="form-elements-size ma-3"
-                      label="عملیات"
+                      v-model="editedItem.pic"
+                      class="thetextfield"
+                      label="عکس"
+                    />
+                  </v-col>
+                  <v-col
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.description"
+                      class="text-fields-size"
+                      label="توضیحات کوتاه"
+                    />
+                  </v-col>
+                  <v-col
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.type"
+                      class="text-fields-size"
+                      label="نوع"
+                    />
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-col
+                    v-if="changeshow"
+                    class="form-elements-column-width"
+                  >
+                    <v-text-field
+                      v-model="editedItem.status"
+                      class="text-fields-size"
+                      label="فعال/غیر فعال"
                     />
                   </v-col>
                 </v-row>
@@ -173,7 +203,7 @@
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="headline">
-                آیا از حذف این بن مطمئن هستید؟
+                آیا از حذف این محصول مطمئن هستید؟
               </v-card-title>
               <v-card-actions>
                 <v-spacer />
@@ -208,7 +238,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر بن</span>
+            <span>تغییر محصول</span>
           </v-tooltip>
 
           <v-tooltip top>
@@ -228,7 +258,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>حذف بن</span>
+            <span>حذف محصول</span>
           </v-tooltip>
         </v-row>
       </template>
@@ -238,7 +268,7 @@
 
 <script>
 export default {
-  name: 'CouponsTable',
+  name: 'ProductsTable',
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -252,34 +282,43 @@ export default {
 
     headers: [
       {
-        text: 'نام کاربر',
+        text: 'نام کالا',
         align: 'start',
         sortable: false,
         value: 'name'
       },
-      { text: 'تعداد بن تخصیص داده شده', value: 'couponscount', sortable: false },
-      { text: 'وضعیت بن', value: 'couponstatus', sortable: false },
-      { text: 'عملیات', value: 'functions', sortable: false },
-      { text: 'فعالیت ها', value: 'actions', sortable: false }
+      { text: 'قیمت پایه', value: 'price', sortable: false },
+      { text: 'تخفیف', value: 'discount', sortable: false },
+      { text: 'عکس', value: 'pic', sortable: false },
+      { text: 'توضیحات کوتاه', value: 'description', sortable: false },
+      { text: 'نوع', value: 'type', sortable: false },
+      { text: 'فعال/غیر فعال', value: 'status', sortable: false },
+      { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
 
-    coupons: [],
+    products: [],
 
     editedIndex: -1,
 
     editedItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      price: null,
+      discount: null,
+      pic: '',
+      description: '',
+      type: '',
+      status: ''
     },
 
     defaultItem: {
       name: '',
-      couponscount: null,
-      couponstatus: '',
-      functions: ''
+      price: null,
+      discount: null,
+      pic: '',
+      description: '',
+      type: '',
+      status: ''
     }
 
   }),
@@ -325,7 +364,7 @@ export default {
       })
     },
     editItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.products.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.changeshow = true
@@ -333,7 +372,7 @@ export default {
     },
 
     detailItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.products.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
@@ -341,41 +380,50 @@ export default {
     },
 
     deleteItem (item) {
-      this.editedIndex = this.coupons.indexOf(item)
+      this.editedIndex = this.products.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.coupons.splice(this.editedIndex, 1)
+      this.products.splice(this.editedIndex, 1)
       this.closeDelete()
     },
     save () {
       if (this.editedIndex > -1) {
-        Object.assign(this.coupons[this.editedIndex], this.editedItem)
+        Object.assign(this.products[this.editedIndex], this.editedItem)
       } else {
-        this.coupons.push(this.editedItem)
+        this.products.push(this.editedItem)
       }
       this.close()
     },
     initialize () {
-      this.coupons = [
+      this.products = [
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'پک راه ابریشم رشته ریاضی',
+          price: 2020000,
+          discount: 707000,
+          pic: '',
+          description: '',
+          type: 'ساده',
+          status: 'فعال'
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'پک راه ابریشم رشته ریاضی',
+          price: 2020000,
+          discount: 707000,
+          pic: '',
+          description: '',
+          type: 'ساده',
+          status: 'فعال'
         },
         {
-          name: 'هلیا محمدی',
-          couponscount: 10,
-          couponstatus: '',
-          functions: ''
+          name: 'پک راه ابریشم رشته ریاضی',
+          price: 2020000,
+          discount: 707000,
+          pic: '',
+          description: '',
+          type: 'ساده',
+          status: 'فعال'
         }
       ]
     }
@@ -385,5 +433,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url('~/assets/scss/components/admin/ordersPanel/tables/couponsTable.scss');
+@import url('~/assets/scss/components/admin/productsPanel/tables/productsTable.scss');
 </style>

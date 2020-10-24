@@ -45,23 +45,20 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
 
-        <v-col>
           <v-select
-            class=" filter-elements mb-2.5 mt-2.5 pr-0"
+            class=" filter-elements mb-2.5 mt-2.5 pr-0 ml-1"
             :items="items"
             label="انتخاب محصول سفارش داده شده"
             solo
             dense
           />
-        </v-col>
-        <v-col>
+
           <v-select
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
@@ -94,14 +91,11 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-
-        <v-col>
           <v-select
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
@@ -110,14 +104,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
 
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
           <v-select
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             :items="items"
@@ -158,13 +150,12 @@
       </v-row>
 
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             label="کد پستی"
@@ -172,13 +163,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             label="استان"
@@ -186,13 +176,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             label="شهر"
@@ -200,13 +189,12 @@
             dense
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             label="مدرسه"
@@ -216,13 +204,12 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-text-field
             class=" filter-elements mb-2.5 mt-2.5 pr-0"
             label="آدرس"
@@ -232,13 +219,12 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-textarea
             class="text-areas-size mt-2 mb-0"
             solo
@@ -246,13 +232,12 @@
             label="توضیحات مشتری"
           />
         </v-col>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-8"
+            class="switches-position mt-1"
           />
-        </v-col>
-        <v-col>
+
           <v-textarea
             class="text-areas-size mt-2 mb-0"
             solo
@@ -263,133 +248,163 @@
       </v-row>
 
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12 "
+            class="switches-position mt-2"
           />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ ثبت اولیه:
-        </p>
-        <v-col cols="2">
+          <p class="mt-3 p-tag-size">
+            تاریخ ثبت اولیه:
+          </p>
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
+            id="my-custom-input"
+            v-model="date"
+            placeholder="از تاریخ"
+            outlined
             dense
+            class="filter-elements ml-2"
           />
-        </v-col>
-        <v-col cols="2">
+
+          <date-picker
+            v-model="date"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input"
+            width="10px"
+          />
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
+            id="my-custom-input2"
+            v-model="date2"
+            placeholder="تا تاریخ"
+            outlined
             dense
+            class="filter-elements "
+          />
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
           />
         </v-col>
-        <v-col />
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12 "
+            class="switches-position mt-2"
           />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ اصلاح مدیریتی:
-        </p>
-        <v-col cols="2">
+          <p class="mt-3 p-tag-size">
+            تاریخ اصلاح مدیریتی:
+          </p>
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
+            id="my-custom-input"
+            v-model="date"
+            placeholder="از تاریخ"
+            outlined
             dense
+            class="filter-elements ml-2"
           />
-        </v-col>
-        <v-col cols="2">
+
+          <date-picker
+            v-model="date"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input"
+            width="10px"
+          />
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
+            id="my-custom-input2"
+            v-model="date2"
+            placeholder="تا تاریخ"
+            outlined
             dense
+            class="filter-elements "
+          />
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
           />
         </v-col>
-        <v-col />
       </v-row>
       <v-row>
-        <v-col cols="1">
+        <v-col class="columns-display">
           <v-switch
             v-model="switch1"
-            class="switches-position mt-12 "
+            class="switches-position mt-2"
           />
-        </v-col>
-        <p class="mt-8 ml-8 p-tag-size mr-6">
-          تاریخ ثبت نهایی:
-        </p>
-        <v-col cols="2">
+          <p class="mt-3 p-tag-size">
+            تاریخ ثبت نهایی:
+          </p>
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="از تاریخ"
-            filled
+            id="my-custom-input"
+            v-model="date"
+            placeholder="از تاریخ"
+            outlined
             dense
+            class="filter-elements ml-2"
           />
-        </v-col>
-        <v-col cols="2">
+
+          <date-picker
+            v-model="date"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input"
+            width="10px"
+          />
           <v-text-field
-            class="the-filled-text-field filter-elements mb-2.5 mt-2.5 pr-0"
-            label="تا تاریخ"
-            filled
+            id="my-custom-input2"
+            v-model="date2"
+            placeholder="تا تاریخ"
+            outlined
             dense
+            class="filter-elements "
+          />
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
           />
         </v-col>
-        <v-col />
       </v-row>
       <v-row>
-        <p
-          class="mt-10 ml-8 p-tag-size mr-6"
-        >
-          قیمت سفارش:
-        </p>
-        <v-col>
+        <v-col class="columns-display">
+          <p class="mt-2 last-line-p-tags">
+            قیمت سفارش:
+          </p>
           <v-select
-            class=" filter-elements mb-2.5 mt-6.5 pr-0"
+            class=" mb-2.5 mt-2.5 pr-0 last-line-inputs"
             :items="items"
             label="برابر با"
             solo
             dense
           />
-        </v-col>
-        <v-col>
           <v-text-field
-            class=" filter-elements mb-2.5 mt-6.5 pr-0"
-            outlined
+            class=" mb-2.5 mt-2.5 pr-0 mr-2 last-line-inputs"
+            solo
             dense
           />
         </v-col>
-        <p
-          class="mt-10 ml-8 p-tag-sizep mr-6"
-        >
-          نخفیف سفارش:
-        </p>
-        <v-col>
+        <v-col class="columns-display">
+          <p class="last-line-p-tags mt-2" >
+            تخفیف سفارش:
+          </p>
           <v-select
-            class=" filter-elements  mb-2.5 mt-6.5 pr-0"
+            class=" mb-2.5 mt-2.5 pr-0 last-line-inputs"
             :items="items"
             label="برابر با"
             solo
             dense
           />
-        </v-col>
-        <v-col>
           <v-text-field
-            class=" filter-elements mb-2.5 mt-6.5 pr-0"
-            outlined
+            class=" mb-2.5 mt-2.5 pr-0 mr-2 last-line-inputs"
+            solo
             dense
           />
         </v-col>
       </v-row>
+      <br>
+      <br>
       <v-row>
         <v-col />
         <v-col />
@@ -413,10 +428,21 @@
 
 <script>
 export default {
-  name: 'Orders'
+  name: 'Orders',
+  components: {
+    datePicker: () => import('vue-persian-datetime-picker')
+  },
+  data: () => ({
+    items: ['item1', 'item2', 'item3', 'item4'],
+    switch1: false,
+    date: '',
+    date2: '',
+    date3: '',
+    date4: ''
+  })
 }
 </script>
 
-<style scoped>
-/* @import "assets/scss/components/admin/ordersPanel/filters/orders.scss"; */
+<style lang="scss" scoped>
+@import url('~/assets/scss/components/admin/ordersPanel/filters/orders.scss');
 </style>

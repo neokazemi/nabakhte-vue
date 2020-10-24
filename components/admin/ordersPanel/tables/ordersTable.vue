@@ -1,7 +1,16 @@
 <template>
-  <v-card class="mb-20 pa-8">
+  <v-card class="mb-20 pa-3">
     <v-row>
-      <v-col />
+      <v-col>
+        <v-text-field
+          v-model="search"
+          class="the-card-search mt-25"
+          append-icon="mdi-magnify"
+          label="جستجو"
+          single-line
+          hide-details
+        />
+      </v-col>
       <v-col>
         <v-btn
           class="output-btns-width"
@@ -90,21 +99,12 @@
               <v-btn
                 color="primary"
                 dark
-                class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
                 v-on="on"
               >
                 افزودن سفارش
               </v-btn>
-              <v-text-field
-                v-model="search"
-                class="the-card-search ml-120 mt-25"
-                append-icon="mdi-magnify"
-                label="جستجو"
-                single-line
-                hide-details
-              />
             </template>
             <v-card>
               <div>
@@ -114,7 +114,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.name"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="نام و نام خانوادگی"
                     />
                   </v-col>
@@ -123,7 +123,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.phone"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="موبایل"
                     />
                   </v-col>
@@ -132,7 +132,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.city"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="شهر"
                     />
                   </v-col>
@@ -143,7 +143,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.code"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="کد ملی"
                     />
                   </v-col>
@@ -152,7 +152,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.city"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="مبلغ"
                     />
                   </v-col>
@@ -161,7 +161,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.ispayed"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="پرداخت شده"
                     />
                   </v-col>
@@ -173,7 +173,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.description"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="توضیخات مسئول"
                     />
                   </v-col>
@@ -183,7 +183,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.orderstatus"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="وضعیت سفارش"
                     />
                   </v-col>
@@ -193,7 +193,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.paymentstatus"
-                      class="form-elements-size ma-10"
+                      class="form-elements-size ma-3"
                       label="وضعیت پرداخت"
                     />
                   </v-col>
@@ -214,7 +214,7 @@
                   text
                   @click="save"
                 >
-                  دخیره
+                  ذخیره
                 </v-btn>
               </v-card-actions>
             </v-card>
