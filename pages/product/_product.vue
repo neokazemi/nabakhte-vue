@@ -263,7 +263,7 @@
       </v-row>
       <v-row>
         <v-col class="similar-products">
-          <ProductSliderCarousel :products="products.list" main-bg="#fff" bottom-bg="#fff" :type="2" />
+          <ProductSliderCarousel :products="products" main-bg="#fff" bottom-bg="#fff" :type="2" />
         </v-col>
       </v-row>
       <v-row>
@@ -391,6 +391,7 @@ import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import ProductSpecs from '~/components/ProductSpecs'
 import Comment from '~/components/Comment'
 import '~/assets/css/pages/Product.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'Product',
@@ -405,7 +406,7 @@ export default {
     ProductSpecs,
     Comment
   },
-  mixins: [mixinProduct],
+  mixins: [mixinProduct, mixinDetectDevice],
   props: {
     productData: {
       type: Object,
@@ -489,11 +490,6 @@ export default {
         '7 عدد',
         '100 عدد'
       ]
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   created () {

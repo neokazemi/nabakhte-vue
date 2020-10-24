@@ -512,12 +512,14 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/MyAccount.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'MyAccount',
   components: {
     Breadcrumbs
   },
+  mixins: [mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [
@@ -609,9 +611,6 @@ export default {
       } else {
         return ''
       }
-    },
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   methods: {

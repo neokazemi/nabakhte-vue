@@ -12,7 +12,8 @@ class MenuItem extends Model {
       //   relatedModel: MenuList1
       // },
       { key: 'url' },
-      { key: 'megaMenu' }
+      { key: 'megaMenu' },
+      { key: 'style' }
     ])
     // this.children = new MenuList(this.children)
   }

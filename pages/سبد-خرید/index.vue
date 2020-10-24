@@ -108,6 +108,7 @@ import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductCard from '~/components/ProductCard/ProductCard'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/pages/Cart.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'Cart',
@@ -120,7 +121,7 @@ export default {
       return value.toLocaleString('ar-SA')
     }
   },
-  mixins: [mixinStore],
+  mixins: [mixinStore, mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [
@@ -141,11 +142,6 @@ export default {
           to: '#'
         }
       ]
-    }
-  },
-  computed: {
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   created () {

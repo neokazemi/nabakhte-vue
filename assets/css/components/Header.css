@@ -50,6 +50,11 @@ a ::after {
   margin-top: -4px;
 }
 
+.consulting-menu-tab span {
+  display: flex;
+  flex-direction: column;
+}
+
 .nav p {
   font-family: inherit;
   color: #f8f8f8;

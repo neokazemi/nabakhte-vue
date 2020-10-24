@@ -5,7 +5,7 @@
 <script>
 import AccessInformationCorrection from '~/components/admin/managementsPanel/accessInformationCorrection'
 export default {
-  name: 'Index',
+  name: '_id',
   components: { AccessInformationCorrection }
 }
 </script>
