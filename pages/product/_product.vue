@@ -263,7 +263,7 @@
       </v-row>
       <v-row>
         <v-col class="similar-products">
-          <ProductSliderCarousel :products="products.list" main-bg="#fff" bottom-bg="#fff" :type="2" />
+          <ProductSliderCarousel :products="products" main-bg="#fff" bottom-bg="#fff" :type="2" />
         </v-col>
       </v-row>
       <v-row>

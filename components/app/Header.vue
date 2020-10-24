@@ -138,14 +138,16 @@
                             </a>
                           </div>
                           <div class="consulting-menu-tab">
-                            <a
-                              v-for="(item, index) in consultingMegaMenuTabContent"
-                              :key="index"
-                              class="consulting-menu-sub-option"
-                              :href="item.link"
-                            >
-                              {{ item.title }}
-                            </a>
+                            <transition-group name="fade">
+                              <a
+                                v-for="(item, index) in consultingMegaMenuTabContent"
+                                :key="index"
+                                class="consulting-menu-sub-option"
+                                :href="item.link"
+                              >
+                                {{ item.title }}
+                              </a>
+                            </transition-group>
                           </div>
                           <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
                         </div>
@@ -238,25 +240,33 @@
                 مشاوره
               </v-btn>
               <div class="consulting-mega-menu">
-                <div class="option-selection">
-                  <a class="offline-consulting option" href="#">
+                <div class="consulting-mega-menu-bg" />
+                <div
+                  class="option-selection"
+                >
+                  <a
+                    v-for="(item, index) in consultingMegaMenuItems"
+                    :key="index"
+                    class="offline-consulting option"
+                    :href="item.link"
+                    @mouseenter="changeConsultingMegaMenuTab(item.title)"
+                  >
                     <p>
-                      <i class="fas fa-angle-left" />مشاوره آفلاین
-                    </p>
-                  </a>
-                  <a class="documents option" href="#">
-                    <p>
-                      <i class="fas fa-angle-left" />مجموعه مقالات
+                      <i class="fas fa-angle-left" />{{ item.title }}
                     </p>
                   </a>
                 </div>
-                <div class="offline-consulting-menu">
-                  <a class="consulting-menu-sub-option" href="#">تحلیل و مشاوره</a>
-                  <a class="consulting-menu-sub-option" href="#">نحوه مطالعه و تست زنی</a>
-                  <a class="consulting-menu-sub-option" href="#">برنامه ریزی تحصیلی</a>
-                  <a class="consulting-menu-sub-option" href="#">انواع کتاب ها</a>
-                  <a class="consulting-menu-sub-option" href="#">انتخاب رشته</a>
-                  <a class="consulting-menu-sub-option" href="#">آشنایی با دانشگاه ها</a>
+                <div class="consulting-menu-tab">
+                  <transition-group name="fade">
+                    <a
+                      v-for="(item, index) in consultingMegaMenuTabContent"
+                      :key="index"
+                      class="consulting-menu-sub-option"
+                      :href="item.link"
+                    >
+                      {{ item.title }}
+                    </a>
+                  </transition-group>
                 </div>
                 <v-img src="https://media.chibekhoonam.net/2018/05/p4.png" :width="194" :height="224" class="megaMenuIMG" />
               </div>
@@ -470,6 +480,18 @@ export default {
   }
 }
 </script>
+
+<style>
+  .fade-enter-active
+  , .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  }
+</style>
 
 <style>
   @import url('~/assets/css/components/HeaderScoped.css');
