@@ -49,6 +49,7 @@ import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/blog.css'
 import { PostList } from '~/models/Post'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 export default {
   name: 'Category',
   components: {
@@ -57,6 +58,7 @@ export default {
     PostItem,
     Treeview
   },
+  mixins: [mixinDetectDevice],
   asyncData (context) {
     return (new PostList()).fetch()
       .then((response) => {
@@ -933,10 +935,7 @@ export default {
   },
   computed: {
     posts () {
-      return this.$store.getters.posts
-    },
-    isFromPc () {
-      return this.$store.getters.isFromPc
+      return this.$store.getters['posts/posts']
     }
   },
   created () {
