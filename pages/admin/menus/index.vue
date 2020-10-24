@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-8" dir="ltr">
+    <div class="col" dir="ltr">
       <h3>Nested draggable</h3>
       <nested-draggable :tasks="list1" />
     </div>
