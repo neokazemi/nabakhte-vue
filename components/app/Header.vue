@@ -466,8 +466,6 @@ export default {
     },
     changeConsultingMegaMenuTab (title) {
       this.consultingMegaMenuTab = title
-      console.log(title)
-      console.log('heheeh')
     }
   }
 }
