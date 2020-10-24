@@ -1,17 +1,15 @@
 <template>
-  <v-window v-model="rightDrawerStep">
+  <v-window v-model="rightDrawerStep" :style="{ position: 'relative' }">
     <v-window-item v-for="(item, index) in rightDrawerFlatted" :key="index" :value="item.id">
+      <v-icon color="#000" class="right-drawer-close-button" @click="closeDrawer">
+        mdi-close
+      </v-icon>
       <v-list dense>
         <v-list-item-group>
-          <v-list-item>
+          <v-list-item disabled>
             <v-list-item-content class="right-drawer-header">
               {{ item.title }}
             </v-list-item-content>
-            <v-list-item-icon :style="{ margin: 'auto 5px' }">
-              <v-icon color="#000" @click="closeDrawer">
-                mdi-close
-              </v-icon>
-            </v-list-item-icon>
           </v-list-item>
           <v-list-item v-if="item.id > 1">
             <v-list-item-content @click="rightDrawerStep = 0">

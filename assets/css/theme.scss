@@ -63,6 +63,13 @@ a {
   min-height: 100%;
 }
 
+.right-drawer-close-button {
+  position: absolute !important;
+  z-index: 2000;
+  top: 5px;
+  left: 5px;
+}
+
 .right-drawer a {
   color: #000;
 }
