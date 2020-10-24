@@ -112,6 +112,11 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    extend (config, { isClient }) {
+      if (isClient) {
+        config.devtool = process.env.NODE_ENV === 'development' ? '#source-map' : ''
+      }
+    },
     transpile: [
       'js-abstract-model'
     ]

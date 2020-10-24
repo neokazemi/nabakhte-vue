@@ -1,4 +1,5 @@
 import { Model, Collection } from 'js-abstract-model'
+// import { MenuList1 } from './Menu1'
 
 class MenuItem extends Model {
   constructor (data) {
@@ -6,6 +7,10 @@ class MenuItem extends Model {
       { key: 'id' },
       { key: 'title' },
       { key: 'children' },
+      // {
+      //   key: 'children',
+      //   relatedModel: MenuList1
+      // },
       { key: 'url' },
       { key: 'megaMenu' }
     ])
