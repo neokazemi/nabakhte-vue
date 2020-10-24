@@ -13,6 +13,7 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
+import '~/assets/css/components/LogoCarousel.css'
 
 export default {
   name: 'LogoCarousel',
@@ -70,37 +71,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.logo-swiper {
-  position: relative;
-  margin: 30px 0;
-}
-
-.logo-swiper .swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 135px !important;
-  height: 110px;
-  margin: 0 7px;
-  border: 1px dashed #c6d2d0;
-  border-radius: 40px;
-}
-
-.logo-swiper .swiper-button-prev {
-  left: -25px;
-}
-
-.logo-swiper .swiper-button-next {
-  right: -25px;
-}
-
-.logo-swiper .swiper-button-next::after,
-.logo-swiper .swiper-button-prev::after {
-  font-size: 25px !important;
-  font-weight: bold;
-  color: #141414;
-  opacity: 0.7;
-}
-</style>

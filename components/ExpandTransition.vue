@@ -3,11 +3,11 @@
     <transition
       ref="highlight"
       name="expand"
-      @clicked="expanded = true"
+      @clicked="cl"
       @after-enter="afterEnter"
       @leave="leave"
     >
-      <div ref="expandContainer" class="fixedheight">
+      <div ref="expandContainer" class="fixedheight" :class="{ 'expand-enter-active': active, 'expand-enter-to': active }">
         <slot />
       </div>
     </transition>
@@ -22,44 +22,41 @@ export default {
   name: 'ExpandTransition',
   data () {
     return {
-      expanded: false
+      expanded: false,
+      active: false
     }
   },
   methods: {
     cl () {
-      this.$emit('clicked')
-      this.enter(this.$refs.expandContainer)
-      this.afterEnter((this.$refs.expandContainer))
+      this.active = true
+      // this.enter(this.$refs.expandContainer)
+      this.afterEnter((this.$refs.expandContainer), this.enter)
     },
     enter (element) {
-      const width = element.clientWidth
+      const width = getComputedStyle(element).width
 
       element.style.width = width
       element.style.position = 'absolute'
       element.style.visibility = 'hidden'
       element.style.height = 'auto'
 
-      const height = element.clientHeight
+      const height = getComputedStyle(element).height
 
       element.style.width = null
       element.style.position = null
       element.style.visibility = null
-      element.style.height = 100
+      element.style.height = 0
 
-      // Force repaint to make sure the
-      // animation is triggered correctly.
-      // getComputedStyle(element).height
+      // eslint-disable-next-line
+      getComputedStyle(element).height
 
-      // Trigger the animation.
-      // We use `requestAnimationFrame` because we need
-      // to make sure the browser has finished
-      // painting after setting the `height`
-      // to `0` in the line above.
       requestAnimationFrame(() => {
         element.style.height = height
       })
     },
-    afterEnter (element) {
+    afterEnter (element, callback) {
+      callback(element)
+      console.log(callback)
       element.style.height = 'auto'
     },
     leave (element) {
@@ -67,12 +64,11 @@ export default {
 
       element.style.height = height
 
-      // Force repaint to make sure the
-      // animation is triggered correctly.
-      // getComputedStyle(element).height
+      // eslint-disable-next-line
+      getComputedStyle(element).height
 
       requestAnimationFrame(() => {
-        element.style.height = 100
+        element.style.height = 0
       })
     }
   }
@@ -98,7 +94,7 @@ export default {
 <style scoped>
   * {
     will-change: height;
-    transform: translateZ(100px);
+    transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
   }

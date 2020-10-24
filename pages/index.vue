@@ -164,7 +164,8 @@ export default {
           imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
           link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
         }
-      ]
+      ],
+      expanded: false
     }
   }
 }

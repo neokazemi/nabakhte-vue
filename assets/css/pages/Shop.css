@@ -1,7 +1,3 @@
-.pagination .v-pagination .v-pagination__navigation {
-  display: none !important;
-}
-
 .v-input .v-input__control .v-select__slot .v-select__selections input {
   display: none;
 }
@@ -13,6 +9,10 @@
 .v-navigation-drawer__content {
   display: flex;
   flex-direction: column;
+}
+
+.button-selected .theme--light.v-icon {
+  color: inherit;
 }
 
 .sort .v-text-field.v-text-field--enclosed:not( .v-text-field--rounded ) > .v-input__control > .v-input__slot {
