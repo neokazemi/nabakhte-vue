@@ -14,11 +14,11 @@
       <div class="final-price-container">
         <div class="cart-subtotal">
           <p>مجموع کل سبد خرید</p>
-          <p>{{ 480000 | price }}  <span>تومان</span></p>
+          <p>{{ cart.totalPrice().toman('base', false) }}  <span>تومان</span></p>
         </div>
         <div class="subtotal-price">
           <p>مجموع نهایی</p>
-          <p>{{ 480000 | price }}  <span>تومان</span></p>
+          <p>{{ cart.totalPrice().toman('final', false) }}  <span>تومان</span></p>
         </div>
       </div>
       <div class="fixed-buy-button">
@@ -73,7 +73,7 @@
                       مجموع کل سبد خرید
                     </p>
                     <h4>
-                      {{ 6 * 80000 | price }} <h6>تومان</h6>
+                      {{ cart.totalPrice().toman('base', false)}} <h6>تومان</h6>
                     </h4>
                   </v-col>
                 </v-row>
@@ -83,7 +83,7 @@
                       مجموع نهایی
                     </p>
                     <h1>
-                      {{ 6 * 80000 | price }} <span>تومان</span>
+                      {{ cart.totalPrice().toman('final', false) }} <span>تومان</span>
                     </h1>
                   </v-col>
                 </v-row>
@@ -107,8 +107,8 @@
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductCard from '~/components/ProductCard/ProductCard'
 import mixinStore from '~/plugins/mixinStore'
-import '~/assets/css/pages/Cart.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import '~/assets/css/pages/Cart.css'
 
 export default {
   name: 'Cart',

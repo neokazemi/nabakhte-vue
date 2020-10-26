@@ -10,6 +10,10 @@ const mixinStore = {
     addToCart (product) {
       this.cart.addItem(product)
       this.$store.commit('cart/updateCart', this.cart)
+    },
+    removeFromCart (cartItem) {
+      this.cart.remove(cartItem, true)
+      this.$store.commit('cart/updateCart', this.cart)
     }
   }
 }
