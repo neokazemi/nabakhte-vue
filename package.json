@@ -33,7 +33,7 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-double-select": "^0.1.2",
     "vue-persian-datetime-picker": "^2.4.0",
-    "vuedraggable": "^2.24.2"
+    "vuedraggable": "^2.24.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

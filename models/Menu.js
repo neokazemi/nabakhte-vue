@@ -6,11 +6,10 @@ class MenuItem extends Model {
     super(data, [
       { key: 'id' },
       { key: 'title' },
-      { key: 'children' },
-      // {
-      //   key: 'children',
-      //   relatedModel: MenuList1
-      // },
+      {
+        key: 'children',
+        relatedModel: MenuList
+      },
       { key: 'url' },
       { key: 'megaMenu' },
       { key: 'style' }
@@ -19,7 +18,7 @@ class MenuItem extends Model {
   }
 
   isMegaMenu () {
-    if (this.children.length > 0 && this.megaMenu === true) {
+    if (this.children.list.length > 0 && this.megaMenu === true) {
       return true
     } else {
       return false
@@ -42,7 +41,7 @@ class MenuList extends Collection {
       if (list[i].id === menuItemId) {
         return list[i]
       } else {
-        const response = this.getMenuItem(menuItemId, list[i].children)
+        const response = this.getMenuItem(menuItemId, list[i].children.list)
         if (response) {
           return response
         }
@@ -54,7 +53,7 @@ class MenuList extends Collection {
   calcItemsWithoutDepth (list = this.list) {
     for (let i = 0; i < list.length; i++) {
       this.itemsWithoutDepth.push(list[i])
-      this.calcItemsWithoutDepth(list[i].children)
+      this.calcItemsWithoutDepth(list[i].children.list)
     }
   }
 
@@ -72,7 +71,7 @@ class MenuList extends Collection {
       if (list[i].id === id) {
         return this.getMenuItem(parentId)
       } else {
-        const response = this.getItemParent(id, list[i].children, list[i].id)
+        const response = this.getItemParent(id, list[i].children.list, list[i].id)
         if (response) {
           return response
         }
