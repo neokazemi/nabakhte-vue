@@ -2,10 +2,10 @@
   <div>
     <div class="d-flex justify-end">
       <v-btn
-        :href="$router.go(-1)"
         color="#b2dfdb"
         elevation="3"
         class="ml-5 mt-5 mb-5"
+        @click="$router.go(-1)"
       >
         بازگشت >>
       </v-btn>
@@ -77,7 +77,7 @@
           <v-card-title>
             اطلاعات اختیاری کاربر
           </v-card-title>
-          <v-row class="columns-display">
+          <v-row>
             <v-col>
               <v-row>
                 <v-img
@@ -142,7 +142,7 @@
               </v-row>
             </v-col>
             <v-col>
-              <v-row>
+              <v-row class="columns-display">
                 <v-checkbox
                   v-model="checkbox"
                   class="checkbox-size mt-0 card2-input-elements"
@@ -150,7 +150,7 @@
                   :label="`قفل کردن ویرایش اطلاعات شخصی`"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-select
                   :items="items"
                   dense
@@ -159,7 +159,7 @@
                   label="رشته"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   v-model="city"
                   label=" شهر"
@@ -168,7 +168,7 @@
                   class=" ml-3 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   v-model="school"
                   label="مدرسه"
@@ -177,7 +177,7 @@
                   class=" ml-3 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   v-model="email"
                   label="ایمیل"
@@ -186,7 +186,7 @@
                   class=" ml-3 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   label="رمز عبور"
                   outlined
@@ -196,7 +196,7 @@
               </v-row>
             </v-col>
             <v-col>
-              <v-row>
+              <v-row class="columns-display">
                 <v-checkbox
                   v-model="checkbox"
                   class="checkbox-size mt-0 ml-5 card2-input-elements"
@@ -204,7 +204,7 @@
                   :label="`تایید شماره موبایل`"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-select
                   :items="items"
                   dense
@@ -213,7 +213,7 @@
                   label="جنسیت"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   label="استان"
                   outlined
@@ -221,7 +221,7 @@
                   class=" ml-5 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   label="کد پستی"
                   outlined
@@ -229,7 +229,7 @@
                   class=" ml-5 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   v-model="address"
                   label="آدرس"
@@ -238,7 +238,7 @@
                   class=" ml-5 card2-input-elements"
                 />
               </v-row>
-              <v-row>
+              <v-row class="columns-display">
                 <v-text-field
                   label="تکرار رمز عبور"
                   outlined
@@ -249,7 +249,7 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col>
+            <v-col class="columns-display">
               <v-textarea
                 class="mr-3"
                 label="درباره من"
@@ -259,8 +259,6 @@
             </v-col>
             <v-col>
               <double-select
-                text-items="آیتم"
-                text-selected-items="آیتم انتخاب شده"
                 :items="arrayOfItems"
                 :selected-items="arrayOfSelectedItems"
               />
@@ -284,8 +282,7 @@
 export default {
   name: 'UserInformationCorrection',
   components: {
-    DoubleSelect: () =>
-      import('vue-double-select')
+    DoubleSelect: () => import('vue-double-select')
   },
   data: () => ({
     items: ['فعال', 'غیر فعال', 'نامشخص'],

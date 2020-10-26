@@ -1,0 +1,44 @@
+.card1-input-elements {
+  float: right;
+  width: 70%;
+  height: 30px;
+}
+
+.card2-input-elements {
+  float: right;
+  height: 30px;
+}
+
+.columns-display {
+  display: flex;
+}
+
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .filter-elements {
+    min-height: 30px !important;
+  }
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
+
+.checkbox-size >>> label {
+  font-size: 14px;
+}
+
+.card-size {
+  height: fit-content;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  padding-bottom: 20px;
+}
