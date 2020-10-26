@@ -49,7 +49,7 @@ import { CartItem } from '~/models/Cart'
 import '~/assets/css/components/ProductCards/ProductCard4.css'
 
 export default {
-  name: 'ProductCard4',
+  name: 'CartItem1',
   props: {
     cartItem: {
       type: CartItem,

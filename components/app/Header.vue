@@ -397,44 +397,54 @@ export default {
       ],
       consultingMegaMenuItems: [
         {
+          id: 0,
           title: 'مجموعه مقالات',
           link: '#',
           children: [
             {
+              id: 1,
               title: 'تحلیل و مشاوره',
               link: '#'
             },
             {
+              id: 2,
               title: 'نحوه مطالعه و تست زنی',
               link: '#'
             },
             {
+              id: 3,
               title: 'برنامه ریزی تحصیلی',
               link: '#'
             },
             {
+              id: 4,
               title: 'انتخاب کتاب',
               link: '#'
             },
             {
+              id: 5,
               title: 'انتخاب رشته',
               link: '#'
             },
             {
+              id: 6,
               title: 'آشنایی با دانشگاه ها',
               link: '#'
             }
           ]
         },
         {
+          id: 0,
           title: 'مشاوره',
           link: '#',
           children: [
             {
+              id: 1,
               title: 'گزینه 1',
               link: '#'
             },
             {
+              id: 2,
               title: 'گزینه 2',
               link: '#'
             }

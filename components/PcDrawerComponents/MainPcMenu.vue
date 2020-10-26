@@ -31,11 +31,11 @@
               </v-icon>
             </v-list-item-icon>
           </v-list-item>
-          <v-list-item v-for="(listItem, listIndex) in item.children" :key="listIndex">
-            <v-list-item-content v-if="listItem.children.length !== 0" :style="listItem.style" @click="rightDrawerStep = listItem.id">
+          <v-list-item v-for="(listItem, listIndex) in item.children.list" :key="listIndex">
+            <v-list-item-content v-if="listItem.children.list.length !== 0" :style="listItem.style" @click="rightDrawerStep = listItem.id">
               {{ listItem.title }}
             </v-list-item-content>
-            <v-list-item-icon v-if="listItem.children.length !== 0" @click="rightDrawerStep = listItem.id">
+            <v-list-item-icon v-if="listItem.children.list.length !== 0" @click="rightDrawerStep = listItem.id">
               <v-icon color="#000" small :style="listItem.style">
                 mdi-chevron-left
               </v-icon>
