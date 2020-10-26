@@ -60,7 +60,7 @@
                 <p>اگر شما کد تخفیف دارید ، برای ثبت آن از طریق زیر اقدام کنید.</p>
                 <div class="discount">
                   <v-text-field outlined label="کد تخفیف" dense />
-                  <v-btn outlined color="#25a522" :width="120">
+                  <v-btn outlined color="#25a522" :width="120" :style="{ height: 40, 'margin-right': 10 }">
                     اعمال تخفیف
                   </v-btn>
                 </div>
@@ -182,6 +182,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 10px;
     padding: 0 275px;
   }
 </style>
