@@ -29,19 +29,24 @@
             </div>
             <div class="show-type page-fields d-none d-md-block">
               <button :class="{ 'button-selected': grid === 'row' }" @click="changeGridToRow">
-                rw
+                <v-icon>
+                  mdi-reorder-horizontal
+                </v-icon>
               </button>
               <button :class="{ 'button-selected': grid === 'square' }" @click="changeGridToSquare">
-                sq
+                <v-icon color="inherit">
+                  mdi-view-grid
+                </v-icon>
               </button>
             </div>
-            <div class="page-fields pagination">
-              <v-pagination
-                v-model="page"
-                :length="201"
-                :total-visible="4"
-              />
-            </div>
+            <!--            <div class="page-fields pagination">-->
+            <!--              <v-pagination-->
+            <!--                v-model="page"-->
+            <!--                :length="201"-->
+            <!--                :total-visible="5"-->
+            <!--              />-->
+            <!--            </div>-->
+            <Pagination :length="201" :total-visible="4" />
           </div>
         </v-col>
       </v-row>
@@ -115,10 +120,12 @@ import ExpansionPanel from '~/components/ExpansionPanel'
 import ToggleButton from '~/components/ToggleButton'
 import '~/assets/css/pages/Shop.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import Pagination from '~/components/Pagination'
 
 export default {
   name: 'Shop',
   components: {
+    Pagination,
     Breadcrumbs,
     ProductCard,
     Sidebar,
