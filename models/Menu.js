@@ -10,7 +10,7 @@ class MenuItem extends Model {
         key: 'children',
         relatedModel: MenuList
       },
-      { key: 'url' },
+      { key: 'link' },
       { key: 'megaMenu' },
       { key: 'style' }
     ])
