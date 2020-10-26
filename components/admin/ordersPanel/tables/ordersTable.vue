@@ -243,6 +243,7 @@
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
+                :to=" `/admin/orders/edit-order/` + item.id "
                 v-bind="attrs"
                 class="mx-2 edit-delete-btns"
                 fab
@@ -250,7 +251,6 @@
                 x-small
                 color="#9575CD"
                 v-on="on"
-                @click="editItem(item)"
               >
                 <v-icon dark>
                   mdi-pencil
@@ -432,7 +432,8 @@ export default {
           code: '20890222',
           description: '',
           orderstatus: '',
-          paymentstatus: 'تایید شده'
+          paymentstatus: 'تایید شده',
+          id: 1
         },
         {
           name: 'هلیا محمدی',
@@ -443,7 +444,8 @@ export default {
           code: '20890222',
           description: '',
           orderstatus: '',
-          paymentstatus: 'تایید شده'
+          paymentstatus: 'تایید شده',
+          id: 2
         },
         {
           name: 'هلیا محمدی',
@@ -454,7 +456,8 @@ export default {
           code: '20890222',
           description: '',
           orderstatus: '',
-          paymentstatus: 'تایید شده'
+          paymentstatus: 'تایید شده',
+          id: 3
         }
       ]
     }
