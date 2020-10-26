@@ -5,7 +5,6 @@
 <script>
 import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
 export default {
-  name: 'Index',
   components: { UserInformationCorrection }
 }
 </script>

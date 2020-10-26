@@ -2,6 +2,7 @@
   <div>
     <div class="d-flex justify-end">
       <v-btn
+        :href="$router.go(-1)"
         color="#b2dfdb"
         elevation="3"
         class="ml-5 mt-5 mb-5"
@@ -282,7 +283,10 @@
 <script>
 export default {
   name: 'UserInformationCorrection',
-  components: { DoubleSelect: () => import('vue-double-select') },
+  components: {
+    DoubleSelect: () =>
+      import('vue-double-select')
+  },
   data: () => ({
     items: ['فعال', 'غیر فعال', 'نامشخص'],
     checkbox: false,

@@ -140,8 +140,8 @@
                           <div class="consulting-menu-tab">
                             <transition-group name="fade">
                               <a
-                                v-for="(item, index) in consultingMegaMenuTabContent"
-                                :key="index"
+                                v-for="item in consultingMegaMenuTabContent"
+                                :key="'fade1_' + item.id"
                                 class="consulting-menu-sub-option"
                                 :href="item.link"
                               >
@@ -259,8 +259,8 @@
                 <div class="consulting-menu-tab">
                   <transition-group name="fade">
                     <a
-                      v-for="(item, index) in consultingMegaMenuTabContent"
-                      :key="index"
+                      v-for="item in consultingMegaMenuTabContent"
+                      :key="'fade2_' + item.id"
                       class="consulting-menu-sub-option"
                       :href="item.link"
                     >
