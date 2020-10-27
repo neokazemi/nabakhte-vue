@@ -5,7 +5,7 @@
 <script>
 import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
 export default {
-  name: '_id',
+  name: 'edit',
   components: { UserInformationCorrection }
 }
 </script>

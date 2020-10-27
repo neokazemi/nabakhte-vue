@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="changeshow" class="d-flex justify-end">
+    <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -19,83 +19,57 @@
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
+
                 v-model="firstname"
                 label="نام"
                 outlined
                 dense
                 class="card1-input-elements mr-3"
               />
-              <div v-else class="card1-input-elements mr-3">
-                نام
-                <hr>
-                {{ firstname }}
-              </div>
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
+
                 v-model="lastname"
                 label=" نام خانوادگی"
                 outlined
                 dense
                 class="card1-input-elements ml-3"
               />
-              <div v-else class="card1-input-elements mr-3">
-                نام خانوادگی
-                <hr>
-                {{ lastname }}
-              </div>
             </v-col>
           </v-row>
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
+
                 v-model="phone"
                 label="شماره موبایل"
                 outlined
                 dense
                 class="card1-input-elements mr-3"
               />
-              <div v-else class="card1-input-elements mr-3">
-                شماره موبایل
-                <hr>
-                {{ phone }}
-              </div>
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
+
                 v-model="code"
                 label="کد ملی"
                 outlined
                 dense
                 class="card1-input-elements ml-3"
               />
-
-              <div v-else class="card1-input-elements mr-3">
-                کد ملی
-                <hr>
-                {{ code }}
-              </div>
             </v-col>
           </v-row>
           <v-row>
             <v-col class="columns-display">
               <v-select
-                v-if="changeshow"
+
                 :items="items"
                 dense
                 solo
                 class="card1-input-elements mr-3"
                 label="وضعیت حساب کاربری"
               />
-              <div v-else class="card1-input-elements mr-3">
-                وضعیت حساب کاربری
-                <hr>
-                {{ items[0] }}
-              </div>
             </v-col>
             <v-col />
           </v-row>
@@ -120,7 +94,7 @@
               </v-row>
               <v-row>
                 <v-speed-dial
-                  v-if="changeshow"
+
                   v-model="fab"
                   class="mr-8 mt-10"
                   :top="top"
@@ -176,16 +150,8 @@
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
-                  v-if="changeshow"
+
                   v-model="checkbox"
-                  class="checkbox-size mt-0 card2-input-elements"
-                  dense
-                  :label="`قفل کردن ویرایش اطلاعات شخصی`"
-                />
-                <v-checkbox
-                  v-else
-                  v-model="checkbox"
-                  disabled
                   class="checkbox-size mt-0 card2-input-elements"
                   dense
                   :label="`قفل کردن ویرایش اطلاعات شخصی`"
@@ -193,155 +159,96 @@
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  v-if="changeshow"
+
                   :items="items2"
                   dense
                   solo
                   class=" ml-3 card2-input-elements"
                   label="رشته"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  رشته
-                  <hr>
-                  {{ items2[0] }}
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
+
                   v-model="city"
                   label=" شهر"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
-
-                <div v-else class="ml-3 card2-input-elements">
-                  شهر
-                  <hr>
-                  {{ city }}
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   v-model="school"
                   label="مدرسه"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  مدرسه
-                  <hr>
-                  {{ school }}
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   v-model="email"
                   label="ایمیل"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  ایمیل
-                  <hr>
-                  {{ email }}
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   label="رمز عبور"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  رمز عبور
-                  <hr>
-                </div>
               </v-row>
             </v-col>
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
-                  v-if="changeshow"
                   v-model="checkbox"
                   class="checkbox-size mt-0 ml-5 card2-input-elements"
-                  dense
-                  :label="`تایید شماره موبایل`"
-                />
-                <v-checkbox
-                  v-else
-                  v-model="checkbox"
-                  disabled
-                  class="checkbox-size mt-0 card2-input-elements"
                   dense
                   :label="`تایید شماره موبایل`"
                 />
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  v-if="changeshow"
                   :items="items3"
                   dense
                   solo
                   class=" ml-5 card2-input-elements"
                   label="جنسیت"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  جنسیت
-                  <hr>
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   label="استان"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  استان
-                  <hr>
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   label="کد پستی"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  کد پستی
-                  <hr>
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   v-model="address"
                   label="آدرس"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
-                <div v-else class="ml-3 card2-input-elements">
-                  آدرس
-                  <hr>
-                  {{ address }}
-                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
                   label="تکرار رمز عبور"
                   outlined
                   dense
@@ -353,24 +260,17 @@
           <v-row>
             <v-col class="columns-display">
               <v-textarea
-                v-if="changeshow"
-                class="mr-3 mt-3"
+                class="mr-3"
                 label="درباره من"
                 dense
                 outlined
               />
-              <div v-else class="mr-5 card2-input-elements">
-                درباره من
-                <hr>
-              </div>
             </v-col>
             <v-col>
               <double-select
-
-                v-if="changeshow"
                 searchable-placeholder="جستجو"
                 text-items="نقش "
-                :text-selected-items="selectedItemsText"
+                text-selected-items="انتخاب شده"
                 :items="Roles"
                 :selected-items="selectedRoles"
                 :searchable="true"
@@ -380,30 +280,26 @@
                 text-field="name"
                 value-field="id"
               />
-              <div v-else class=" card2-input-elements">
-                نقش های انتخاب شده
-                <hr>
-                مشاور - ارسال کننده کتاب
-              </div>
             </v-col>
           </v-row>
         </v-card>
       </v-col>
     </v-row>
-    <div v-if="changeshow" class="d-flex justify-end">
+    <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
         elevation="3"
         class="ml-5 mt-5 mb-5"
       >
-        اعمال تغییرات
+        ذخیره
       </v-btn>
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'UserInformationCorrection',
+  name: 'AddUser',
   components: {
     DoubleSelect: () => import('vue-double-select')
   },
@@ -423,23 +319,22 @@ export default {
     bottom: true,
     left: false,
     transition: 'slide-y-reverse-transition',
-    lastname: 'محمدی',
-    firstname: 'هلیا',
-    phone: '9365491835',
-    city: 'تهران',
-    address: 'شهران-خیابان مدرسه-کوچه دانش',
-    email: 'helia.mhmdi@gmail.com',
-    status: 'فعال',
-    field: 'ریاضی',
-    code: '20890222',
-    changetime: '۱۳۹۹/۰۷/۱۹',
-    function: 'ثبت نام',
-    phonestatus: 'تایید شده',
-    school: 'فرزانگان',
-    signdate: '۱۳۹۹/۰۷/۱۹',
-    accesses: 'ادمین',
+    lastname: '',
+    firstname: '',
+    phone: '',
+    city: '',
+    address: '',
+    email: '',
+    status: '',
+    field: '',
+    code: '',
+    changetime: '',
+    function: '',
+    phonestatus: '',
+    school: '',
+    signdate: '',
+    accesses: '',
     id: 1,
-    toggle: true,
     Roles: [
       {
         id: 1,
@@ -463,17 +358,7 @@ export default {
       }
     ],
     selectedRoles: [
-      {
-        id: 1,
-        name: 'مشاور'
-      },
-      {
-        id: 5,
-        name: 'ارسال کننده کتاب '
-      }
-    ],
-
-    selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
+    ]
   }),
   computed: {
     activeFab () {
@@ -498,15 +383,11 @@ export default {
     left (val) {
       this.right = !val
     }
-  },
-  created () {
-    if (!this.$route.path.includes('edit')) {
-      this.changeshow = false
-    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import url('~/assets/scss/components/admin/managementsPanel/userInformationCorrection.scss');
+
 </style>
