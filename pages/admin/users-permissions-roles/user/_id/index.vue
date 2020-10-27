@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
+import UserInformationCorrection from '../../../../../components/admin/managementsPanel/userInformationCorrection'
 export default {
-  name: 'edit',
+  name: 'Index',
   components: { UserInformationCorrection }
 }
 </script>

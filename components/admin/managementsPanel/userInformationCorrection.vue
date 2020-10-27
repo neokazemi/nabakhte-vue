@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="changeshow" class="d-flex justify-end">
+    <div
+      v-if="editmode"
+      class="d-flex justify-end"
+    >
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -19,8 +22,8 @@
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
-                v-model="firstname"
+                v-if="editmode"
+                v-model="user.firstname"
                 label="نام"
                 outlined
                 dense
@@ -34,8 +37,8 @@
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
-                v-model="lastname"
+                v-if="editmode"
+                v-model="user.lastname"
                 label=" نام خانوادگی"
                 outlined
                 dense
@@ -51,8 +54,8 @@
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
-                v-model="phone"
+                v-if="editmode"
+                v-model="user.phone"
                 label="شماره موبایل"
                 outlined
                 dense
@@ -66,8 +69,8 @@
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-if="changeshow"
-                v-model="code"
+                v-if="editmode"
+                v-model="user.code"
                 label="کد ملی"
                 outlined
                 dense
@@ -84,8 +87,8 @@
           <v-row>
             <v-col class="columns-display">
               <v-select
-                v-if="changeshow"
-                :items="items"
+                v-if="editmode"
+                :items="user.items"
                 dense
                 solo
                 class="card1-input-elements mr-3"
@@ -120,7 +123,7 @@
               </v-row>
               <v-row>
                 <v-speed-dial
-                  v-if="changeshow"
+                  v-if="editmode"
                   v-model="fab"
                   class="mr-8 mt-10"
                   :top="top"
@@ -176,8 +179,8 @@
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
-                  v-if="changeshow"
-                  v-model="checkbox"
+                  v-if="editmode"
+                  v-model="user.checkbox"
                   class="checkbox-size mt-0 card2-input-elements"
                   dense
                   :label="`قفل کردن ویرایش اطلاعات شخصی`"
@@ -193,8 +196,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  v-if="changeshow"
-                  :items="items2"
+                  v-if="editmode"
+                  :items="user.items2"
                   dense
                   solo
                   class=" ml-3 card2-input-elements"
@@ -208,8 +211,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
-                  v-model="city"
+                  v-if="editmode"
+                  v-model="user.city"
                   label=" شهر"
                   outlined
                   dense
@@ -224,8 +227,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
-                  v-model="school"
+                  v-if="editmode"
+                  v-model="user.school"
                   label="مدرسه"
                   outlined
                   dense
@@ -239,8 +242,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
-                  v-model="email"
+                  v-if="editmode"
+                  v-model="user.email"
                   label="ایمیل"
                   outlined
                   dense
@@ -254,7 +257,7 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
+                  v-if="editmode"
                   label="رمز عبور"
                   outlined
                   dense
@@ -269,8 +272,8 @@
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
-                  v-if="changeshow"
-                  v-model="checkbox"
+                  v-if="editmode"
+                  v-model="user.checkbox"
                   class="checkbox-size mt-0 ml-5 card2-input-elements"
                   dense
                   :label="`تایید شماره موبایل`"
@@ -286,8 +289,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  v-if="changeshow"
-                  :items="items3"
+                  v-if="editmode"
+                  :items="user.items3"
                   dense
                   solo
                   class=" ml-5 card2-input-elements"
@@ -300,7 +303,7 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
+                  v-if="editmode"
                   label="استان"
                   outlined
                   dense
@@ -313,7 +316,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
+                  v-if="editmode"
+                  v-model="user.code"
                   label="کد پستی"
                   outlined
                   dense
@@ -326,8 +330,8 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
-                  v-model="address"
+                  v-if="editmode"
+                  v-model="user.address"
                   label="آدرس"
                   outlined
                   dense
@@ -341,7 +345,7 @@
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-if="changeshow"
+                  v-if="editmode"
                   label="تکرار رمز عبور"
                   outlined
                   dense
@@ -353,7 +357,7 @@
           <v-row>
             <v-col class="columns-display">
               <v-textarea
-                v-if="changeshow"
+                v-if="editmode"
                 class="mr-3 mt-3"
                 label="درباره من"
                 dense
@@ -367,12 +371,12 @@
             <v-col>
               <double-select
 
-                v-if="changeshow"
+                v-if="editmode"
                 searchable-placeholder="جستجو"
                 text-items="نقش "
-                :text-selected-items="selectedItemsText"
-                :items="Roles"
-                :selected-items="selectedRoles"
+                :text-selected-items="user.selectedItemsText"
+                :items="user.Roles"
+                :selected-items="user.selectedRoles"
                 :searchable="true"
                 :sorteable="true"
                 :limit-selected-items="4"
@@ -390,7 +394,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <div v-if="changeshow" class="d-flex justify-end">
+    <div v-if="editmode" class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -407,22 +411,14 @@ export default {
   components: {
     DoubleSelect: () => import('vue-double-select')
   },
+
+  props: ['editmode', 'filled'],
   data: () => ({
     changeshow: true,
     items: ['فعال', 'غیر فعال', 'نامشخص'],
     items2: ['ریاضی', 'تجربی'],
     items3: [],
     checkbox: false,
-    direction: 'left',
-    fab: false,
-    fling: false,
-    hover: true,
-    tabs: null,
-    top: false,
-    right: true,
-    bottom: true,
-    left: false,
-    transition: 'slide-y-reverse-transition',
     lastname: 'محمدی',
     firstname: 'هلیا',
     phone: '9365491835',
@@ -439,6 +435,17 @@ export default {
     signdate: '۱۳۹۹/۰۷/۱۹',
     accesses: 'ادمین',
     id: 1,
+    direction: 'left',
+    fab: false,
+    fling: false,
+    hover: true,
+    tabs: null,
+    top: false,
+    right: true,
+    bottom: true,
+    left: false,
+    transition: 'slide-y-reverse-transition',
+    user: {},
     toggle: true,
     Roles: [
       {
@@ -500,8 +507,112 @@ export default {
     }
   },
   created () {
-    if (!this.$route.path.includes('edit')) {
-      this.changeshow = false
+    if (this.filled) {
+      this.initializeEdit()
+    } else {
+      this.initializeAdd()
+    }
+  },
+  methods: {
+    initializeEdit () {
+      this.user = {
+        lastname: 'محمدی',
+        firstname: 'هلیا',
+        phone: '9365491835',
+        city: 'تهران',
+        address: 'شهران-خیابان مدرسه-کوچه دانش',
+        email: 'helia.mhmdi@gmail.com',
+        status: 'فعال',
+        field: 'ریاضی',
+        code: '20890222',
+        changetime: '۱۳۹۹/۰۷/۱۹',
+        function: 'ثبت نام',
+        phonestatus: 'تایید شده',
+        school: 'فرزانگان',
+        signdate: '۱۳۹۹/۰۷/۱۹',
+        accesses: 'ادمین',
+        id: 1,
+        toggle: true,
+        Roles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 2,
+            name: 'مدیر محصول'
+          },
+          {
+            id: 3,
+            name: 'آموزش کل'
+          },
+          {
+            id: 4,
+            name: 'کارمند'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedRoles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
+      }
+    },
+
+    initializeAdd () {
+      this.user = {
+        lastname: '',
+        firstname: '',
+        phone: '',
+        city: '',
+        address: '',
+        email: '',
+        status: '',
+        field: '',
+        code: '',
+        changetime: '',
+        function: '',
+        phonestatus: '',
+        school: '',
+        signdate: '',
+        accesses: '',
+        toggle: true,
+        Roles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 2,
+            name: 'مدیر محصول'
+          },
+          {
+            id: 3,
+            name: 'آموزش کل'
+          },
+          {
+            id: 4,
+            name: 'کارمند'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedRoles: [
+        ],
+        selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
+      }
     }
   }
 }

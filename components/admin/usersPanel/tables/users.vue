@@ -106,8 +106,8 @@
                 افزودن کاربر
               </v-btn>
             </template>
-            <v-card>
-              <user-information-correction/>
+            <v-card v-if="detailshow">
+              <user-information-correction :editmode="false" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -124,6 +124,26 @@
                   @click="save"
                 >
                   ذخیره
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+            <v-card v-if="changeshow">
+              <user-information-correction :editmode="true" :filled="true"/>
+              <v-card-actions>
+                <v-spacer />
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="save"
+                >
+                  ذخیره
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                >
+                  انصراف
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -157,7 +177,6 @@
               dark
               x-small
               color="#FFCA28"
-              v-on="on"
               @click="detailItem(item)"
             >
               <v-icon dark>
@@ -176,7 +195,6 @@
               dark
               x-small
               color="#9575CD"
-              v-on="on"
               @click="changeItem(item)"
             >
               <v-icon dark>
@@ -185,6 +203,44 @@
             </v-btn>
           </template>
           <span>تغییر کاربر</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              class="mx-2"
+              fab
+              dark
+              x-small
+              color="#9575CD"
+              v-on="on"
+              @click="changeItem2(item)"
+            >
+              <v-icon dark>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+          </template>
+          <span> تغییر کاربر در دیالوگ </span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              class="mx-2"
+              fab
+              dark
+              x-small
+              color="#9575CD"
+              v-on="on"
+              @click="detailItem2(item)"
+            >
+              <v-icon dark>
+                mdi-format-list-bulleted-square
+              </v-icon>
+            </v-btn>
+          </template>
+          <span> نمایش جزییات در دیالوگ</span>
         </v-tooltip>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
@@ -286,7 +342,7 @@ export default {
 
   methods: {
     addItem () {
-      this.$router.push('users-management/user/add')
+      this.$router.push('users-permissions-roles/user/add')
     },
     closeDelete () {
       this.dialogDelete = false
@@ -309,17 +365,25 @@ export default {
         this.editedIndex = -1
       })
     },
-    detailItem (item) {
+    detailItem2 (item) {
       this.editedIndex = this.users.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
       this.changeshow = false
     },
-    changeItem (item) {
+    changeItem2 (item) {
+      this.editedIndex = this.users.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.dialog = true
       this.detailshow = false
       this.changeshow = true
-      this.$router.push('users-management/user/' + item.id + '/edit')
+    },
+    changeItem (item) {
+      this.$router.push('users-permissions-roles/user/' + item.id + '/edit')
+    },
+    detailItem (item) {
+      this.$router.push('users-permissions-roles/user/' + item.id)
     },
 
     deleteItem (item) {

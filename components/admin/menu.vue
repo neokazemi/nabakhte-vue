@@ -52,7 +52,7 @@ export default {
     return {
       drawer: null,
       items: [
-        { title: 'کاربران', icon: 'mdi-view-dashboard', link: 'users-management' },
+        { title: 'کاربران', icon: 'mdi-view-dashboard', link: 'users-permissions-roles' },
         { title: 'سفارشات', icon: 'mdi-view-dashboard', link: 'orders' },
         { title: 'محصولات', icon: 'mdi-view-dashboard', link: 'products' }
       ]
