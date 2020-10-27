@@ -13,9 +13,11 @@
             مشاهده سبد خرید
           </button>
         </nuxt-link>
-        <button class="finalize-purchase">
-          تکمیل سفارش
-        </button>
+        <nuxt-link to="/تسویه-حساب">
+          <button class="finalize-purchase">
+            تکمیل سفارش
+          </button>
+        </nuxt-link>
       </div>
     </div>
   </div>
