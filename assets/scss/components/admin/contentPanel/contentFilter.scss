@@ -1,0 +1,73 @@
+.filter-elements {
+  float: right;
+  width: 100%;
+  height: 20px;
+}
+
+.columns-display {
+  display: flex;
+}
+
+.switches-position {
+  float: right;
+  height: 20px;
+}
+
+.p-tag-size {
+  font-size: 14px;
+  float: right;
+  width: 250px;
+}
+
+.filter-btn {
+  width: 100%;
+  background-color: #00bfa5;
+}
+
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .filter-elements {
+    min-height: 30px !important;
+  }
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
+
+.last-line-p-tags {
+  float: right;
+  width: 150px;
+}
+
+.date-line-inputs-position .date-picker{
+  float: right;
+
+}
+
+.vpd-input-group  {
+  .date-picker {
+    width: 10px !important;
+  }
+}
+
+.vpd-input-group .date-picker >>> input {
+  line-height: 100px !important;
+}
+
+.vpd-controls .date-picker >>> button {
+  width: 10px !important;
+}
+
+.vpd-content  {
+  .date-picker {
+    width: 10px !important;
+  }
+}
