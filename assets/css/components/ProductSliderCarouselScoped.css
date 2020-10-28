@@ -71,8 +71,6 @@
 
 .slider-carousel {
   position: relative;
-  display: flex;
-  flex-direction: row;
   height: 405px;
 }
 
@@ -90,6 +88,10 @@
 
 .slider {
   padding: 0 12px;
+}
+
+.swiper {
+  height: 100%;
 }
 
 .swiper-button-prev::after,
