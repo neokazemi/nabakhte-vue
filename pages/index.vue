@@ -73,6 +73,9 @@
           </v-col>
           <v-col :md="8" class="left-side-bottom">
             <div>
+              <LogoCarousel :items="logoSwiperItems" />
+            </div>
+            <div>
               <nuxt-link to="#">
                 <v-img contain src="https://media.chibekhoonam.net/2019/06/mikhonam-natije-nemigiram.jpg" />
               </nuxt-link>
@@ -105,14 +108,16 @@
 </template>
 
 <script>
-import ExpandTransition from '../components/ExpandTransition'
+import LogoCarousel from '../components/LogoCarousel'
+import ExpandTransition from '~/components/ExpandTransition'
 import mixinProduct from '~/plugins/mixinProduct'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
-import TopView from '~/components/TopView/TopView'
+import TopView from '~/components/PagesComponents/HomePage/TopView/TopView'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   components: {
+    LogoCarousel,
     ExpandTransition,
     TopView,
     ProductSliderCarousel
@@ -129,20 +134,50 @@ export default {
           imgurl: 'https://media.chibekhoonam.net/2020/08/%D8%A7%D8%B3%D9%84%D8%A7%DB%8C%D8%AF-%D8%B4%D9%88.jpg',
           url: '#'
         }
-      ]
-
+      ],
+      logoSwiperItems: [
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        },
+        {
+          imageUrl: 'https://media.chibekhoonam.net/2020/02/ghalamchi-min.png',
+          link: 'https://www.chibekhoonam.net/entesharat/%d9%82%d9%84%d9%85-%da%86%db%8c/'
+        }
+      ],
+      expanded: false
     }
   }
 }
 </script>
 
 <style scoped>
-  @import url('../assets/css/pages/Main.css');
+  @import url('~/assets/css/pages/Main.css');
 </style>
 
 <style>
   .buy-book-guide {
     overflow: hidden;
-    max-height: 100px;
+    max-height: 100%;
   }
 </style>

@@ -5,30 +5,34 @@
     </p>
     <div v-else>
       <div class="in-cart-products">
-        <ProductCard v-for="(cartItem, index) in cart.list" :key="index" :type="6" :cart-item="cartItem" class="product-card" />
+        <CartItem v-for="(cartItem, index) in cart.list" :key="index" :type="2" :cart-item="cartItem" class="product-card" />
       </div>
       <div class="header-cart-buttons">
-        <button class="see-cart">
-          مشاهده سبد خرید
-        </button>
-        <button class="finalize-purchase">
-          تکمیل سفارش
-        </button>
+        <nuxt-link to="/سبد-خرید">
+          <button class="see-cart">
+            مشاهده سبد خرید
+          </button>
+        </nuxt-link>
+        <nuxt-link to="/تسویه-حساب">
+          <button class="finalize-purchase">
+            تکمیل سفارش
+          </button>
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import ProductCard from '~/components/ProductCard/ProductCard'
 import { ProductList } from '~/models/Product'
 import mixinStore from '~/plugins/mixinStore'
 import '~/assets/css/components/HeaderCart.css'
+import CartItem from '~/components/CartItem/CartItem'
 
 export default {
   name: 'HeaderCart',
   components: {
-    ProductCard
+    CartItem
   },
   mixins: [mixinStore],
   props: {
@@ -43,5 +47,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../assets/css/components/HeaderCartScoped.css');
+  @import url('~/assets/css/components/HeaderCartScoped.css');
 </style>

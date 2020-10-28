@@ -1,3 +1,5 @@
+import { PostList } from '~/models/Post'
+
 export const state = () => ({
   posts: []
 })
@@ -10,6 +12,6 @@ export const mutations = {
 
 export const getters = {
   posts (state) {
-    return state.posts
+    return new PostList(state.posts)
   }
 }

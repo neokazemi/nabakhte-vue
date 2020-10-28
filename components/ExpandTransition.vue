@@ -1,16 +1,19 @@
 <template>
   <div>
     <transition
+      ref="highlight"
       name="expand"
-      @clicked="enter"
+      @clicked="cl"
       @after-enter="afterEnter"
       @leave="leave"
     >
-      <slot />
+      <div ref="expandContainer" class="fixedheight" :class="{ 'expand-enter-active': active, 'expand-enter-to': active }">
+        <slot />
+      </div>
     </transition>
-    <button @click="cl">
+    <v-btn @click="cl">
       click
-    </button>
+    </v-btn>
   </div>
 </template>
 
@@ -19,12 +22,15 @@ export default {
   name: 'ExpandTransition',
   data () {
     return {
-      expanded: false
+      expanded: false,
+      active: false
     }
   },
   methods: {
     cl () {
-      this.$emit('clicked')
+      this.active = true
+      // this.enter(this.$refs.expandContainer)
+      this.afterEnter((this.$refs.expandContainer), this.enter)
     },
     enter (element) {
       const width = getComputedStyle(element).width
@@ -39,22 +45,18 @@ export default {
       element.style.width = null
       element.style.position = null
       element.style.visibility = null
-      element.style.height = 100
+      element.style.height = 0
 
-      // Force repaint to make sure the
-      // animation is triggered correctly.
-      // getComputedStyle(element).height
+      // eslint-disable-next-line
+      getComputedStyle(element).height
 
-      // Trigger the animation.
-      // We use `requestAnimationFrame` because we need
-      // to make sure the browser has finished
-      // painting after setting the `height`
-      // to `0` in the line above.
       requestAnimationFrame(() => {
         element.style.height = height
       })
     },
-    afterEnter (element) {
+    afterEnter (element, callback) {
+      callback(element)
+      console.log(callback)
       element.style.height = 'auto'
     },
     leave (element) {
@@ -62,12 +64,11 @@ export default {
 
       element.style.height = height
 
-      // Force repaint to make sure the
-      // animation is triggered correctly.
-      // getComputedStyle(element).height
+      // eslint-disable-next-line
+      getComputedStyle(element).height
 
       requestAnimationFrame(() => {
-        element.style.height = 100
+        element.style.height = 0
       })
     }
   }
@@ -82,17 +83,18 @@ export default {
     transition-property: opacity, height;
   }
 
-  .expand-enter,
-  .expand-leave-to {
+  .fixedheight {
+    overflow: hidden;
     height: 100px;
-    opacity: 1;
+    transition: height 1s ease-in-out;
+    transition-property: opacity, height;
   }
 </style>
 
 <style scoped>
   * {
     will-change: height;
-    transform: translateZ(100px);
+    transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
   }

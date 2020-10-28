@@ -24,7 +24,7 @@
   </v-container>
 </template>
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
+import Breadcrumbs from '~/components/Breadcrumbs'
 export default {
   name: 'CustomerServices',
   components: { Breadcrumbs },
@@ -54,5 +54,5 @@ export default {
 </script>
 
 <style scoped>
-  @import url('../../assets/css/pages/CustomerServicesScoped.css');
+  @import url('~/assets/css/pages/CustomerServicesScoped.css');
 </style>

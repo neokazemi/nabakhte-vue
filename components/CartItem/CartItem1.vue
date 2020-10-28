@@ -2,7 +2,7 @@
   <v-container :fluid="true" class="product-card">
     <v-row class="flex-column flex-sm-row">
       <v-col :sm="1">
-        <a href="#" class="remove">حذف ×</a>
+        <a href="#" class="remove" @click.prevent="removeCartItem">حذف ×</a>
       </v-col>
       <v-col :sm="1" class="product-card-image-cart">
         <v-img :src="cartItem.product.image.url" contain :width="56" :height="75" />
@@ -16,9 +16,9 @@
       <v-col :sm="2">
         <div class="price justify-sm-center justify-start">
           <span class="title d-inline-block d-sm-none">قیمت: </span>
-          <span v-if="type === 1" class="old-price">{{ cartItem.product.price.toman('base', false) }}</span>
+          <span v-if="type === 1" class="old-price">{{ basePrice }}</span>
           <span class="percent">{{ cartItem.product.price.discountInPercent() }}%</span>
-          <span class="new-price">{{ cartItem.product.price.toman('final', false) }}</span>
+          <span class="new-price">{{ finalPrice }}</span>
           <span class="toman"> تومان</span>
         </div>
       </v-col>
@@ -38,7 +38,7 @@
         />
       </v-col>
       <v-col :sm="2" class="final-price justify-sm-center justify-start">
-        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ cartItem.totalPrice().toman('final', false) }} <span> تومان </span></p>
+        <p><span class="d-inline-block d-sm-none title">مجموع: </span>{{ finalPrice }} <span> تومان </span></p>
       </v-col>
     </v-row>
   </v-container>
@@ -49,7 +49,7 @@ import { CartItem } from '~/models/Cart'
 import '~/assets/css/components/ProductCards/ProductCard4.css'
 
 export default {
-  name: 'ProductCard4',
+  name: 'CartItem1',
   props: {
     cartItem: {
       type: CartItem,
@@ -106,12 +106,28 @@ export default {
           title: '100 عدد',
           value: 100
         }
-      ]
+      ],
+      basePrice: '0',
+      finalPrice: '0'
+    }
+  },
+  watch: {
+    'cartItem.qty': {
+      handler () {
+        this.basePrice = this.cartItem.totalPrice().toman('base', false)
+        this.finalPrice = this.cartItem.totalPrice().toman('final', false)
+      },
+      immediate: true
+    }
+  },
+  methods: {
+    removeCartItem () {
+      this.$emit('remove', this.cartItem)
     }
   }
 }
 </script>
 
 <style scoped>
-  @import url('../../assets/css/components/ProductCards/ProductCard4Scoped.css');
+  @import url('~/assets/css/components/ProductCards/ProductCard4Scoped.css');
 </style>

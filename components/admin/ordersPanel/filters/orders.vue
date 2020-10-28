@@ -386,7 +386,7 @@
           />
         </v-col>
         <v-col class="columns-display">
-          <p class="last-line-p-tags mt-2" >
+          <p class="last-line-p-tags mt-2">
             تخفیف سفارش:
           </p>
           <v-select

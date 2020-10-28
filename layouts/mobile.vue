@@ -2,11 +2,7 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="false"
-      :clipped="false"
-      :right="false"
       fixed
-      :app="false"
       :bottom="true"
       :class="{ 'mobile-drawer': true }"
     >
@@ -32,8 +28,6 @@ export default {
   mixins: [mixinDetectDevice],
   data () {
     return {
-      clipped: true,
-      fixed: false,
       items: [
         {
           icon: 'mdi-apps',
@@ -46,9 +40,6 @@ export default {
           to: '/inspire'
         }
       ],
-      miniVariant: false,
-      right: false,
-      rightDrawer: false,
       title: 'Vuetify.js',
       mainMenu: ''
     }
@@ -65,29 +56,6 @@ export default {
         this.$store.commit('updateDrawer', newValue)
       }
     }
-  },
-  created () {
-    // console.log('isFromPc: ', this.isFromPc)
-    // console.log('(created)this.drawer: ', this.drawer)
-  },
-  mounted () {
-    // console.log('(mounted)this.drawer: ', this.drawer)
-    this.drawer = false
-  },
-  methods: {
-    closeDrawer () {
-      this.$store.commit('updateDrawer', false)
-    }
   }
 }
 </script>
-
-<style>
-  .mobile-drawer {
-    opacity: 0.9;
-  }
-
-  .v-navigation-drawer--bottom.v-navigation-drawer--is-mobile {
-    min-height: 100%;
-  }
-</style>

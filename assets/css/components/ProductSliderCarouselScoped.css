@@ -53,6 +53,7 @@
 }
 
 .more-info-icon {
+  position: relative;
   display: inline-flex;
   width: 20px;
   height: 20px;
@@ -61,10 +62,15 @@
   border-radius: 50%;
 }
 
+
+.more-info-icon i {
+  position: absolute;
+  top: -3px;
+  left: -5px;
+}
+
 .slider-carousel {
   position: relative;
-  display: flex;
-  flex-direction: row;
   height: 405px;
 }
 
@@ -82,6 +88,10 @@
 
 .slider {
   padding: 0 12px;
+}
+
+.swiper {
+  height: 100%;
 }
 
 .swiper-button-prev::after,

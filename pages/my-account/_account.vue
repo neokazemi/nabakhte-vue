@@ -62,25 +62,25 @@
                 <v-container>
                   <v-row class="flex-column flex-sm-row">
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="نام" :rules="notEmptyRule" />
+                      <v-text-field required label="نام" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="12" class="input-field">
-                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                      <v-text-field required label="کد پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="تلفن همراه" :rules="notEmptyRule" />
+                      <v-text-field required label="تلفن همراه" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
                       <v-text-field label="آدرس ایمیل" hint="اختیاری" />
@@ -127,10 +127,10 @@
                 <v-container>
                   <v-row class="flex-column flex-sm-row">
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="نام" :rules="notEmptyRule" />
+                      <v-text-field required label="نام" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                      <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="12" class="input-field">
                       <v-text-field label="نام شرکت" hint="اختیاری" />
@@ -139,16 +139,16 @@
                       <v-text-field label="منطقه / کشور" value="ایران" readonly />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                      <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                      <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="12" class="input-field">
-                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                      <v-text-field required label="آدرس پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field">
-                      <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                      <v-text-field required label="کد پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                     </v-col>
                     <v-col :sm="6" class="input-field submit-address">
                       <v-btn color="rgb(43, 187, 40)">
@@ -168,16 +168,16 @@
       <v-container>
         <v-row class="flex-column">
           <v-col>
-            <v-text-field required label="نام" :rules="notEmptyRule" />
+            <v-text-field required label="نام" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
           </v-col>
           <v-col>
-            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
           </v-col>
           <v-col>
-            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" value="neo.kazemi79" hint="به این صورت اسم شما در حساب کاربری و نظرات دیده خواهد شد" />
+            <v-text-field required label="نام نمایشی" :rules="notEmptyRule" value="neo.kazemi79" hint="به این صورت اسم شما در حساب کاربری و نظرات دیده خواهد شد" />
           </v-col>
           <v-col>
-            <v-text-field required label="آدرس ایمیل" :rules="notEmptyRule" value="neo.kazemi79@gmail.com" />
+            <v-text-field required label="آدرس ایمیل" :rules="notEmptyRule" value="neo.kazemi79@gmail.com" hint="پر کردن این فیلد الزامی میباشد" />
           </v-col>
           <v-col>
             <v-text-field label="شمار همراه" />
@@ -319,25 +319,25 @@
                       <v-container>
                         <v-row class="flex-column flex-sm-row">
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="نام" :rules="notEmptyRule" />
+                            <v-text-field required label="نام" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="12" class="input-field">
-                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                            <v-text-field required label="کد پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="تلفن همراه" :rules="notEmptyRule" />
+                            <v-text-field required label="تلفن همراه" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
                             <v-text-field label="آدرس ایمیل" hint="اختیاری" />
@@ -384,10 +384,10 @@
                       <v-container>
                         <v-row class="flex-column flex-sm-row">
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="نام" :rules="notEmptyRule" />
+                            <v-text-field required label="نام" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" />
+                            <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="12" class="input-field">
                             <v-text-field label="نام شرکت" hint="اختیاری" />
@@ -396,16 +396,16 @@
                             <v-text-field label="منطقه / کشور" value="ایران" readonly />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required />
+                            <v-autocomplete label="استان" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required />
+                            <v-autocomplete label="شهر" :items="states" :rules="notEmptyRule" required hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="12" class="input-field">
-                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" />
+                            <v-text-field required label="آدرس پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field">
-                            <v-text-field required label="کد پستی" :rules="notEmptyRule" />
+                            <v-text-field required label="کد پستی" :rules="notEmptyRule" hint="پر کردن این فیلد الزامی میباشد" />
                           </v-col>
                           <v-col :sm="6" class="input-field submit-address">
                             <v-btn color="rgb(43, 187, 40)">
@@ -426,18 +426,32 @@
           <div class="input-fields-top">
             <div class="input-row">
               <div class="input-field half-width">
-                <v-text-field required label="نام" :rules="notEmptyRule" filled />
+                <v-text-field required label="نام" :rules="notEmptyRule" filled hint="پر کردن این فیلد الزامی میباشد" />
               </div>
               <div class="input-field half-width">
-                <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" filled />
+                <v-text-field required label="نام خانوادگی" :rules="notEmptyRule" filled hint="پر کردن این فیلد الزامی میباشد" />
               </div>
             </div>
             <div class="input-row">
               <div class="input-field half-width">
-                <v-text-field required label="نام نمایشی" :rules="notEmptyRule" filled value="neo.kazemi79" />
+                <v-text-field
+                  required
+                  label="نام نمایشی"
+                  :rules="notEmptyRule"
+                  filled
+                  value="neo.kazemi79"
+                  hint="پر کردن این فیلد الزامی میباشد"
+                />
               </div>
               <div class="input-field half-width">
-                <v-text-field required label="آدرس ایمیل" :rules="notEmptyRule" filled value="neo.kazemi79@gmail.com" />
+                <v-text-field
+                  required
+                  label="آدرس ایمیل"
+                  :rules="notEmptyRule"
+                  filled
+                  value="neo.kazemi79@gmail.com"
+                  hint="پر کردن این فیلد الزامی میباشد"
+                />
               </div>
             </div>
             <div class="input-row">
@@ -510,14 +524,16 @@
 </template>
 
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs'
+import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/MyAccount.css'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   name: 'MyAccount',
   components: {
     Breadcrumbs
   },
+  mixins: [mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [
@@ -609,9 +625,6 @@ export default {
       } else {
         return ''
       }
-    },
-    isFromPc () {
-      return this.$store.getters.isFromPc
     }
   },
   methods: {
@@ -624,5 +637,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url('../../assets/css/pages/MyAccountScoped.css');
+  @import url('~/assets/css/pages/MyAccountScoped.css');
 </style>

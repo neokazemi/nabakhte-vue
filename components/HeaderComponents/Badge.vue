@@ -1,8 +1,8 @@
 <template>
-  <v-badge :content="content" :color="color" :offset-x="x" :offset-y="y" />
+  <v-badge v-if="content !== 0" :content="content" :color="color" :offset-x="x" :offset-y="y" />
 </template>
 <script>
-import '~/assets/css/components/Header.css'
+import '~/assets/css/components/Badge.css'
 
 export default {
   name: 'Badge',

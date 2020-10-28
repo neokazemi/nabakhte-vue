@@ -47,8 +47,10 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
+import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinPost from '~/plugins/mixinPost'
 import '~/assets/css/pages/blog.css'
-import { PostList } from '~/models/Post'
+
 export default {
   name: 'Category',
   components: {
@@ -57,15 +59,7 @@ export default {
     PostItem,
     Treeview
   },
-  asyncData (context) {
-    return (new PostList()).fetch()
-      .then((response) => {
-        context.store.commit('updatePosts', new PostList(response.data))
-      })
-      .catch(function (e) {
-        context.store.commit('updatePosts', new PostList())
-      })
-  },
+  mixins: [mixinDetectDevice, mixinPost],
   data () {
     return {
       breadcrumbsItems: [
@@ -931,14 +925,6 @@ export default {
       ]
     }
   },
-  computed: {
-    posts () {
-      return this.$store.getters.posts
-    },
-    isFromPc () {
-      return this.$store.getters.isFromPc
-    }
-  },
   created () {
     this.convertArrayForTreeview()
   },
@@ -975,5 +961,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  @import url('../../../assets/css/pages/_blogScoped.css');
+  @import url('~/assets/css/pages/_blogScoped.css');
 </style>

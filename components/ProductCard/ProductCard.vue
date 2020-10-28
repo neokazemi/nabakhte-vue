@@ -6,12 +6,6 @@
     <ProductCard2 v-else-if="type === 5" :product="product">
       {{ product.name }}
     </ProductCard2>
-    <ProductCard3 v-else-if="type === 6" :cart-item="cartItem">
-      {{ cartItem.product.name }}
-    </ProductCard3>
-    <ProductCard4 v-else-if="type === 7" :cart-item="cartItem">
-      {{ cartItem.product.name }}
-    </ProductCard4>
     <ProductCard5 v-else-if="type === 8" :product="product" :box-shadow="boxShadow">
       {{ product.name }}
     </ProductCard5>
@@ -30,8 +24,6 @@ export default {
   components: {
     ProductCard1: () => import('./ProductCard1'),
     ProductCard2: () => import('./ProductCard2'),
-    ProductCard3: () => import('./ProductCard3'),
-    ProductCard4: () => import('./ProductCard4'),
     ProductCard5: () => import('./ProductCard5'),
     ProductCard6: () => import('./ProductCard6')
   },

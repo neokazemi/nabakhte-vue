@@ -18,13 +18,19 @@
       <div class="image-hover">
         <nuxt-link class="more-info" :to="product.link">
           توضیحات بیشتر
-          <i class="fas fa-angle-double-left" />
+          <v-icon color="#fff" size="20">
+            mdi-chevron-double-left
+          </v-icon>
         </nuxt-link>
         <button class="card-button like" type="submit">
-          <i class="fas fa-heart" />
+          <v-icon color="#fff" size="20">
+            mdi-heart
+          </v-icon>
         </button>
         <button class="card-button buy" @click="addToCart(product)">
-          <i class="fas fa-shopping-cart" />
+          <v-icon color="#fff" size="20">
+            mdi-cart
+          </v-icon>
         </button>
       </div>
     </div>
