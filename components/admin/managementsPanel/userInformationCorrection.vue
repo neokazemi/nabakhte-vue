@@ -1,18 +1,5 @@
 <template>
   <div>
-    <div
-      v-if="editmode"
-      class="d-flex justify-end"
-    >
-      <v-btn
-        color="#b2dfdb"
-        elevation="3"
-        class="ml-5 mt-5 mb-5"
-        @click="$router.go(-1)"
-      >
-        بازگشت >>
-      </v-btn>
-    </div>
     <v-row>
       <v-col>
         <v-card class="mr-3 ml-3 cards-size pb-5">
