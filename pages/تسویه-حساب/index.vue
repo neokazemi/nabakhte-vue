@@ -60,9 +60,28 @@
                 <p>اگر شما کد تخفیف دارید ، برای ثبت آن از طریق زیر اقدام کنید.</p>
                 <div class="discount">
                   <v-text-field outlined label="کد تخفیف" dense />
-                  <v-btn outlined color="#25a522" :width="120" :style="{ height: 40, 'margin-right': 10 }">
+                  <v-btn outlined color="#25a522" :width="120" class="discount-button">
                     اعمال تخفیف
                   </v-btn>
+                </div>
+              </div>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+        <v-expansion-panels v-model="openPanel" multiple>
+          <v-expansion-panel class="cart">
+            <v-expansion-panel-header>
+              <p class="header-title">
+                سفارش شما
+              </p>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="cart-list">
+              <div v-for="(item, index) in cart.list" :key="index" class="cart-item">
+                <div class="item-name">
+                  {{ item.product.name }}
+                </div>
+                <div class="item-price">
+                  {{ item.totalPrice().toman('final', true) }}
                 </div>
               </div>
             </v-expansion-panel-content>
@@ -74,11 +93,15 @@
 </template>
 
 <script>
+import mixinStore from '~/plugins/mixinStore'
+
 export default {
   name: 'Checkout',
+  mixins: [mixinStore],
   data () {
     return {
-      step: 1
+      step: 1,
+      openPanel: [0]
     }
   }
 }
@@ -120,69 +143,101 @@ export default {
 .checkout-items .account .v-btn .v-btn__content {
   justify-content: space-between;
 }
+
+.cart-list .v-expansion-panel-content__wrap {
+  padding: 0;
+}
+
+.cart-list .v-expansion-panel-content__wrap .cart-item:nth-child( 2n ) {
+  background-color: #f8f8f8;
+}
 </style>
 
 <style scoped>
-  .checkout-items .account .login-form {
-    display: flex;
-    flex-direction: column;
-    padding-right: 150px;
-    padding-left: 60px;
-  }
+.checkout-items .account .login-form {
+  display: flex;
+  flex-direction: column;
+  padding-right: 150px;
+  padding-left: 60px;
+}
 
-  .checkout-items .account .login-info {
-    display: flex;
-    flex-direction: column;
-    padding-right: 60px;
-    padding-left: 150px;
-    border-right: 1px solid #eee;
-  }
+.checkout-items .account .login-info {
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
+  padding-left: 150px;
+  border-right: 1px solid #eee;
+}
 
-  .checkout-items .account .login-info-guide {
-    font-size: 15px;
-    line-height: 30px;
-    color: #868686;
-  }
+.checkout-items .account .login-info-guide {
+  font-size: 15px;
+  line-height: 30px;
+  color: #868686;
+}
 
-  .checkout-items .account .login-header {
-    color: #5d5d5d;
-    margin-bottom: 10px;
-  }
+.checkout-items .account .login-header {
+  color: #5d5d5d;
+  margin-bottom: 10px;
+}
 
-  .checkout-items .account .login-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
+.checkout-items .account .login-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .checkout-items .account .forget-password {
-    font-size: 12px;
-    color: #5d5d5d;
-  }
+.checkout-items .account .forget-password {
+  font-size: 12px;
+  color: #5d5d5d;
+}
 
-  .checkout-items .account .profile-pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 82px;
-    height: 82px;
-    margin: 0 auto;
-    border-radius: 10px;
-    background-color: #e7e7e7;
-  }
+.checkout-items .account .profile-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 82px;
+  height: 82px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+}
 
-  .checkout-items .account .profile-pic-under {
-    margin: 0 auto;
-    border: 14px solid transparent;
-    border-top: 14px solid #e7e7e7;
-  }
+.checkout-items .account .profile-pic-under {
+  margin: 0 auto;
+  border: 14px solid transparent;
+  border-top: 14px solid #e7e7e7;
+}
 
-  .discount-container .discount {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10px;
-    padding: 0 275px;
-  }
+.discount-container .discount {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 275px;
+}
+
+.discount-container .discount-button {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.checkout-items .cart .cart-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+}
+
+.checkout-items .cart .cart-item .item-name {
+  align-content: center;
+  width: 75%;
+}
+
+.checkout-items .cart .cart-item .item-price {
+  text-align: left;
+  align-content: center;
+  width: 25%;
+}
 </style>
