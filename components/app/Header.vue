@@ -368,9 +368,9 @@
 </template>
 
 <script>
-import HeaderCart from '~/components/HeaderCart'
+import HeaderCart from '~/components/HeaderComponents/HeaderCart'
 import { ProductList } from '~/models/Product'
-import Badge from '~/components/Badge'
+import Badge from '~/components/HeaderComponents/Badge'
 import MainMenu from '~/components/MobileMenus/MainMenu'
 import SearchMenu from '~/components/MobileMenus/SearchMenu'
 import AccountMenu from '~/components/MobileMenus/AccountMenu'

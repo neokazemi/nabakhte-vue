@@ -112,7 +112,7 @@ import LogoCarousel from '../components/LogoCarousel'
 import ExpandTransition from '~/components/ExpandTransition'
 import mixinProduct from '~/plugins/mixinProduct'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
-import TopView from '~/components/TopView/TopView'
+import TopView from '~/components/PagesComponents/HomePage/TopView/TopView'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {

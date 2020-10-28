@@ -36,6 +36,8 @@ class MenuList extends Collection {
     return MenuItem
   }
 
+  // ToDo: clean the f code
+
   getMenuItem (menuItemId, list = this.list) {
     for (let i = 0; i < list.length; i++) {
       if (list[i].id === menuItemId) {
