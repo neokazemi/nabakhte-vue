@@ -156,7 +156,7 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              :to=" `/admin/users/edit-access/` + item.id "
+              :to=" `/admin/users-permissions-roles/access/` + item.id + `/edit` "
               v-bind="attrs"
               class="mx-2"
               fab

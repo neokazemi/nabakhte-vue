@@ -102,268 +102,12 @@
                 class="ma-30"
                 v-bind="attrs"
                 @click="addItem"
-                v-on="on"
               >
                 افزودن کاربر
               </v-btn>
             </template>
-            <v-card>
-              <v-card-title v-if="detailshow">
-                <span class="headline">جزییات اطلاعات کاربر</span>
-              </v-card-title>
-              <div>
-                <v-row>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.name"
-                      class="form-elements-size ma-3"
-                      label="نام کاربر"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      نام کاربر
-                      <hr>
-                      {{ editedItem.name }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.phone"
-                      class="form-elements-size ma-3"
-                      label="موبایل"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      موبایل
-                      <hr>
-                      {{ editedItem.phone }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.address"
-                      class="form-elements-size ma-3"
-                      label="آدرس"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      آدرس
-                      <hr>
-                      {{ editedItem.address }}
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.email"
-                      class="form-elements-size ma-3"
-                      label="ایمیل"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      ایمیل
-                      <hr>
-                      {{ editedItem.email }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.status"
-                      class="form-elements-size ma-3"
-                      label="وضعیت"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      وضعیت
-                      <hr>
-                      {{ editedItem.status }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.signdate"
-                      class="form-elements-size ma-3"
-                      label="زمان ثبت نام"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      زمان ثبت نام
-                      <hr>
-                      {{ editedItem.signdate }}
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.school"
-                      class="form-elements-size ma-3"
-                      label="مدرسه"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      مدرسه
-                      <hr>
-                      {{ editedItem.school }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.code"
-                      class="form-elements-size ma-3"
-                      label="کد ملی"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      کد ملی
-                      <hr>
-                      {{ editedItem.code }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.field"
-                      class="form-elements-size ma-3"
-                      label="رشته"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      رشته
-                      <hr>
-                      {{ editedItem.field }}
-                    </div>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.function"
-                      class="form-elements-size ma-3"
-                      label="عملیات"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      عملیات
-                      <hr>
-                      {{ editedItem.function }}
-                    </div>
-                  </v-col>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.changetime"
-                      class="form-elements-size ma-3"
-                      label="زمان آخرین تغییر"
-                    />
-                  </v-col>
-                  <v-col
-                    v-if="detailshow"
-                    class="form-elements-column-width"
-                  >
-                    <div
-                      class="form-elements-size ma-3"
-                    >
-                      زمان آخرین تغییر
-                      <hr>
-                      {{ editedItem.changetime }}
-                    </div>
-                  </v-col>
-                  <v-col />
-                </v-row>
-              </div>
+            <v-card v-if="detailshow">
+              <user-information-correction :editmode="false" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -380,6 +124,26 @@
                   @click="save"
                 >
                   ذخیره
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+            <v-card v-if="changeshow">
+              <user-information-correction :editmode="true" :filled="true"/>
+              <v-card-actions>
+                <v-spacer />
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="save"
+                >
+                  ذخیره
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                >
+                  انصراف
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -413,7 +177,6 @@
               dark
               x-small
               color="#FFCA28"
-              v-on="on"
               @click="detailItem(item)"
             >
               <v-icon dark>
@@ -426,14 +189,13 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              :to=" `/admin/users/edit-user/` + item.id "
               v-bind="attrs"
               class="mx-2"
               fab
               dark
               x-small
               color="#9575CD"
-              v-on="on"
+              @click="changeItem(item)"
             >
               <v-icon dark>
                 mdi-pencil
@@ -441,6 +203,44 @@
             </v-btn>
           </template>
           <span>تغییر کاربر</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              class="mx-2"
+              fab
+              dark
+              x-small
+              color="#9575CD"
+              v-on="on"
+              @click="changeItem2(item)"
+            >
+              <v-icon dark>
+                mdi-pencil
+              </v-icon>
+            </v-btn>
+          </template>
+          <span> تغییر کاربر در دیالوگ </span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              class="mx-2"
+              fab
+              dark
+              x-small
+              color="#9575CD"
+              v-on="on"
+              @click="detailItem2(item)"
+            >
+              <v-icon dark>
+                mdi-format-list-bulleted-square
+              </v-icon>
+            </v-btn>
+          </template>
+          <span> نمایش جزییات در دیالوگ</span>
         </v-tooltip>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
@@ -468,8 +268,10 @@
 
 <script>
 
+import UserInformationCorrection from '../../managementsPanel/userInformationCorrection'
 export default {
   name: 'Users',
+  components: { UserInformationCorrection },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -540,9 +342,7 @@ export default {
 
   methods: {
     addItem () {
-      this.dialog = true
-      this.changeshow = true
-      this.detailshow = false
+      this.$router.push('users-permissions-roles/user/add')
     },
     closeDelete () {
       this.dialogDelete = false
@@ -565,12 +365,25 @@ export default {
         this.editedIndex = -1
       })
     },
-    detailItem (item) {
+    detailItem2 (item) {
       this.editedIndex = this.users.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
       this.changeshow = false
+    },
+    changeItem2 (item) {
+      this.editedIndex = this.users.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.dialog = true
+      this.detailshow = false
+      this.changeshow = true
+    },
+    changeItem (item) {
+      this.$router.push('users-permissions-roles/user/' + item.id + '/edit')
+    },
+    detailItem (item) {
+      this.$router.push('users-permissions-roles/user/' + item.id)
     },
 
     deleteItem (item) {

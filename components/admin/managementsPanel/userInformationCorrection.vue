@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="d-flex justify-end">
+    <div
+      v-if="editmode"
+      class="d-flex justify-end"
+    >
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -19,52 +22,83 @@
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-model="firstname"
+                v-if="editmode"
+                v-model="user.firstname"
                 label="نام"
                 outlined
                 dense
                 class="card1-input-elements mr-3"
               />
+              <div v-else class="card1-input-elements mr-3">
+                نام
+                <hr>
+                {{ firstname }}
+              </div>
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-model="lastname"
+                v-if="editmode"
+                v-model="user.lastname"
                 label=" نام خانوادگی"
                 outlined
                 dense
                 class="card1-input-elements ml-3"
               />
+              <div v-else class="card1-input-elements mr-3">
+                نام خانوادگی
+                <hr>
+                {{ lastname }}
+              </div>
             </v-col>
           </v-row>
           <v-row>
             <v-col class="columns-display">
               <v-text-field
-                v-model="phone"
+                v-if="editmode"
+                v-model="user.phone"
                 label="شماره موبایل"
                 outlined
                 dense
                 class="card1-input-elements mr-3"
               />
+              <div v-else class="card1-input-elements mr-3">
+                شماره موبایل
+                <hr>
+                {{ phone }}
+              </div>
             </v-col>
             <v-col class="columns-display">
               <v-text-field
-                v-model="code"
+                v-if="editmode"
+                v-model="user.code"
                 label="کد ملی"
                 outlined
                 dense
                 class="card1-input-elements ml-3"
               />
+
+              <div v-else class="card1-input-elements mr-3">
+                کد ملی
+                <hr>
+                {{ code }}
+              </div>
             </v-col>
           </v-row>
           <v-row>
             <v-col class="columns-display">
               <v-select
-                :items="items"
+                v-if="editmode"
+                :items="user.items"
                 dense
                 solo
                 class="card1-input-elements mr-3"
                 label="وضعیت حساب کاربری"
               />
+              <div v-else class="card1-input-elements mr-3">
+                وضعیت حساب کاربری
+                <hr>
+                {{ items[0] }}
+              </div>
             </v-col>
             <v-col />
           </v-row>
@@ -89,6 +123,7 @@
               </v-row>
               <v-row>
                 <v-speed-dial
+                  v-if="editmode"
                   v-model="fab"
                   class="mr-8 mt-10"
                   :top="top"
@@ -144,7 +179,16 @@
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
+                  v-if="editmode"
+                  v-model="user.checkbox"
+                  class="checkbox-size mt-0 card2-input-elements"
+                  dense
+                  :label="`قفل کردن ویرایش اطلاعات شخصی`"
+                />
+                <v-checkbox
+                  v-else
                   v-model="checkbox"
+                  disabled
                   class="checkbox-size mt-0 card2-input-elements"
                   dense
                   :label="`قفل کردن ویرایش اطلاعات شخصی`"
@@ -152,94 +196,156 @@
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  :items="items"
+                  v-if="editmode"
+                  :items="user.items2"
                   dense
                   solo
                   class=" ml-3 card2-input-elements"
                   label="رشته"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  رشته
+                  <hr>
+                  {{ items2[0] }}
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-model="city"
+                  v-if="editmode"
+                  v-model="user.city"
                   label=" شهر"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
+
+                <div v-else class="ml-3 card2-input-elements">
+                  شهر
+                  <hr>
+                  {{ city }}
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-model="school"
+                  v-if="editmode"
+                  v-model="user.school"
                   label="مدرسه"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  مدرسه
+                  <hr>
+                  {{ school }}
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-model="email"
+                  v-if="editmode"
+                  v-model="user.email"
                   label="ایمیل"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  ایمیل
+                  <hr>
+                  {{ email }}
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
+                  v-if="editmode"
                   label="رمز عبور"
                   outlined
                   dense
                   class=" ml-3 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  رمز عبور
+                  <hr>
+                </div>
               </v-row>
             </v-col>
             <v-col>
               <v-row class="columns-display">
                 <v-checkbox
-                  v-model="checkbox"
+                  v-if="editmode"
+                  v-model="user.checkbox"
                   class="checkbox-size mt-0 ml-5 card2-input-elements"
+                  dense
+                  :label="`تایید شماره موبایل`"
+                />
+                <v-checkbox
+                  v-else
+                  v-model="checkbox"
+                  disabled
+                  class="checkbox-size mt-0 card2-input-elements"
                   dense
                   :label="`تایید شماره موبایل`"
                 />
               </v-row>
               <v-row class="columns-display">
                 <v-select
-                  :items="items"
+                  v-if="editmode"
+                  :items="user.items3"
                   dense
                   solo
                   class=" ml-5 card2-input-elements"
                   label="جنسیت"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  جنسیت
+                  <hr>
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
+                  v-if="editmode"
                   label="استان"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  استان
+                  <hr>
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
+                  v-if="editmode"
+                  v-model="user.code"
                   label="کد پستی"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  کد پستی
+                  <hr>
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
-                  v-model="address"
+                  v-if="editmode"
+                  v-model="user.address"
                   label="آدرس"
                   outlined
                   dense
                   class=" ml-5 card2-input-elements"
                 />
+                <div v-else class="ml-3 card2-input-elements">
+                  آدرس
+                  <hr>
+                  {{ address }}
+                </div>
               </v-row>
               <v-row class="columns-display">
                 <v-text-field
+                  v-if="editmode"
                   label="تکرار رمز عبور"
                   outlined
                   dense
@@ -251,23 +357,44 @@
           <v-row>
             <v-col class="columns-display">
               <v-textarea
-                class="mr-3"
+                v-if="editmode"
+                class="mr-3 mt-3"
                 label="درباره من"
                 dense
                 outlined
               />
+              <div v-else class="mr-5 card2-input-elements">
+                درباره من
+                <hr>
+              </div>
             </v-col>
             <v-col>
               <double-select
-                :items="arrayOfItems"
-                :selected-items="arrayOfSelectedItems"
+
+                v-if="editmode"
+                searchable-placeholder="جستجو"
+                text-items="نقش "
+                :text-selected-items="user.selectedItemsText"
+                :items="user.Roles"
+                :selected-items="user.selectedRoles"
+                :searchable="true"
+                :sorteable="true"
+                :limit-selected-items="4"
+                :order-by="'name'"
+                text-field="name"
+                value-field="id"
               />
+              <div v-else class=" card2-input-elements">
+                نقش های انتخاب شده
+                <hr>
+                مشاور - ارسال کننده کتاب
+              </div>
             </v-col>
           </v-row>
         </v-card>
       </v-col>
     </v-row>
-    <div class="d-flex justify-end">
+    <div v-if="editmode" class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -284,19 +411,14 @@ export default {
   components: {
     DoubleSelect: () => import('vue-double-select')
   },
+
+  props: ['editmode', 'filled'],
   data: () => ({
+    changeshow: true,
     items: ['فعال', 'غیر فعال', 'نامشخص'],
+    items2: ['ریاضی', 'تجربی'],
+    items3: [],
     checkbox: false,
-    direction: 'left',
-    fab: false,
-    fling: false,
-    hover: true,
-    tabs: null,
-    top: false,
-    right: true,
-    bottom: true,
-    left: false,
-    transition: 'slide-y-reverse-transition',
     lastname: 'محمدی',
     firstname: 'هلیا',
     phone: '9365491835',
@@ -313,8 +435,52 @@ export default {
     signdate: '۱۳۹۹/۰۷/۱۹',
     accesses: 'ادمین',
     id: 1,
-    arrayOfItems: ['مشاور', 'مدیر محصول', 'آموزش کل'],
-    arrayOfSelectedItems: ['مدیر کل']
+    direction: 'left',
+    fab: false,
+    fling: false,
+    hover: true,
+    tabs: null,
+    top: false,
+    right: true,
+    bottom: true,
+    left: false,
+    transition: 'slide-y-reverse-transition',
+    user: {},
+    toggle: true,
+    Roles: [
+      {
+        id: 1,
+        name: 'مشاور'
+      },
+      {
+        id: 2,
+        name: 'مدیر محصول'
+      },
+      {
+        id: 3,
+        name: 'آموزش کل'
+      },
+      {
+        id: 4,
+        name: 'کارمند'
+      },
+      {
+        id: 5,
+        name: 'ارسال کننده کتاب '
+      }
+    ],
+    selectedRoles: [
+      {
+        id: 1,
+        name: 'مشاور'
+      },
+      {
+        id: 5,
+        name: 'ارسال کننده کتاب '
+      }
+    ],
+
+    selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
   }),
   computed: {
     activeFab () {
@@ -338,6 +504,115 @@ export default {
     },
     left (val) {
       this.right = !val
+    }
+  },
+  created () {
+    if (this.filled) {
+      this.initializeEdit()
+    } else {
+      this.initializeAdd()
+    }
+  },
+  methods: {
+    initializeEdit () {
+      this.user = {
+        lastname: 'محمدی',
+        firstname: 'هلیا',
+        phone: '9365491835',
+        city: 'تهران',
+        address: 'شهران-خیابان مدرسه-کوچه دانش',
+        email: 'helia.mhmdi@gmail.com',
+        status: 'فعال',
+        field: 'ریاضی',
+        code: '20890222',
+        changetime: '۱۳۹۹/۰۷/۱۹',
+        function: 'ثبت نام',
+        phonestatus: 'تایید شده',
+        school: 'فرزانگان',
+        signdate: '۱۳۹۹/۰۷/۱۹',
+        accesses: 'ادمین',
+        id: 1,
+        toggle: true,
+        Roles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 2,
+            name: 'مدیر محصول'
+          },
+          {
+            id: 3,
+            name: 'آموزش کل'
+          },
+          {
+            id: 4,
+            name: 'کارمند'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedRoles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
+      }
+    },
+
+    initializeAdd () {
+      this.user = {
+        lastname: '',
+        firstname: '',
+        phone: '',
+        city: '',
+        address: '',
+        email: '',
+        status: '',
+        field: '',
+        code: '',
+        changetime: '',
+        function: '',
+        phonestatus: '',
+        school: '',
+        signdate: '',
+        accesses: '',
+        toggle: true,
+        Roles: [
+          {
+            id: 1,
+            name: 'مشاور'
+          },
+          {
+            id: 2,
+            name: 'مدیر محصول'
+          },
+          {
+            id: 3,
+            name: 'آموزش کل'
+          },
+          {
+            id: 4,
+            name: 'کارمند'
+          },
+          {
+            id: 5,
+            name: 'ارسال کننده کتاب '
+          }
+        ],
+        selectedRoles: [
+        ],
+        selectedItemsText: { one: 'نقش انتخاب شده', greaterThanOne: 'نقش انتخاب شده' }
+      }
     }
   }
 }
