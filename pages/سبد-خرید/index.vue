@@ -58,7 +58,7 @@
                 </v-col>
               </v-row>
             </v-container>
-            <CartItem v-for="(item, index) in cart.list" :key="index" :type="1" :cart-item="item" />
+            <CartItem v-for="(item, index) in cart.list" :key="index" :type="1" :cart-item="item" @remove="removeFromCart" />
             <div class="discount-code">
               <input class="discount-input" placeholder="کد تخفیف:">
               <button class="apply-discount">
@@ -73,7 +73,7 @@
                       مجموع کل سبد خرید
                     </p>
                     <h4>
-                      {{ cart.totalPrice().toman('base', false)}} <h6>تومان</h6>
+                      {{ cart.totalPrice().toman('base', false) }} <h6>تومان</h6>
                     </h4>
                   </v-col>
                 </v-row>
@@ -115,11 +115,6 @@ export default {
   components: {
     CartItem,
     Breadcrumbs
-  },
-  filters: {
-    price (value) {
-      return value.toLocaleString('ar-SA')
-    }
   },
   mixins: [mixinStore, mixinDetectDevice],
   data () {
