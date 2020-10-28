@@ -359,7 +359,8 @@
             format="jYYYY/jMM/jDD"
             element="my-custom-input3"
             width="10px"
-          /> <v-text-field
+          />
+          <v-text-field
             id="my-custom-input4"
             v-model="date4"
             placeholder="تا تاریخ"

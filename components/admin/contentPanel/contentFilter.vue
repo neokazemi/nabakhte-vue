@@ -25,21 +25,20 @@
       <v-col class="columns-display">
         <v-text-field
           id="my-custom-input2"
-
           v-model="date2"
           placeholder="تا تاریخ"
           outlined
           dense
           class="filter-elements ml-3"
         />
-        <!--
-        />-->
-        <!--        <date-picker-->
-        <!--          v-model="date2"-->
-        <!--          format="jYYYY/jMM/jDD"-->
-        <!--          element="my-custom-input2"-->
-        <!--          width="10px"-->
-        <!--        />-->
+        <client-only>
+          <date-picker
+            v-model="date2"
+            format="jYYYY/jMM/jDD"
+            element="my-custom-input2"
+            width="10px"
+          />
+        </client-only>
       </v-col>
     </v-row>
     <br>
@@ -67,9 +66,9 @@
 <script>
 export default {
   name: 'ContentFilter',
-  // components: {
-  //   datePicker: () => import('vue-persian-datetime-picker')
-  // },
+  components: {
+    datePicker: () => import('vue-persian-datetime-picker')
+  },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
