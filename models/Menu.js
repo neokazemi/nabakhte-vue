@@ -11,7 +11,7 @@ class MenuItem extends Model {
         relatedModel: MenuList
       },
       { key: 'link' },
-      { key: 'megaMenu' },
+      { key: 'type' },
       { key: 'style' }
     ])
     // this.children = new MenuList(this.children)
@@ -83,4 +83,24 @@ class MenuList extends Collection {
   }
 }
 
-export { MenuItem, MenuList }
+class Menu extends Collection {
+  constructor (data) {
+    super(data, [
+      { key: 'id' },
+      { key: 'position' },
+      { key: 'title' },
+      {
+        key: 'children',
+        relatedModel: MenuList
+      }
+    ])
+  }
+}
+
+class MenuCollection extends Collection {
+  model () {
+    return Menu
+  }
+}
+
+export { MenuItem, MenuList, Menu, MenuCollection }
