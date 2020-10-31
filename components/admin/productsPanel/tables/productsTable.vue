@@ -238,9 +238,27 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر محصول</span>
+            <span> تغییر محصول در دیالوگ</span>
           </v-tooltip>
-
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                class="mx-2 edit-delete-btns"
+                fab
+                dark
+                x-small
+                color="#9575CD"
+                v-on="on"
+                @click="editItem2(item)"
+              >
+                <v-icon dark>
+                  mdi-pencil
+                </v-icon>
+              </v-btn>
+            </template>
+            <span> تغییر محصول </span>
+          </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
               <v-btn
@@ -370,6 +388,9 @@ export default {
       this.changeshow = true
       this.detailshow = false
     },
+    editItem2 (item) {
+      this.$router.push('products-coupons-attributes/product/' + item.id + '/edit')
+    },
 
     detailItem (item) {
       this.editedIndex = this.products.indexOf(item)
@@ -405,7 +426,8 @@ export default {
           pic: '',
           description: '',
           type: 'ساده',
-          status: 'فعال'
+          status: 'فعال',
+          id: 1
         },
         {
           name: 'پک راه ابریشم رشته ریاضی',
@@ -414,7 +436,8 @@ export default {
           pic: '',
           description: '',
           type: 'ساده',
-          status: 'فعال'
+          status: 'فعال',
+          id: 2
         },
         {
           name: 'پک راه ابریشم رشته ریاضی',
@@ -423,7 +446,8 @@ export default {
           pic: '',
           description: '',
           type: 'ساده',
-          status: 'فعال'
+          status: 'فعال',
+          id: 3
         }
       ]
     }

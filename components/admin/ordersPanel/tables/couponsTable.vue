@@ -1,6 +1,7 @@
 <template>
   <v-card class="mb-20 pa-8">
-<tables-header :inputData.sync="search"/>
+    <tables-header :input-data.sync="search" />
+
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,

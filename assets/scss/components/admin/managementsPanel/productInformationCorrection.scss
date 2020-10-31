@@ -1,0 +1,48 @@
+.input-elements {
+  width: 100%;
+  height: 20px;
+}
+
+.cards-margin {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+.v-text-field--filled,
+.v-text-field--full-width,
+.v-text-field--outlined {
+  .filter-elements {
+    min-height: 30px !important;
+  }
+}
+
+.v-text-field >>> input {
+  font-size: 14px;
+  font-weight: 100;
+  text-transform: capitalize;
+}
+
+.v-text-field >>> label {
+  font-size: 14px;
+}
+
+.cards-size {
+  height: fit-content;
+}
+
+.checkbox-size >>> label {
+  font-size: 14px;
+}
+
+.p-tag-size {
+  font-size: 14px;
+  float: right;
+}
+
+.vue-tags-input {
+  max-width: 100% !important;
+}
+
+.catalog-btn {
+  margin-top: 20px;
+}
