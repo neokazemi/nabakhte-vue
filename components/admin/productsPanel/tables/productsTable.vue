@@ -78,13 +78,16 @@
       :search="search"
       class="elevation-1 data-table-width mt-30"
     >
-      <template v-slot:item.status="{ item }">
-        <v-chip
-          :color="getColor(item.status)"
-          dark
-        >
-          {{ item.status }}
-        </v-chip>
+      <!--      <template v-slot:item.status="{ item }">-->
+      <!--        <v-chip-->
+      <!--          :color="getColor(item.status)"-->
+      <!--          dark-->
+      <!--        >-->
+      <!--          {{ item.status }}-->
+      <!--        </v-chip>-->
+      <!--      </template>-->
+      <template v-slot:item.pic="{ item }">
+        <v-img :src="item.image.url" width="100" height="100" class="mt-3 mb-3" />
       </template>
       <template v-slot:top>
         <v-toolbar
@@ -285,6 +288,7 @@
 </template>
 
 <script>
+import { Product } from '~/models/Product'
 export default {
   name: 'ProductsTable',
   data: () => ({
@@ -305,8 +309,8 @@ export default {
         sortable: false,
         value: 'name'
       },
-      { text: 'قیمت پایه', value: 'price', sortable: false },
-      { text: 'تخفیف', value: 'discount', sortable: false },
+      { text: 'قیمت پایه', value: 'price.base', sortable: false },
+      { text: 'تخفیف', value: 'price.discount', sortable: false },
       { text: 'عکس', value: 'pic', sortable: false },
       { text: 'توضیحات کوتاه', value: 'description', sortable: false },
       { text: 'نوع', value: 'type', sortable: false },
@@ -419,36 +423,42 @@ export default {
     },
     initialize () {
       this.products = [
-        {
-          name: 'پک راه ابریشم رشته ریاضی',
-          price: 2020000,
-          discount: 707000,
-          pic: '',
-          description: '',
-          type: 'ساده',
-          status: 'فعال',
-          id: 1
-        },
-        {
-          name: 'پک راه ابریشم رشته ریاضی',
-          price: 2020000,
-          discount: 707000,
-          pic: '',
-          description: '',
-          type: 'ساده',
-          status: 'فعال',
-          id: 2
-        },
-        {
-          name: 'پک راه ابریشم رشته ریاضی',
-          price: 2020000,
-          discount: 707000,
-          pic: '',
-          description: '',
-          type: 'ساده',
-          status: 'فعال',
-          id: 3
-        }
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        }),
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        }),
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       ]
     }
 

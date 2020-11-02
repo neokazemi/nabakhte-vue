@@ -7,7 +7,7 @@
       <v-row>
         <v-col>
           <v-text-field
-            v-model="name"
+            v-model="product.name"
             class="input-elements "
             label=" نام کالا"
             outlined
@@ -46,7 +46,7 @@
       <v-row>
         <v-col>
           <v-text-field
-            v-model="name"
+            v-model="product.price.base"
             class="input-elements "
             label=" قیمت پایه"
             outlined
@@ -55,7 +55,7 @@
         </v-col>
         <v-col>
           <v-text-field
-            v-model="name"
+            v-model="product.price.discount"
             class="input-elements"
             label="تخفیف (%)"
             outlined
@@ -129,8 +129,9 @@
           <v-img
             width="200px"
             height="200px"
+
             class="mt-3 "
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAKlBMVEXm5uampqajo6Pp6ena2trW1ta8vLzg4ODExMStra2wsLDIyMi2trbOzs7VYdZ0AAAEMElEQVR4nO2cyZaCMBBFCUEZxP//3SYItgIOkErVi+fdnTvvSWrIQIqCEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBAD/EBR1IH5xw8x6FTXpm+dKwPOtX1zrYpfsRzsLr0bxR4Iv/vLYGn996Lx9aVb2j1Ydpc6b0dfDaO3aXe3dH2Vr+Pg92L0nkcyV0dfdZ/1JskuQ0dfNF+M3/84NrnlHH9qv/cbHdtTVoq+2ec3Ojb5KPqi3y84KPa5zFRffagQLxVdHgnHnw7p3cghGP3p2ABOw4iv6KsYwUERfaLGCuIr1pF+gdpa4i1fN2pvBrGzlniDP8cLDopn2Hkal0YfFHETqohfwFrkBTJzNAA6T6Xm6KiIOU87MUHnEPOpv8oN4TCIV8BBbAUFnWutdVZIRmEALxK9ZBQGOjTD6I57SVlZKz0jVwvvhmg1UdgvYK30jHCeCZQna6lHjuwefjTE2l2UzqQBqL5GYmm/BmixL13ubyAVfX9JYngBMhSvhqMhUkVMkWiwUk0SQaSanyaVIiVT8bb7BlDzTcOjhjidaZKCT0NVGIf5G/5+Pfz9nkZ4N3gGaFfYH7oh9Imyx1lbpNimwdqokT2VuRsinc4kKRdAxaJIk2qAEk2abQyoTYwkgQgVhmm6GqCOpggVUVwQqBqOiC+ggJZON7ywoHNgQyi+7Y204T0jKgi1rpiQ7U2RetI7sgUDq1TckIxExCgMyDWnUC3pP/G32Gdgb7NLJRvINDMhcJEd/Cq7TD5FzKMzElcWkC4obBC/UARbFq6JzTbIWWYiTjEDwTjFLARj2jfUZm2FPx36TLbM4gvSG74+UPrLLq8nMnYHY9lY/+Wd7HxyILcHBwJ+z5Fb2Wf3Go+vm13ZpnRNVlHoq/OOZz8mx/KMuipc8d2zNFuOeTxU4+tjfpMj/Fzd9yzNliP4QzW7n6XZcESuG74Q+loddRgPv9qyUgR9xeX3d4RFj/LL3lpnia+jU8xCscWqG2Ih+KAIFYyDYApwFNN82AW0c5pKEEYxnSCIYqIYnAGIxVR3vGfsj2lEDtReY37UlubbyidF2yuKaT6PXSha9qhyJ/dvFS2zTZqvEJbY3cxIc0V/jd2JlMocHRWt7rTrzNGAzTzVyKMzNvm01hMcFA1am/S1/snQoO6rpZlJUT3Z6A6hxSAqD6H+IGoPof4gpl4VbqGaTjVr4YxuTZT/fuQbNA3V80xAM9fo55nRUDPXGPgF9AQT7pC+Q+9zNptJqjpN9RaGz6gtE00yaUArm6Z5X+ArQ6Vb7lZhqBiIVmGoFogWXfeMTvdtlmi0Uo1dotFKNVo73ZuGKrvfdqlUK5mKvy+/B5W36G1WvzMqBdHUUENQdTd/icruPg1piG9o2LQptW11aYlK611ZoiFICCGEEEIIIYQQQgghhBBCCCG58gf0kT01WC/S1QAAAABJRU5ErkJggg=="
+            :src="product.image.url"
           />
           <v-btn
             class="mt-3 mr-5"
@@ -433,6 +434,7 @@
 </template>
 
 <script>
+import { Product } from '~/models/Product'
 export default {
   name: 'ProductInformationCorrection',
   components: {
@@ -444,6 +446,19 @@ export default {
     switch1: false,
     tag: '',
     tags: [],
+    product: new Product({
+      price: {
+        base: 100000,
+        discount: 20000,
+        final: 80000
+      },
+      image: {
+        url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+      },
+      name: 'اسم محصول',
+      link: '#'
+
+    }),
 
     changeshow: false,
     detailshow: false,
@@ -459,7 +474,7 @@ export default {
         sortable: false,
         value: 'name'
       },
-      { text: 'قیمت پایه', value: 'price', sortable: false },
+      { text: 'قیمت پایه', value: 'price.base', sortable: false },
       { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
@@ -564,24 +579,42 @@ export default {
     },
     initialize () {
       this.products = [
-        {
-          name: 'جزوات آمار و احتمال یازدهم',
-          price: 7000,
-          status: 'فعال'
-        },
-
-        {
-          name: 'جزوات فیزیک دوازدهم',
-          price: 7000,
-          status: 'غیر فعال'
-
-        },
-        {
-          name: 'جزوات ریاضی دهم',
-          price: 7000,
-          status: 'فعال'
-
-        }
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        }),
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        }),
+        new Product({
+          price: {
+            base: 100000,
+            discount: 20000,
+            final: 80000
+          },
+          image: {
+            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
+          },
+          name: 'اسم محصول',
+          link: '#'
+        })
       ]
     }
 
