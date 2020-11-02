@@ -44,13 +44,14 @@ import CouponsManagementTable from '~/components/admin/productsPanel/tables/coup
 import AttributesTable from '~/components/admin/productsPanel/tables/attributesTable'
 import AttributeGroupsTable from '~/components/admin/productsPanel/tables/attributeGroupsTable'
 export default {
+
   name: 'Index',
   components: { Menu, AttributeGroupsTable, AttributesTable, CouponsManagementTable, ProductsTable }
 }
 </script>
 
 <style scoped>
-.main {
-  background-color: #8e8e8e;
-}
+  .main {
+    background-color: #8e8e8e;
+  }
 </style>

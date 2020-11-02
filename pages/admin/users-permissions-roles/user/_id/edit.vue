@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import UserInformationCorrection from '../../../../../components/admin/managementsPanel/userInformationCorrection'
+import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
 export default {
   name: 'Edit',
   components: { UserInformationCorrection }

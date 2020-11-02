@@ -1,10 +1,10 @@
 <template>
-  <v-card>
+  <v-card class="mr-2 ml-2">
     <v-card-title>
       لیست منبع ها
     </v-card-title>
     <v-card class="mb-20 pa-8 mr-20">
-<tables-header :inputData.sync="search"/>
+<tables-header :inputData.sync="search" />
       <v-data-table
 
         :footer-props="{

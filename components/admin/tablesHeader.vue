@@ -1,16 +1,18 @@
 <template>
   <v-row>
     <v-col>
-      <v-text-field
-        class="the-card-search"
+      <p>
+        <input
+          type="text"
+          style="border: 1px;"
+          placeholder="جستجو"
+          class="the-card-search"
 
-        append-icon="mdi-magnify"
-        label="جستجو"
-        single-line
-        hide-details
+          :value="value"
 
-        @input="$emit('input', $event.target.value)"
-      />
+          @input="updateValue($event.target.value)"
+        >
+      </p>
     </v-col>
     <v-col>
       <v-btn
@@ -69,8 +71,19 @@
 
 <script>
 export default {
+
   name: 'TablesHeader',
-  props: ['value']
+  props: {
+    value: {
+      type: String
+    }
+
+  },
+  methods: {
+    updateValue (value) {
+      this.$emit('input', value)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

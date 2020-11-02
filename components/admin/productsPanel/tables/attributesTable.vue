@@ -197,7 +197,26 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر صفت</span>
+            <span> تغییر صفت در دیالوگ</span>
+          </v-tooltip>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                class="mx-2 edit-delete-btns"
+                fab
+                dark
+                x-small
+                color="#9575CD"
+                v-on="on"
+                @click="editItem2(item)"
+              >
+                <v-icon dark>
+                  mdi-pencil
+                </v-icon>
+              </v-btn>
+            </template>
+            <span> تغییر صفت </span>
           </v-tooltip>
 
           <v-tooltip top>
@@ -317,6 +336,9 @@ export default {
       this.changeshow = true
       this.detailshow = false
     },
+    editItem2 (item) {
+      this.$router.push('products-coupons-attributes/attribute/' + item.id + '/edit')
+    },
 
     detailItem (item) {
       this.editedIndex = this.attributes.indexOf(item)
@@ -348,17 +370,20 @@ export default {
         {
           name: 'services',
           farsiname: 'خدمات دریافتی',
-          controltype: 'GroupedCheckbox'
+          controltype: 'GroupedCheckbox',
+          id: 1
         },
         {
           name: 'wallet',
           farsiname: 'کیف پول',
-          controltype: 'select'
+          controltype: 'select',
+          id: 2
         },
         {
           name: 'discount',
           farsiname: 'تخفیف',
-          controltype: 'select'
+          controltype: 'select',
+          id: 3
         }
       ]
     }
