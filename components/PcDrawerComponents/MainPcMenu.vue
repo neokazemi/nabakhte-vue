@@ -65,28 +65,28 @@ export default {
           id: 0,
           title: 'موضوعات فروشگاه',
           link: '#',
-          megaMenu: false,
+          type: '',
           style: {},
           children: [
             {
               id: 1,
               title: 'کتاب کمک آموزشی بر اساس پایه',
               link: '#',
-              megaMenu: false,
+              type: '',
               style: {},
               children: [
                 {
                   id: 2,
                   title: 'دوازدهم ریاضی',
                   link: '#',
-                  megaMenu: false,
+                  type: '',
                   style: {},
                   children: [
                     {
                       id: 3,
                       title: 'حسابان دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -94,7 +94,7 @@ export default {
                       id: 4,
                       title: 'هندسه دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -102,7 +102,7 @@ export default {
                       id: 5,
                       title: 'گسسته دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -110,7 +110,7 @@ export default {
                       id: 6,
                       title: 'فیزیک دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -118,7 +118,7 @@ export default {
                       id: 7,
                       title: 'شیمی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -126,7 +126,7 @@ export default {
                       id: 8,
                       title: 'فارسی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -134,7 +134,7 @@ export default {
                       id: 9,
                       title: 'عربی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -142,7 +142,7 @@ export default {
                       id: 10,
                       title: 'دین و زندگی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -150,7 +150,7 @@ export default {
                       id: 11,
                       title: 'انگلیسی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     },
@@ -158,7 +158,7 @@ export default {
                       id: 12,
                       title: 'نگارش دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     }
@@ -168,14 +168,14 @@ export default {
                   id: 13,
                   title: 'دوازدهم تجربی',
                   link: '#',
-                  megaMenu: false,
+                  type: '',
                   style: {},
                   children: [
                     {
                       id: 14,
                       title: 'ریاضی دوازدهم',
                       link: '#',
-                      megaMenu: false,
+                      type: '',
                       style: {},
                       children: []
                     }
@@ -187,7 +187,7 @@ export default {
               id: 15,
               title: 'بهترین کتاب های کنکور 1400',
               link: '#',
-              megaMenu: false,
+              type: '',
               style: { color: 'red' },
               children: []
             }
