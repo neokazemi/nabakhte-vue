@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Menu/>
     <v-row>
       <v-col>
         <content-filter />
@@ -16,9 +17,10 @@
 <script>
 import ContentFilter from '~/components/admin/contentPanel/contentFilter'
 import ContentTable from '~/components/admin/contentPanel/contentTable'
+import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
-  components: { ContentTable, ContentFilter }
+  components: { Menu, ContentTable, ContentFilter }
 }
 </script>
 

@@ -1,8 +1,8 @@
 <template>
-  <v-card class="pt-5 pb-5">
+  <v-card class="pt-5 pb-5 mr-2 ml-2">
     <v-row>
-      <v-col class="columns-display">
-        <p class="mt-3 p-tag-size">
+      <v-col class="columns-display" cols="1">
+        <p class="mt-3 p-tag-size mr-5">
           تاریخ ثبت نام:
         </p>
       </v-col>
@@ -13,15 +13,18 @@
           placeholder="از تاریخ"
           outlined
           dense
-          class="filter-elements ml-2"
+          class="filter-elements ml-5 mr-5"
         />
       </v-col>
-      <!--        <date-picker-->
-      <!--          v-model="date"-->
-      <!--          format="jYYYY/jMM/jDD"-->
-      <!--          element="my-custom-input"-->
-      <!--          width="10px"-->
-      <!--        />-->
+
+      <client-only>
+        <date-picker
+          v-model="date"
+          format="jYYYY/jMM/jDD"
+          element="my-custom-input"
+          width="10px"
+        />
+      </client-only>
       <v-col class="columns-display">
         <v-text-field
           id="my-custom-input2"
@@ -29,7 +32,7 @@
           placeholder="تا تاریخ"
           outlined
           dense
-          class="filter-elements ml-3"
+          class="filter-elements ml-5 mr-5"
         />
         <client-only>
           <date-picker
@@ -40,17 +43,10 @@
           />
         </client-only>
       </v-col>
-    </v-row>
-    <br>
-    <br>
-    <v-row>
-      <v-col />
-      <v-col />
-      <v-col />
       <v-col>
         <v-btn
           color="white"
-          class="filter-btn"
+          class="filter-btn ml-3"
           elevation="3"
           x-large
           outlined

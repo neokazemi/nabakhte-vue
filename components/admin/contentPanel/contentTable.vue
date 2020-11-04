@@ -1,11 +1,12 @@
 <template>
-  <v-card>
+  <v-card class="mr-2 ml-2">
     <div class="d-flex justify-start pt-3">
       <v-btn
         class="mr-3"
         elevation="5"
         outlined
         color="#e91e63"
+        href="content/add"
       >
         افزودن محتوا
       </v-btn>
@@ -30,6 +31,7 @@
         elevation="5"
         outlined
         color="#00897b"
+        href="content-group"
       >
         بخش ها
       </v-btn>
@@ -38,6 +40,7 @@
         elevation="5"
         outlined
         color="#e53935"
+        href="content-group/add"
       >
         افزودن دسته محتوا
       </v-btn>
@@ -47,7 +50,7 @@
       لیست محتوای آموزشی
     </v-card-title>
     <v-card class="mb-20 pa-8 mr-20">
-      <tables-header :input-data.sync="search" />
+<!--      <tables-header :input-data.sync="search" />-->
       <v-data-table
 
         :footer-props="{
@@ -95,7 +98,7 @@
             <v-dialog v-model="dialogDelete" max-width="500px">
               <v-card>
                 <v-card-title class="headline">
-                  آیا از حذف این منبع مطمئن هستید؟
+                  آیا از حذف این محتوا مطمئن هستید؟
                 </v-card-title>
                 <v-card-actions>
                   <v-spacer />
@@ -121,14 +124,13 @@
                 dark
                 x-small
                 color="#9575CD"
-                @click="changeItem(item)"
               >
                 <v-icon dark>
                   mdi-pencil
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر منبع</span>
+            <span>تغییر محتوا</span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -147,7 +149,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>حذف منبع</span>
+            <span>حذف محتوا</span>
           </v-tooltip>
         </template>
       </v-data-table>
@@ -156,10 +158,10 @@
 </template>
 
 <script>
-import TablesHeader from '../tablesHeader'
+// import TablesHeader from '../tablesHeader'
 export default {
   name: 'ContentTable',
-  components: { TablesHeader },
+  // components: { TablesHeader },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -225,7 +227,7 @@ export default {
 
   methods: {
     addItem () {
-      this.$router.push('users-permissions-roles/user/add')
+      this.$router.push('content/add')
     },
     closeDelete () {
       this.dialogDelete = false

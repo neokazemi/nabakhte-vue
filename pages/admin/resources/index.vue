@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Menu/>
     <v-row>
       <v-col>
         <addresource />
@@ -16,9 +17,10 @@
 <script>
 import ResourcesTable from '~/components/admin/resourcesPanel/resourcesTable'
 import Addresource from '~/components/admin/resourcesPanel/addresource'
+import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
-  components: { Addresource, ResourcesTable }
+  components: { Menu, Addresource, ResourcesTable }
 }
 </script>
 

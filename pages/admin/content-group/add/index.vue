@@ -11,21 +11,21 @@
         بازگشت >>
       </v-btn>
     </div>
-    <content-add />
+    <content-group-add />
   </div>
 </template>
 
 <script>
-import ContentAdd from '~/components/admin/contentPanel/contentAdd'
-export default {
 
-  name: 'Index',
-  components: { ContentAdd }
+import ContentGroupAdd from '~/components/admin/contentPanel/contentGroupAdd'
+export default {
+  name: 'Add',
+  components: { ContentGroupAdd }
 }
 </script>
 
 <style scoped>
-.main {
-  background-color: #8e8e8e;
-}
+  .main {
+    background-color: #8e8e8e;
+  }
 </style>

@@ -52,9 +52,11 @@ export default {
     return {
       drawer: null,
       items: [
-        { title: 'کاربران', icon: 'mdi-view-dashboard', link: 'users-permissions-roles' },
-        { title: 'سفارشات', icon: 'mdi-view-dashboard', link: 'orders' },
-        { title: 'محصولات', icon: 'mdi-view-dashboard', link: 'products' }
+        { title: 'کاربران', icon: 'mdi-view-dashboard', link: '/admin/users-permissions-roles' },
+        { title: 'سفارشات', icon: 'mdi-view-dashboard', link: '/admin/orders' },
+        { title: 'محصولات / کپن ها / صفت ها', icon: 'mdi-view-dashboard', link: '/admin/products-coupons-attributes' },
+        { title: 'محتوا', icon: 'mdi-view-dashboard', link: '/admin/content' },
+        { title: 'منابع', icon: 'mdi-view-dashboard', link: '/admin/resources' }
       ]
 
     }
