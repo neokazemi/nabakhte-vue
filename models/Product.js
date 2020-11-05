@@ -1,4 +1,5 @@
 import { Model, Collection } from 'js-abstract-model'
+import { SetList } from './Set'
 import Price from './Price'
 import Image from './Image'
 
@@ -13,10 +14,29 @@ class Product extends Model {
         key: 'id',
         default: Date.now()
       },
-      { key: 'UUID' },
+      { key: 'redirect_url' },
       { key: 'type' },
-      { key: 'name' },
+      { key: 'category' },
       {
+        key: 'title',
+        value (itemVal, inputData) {
+          if (typeof inputData.title !== 'undefined' && inputData.title !== null) {
+            return inputData.title
+          } else if (typeof inputData.name !== 'undefined' && inputData.name !== null) {
+            return inputData.name
+          }
+        }
+      },
+      { key: 'name' }, // ToDo: must remove
+      { key: 'is_free' },
+      { key: 'url' },
+      { key: 'photo' },
+      { key: 'attributes' },
+      {
+        key: 'sets',
+        relatedModel: SetList
+      },
+      { // ToDo: must remove
         key: 'image',
         relatedModel: Image
       },
