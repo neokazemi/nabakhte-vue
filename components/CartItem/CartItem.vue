@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CartItem1 v-if="type === 1" :cart-item="cartItem">
+    <CartItem1 v-if="type === 1" :cart-item="cartItem" @remove="removeCartItem">
       {{ cartItem.product.name }}
     </CartItem1>
     <CartItem2 v-else-if="type === 2" :cart-item="cartItem">
@@ -33,6 +33,11 @@ export default {
       type: Boolean,
       default: false,
       required: false
+    }
+  },
+  methods: {
+    removeCartItem (cartItem) {
+      this.$emit('remove', cartItem)
     }
   }
 }

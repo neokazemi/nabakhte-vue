@@ -67,14 +67,13 @@ class Cart extends Collection {
     }
   }
 
-  remove (product) {
-    const availableCartItem = this.getCartItem(product)
-
-    if (availableCartItem.qty > 1) {
+  remove (cartItem, force = false) {
+    if (cartItem.qty > 1 && !force) {
       // eslint-disable-next-line
-      availableCartItem.qty--
-    } else if (availableCartItem.qty === 1) {
-      const availableItemIndex = this.list.findIndex(i => (i.product.id === product.id))
+      cartItem.qty--
+    } else if (cartItem.qty === 1 || force) {
+      // TODO: search cartItem by id
+      const availableItemIndex = this.list.findIndex(i => (i.product.id === cartItem.product.id))
       this.list.splice(availableItemIndex, 1)
     }
   }

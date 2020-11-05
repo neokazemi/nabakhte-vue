@@ -197,7 +197,26 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر دسته صفت</span>
+            <span> تغییر دسته صفت در دیالوگ</span>
+          </v-tooltip>
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                class="mx-2 edit-delete-btns"
+                fab
+                dark
+                x-small
+                color="#9575CD"
+                v-on="on"
+                @click="editItem2(item)"
+              >
+                <v-icon dark>
+                  mdi-pencil
+                </v-icon>
+              </v-btn>
+            </template>
+            <span> تغییر دسته صفت </span>
           </v-tooltip>
 
           <v-tooltip top>
@@ -316,6 +335,9 @@ export default {
       this.dialog = true
       this.changeshow = true
       this.detailshow = false
+    },
+    editItem2 (item) {
+      this.$router.push('products-coupons-attributes/attribute-group/' + item.id + '/edit')
     },
 
     detailItem (item) {

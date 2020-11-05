@@ -47,9 +47,10 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import '~/assets/css/pages/blog.css'
-import { PostList } from '~/models/Post'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinPost from '~/plugins/mixinPost'
+import '~/assets/css/pages/blog.css'
+
 export default {
   name: 'Category',
   components: {
@@ -58,16 +59,7 @@ export default {
     PostItem,
     Treeview
   },
-  mixins: [mixinDetectDevice],
-  asyncData (context) {
-    return (new PostList()).fetch()
-      .then((response) => {
-        context.store.commit('updatePosts', new PostList(response.data))
-      })
-      .catch(function (e) {
-        context.store.commit('updatePosts', new PostList())
-      })
-  },
+  mixins: [mixinDetectDevice, mixinPost],
   data () {
     return {
       breadcrumbsItems: [
@@ -931,11 +923,6 @@ export default {
           }
         }
       ]
-    }
-  },
-  computed: {
-    posts () {
-      return this.$store.getters['posts/posts']
     }
   },
   created () {

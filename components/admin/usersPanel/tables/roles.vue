@@ -2,70 +2,7 @@
   <v-card
     class="mb-20 pa-8"
   >
-    <v-row>
-      <v-col>
-        <v-text-field
-          v-model="search"
-          class="the-card-search"
-          append-icon="mdi-magnify"
-          label="جستجو"
-          single-line
-          hide-details
-        />
-      </v-col>
-      <v-col>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#212121"
-        >
-          Print
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#c62828"
-        >
-          Copy
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#00e676"
-        >
-          PDF
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#ff6f00"
-        >
-          Excel
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#03a9f4"
-        >
-          CSV
-        </v-btn>
-      </v-col>
-    </v-row>
+<tables-header :inputData.sync="search"/>
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,
@@ -174,7 +111,7 @@
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              :to=" `/admin/users/edit-role/` + item.id "
+              :to=" `/admin/users-permissions-roles/role/` + item.id + `/edit` "
               v-bind="attrs"
               class="mx-2"
               fab
@@ -216,8 +153,10 @@
 </template>
 
 <script>
+import TablesHeader from '../../tablesHeader'
 export default {
   name: 'Roles',
+  components: { TablesHeader },
   data: () => ({
     changeshow: false,
     detailshow: false,
