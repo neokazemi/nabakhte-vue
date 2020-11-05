@@ -22,7 +22,7 @@
             <Swiper ref="mySwiperRef" class="swiper" :options="swiperOption">
               <SwiperSlide v-for="(product,index) in products.list" :key="index">
                 <ProductCard :product="product" :type="productCardType" :box-shadow="boxShadow">
-                  {{ product.name }}
+                  {{ product.title }} hi
                 </ProductCard>
               </SwiperSlide>
             </Swiper>

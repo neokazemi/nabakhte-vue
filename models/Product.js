@@ -8,7 +8,8 @@ class Product extends Model {
     super(data, [
       {
         key: 'baseRoute',
-        default: 'https://ads.alaatv.com/getAd?UUID=35b39d4b-517b-44bc-85c4-44f93242836f'
+        // default: 'https://ads.alaatv.com/getAd?UUID=35b39d4b-517b-44bc-85c4-44f93242836f'
+        default: 'http://localhost/api/v2/product'
       },
       {
         key: 'id',
@@ -67,9 +68,7 @@ class Product extends Model {
       // {key: 'favor_url'},
       // {key: 'unfavor_url'},
     ])
-
     this.loadImage()
-    this.loadPrice()
   }
 
   getLink () {
@@ -77,20 +76,29 @@ class Product extends Model {
   }
 
   loadImage () {
-    if (!this.inputData || !this.inputData.image) {
-      return
-    }
-    this.image = new Image({
-      url: this.inputData.image.url
-    })
-  }
-
-  loadPrice () {
-    this.price = new Price({
-      final: 80000,
-      base: 100000,
-      discount: 20000
-    })
+    const array = [
+      'https://media.chibekhoonam.net/2020/08/din-ensani-jaame-khsabz.jpg',
+      'https://media.chibekhoonam.net/2020/08/din-jaame-ensani-moshaveran.jpg',
+      'https://media.chibekhoonam.net/2019/10/chekide-din-o-zendegi-ensani-jibi.jpg',
+      'https://media.chibekhoonam.net/2020/10/darsname-kamel-din-ensani-micro.jpg',
+      'https://media.chibekhoonam.net/2020/09/din-jaame-ensani-micro.jpg',
+      'https://media.chibekhoonam.net/2020/08/p-din-jaame-ensani-khsabz.jpg',
+      'https://media.chibekhoonam.net/2020/11/9786000022068-1.jpg',
+      'https://media.chibekhoonam.net/2020/10/payam-ayat-ensani-loqme.jpg',
+      'https://media.chibekhoonam.net/2020/09/din-jaame-ensani-montsaheran.jpg',
+      'https://media.chibekhoonam.net/2020/09/p-din-jaame-ensani-micro.jpg',
+      'https://media.chibekhoonam.net/2020/11/9786000022068.jpg',
+      'https://media.chibekhoonam.net/2017/02/porseman-eng9.jpg',
+      'https://media.chibekhoonam.net/2016/08/zaban9-mobtakeran.jpg',
+      'https://media.chibekhoonam.net/2018/08/eng-9-tiz-khsabz.jpg',
+      'https://media.chibekhoonam.net/2020/11/9786000022051.jpg',
+      'https://media.chibekhoonam.net/2019/11/eng-9-banihashemi.jpg',
+      'https://media.chibekhoonam.net/2017/08/englisi-9-reshadat-mobtakeran.jpg',
+      'https://media.chibekhoonam.net/2018/10/golbarg-eng9.jpg',
+      'https://media.chibekhoonam.net/2019/09/eng-9-loghme.jpg'
+    ]
+    this.photo = array[Math.floor(Math.random() * array.length)]
+    console.log('done')
   }
 
   createFavorUrl (baseUrl, favored) {
