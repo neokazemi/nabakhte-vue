@@ -5,12 +5,11 @@ class MenuItem extends Model {
   constructor (data) {
     super(data, [
       { key: 'id' },
-      { key: 'title' },
       {
         key: 'children',
         relatedModel: MenuList
       },
-      { key: 'link' },
+      { key: 'data' },
       { key: 'type' },
       { key: 'style' }
     ])
@@ -34,6 +33,21 @@ class MenuList extends Collection {
 
   model () {
     return MenuItem
+  }
+
+  // Todo: fake data
+
+  getLastId (list = this.list, biggestId = 0) {
+    for (let i = 0; i < list.length; i++) {
+      if (list[i].id > biggestId) {
+        biggestId = list[i].id
+      }
+      const childBiggestId = this.getLastId(list[i].children.list, biggestId)
+      if (childBiggestId > biggestId) {
+        biggestId = childBiggestId
+      }
+    }
+    return biggestId
   }
 
   // ToDo: clean the f code

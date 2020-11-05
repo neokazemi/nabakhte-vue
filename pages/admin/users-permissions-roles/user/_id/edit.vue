@@ -12,7 +12,7 @@
         بازگشت >>
       </v-btn>
     </div>
-    <user-information-correction :editmode="true" :filled="true"/>
+    <user-information-correction :editmode="true" :filled="true" />
   </div>
 </template>
 

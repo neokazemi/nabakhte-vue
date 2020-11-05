@@ -2,7 +2,7 @@
   <v-card
     class="mb-20 pa-8"
   >
-<tables-header :inputData.sync="search"/>
+    <!--<tables-header :inputData.sync="search"/>-->
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,
@@ -153,19 +153,17 @@
 </template>
 
 <script>
-import TablesHeader from '../../tablesHeader'
+// import TablesHeader from '../../tablesHeader'
 export default {
   name: 'Roles',
-  components: { TablesHeader },
+  // components: { TablesHeader },
   data: () => ({
     changeshow: false,
     detailshow: false,
     search: '',
     dialog: false,
-
     dialog3: false,
     dialogDelete: false,
-
     headers3: [
       {
         text: 'نام (اصلی)',
@@ -182,13 +180,11 @@ export default {
     editedIndex: -1,
     editedAccessIndex: -1,
     editedRoleIndex: -1,
-
     editedRoles: {
       name: '',
       rolename: '',
       id: null
     },
-
     defaultRole: {
       name: '',
       rolename: ''
@@ -250,17 +246,14 @@ export default {
           name: 'employmentSupportDepartment',
           rolename: 'پشتیبان استخدام',
           id: 1
-
         },
         {
           name: 'publicRelationManager',
           rolename: 'مدیر روابط عمومی',
           id: 2
-
         }
       ]
     }
-
   }
 }
 </script>

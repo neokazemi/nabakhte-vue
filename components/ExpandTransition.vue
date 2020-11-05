@@ -56,7 +56,6 @@ export default {
     },
     afterEnter (element, callback) {
       callback(element)
-      console.log(callback)
       element.style.height = 'auto'
     },
     leave (element) {
