@@ -4,7 +4,7 @@
 <script>
 import OrderInformationCorrection from '~/components/admin/managementsPanel/orderInformationCorrection'
 export default {
-  name: 'Id',
+  name: 'edit',
   components: { OrderInformationCorrection }
 }
 </script>

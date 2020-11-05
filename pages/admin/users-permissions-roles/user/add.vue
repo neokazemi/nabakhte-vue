@@ -1,10 +1,11 @@
 <template>
-  <user-information-correction />
+  <user-information-correction :editmode="true" />
 </template>
 
 <script>
 import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
 export default {
+  name: 'Add',
   components: { UserInformationCorrection }
 }
 </script>
