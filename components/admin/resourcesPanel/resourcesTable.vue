@@ -4,9 +4,8 @@
       لیست منبع ها
     </v-card-title>
     <v-card class="mb-20 pa-8 mr-20">
-<tables-header :inputData.sync="search" />
+      <tables-header :input-data.sync="search" />
       <v-data-table
-
         :footer-props="{
           showFirstLastPage: true,
           firstIcon: 'mdi-arrow-collapse-left',

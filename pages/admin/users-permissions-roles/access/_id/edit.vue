@@ -5,7 +5,7 @@
 <script>
 import RoleInformationCorrection from '~/components/admin/managementsPanel/roleInformationCorrection'
 export default {
-  name: 'edit',
+  name: 'Edit',
   components: { RoleInformationCorrection }
 }
 </script>

@@ -2,7 +2,7 @@
   <v-card
     class="mb-20 pa-8"
   >
-<tables-header :inputData.sync="search"/>
+    <!--<tables-header :inputData.sync="search"/>-->
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,
@@ -134,10 +134,10 @@
 </template>
 
 <script>
-import TablesHeader from '../../tablesHeader'
+// import TablesHeader from '../../tablesHeader'
 export default {
   name: 'Access',
-  components: { TablesHeader },
+  // components: { TablesHeader },
   data: () => ({
     changeshow: false,
     detailshow: false,

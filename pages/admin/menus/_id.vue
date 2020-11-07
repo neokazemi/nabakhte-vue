@@ -2,18 +2,19 @@
   <v-container :fluid="true">
     <v-row>
       <v-col :md="3">
-        <nested-draggable-new-link :tasks="newLink" @addItem="addItem" />
+        <nested-draggable-new-link :children="newLink" @addItem="addItem" />
       </v-col>
       <v-col :md="9" class="menu-tree">
-        <nested-draggable :tasks="list2" @listChanged="onListChange" />
+        <nested-draggable :children="MenuList.list" @listChanged="onListChange" @deleteItem="deleteItem" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import NestedDraggable from '../../../components/admin/menus/NestedDraggable'
-import NestedDraggableNewLink from '../../../components/admin/menus/NestedDraggableNewLink'
+import { MenuList, MenuItem } from '~/models/Menu'
+import NestedDraggable from '~/components/admin/menus/NestedDraggable'
+import NestedDraggableNewLink from '~/components/admin/menus/NestedDraggableNewLink'
 export default {
   components: { NestedDraggableNewLink, NestedDraggable },
   data () {
@@ -21,151 +22,196 @@ export default {
       list2: [
         {
           id: 0,
-          name: 'موضوعات فروشگاه',
-          link: '#',
+          data: {
+            title: 'موضوعات فروشگاه',
+            link: '#',
+            newTab: false
+          },
           type: 'link',
           style: {},
           editMode: false,
           needSave: false,
-          tasks: [
+          children: [
             {
               id: 1,
-              name: 'کتاب کمک آموزشی بر اساس پایه',
-              link: '#',
+              data: {
+                title: 'کتاب کمک آموزشی بر اساس پایه',
+                link: '#',
+                newTab: false
+              },
               type: 'link',
               style: {},
               editMode: false,
               needSave: false,
-              tasks: [
+              children: [
                 {
                   id: 2,
-                  name: 'دوازدهم ریاضی',
-                  link: '#',
+                  data: {
+                    title: 'دوازدهم ریاضی',
+                    link: '#',
+                    newTab: false
+                  },
                   type: 'link',
                   style: {},
                   editMode: false,
                   needSave: false,
-                  tasks: [
+                  children: [
                     {
                       id: 3,
-                      name: 'حسابان دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'حسابان دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 4,
-                      name: 'هندسه دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'هندسه دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 5,
-                      name: 'گسسته دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'گسسته دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 6,
-                      name: 'فیزیک دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'فیزیک دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 7,
-                      name: 'شیمی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'شیمی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 8,
-                      name: 'فارسی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'فارسی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 9,
-                      name: 'عربی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'عربی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 10,
-                      name: 'دین و زندگی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'دین و زندگی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 11,
-                      name: 'انگلیسی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'انگلیسی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     },
                     {
                       id: 12,
-                      name: 'نگارش دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'نگارش دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     }
                   ]
                 },
                 {
                   id: 13,
-                  name: 'دوازدهم تجربی',
-                  link: '#',
+                  data: {
+                    title: 'دوازدهم تجربی',
+                    link: '#',
+                    newTab: false
+                  },
                   type: 'link',
                   style: {},
                   editMode: false,
                   needSave: false,
-                  tasks: [
+                  children: [
                     {
                       id: 14,
-                      name: 'ریاضی دوازدهم',
-                      link: '#',
+                      data: {
+                        title: 'ریاضی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
                       type: 'link',
                       style: {},
                       editMode: false,
                       needSave: false,
-                      tasks: []
+                      children: []
                     }
                   ]
                 }
@@ -173,27 +219,34 @@ export default {
             },
             {
               id: 15,
-              name: 'بهترین کتاب های کنکور 1400',
-              link: '#',
+              data: {
+                title: 'بهترین کتاب های کنکور 1400',
+                link: '#',
+                newTab: false
+              },
               type: 'link',
               style: { color: 'red' },
-              tasks: []
+              children: []
             }
           ]
         }
       ],
       newLink: [
         {
-          id: 0,
-          name: '',
-          link: '',
+          isNew: true,
+          data: {
+            title: '',
+            link: '',
+            newTab: false
+          },
           type: 'link',
-          style: {},
           editMode: false,
           needSave: false,
-          tasks: []
+          style: {},
+          children: []
         }
-      ]
+      ],
+      MenuList: new MenuList()
     }
   },
   computed: {
@@ -205,12 +258,40 @@ export default {
       }
     }
   },
+  created () {
+    this.MenuList = new MenuList(this.list2)
+  },
   methods: {
     onListChange () {
-      this.list2 = JSON.parse(JSON.stringify(this.list2))
+      this.handleAddedChild()
+      this.MenuList = JSON.parse(JSON.stringify(this.MenuList))
+      this.MenuList = new MenuList(this.MenuList.list)
+    },
+    handleAddedChild (list = this.MenuList.list) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].isNew) {
+          list[i].id = -1
+          list[i] = new MenuItem(list[i])
+          list[i].id = this.MenuList.getLastId() + 1
+        }
+        this.handleAddedChild(list[i].children.list)
+      }
     },
     addItem (event) {
-      this.list2.push(event)
+      this.MenuList.list.push(new MenuItem(event))
+      this.newLink[0].data = {
+        title: '',
+        link: ''
+      }
+    },
+    deleteItem (event, list = this.MenuList.list) {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i].id === event) {
+          list.splice(i, 1)
+        } else {
+          this.deleteItem(event, list[i].children.list)
+        }
+      }
     }
   }
 }

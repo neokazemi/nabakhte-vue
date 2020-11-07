@@ -7,9 +7,7 @@
           style="border: 1px;"
           placeholder="جستجو"
           class="the-card-search"
-
           :value="value"
-
           @input="updateValue($event.target.value)"
         >
       </p>
@@ -76,6 +74,7 @@ export default {
   props: {
     value: {
       type: String
+    //  default value must be set
     }
 
   },

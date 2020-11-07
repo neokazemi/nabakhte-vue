@@ -12,11 +12,11 @@
       <p v-if="type === 2" class="analysis">
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
-      <nuxt-link :to="product.link">
-        <img :src="product.image.url" :alt="product.name">
+      <nuxt-link :to="'/product/' + product.id">
+        <img :src="product.photo" :alt="product.name">
       </nuxt-link>
       <div class="image-hover">
-        <nuxt-link class="more-info" :to="product.link">
+        <nuxt-link class="more-info" :to="'/product/' + product.id">
           توضیحات بیشتر
           <v-icon color="#fff" size="20">
             mdi-chevron-double-left
@@ -34,8 +34,8 @@
         </button>
       </div>
     </div>
-    <nuxt-link :to="product.link" class="product-title">
-      <slot />
+    <nuxt-link :to="'/product/' + product.id" class="product-title">
+      {{ product.title }}
     </nuxt-link>
     <v-rating
       v-if="type === 4"

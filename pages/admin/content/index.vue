@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Menu/>
+    <Menu />
     <v-row>
       <v-col>
         <content-filter />

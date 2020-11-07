@@ -351,10 +351,6 @@ export default {
     background-color: #fff;
   }
 
-  .menu-maker .menu-button .menu-name {
-    width: 300px;
-  }
-
   .menu-maker .menu-button .menu-name .v-input {
     margin-top: 0;
     padding-top: 0;
