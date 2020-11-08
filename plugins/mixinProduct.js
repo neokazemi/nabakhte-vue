@@ -12,6 +12,9 @@ const mixinProduct = {
   computed: {
     products () {
       return this.$store.getters['products/products']
+    },
+    product () {
+      return this.$store.getters['products/product']
     }
   }
 }

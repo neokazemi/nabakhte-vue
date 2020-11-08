@@ -1,9 +1,17 @@
-import { MenuList } from '~/models/Menu'
+import { MenuList, MenuCollection } from '~/models/Menu'
 
 const mixinMenu = {
   computed: {
     menu () {
       return new MenuList(this.$store.getters['menu/menu'])
+    },
+    menus: {
+      get () {
+        return new MenuCollection(this.$store.getters['menu/menu'])
+      },
+      set (newValue) {
+        this.$store.commit('menu/updateMenuCollection', newValue.list)
+      }
     }
   },
   methods: {
@@ -14,6 +22,15 @@ const mixinMenu = {
   },
   data () {
     return {
+    }
+  },
+  watch: {
+    menus: {
+      deep: true,
+      handler (newValue) {
+        console.log('fuckO')
+        this.$store.commit('menu/updateMenuCollection', newValue.list)
+      }
     }
   }
 }

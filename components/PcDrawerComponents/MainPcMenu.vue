@@ -8,7 +8,7 @@
         <v-list-item-group>
           <v-list-item disabled>
             <v-list-item-content class="right-drawer-header">
-              {{ item.title }}
+              {{ item.data.title }}
             </v-list-item-content>
           </v-list-item>
           <v-list-item v-if="item.id > 1">
@@ -33,7 +33,7 @@
           </v-list-item>
           <v-list-item v-for="(listItem, listIndex) in item.children.list" :key="listIndex">
             <v-list-item-content v-if="listItem.children.list.length !== 0" :style="listItem.style" @click="rightDrawerStep = listItem.id">
-              {{ listItem.title }}
+              {{ listItem.data.title }}
             </v-list-item-content>
             <v-list-item-icon v-if="listItem.children.list.length !== 0" @click="rightDrawerStep = listItem.id">
               <v-icon color="#000" small :style="listItem.style">
@@ -41,9 +41,12 @@
               </v-icon>
             </v-list-item-icon>
             <v-list-item-content v-else :style="listItem.style">
-              <nuxt-link :to="listItem.link" :style="listItem.style">
-                {{ listItem.title }}
+              <nuxt-link v-if="!listItem.data.newTab" :to="listItem.data.link" :style="listItem.style">
+                {{ listItem.data.title }}
               </nuxt-link>
+              <a v-else :href="listItem.data.link" :style="listItem.style" target="_blank">
+                {{ listItem.data.title }}
+              </a>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -63,102 +66,141 @@ export default {
       rightDrawerItems: [
         {
           id: 0,
-          title: 'موضوعات فروشگاه',
-          link: '#',
-          type: '',
+          data: {
+            title: 'موضوعات فروشگاه',
+            link: '#',
+            newTab: false
+          },
+          type: 'link',
           style: {},
           children: [
             {
               id: 1,
-              title: 'کتاب کمک آموزشی بر اساس پایه',
-              link: '#',
-              type: '',
+              data: {
+                title: 'کتاب کمک آموزشی بر اساس پایه',
+                link: '#',
+                newTab: false
+              },
+              type: 'link',
               style: {},
               children: [
                 {
                   id: 2,
-                  title: 'دوازدهم ریاضی',
-                  link: '#',
-                  type: '',
+                  data: {
+                    title: 'دوازدهم ریاضی',
+                    link: '#',
+                    newTab: false
+                  },
+                  type: 'link',
                   style: {},
                   children: [
                     {
                       id: 3,
-                      title: 'حسابان دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'حسابان دوازدهم',
+                        link: '#',
+                        newTab: true
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 4,
-                      title: 'هندسه دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'هندسه دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 5,
-                      title: 'گسسته دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'گسسته دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 6,
-                      title: 'فیزیک دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'فیزیک دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 7,
-                      title: 'شیمی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'شیمی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 8,
-                      title: 'فارسی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'فارسی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 9,
-                      title: 'عربی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'عربی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 10,
-                      title: 'دین و زندگی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'دین و زندگی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 11,
-                      title: 'انگلیسی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'انگلیسی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     },
                     {
                       id: 12,
-                      title: 'نگارش دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'نگارش دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     }
@@ -166,16 +208,22 @@ export default {
                 },
                 {
                   id: 13,
-                  title: 'دوازدهم تجربی',
-                  link: '#',
-                  type: '',
+                  data: {
+                    title: 'دوازدهم تجربی',
+                    link: '#',
+                    newTab: false
+                  },
+                  type: 'link',
                   style: {},
                   children: [
                     {
                       id: 14,
-                      title: 'ریاضی دوازدهم',
-                      link: '#',
-                      type: '',
+                      data: {
+                        title: 'ریاضی دوازدهم',
+                        link: '#',
+                        newTab: false
+                      },
+                      type: 'link',
                       style: {},
                       children: []
                     }
@@ -185,9 +233,12 @@ export default {
             },
             {
               id: 15,
-              title: 'بهترین کتاب های کنکور 1400',
-              link: '#',
-              type: '',
+              data: {
+                title: 'بهترین کتاب های کنکور 1400',
+                link: '#',
+                newTab: false
+              },
+              type: 'link',
               style: { color: 'red' },
               children: []
             }

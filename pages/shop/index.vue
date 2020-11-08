@@ -90,18 +90,18 @@
           </v-navigation-drawer>
           <transition name="fade">
             <v-row v-if="grid === 'square'">
-              <v-col v-for="(product, index) in products.list" :key="index" :sm="3" class="product-card-col">
-                <ProductCard :type="4" :product="product">
-                  {{ product.name }}
+              <v-col v-for="(item, index) in products.list" :key="index" :sm="3" class="product-card-col">
+                <ProductCard :type="4" :product="item">
+                  {{ item.title }}
                 </ProductCard>
               </v-col>
             </v-row>
           </transition>
           <transition name="fade">
             <v-row v-if="grid === 'row'">
-              <v-col v-for="(product, index) in products.list" :key="index" :md="12" class="product-card-col">
-                <ProductCard :details="product" :type="5">
-                  {{ product.name }}
+              <v-col v-for="(item, index) in products.list" :key="index" :md="12" class="product-card-col">
+                <ProductCard :product="item" :type="5">
+                  {{ item.title }}
                 </ProductCard>
               </v-col>
             </v-row>
