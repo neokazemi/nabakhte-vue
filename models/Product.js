@@ -9,7 +9,7 @@ class Product extends Model {
       {
         key: 'baseRoute',
         // default: 'https://ads.alaatv.com/getAd?UUID=35b39d4b-517b-44bc-85c4-44f93242836f'
-        default: 'http://localhost/api/v2/product'
+        default: 'https://alaatv.com/api/v2/product'
       },
       {
         key: 'id',

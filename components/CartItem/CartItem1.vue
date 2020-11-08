@@ -16,16 +16,16 @@
       <v-col :sm="2">
         <div class="price justify-sm-center justify-start">
           <span class="title d-inline-block d-sm-none">قیمت: </span>
-          <span v-if="type === 1" class="old-price">{{ basePrice }}</span>
+          <span v-if="type === 1" class="old-price">{{ cartItem.product.price.toman('base', false) }}</span>
           <span class="percent">{{ cartItem.product.price.discountInPercent() }}%</span>
-          <span class="new-price">{{ finalPrice }}</span>
+          <span class="new-price">{{ cartItem.product.price.toman('final', false) }}</span>
           <span class="toman"> تومان</span>
         </div>
       </v-col>
       <v-col :sm="2" class="count justify-sm-center justify-start">
         <span class="title d-inline-block d-sm-none">تعداد: </span>
         <v-select
-          v-model="cartItem.qty"
+          v-model="itemQuantity"
           :items="items"
           item-text="title"
           item-value="value"
@@ -109,21 +109,28 @@ export default {
         }
       ],
       basePrice: '0',
-      finalPrice: '0'
+      finalPrice: '0',
+      itemQuantity: 0
     }
   },
   watch: {
-    'cartItem.qty': {
-      handler () {
-        this.basePrice = this.cartItem.totalPrice().toman('base', false)
-        this.finalPrice = this.cartItem.totalPrice().toman('final', false)
-        const gg = this.cartItem.totalPrice().toman('final', false)
-        console.log(gg)
-        Vue.set(this, 'finalPrice', gg)
+    itemQuantity: {
+      handler (newValue, oldValue) {
+        if (newValue > 0 && newValue !== oldValue) {
+          Vue.set(this.cartItem, 'qty', this.itemQuantity)
+          this.basePrice = this.cartItem.totalPrice().toman('base', false)
+          this.finalPrice = this.cartItem.totalPrice().toman('final', false)
+          const gg = this.cartItem.totalPrice().toman('final', false)
+          console.log(gg)
+          Vue.set(this, 'finalPrice', gg)
+        }
       },
       deep: true,
       immediate: true
     }
+  },
+  created () {
+    this.itemQuantity = this.cartItem.qty
   },
   methods: {
     removeCartItem () {
