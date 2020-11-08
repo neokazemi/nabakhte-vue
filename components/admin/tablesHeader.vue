@@ -73,8 +73,8 @@ export default {
   name: 'TablesHeader',
   props: {
     value: {
-      type: String
-    //  default value must be set
+      type: String,
+      default: ''
     }
 
   },

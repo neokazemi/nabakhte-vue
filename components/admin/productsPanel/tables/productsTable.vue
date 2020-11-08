@@ -65,6 +65,7 @@
       </v-col>
     </v-row>
     <v-data-table
+
       :footer-props="{
         showFirstLastPage: true,
         firstIcon: 'mdi-arrow-collapse-left',
@@ -87,14 +88,16 @@
       <!--        </v-chip>-->
       <!--      </template>-->
       <template v-slot:item.pic="{ item }">
-        <v-img :src="item.image.url" width="100" height="100" class="mt-3 mb-3" />
+        <v-img :src="item.photo" width="100" height="100" class="mt-3 mb-3" />
       </template>
+
       <template v-slot:top>
         <v-toolbar
           flat
         >
           <v-spacer />
           <v-dialog
+
             v-model="dialog"
             class="dialog-width"
           >
@@ -110,6 +113,7 @@
                 افزودن محصول
               </v-btn>
             </template>
+
             <v-card>
               <div>
                 <v-row>
@@ -117,7 +121,7 @@
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.name"
+                      v-model="editedItem.title"
                       class="text-fields-size"
                       label="نام کالا"
                     />
@@ -126,7 +130,7 @@
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.price"
+                      v-model="editedItem.price.base"
                       class="text-fields-size"
                       label="قیمت پایه"
                     />
@@ -135,53 +139,55 @@
                     class="form-elements-column-width"
                   >
                     <v-text-field
-                      v-model="editedItem.discount"
+                      v-model="editedItem.price.discount"
                       class="text-fields-size"
                       label="تخفیف"
                     />
                   </v-col>
                 </v-row>
-                <v-row>
-                  <v-col
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.pic"
-                      class="thetextfield"
-                      label="عکس"
-                    />
-                  </v-col>
-                  <v-col
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.description"
-                      class="text-fields-size"
-                      label="توضیحات کوتاه"
-                    />
-                  </v-col>
-                  <v-col
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.type"
-                      class="text-fields-size"
-                      label="نوع"
-                    />
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col
-                    v-if="changeshow"
-                    class="form-elements-column-width"
-                  >
-                    <v-text-field
-                      v-model="editedItem.status"
-                      class="text-fields-size"
-                      label="فعال/غیر فعال"
-                    />
-                  </v-col>
-                </v-row>
+
+                <!--                <v-row>-->
+                <!--                  <v-col-->
+                <!--                    class="form-elements-column-width"-->
+                <!--                  >-->
+                <!--                    <v-text-field-->
+                <!--                      v-model="editedItem.pic"-->
+                <!--                      class="thetextfield"-->
+                <!--                      label="عکس"-->
+                <!--                    />-->
+                <!--                  </v-col>-->
+                <!--                  <v-col-->
+                <!--                    class="form-elements-column-width"-->
+                <!--                  >-->
+                <!--                    <v-text-field-->
+                <!--                      v-model="editedItem.description"-->
+                <!--                      class="text-fields-size"-->
+                <!--                      label="توضیحات کوتاه"-->
+                <!--                    />-->
+                <!--                  </v-col>-->
+
+                <!--                  <v-col-->
+                <!--                    class="form-elements-column-width"-->
+                <!--                  >-->
+                <!--                    <v-text-field-->
+                <!--                      v-model="editedItem.type"-->
+                <!--                      class="text-fields-size"-->
+                <!--                      label="نوع"-->
+                <!--                    />-->
+                <!--                  </v-col>-->
+                <!--                </v-row>-->
+                <!--                <v-row>-->
+                <!--                  <v-col-->
+                <!--                    v-if="changeshow"-->
+                <!--                    class="form-elements-column-width"-->
+                <!--                  >-->
+                <!--                    <v-text-field-->
+                <!--                      v-model="editedItem.status"-->
+                <!--                      class="text-fields-size"-->
+                <!--                      label="فعال/غیر فعال"-->
+                <!--                    />-->
+                <!--                  </v-col>-->
+                <!--                </v-row>-->
               </div>
               <v-card-actions>
                 <v-spacer />
@@ -203,6 +209,7 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
+
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
               <v-card-title class="headline">
@@ -252,8 +259,9 @@
                 dark
                 x-small
                 color="#9575CD"
+                :href="'products-coupons-attributes/product/' + item.id + '/edit'"
+
                 v-on="on"
-                @click="editItem2(item)"
               >
                 <v-icon dark>
                   mdi-pencil
@@ -288,9 +296,16 @@
 </template>
 
 <script>
-import { Product } from '~/models/Product'
+
 export default {
   name: 'ProductsTable',
+  props: {
+    productslist: {
+      type: Object
+
+    }
+  },
+
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
@@ -307,40 +322,50 @@ export default {
         text: 'نام کالا',
         align: 'start',
         sortable: false,
-        value: 'name'
+        value: 'title'
       },
       { text: 'قیمت پایه', value: 'price.base', sortable: false },
       { text: 'تخفیف', value: 'price.discount', sortable: false },
-      { text: 'عکس', value: 'pic', sortable: false },
-      { text: 'توضیحات کوتاه', value: 'description', sortable: false },
-      { text: 'نوع', value: 'type', sortable: false },
-      { text: 'فعال/غیر فعال', value: 'status', sortable: false },
-      { text: 'عملیات', value: 'actions', sortable: false }
+      {
+        text: 'عکس',
+        value: 'pic',
+        sortable: false
+      },
+      {
+        text: 'توضیحات کوتاه',
+        value: 'description',
+        sortable: false
+      },
+      {
+        text: 'نوع',
+        value: 'type',
+        sortable: false
+      },
+      {
+        text: 'فعال/غیر فعال',
+        value: 'status',
+        sortable: false
+      },
+      {
+        text: 'عملیات',
+        value: 'actions',
+        sortable: false
+      }
 
     ],
 
-    products: [],
+    products: null,
 
     editedIndex: -1,
 
     editedItem: {
-      name: '',
-      price: null,
-      discount: null,
-      pic: '',
-      description: '',
-      type: '',
-      status: ''
+      title: '',
+      price: { base: null, discount: null }
     },
 
     defaultItem: {
-      name: '',
-      price: null,
-      discount: null,
-      pic: '',
-      description: '',
-      type: '',
-      status: ''
+      title: '',
+      price: { base: null, discount: null }
     }
 
   }),
@@ -353,11 +378,12 @@ export default {
       val || this.closeDelete()
     }
   },
-
   created () {
-    this.initialize()
+    this.products = this.productslist.list
   },
-
+  // created () {
+  //   this.initialize()
+  // },
   methods: {
     addItem () {
       this.dialog = true
@@ -420,50 +446,15 @@ export default {
         this.products.push(this.editedItem)
       }
       this.close()
-    },
-    initialize () {
-      this.products = [
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        }),
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        }),
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        })
-      ]
     }
+    // initialize () {
+    //   this.products = this.props.productslist
+    // }
 
   }
+
 }
+
 </script>
 
 <style lang="scss" scoped>

@@ -4,466 +4,471 @@
       <v-card-title>
         اصلاح اطلاعات محصول
       </v-card-title>
-      <v-row>
-        <v-col>
-          <v-text-field
-            v-model="product.name"
-            class="input-elements "
-            label=" نام کالا"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements"
-            label=" دسته کالا"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements "
-            label=" ترتیب"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-select
-            v-model="name"
-            class="input-elements "
-            label="نوع محصول"
-            outlined
-            dense
-          />
-        </v-col>
-      </v-row>
+      <div
+        v-for="i in products"
 
-      <v-row>
-        <v-col>
-          <v-text-field
-            v-model="product.price.base"
-            class="input-elements "
-            label=" قیمت پایه"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="product.price.discount"
-            class="input-elements"
-            label="تخفیف (%)"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements "
-            label=" تعداد موجود"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-select
-            v-model="name"
-            class="input-elements "
-            label=" وضعیت"
-            outlined
-            dense
-          />
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements"
-            label="دسته صفت"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements"
-            label="تامبنیل کلیپ معرفی"
-            outlined
-            dense
-          />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements"
-            label="آدرس ریدایرکت"
-            outlined
-            dense
-          />
-        </v-col>
-        <v-col>
-          <v-text-field
-            v-model="name"
-            class="input-elements"
-            label="لینک فیلم معرفی"
-            outlined
-            dense
-          />
-        </v-col>
-      </v-row>
-      <br>
-      <br>
-      <v-row>
-        <v-col>
-          <v-img
-            width="200px"
-            height="200px"
-
-            class="mt-3 "
-            :src="product.image.url"
-          />
-          <v-btn
-            class="mt-3 mr-5"
-          >
-            تغییر عکس
-          </v-btn>
-        </v-col>
-        <v-col>
+        :key="i.id"
+      >
+        <div v-if="$route.params.id.includes(i.id)">
           <v-row>
-            <p class="mt-2">
-              کاتالوگ :
-            </p>
-          </v-row>
-          <v-row>
-            <v-btn
-              class="catalog-btn"
-            >
-              انتخاب فایل
-            </v-btn>
-          </v-row>
-        </v-col>
-        <v-col cols="6">
-          <client-only>
-            <vue-tags-input
-              v-model="tag"
-              class="vue-tags-input"
-              :tags="tags"
-              placeholder="تگ ها"
+            <v-col>
+              <v-text-field
+                v-model="i.title"
 
-              :allow-edit-tags="true"
-              @tags-changed="newTags => tags = newTags"
-            />
-          </client-only>
-          <v-text-field
-            class="mt-3"
-            label="کانتنت های معرفی کننده محصول"
-          />
-          <v-text-field
-            label="کانتنت های پیشنهاد دهنده محصول"
-          />
-          <v-text-field
-            label="ست های دارای کانتنت های پیشنهاد دهنده محصول"
-          />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col class="px-5">
-          <v-col>
-            <p class="p-tag-size ">
-              توضیحات مختصر :
-            </p>
-          </v-col>
-          <v-col>
-            <editor
-              :init="{
-                height: 400}"
-            />
-          </v-col>
-        </v-col>
-        <v-col class="px-5">
-          <v-col>
-            <p class="p-tag-size ">
-              توضیحات اجمالی :
-            </p>
-          </v-col>
-          <v-col>
-            <editor
-              :init="{
-                height: 400}"
-            />
-          </v-col>
-        </v-col>        <v-col class="px-5">
-          <v-col class="px-5">
-            <v-col>
-              <p class="p-tag-size ">
-                توضیحات خاص :
-              </p>
-            </v-col>
-            <v-col>
-              <editor
-                :init="{
-                  height: 400}"
+                class="input-elements "
+                label=" نام کالا"
+                outlined
+                dense
               />
             </v-col>
-          </v-col>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col />
-        <v-col>
-          <v-data-table
-            :footer-props="{
-              showFirstLastPage: true,
-              firstIcon: 'mdi-arrow-collapse-left',
-              lastIcon: 'mdi-arrow-collapse-right',
-              itemsPerPageText: 'تعداد ردیف در هر صفحه',
-              pageText: '',
-              itemsPerPageAllText: 'همه'
-            }"
-            :headers="headers"
-            :items="products"
-            :search="search"
-            class="elevation-1 data-table-width mt-30"
-          >
-            <template v-slot:item.status="{ item }">
-              <v-chip
-                :color="getColor(item.status)"
-                dark
+            <v-col>
+              <v-text-field
+
+                v-model="name"
+
+                class="input-elements"
+                label=" دسته کالا"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements "
+                label=" ترتیب"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-select
+                v-model="name"
+                class="input-elements "
+                label="نوع محصول"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col>
+              <v-text-field
+                v-model="i.price.base"
+                class="input-elements "
+                label=" قیمت پایه"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-model="i.price.discount"
+                class="input-elements"
+                label="تخفیف (%)"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements "
+                label=" تعداد موجود"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-select
+                v-model="name"
+                class="input-elements "
+                label=" وضعیت"
+                outlined
+
+                dense
+              />
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements"
+                label="دسته صفت"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements"
+                label="تامبنیل کلیپ معرفی"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements"
+                label="آدرس ریدایرکت"
+                outlined
+                dense
+              />
+            </v-col>
+            <v-col>
+              <v-text-field
+                v-model="name"
+                class="input-elements"
+                label="لینک فیلم معرفی"
+                outlined
+                dense
+              />
+            </v-col>
+          </v-row>
+          <br>
+          <br>
+          <v-row>
+            <v-col>
+              <v-img
+                width="200px"
+                height="200px"
+
+                class="mt-3 "
+                :src="product.photo"
+              />
+              <v-btn
+                class="mt-3 mr-5"
               >
-                {{ item.status }}
-              </v-chip>
-            </template>
-            <template v-slot:top>
-              <v-toolbar
-                flat
-              >
-                <v-spacer />
-                <v-dialog
-                  v-model="dialog"
-                  class="dialog-width"
-                >
-                  <v-card>
-                    <div>
-                      <v-row>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.name"
-                            class="text-fields-size"
-                            label="نام کالا"
-                          />
-                        </v-col>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.price"
-                            class="text-fields-size"
-                            label="قیمت پایه"
-                          />
-                        </v-col>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.discount"
-                            class="text-fields-size"
-                            label="تخفیف"
-                          />
-                        </v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.pic"
-                            class="thetextfield"
-                            label="عکس"
-                          />
-                        </v-col>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.description"
-                            class="text-fields-size"
-                            label="توضیحات کوتاه"
-                          />
-                        </v-col>
-                        <v-col
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.type"
-                            class="text-fields-size"
-                            label="نوع"
-                          />
-                        </v-col>
-                      </v-row>
-                      <v-row>
-                        <v-col
-                          v-if="changeshow"
-                          class="form-elements-column-width"
-                        >
-                          <v-text-field
-                            v-model="editedItem.status"
-                            class="text-fields-size"
-                            label="فعال/غیر فعال"
-                          />
-                        </v-col>
-                      </v-row>
-                    </div>
-                    <v-card-actions>
-                      <v-spacer />
-                      <v-btn
-                        color="blue darken-1"
-                        text
-                        @click="close"
-                      >
-                        انصراف
-                      </v-btn>
-                      <v-btn
-                        v-if="changeshow"
-                        color="blue darken-1"
-                        text
-                        @click="save"
-                      >
-                        ذخیره
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
-                <v-dialog v-model="dialogDelete" max-width="500px">
-                  <v-card>
-                    <v-card-title class="headline">
-                      آیا از حذف این محصول مطمئن هستید؟
-                    </v-card-title>
-                    <v-card-actions>
-                      <v-spacer />
-                      <v-btn color="blue darken-1" text @click="closeDelete">
-                        انصراف
-                      </v-btn>
-                      <v-btn color="blue darken-1" text @click="deleteItemConfirm">
-                        بله
-                      </v-btn>
-                      <v-spacer />
-                    </v-card-actions>
-                  </v-card>
-                </v-dialog>
-              </v-toolbar>
-            </template>
-            <template v-slot:item.actions="{ item }">
+                تغییر عکس
+              </v-btn>
+            </v-col>
+            <v-col>
               <v-row>
-                <v-tooltip top>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      v-bind="attrs"
-                      class="mx-2 edit-delete-btns"
-                      fab
-                      dark
-                      x-small
-                      color="#9575CD"
-                      v-on="on"
-                      @click="editItem(item)"
-                    >
-                      <v-icon dark>
-                        mdi-pencil
-                      </v-icon>
-                    </v-btn>
-                  </template>
-                  <span>اصلاح</span>
-                </v-tooltip>
-                <v-tooltip v-if="item.status === 'غیر فعال'" top>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      v-bind="attrs"
-                      class="mx-2 edit-delete-btns"
-                      fab
-                      dark
-                      x-small
-                      color="green"
-                      v-on="on"
-                      @click="changestatus(item)"
-                    >
-                      <v-icon dark>
-                        mdi-wrench
-                      </v-icon>
-                    </v-btn>
-                  </template>
-                  <span>فعال کردن محصول</span>
-                </v-tooltip>
-                <v-tooltip v-if="item.status === 'فعال'" top>
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-btn
-                      v-bind="attrs"
-                      class="mx-2 edit-delete-btns"
-                      fab
-                      dark
-                      x-small
-                      color="red"
-                      v-on="on"
-                      @click="changestatus(item)"
-                    >
-                      <v-icon dark>
-                        mdi-wrench
-                      </v-icon>
-                    </v-btn>
-                  </template>
-                  <span>غیر فعال کردن محصول</span>
-                </v-tooltip>
+                <p class="mt-2">
+                  کاتالوگ :
+                </p>
               </v-row>
-            </template>
-          </v-data-table>
-        </v-col>
-      </v-row>
+              <v-row>
+                <v-btn
+                  class="catalog-btn"
+                >
+                  انتخاب فایل
+                </v-btn>
+              </v-row>
+            </v-col>
+            <v-col cols="6">
+              <client-only>
+                <vue-tags-input
+                  v-model="tag"
+                  class="vue-tags-input"
+                  :tags="tags"
+                  placeholder="تگ ها"
+
+                  :allow-edit-tags="true"
+                  @tags-changed="newTags => tags = newTags"
+                />
+              </client-only>
+              <v-text-field
+                class="mt-3"
+                label="کانتنت های معرفی کننده محصول"
+              />
+              <v-text-field
+                label="کانتنت های پیشنهاد دهنده محصول"
+              />
+              <v-text-field
+                label="ست های دارای کانتنت های پیشنهاد دهنده محصول"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col class="px-5">
+              <v-col>
+                <p class="p-tag-size ">
+                  توضیحات مختصر :
+                </p>
+              </v-col>
+              <v-col>
+                <editor
+                  :init="{
+                    height: 400}"
+                />
+              </v-col>
+            </v-col>
+            <v-col class="px-5">
+              <v-col>
+                <p class="p-tag-size ">
+                  توضیحات اجمالی :
+                </p>
+              </v-col>
+              <v-col>
+                <editor
+                  :init="{
+                    height: 400}"
+                />
+              </v-col>
+            </v-col>        <v-col class="px-5">
+              <v-col class="px-5">
+                <v-col>
+                  <p class="p-tag-size ">
+                    توضیحات خاص :
+                  </p>
+                </v-col>
+                <v-col>
+                  <editor
+                    :init="{
+                      height: 400}"
+                  />
+                </v-col>
+              </v-col>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col />
+            <v-col>
+              <v-data-table
+                :footer-props="{
+                  showFirstLastPage: true,
+                  firstIcon: 'mdi-arrow-collapse-left',
+                  lastIcon: 'mdi-arrow-collapse-right',
+                  itemsPerPageText: 'تعداد ردیف در هر صفحه',
+                  pageText: '',
+                  itemsPerPageAllText: 'همه'
+                }"
+                :headers="headers"
+                :items="products"
+                :search="search"
+                class="elevation-1 data-table-width mt-30"
+              >
+                <template v-slot:item.status="{ item }">
+                  <v-chip
+                    :color="getColor(item.status)"
+                    dark
+                  >
+                    {{ item.status }}
+                  </v-chip>
+                </template>
+                <template v-slot:top>
+                  <v-toolbar
+                    flat
+                  >
+                    <v-spacer />
+                    <v-dialog
+                      v-model="dialog"
+                      class="dialog-width"
+                    >
+                      <v-card>
+                        <div>
+                          <v-row>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.name"
+                                class="text-fields-size"
+                                label="نام کالا"
+                              />
+                            </v-col>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.price"
+                                class="text-fields-size"
+                                label="قیمت پایه"
+                              />
+                            </v-col>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.discount"
+                                class="text-fields-size"
+                                label="تخفیف"
+                              />
+                            </v-col>
+                          </v-row>
+                          <v-row>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.pic"
+                                class="thetextfield"
+                                label="عکس"
+                              />
+                            </v-col>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.description"
+                                class="text-fields-size"
+                                label="توضیحات کوتاه"
+                              />
+                            </v-col>
+                            <v-col
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.type"
+                                class="text-fields-size"
+                                label="نوع"
+                              />
+                            </v-col>
+                          </v-row>
+                          <v-row>
+                            <v-col
+                              v-if="changeshow"
+                              class="form-elements-column-width"
+                            >
+                              <v-text-field
+                                v-model="editedItem.status"
+                                class="text-fields-size"
+                                label="فعال/غیر فعال"
+                              />
+                            </v-col>
+                          </v-row>
+                        </div>
+                        <v-card-actions>
+                          <v-spacer />
+                          <v-btn
+                            color="blue darken-1"
+                            text
+                            @click="close"
+                          >
+                            انصراف
+                          </v-btn>
+                          <v-btn
+                            v-if="changeshow"
+                            color="blue darken-1"
+                            text
+                            @click="save"
+                          >
+                            ذخیره
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                    <v-dialog v-model="dialogDelete" max-width="500px">
+                      <v-card>
+                        <v-card-title class="headline">
+                          آیا از حذف این محصول مطمئن هستید؟
+                        </v-card-title>
+                        <v-card-actions>
+                          <v-spacer />
+                          <v-btn color="blue darken-1" text @click="closeDelete">
+                            انصراف
+                          </v-btn>
+                          <v-btn color="blue darken-1" text @click="deleteItemConfirm">
+                            بله
+                          </v-btn>
+                          <v-spacer />
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </v-toolbar>
+                </template>
+                <template v-slot:item.actions="{ item }">
+                  <v-row>
+                    <v-tooltip top>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                          v-bind="attrs"
+                          class="mx-2 edit-delete-btns"
+                          fab
+                          dark
+                          x-small
+                          color="#9575CD"
+                          v-on="on"
+                          @click="editItem(item)"
+                        >
+                          <v-icon dark>
+                            mdi-pencil
+                          </v-icon>
+                        </v-btn>
+                      </template>
+                      <span>اصلاح</span>
+                    </v-tooltip>
+                    <v-tooltip v-if="item.status === 'غیر فعال'" top>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                          v-bind="attrs"
+                          class="mx-2 edit-delete-btns"
+                          fab
+                          dark
+                          x-small
+                          color="green"
+                          v-on="on"
+                          @click="changestatus(item)"
+                        >
+                          <v-icon dark>
+                            mdi-wrench
+                          </v-icon>
+                        </v-btn>
+                      </template>
+                      <span>فعال کردن محصول</span>
+                    </v-tooltip>
+                    <v-tooltip v-if="item.status === 'فعال'" top>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn
+                          v-bind="attrs"
+                          class="mx-2 edit-delete-btns"
+                          fab
+                          dark
+                          x-small
+                          color="red"
+                          v-on="on"
+                          @click="changestatus(item)"
+                        >
+                          <v-icon dark>
+                            mdi-wrench
+                          </v-icon>
+                        </v-btn>
+                      </template>
+                      <span>غیر فعال کردن محصول</span>
+                    </v-tooltip>
+                  </v-row>
+                </template>
+              </v-data-table>
+            </v-col>
+          </v-row>
+        </div>
+      </div>
     </v-card>
   </div>
 </template>
 
 <script>
-import { Product } from '~/models/Product'
+
 export default {
   name: 'ProductInformationCorrection',
   components: {
     Editor: () => import('@tinymce/tinymce-vue'),
     VueTagsInput: () => import('@johmun/vue-tags-input')
   },
+  props: {
+    productslist: {
+      type: Object
+    }
+
+  },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
     tag: '',
     tags: [],
-    product: new Product({
-      price: {
-        base: 100000,
-        discount: 20000,
-        final: 80000
-      },
-      image: {
-        url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-      },
-      name: 'اسم محصول',
-      link: '#'
-
-    }),
-
     changeshow: false,
     detailshow: false,
     search: '',
     dialog: false,
+    name: '',
 
     dialogDelete: false,
 
@@ -480,7 +485,7 @@ export default {
     ],
 
     products: [],
-
+    product: {},
     editedIndex: -1,
 
     editedItem: {
@@ -506,9 +511,8 @@ export default {
   },
 
   created () {
-    this.initialize()
+    this.products = this.productslist.list
   },
-
   methods: {
     addItem () {
       this.dialog = true
@@ -576,46 +580,6 @@ export default {
         this.products.push(this.editedItem)
       }
       this.close()
-    },
-    initialize () {
-      this.products = [
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        }),
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        }),
-        new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
-          image: {
-            url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
-          },
-          name: 'اسم محصول',
-          link: '#'
-        })
-      ]
     }
 
   }
