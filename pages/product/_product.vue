@@ -4,14 +4,14 @@
       <Breadcrumbs :items="breadcrumbsItems" />
       <div class="product-info">
         <h2 class="product-title">
-          {{ productData.name }}
+          {{ product.title }}
         </h2>
         <div class="product-pic-container">
           <div class="product-pic">
-            <v-img :src="productData.image.url" contain />
+            <v-img :src="product.photo" contain />
           </div>
           <div class="discount">
-            {{ productData.price.discount }}%
+            {{ product.price.discountInPercent() }}%
           </div>
         </div>
         <div class="buy-options-and-price">
@@ -21,12 +21,11 @@
             </div>
             <div class="price">
               <p class="old-price">
-                {{ productData.price.base | price }}
+                {{ product.price.toman('base', false) }}
               </p>
               <p class="new-price">
-                {{ productData.price.final | price }}
+                {{ product.price.toman('final', true) }}
               </p>
-              <p>تومان</p>
             </div>
           </div>
           <div class="quantity">
@@ -39,7 +38,7 @@
           <p><span>نوع محصول: </span>کتاب کمک آموزشی</p>
           <p><span>مولف: </span>مرتضی شکری، محمد یاوری</p>
           <p><span>سال چاپ: </span>1399</p>
-          <p><span>تعداد صفحه: </span>255</p>
+          <p><span>تعداد صفحه: </span>{{ product.attributes.info.duration[0] }}</p>
           <p><span>تجدید چاپ: </span><v-rating readonly :value="3" dense background-color="#2bbb28" color="#2bbb28" /></p>
           <p><span>امتیاز کاربران: </span><v-rating readonly :value="3" dense background-color="#2bbb28" color="#2bbb28" /></p>
         </div>
@@ -130,7 +129,7 @@
               رحلی
             </ProductSpecs>
             <ProductSpecs title="تعداد صفحه">
-              272
+              {{ product.attributes.info.duration[0] }}
             </ProductSpecs>
             <ProductSpecs title="سال چاپ">
               1398
@@ -171,54 +170,56 @@
       </v-row>
       <v-row>
         <v-col class="product-data">
-          <v-img :src="productData.image.url" :width="productData.image.width" :height="productData.image.height" :contain="true" />
+          <v-img :src="product.photo" :width="productData.image.width" :height="productData.image.height" :contain="true" />
           <div class="product-details">
             <div class="product-details-col first">
               <p class="name">
-                {{ productData.name }}
+                {{ product.title }}
               </p>
               <div class="price">
                 <p class="old-price">
-                  {{ productData.price.base | price }}
+                  {{ product.price.toman('base', false) }}
                 </p>
                 <p class="discount">
-                  {{ productData.price.discount }}%
+                  {{ product.price.discountInPercent() }}%
                 </p>
                 <p class="new-price">
-                  {{ productData.price.final | price }}
+                  {{ product.price.toman('final', false) }}
                 </p>
               </div>
               <div class="buy-options">
-                <button>افزودن به سبد خرید</button>
-                <select>
-                  <option value="1">
+                <button @click="addToCart(product, selectedQuantity)">
+                  افزودن به سبد خرید
+                </button>
+                <select v-model="selectedQuantity">
+                  <option :value="1">
                     1 عدد
                   </option>
-                  <option value="2">
+                  <option :value="2">
                     2 عدد
                   </option>
-                  <option value="3">
+                  <option :value="3">
                     3 عدد
                   </option>
-                  <option value="4">
+                  <option :value="4">
                     4 عدد
                   </option>
-                  <option value="5">
+                  <option :value="5">
                     5 عدد
                   </option>
-                  <option value="6">
+                  <option :value="6">
                     6 عدد
                   </option>
-                  <option value="7">
+                  <option :value="7">
                     7 عدد
                   </option>
-                  <option value="8">
+                  <option :value="8">
                     8 عدد
                   </option>
-                  <option value="9">
+                  <option :value="9">
                     9 عدد
                   </option>
-                  <option value="10">
+                  <option :value="10">
                     10 عدد
                   </option>
                 </select>
@@ -244,12 +245,12 @@
               <p><span>نوع محصول: </span>کتاب کمک آموزشی</p>
               <p><span>مولف: </span>مرتضی شکری، محمد یاوری</p>
               <p><span>سال چاپ: </span>1399</p>
-              <p><span>تعداد صفحه: </span>255</p>
+              <p><span>تعداد صفحه: </span>{{ product.attributes.info.duration[0] }}</p>
               <p><span>تجدید چاپ: </span><v-rating readonly :value="3" dense background-color="#2bbb28" color="#2bbb28" /></p>
               <p><span>امتیاز کاربران: </span><v-rating readonly :value="3" dense background-color="#2bbb28" color="#2bbb28" /></p>
             </div>
             <div class="product-details-col last">
-              <p> کتاب کمک آموزشی {{ productData.name }} در یک نگاه:</p>
+              <p> کتاب کمک آموزشی {{ product.title }} در یک نگاه:</p>
               <ul>
                 <li>پوشش 6 سال کنکور های سراسری داخل و خارج کشور</li>
                 <li>جایگزینی سوالات غیر منطبق با کتاب های جدید با سایر سوالات کنکور و سوالات تالیفی</li>
@@ -284,7 +285,7 @@
               <h3>
                 نقد و بررسی
               </h3>
-              <p>کتاب کمک آموزشی {{ productData.name }}</p>
+              <p>کتاب کمک آموزشی {{ product.title }}</p>
               <p class="tall-line">
                 <span class="bold red-font">توجه: </span>این تحلیل و بررسی، بر اساس چاپ سال <span class="bold green-font">1398</span> این کتاب صورت گرفته است.
               </p>
@@ -328,7 +329,7 @@
             <div v-if="selectedTab === 2" class="specs">
               <h3>مشخصات</h3>
               <p>
-                کتاب کمک آموزشی {{ productData.name }}
+                کتاب کمک آموزشی {{ product.title }}
               </p>
               <ProductSpecs title="وزن">
                 0.6 kg
@@ -355,7 +356,7 @@
                 رحلی
               </ProductSpecs>
               <ProductSpecs title="تعداد صفحه">
-                272
+                {{ product.attributes.info.duration[0] }}
               </ProductSpecs>
               <ProductSpecs title="سال چاپ">
                 1398
@@ -386,12 +387,14 @@
 
 <script>
 import mixinProduct from '~/plugins/mixinProduct'
+import mixinStore from '~/plugins/mixinStore'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import ProductSpecs from '~/components/ProductSpecs'
 import Comment from '~/components/Comment'
 import '~/assets/css/pages/Product.css'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import { Product } from '~/models/Product'
 
 export default {
   name: 'Product',
@@ -406,7 +409,7 @@ export default {
     ProductSpecs,
     Comment
   },
-  mixins: [mixinProduct, mixinDetectDevice],
+  mixins: [mixinProduct, mixinDetectDevice, mixinStore],
   props: {
     productData: {
       type: Object,
@@ -427,6 +430,14 @@ export default {
         }
       }
     }
+  },
+  asyncData (context) {
+    return (new Product()).show(context.params.product)
+      .then((response) => {
+        context.store.commit('products/updateProduct', response.data.data)
+      }).catch(function (e) {
+        context.store.commit('products/updateProduct', null)
+      })
   },
   data () {
     return {
@@ -489,7 +500,8 @@ export default {
         '6 عدد',
         '7 عدد',
         '100 عدد'
-      ]
+      ],
+      selectedQuantity: 1
     }
   },
   created () {

@@ -72,7 +72,7 @@ class Product extends Model {
   }
 
   getLink () {
-    return '/product/' + this.name.split(' ').join('_')
+    return '/product/' + this.id
   }
 
   loadImage () {
@@ -98,7 +98,6 @@ class Product extends Model {
       'https://media.chibekhoonam.net/2019/09/eng-9-loghme.jpg'
     ]
     this.photo = array[Math.floor(Math.random() * array.length)]
-    console.log('done')
   }
 
   createFavorUrl (baseUrl, favored) {

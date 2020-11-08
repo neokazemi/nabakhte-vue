@@ -1,7 +1,7 @@
 <template>
   <div class="product-card6">
     <div class="image-container">
-      <v-img :src="product.image.url" contain :width="52" :height="63" />
+      <v-img :src="product.photo" contain :width="52" :height="63" />
     </div>
     <div class="product-info-container">
       <div class="product-title">
@@ -21,7 +21,7 @@
           </nuxt-link>
         </div>
         <div class="price">
-          {{ product.price.toman('final', false) }} تومان
+          {{ product.price.toman('final', true) }}
         </div>
       </div>
     </div>

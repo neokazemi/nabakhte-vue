@@ -5,7 +5,7 @@
         <a href="#" class="remove" @click.prevent="removeCartItem">حذف ×</a>
       </v-col>
       <v-col :sm="1" class="product-card-image-cart">
-        <v-img :src="cartItem.product.image.url" contain :width="56" :height="75" />
+        <v-img :src="cartItem.product.photo" contain :width="56" :height="75" />
       </v-col>
       <v-col :sm="4" class="justify-sm-center justify-start">
         <p class="name justify-start">
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { CartItem } from '~/models/Cart'
 import '~/assets/css/components/ProductCards/ProductCard4.css'
 
@@ -116,7 +117,11 @@ export default {
       handler () {
         this.basePrice = this.cartItem.totalPrice().toman('base', false)
         this.finalPrice = this.cartItem.totalPrice().toman('final', false)
+        const gg = this.cartItem.totalPrice().toman('final', false)
+        console.log(gg)
+        Vue.set(this, 'finalPrice', gg)
       },
+      deep: true,
       immediate: true
     }
   },

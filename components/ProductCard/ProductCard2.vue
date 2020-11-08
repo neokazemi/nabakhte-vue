@@ -1,7 +1,7 @@
 <template>
   <div class="full-width card">
     <div class="product-image">
-      <v-img :src="product.image.url" contain />
+      <v-img :src="product.photo" contain />
     </div>
     <div class="full-width product-info">
       <div class="right-part">
@@ -13,36 +13,38 @@
           <span class="toman">تومان</span>
         </div>
         <div class="buy-options">
-          <button>افزودن به سبد خرید</button>
-          <select>
-            <option value="1">
+          <button @click="addToCart(product, selectedQuantity)">
+            افزودن به سبد خرید
+          </button>
+          <select v-model="selectedQuantity">
+            <option :value="1">
               1 عدد
             </option>
-            <option value="2">
+            <option :value="2">
               2 عدد
             </option>
-            <option value="3">
+            <option :value="3">
               3 عدد
             </option>
-            <option value="4">
+            <option :value="4">
               4 عدد
             </option>
-            <option value="5">
+            <option :value="5">
               5 عدد
             </option>
-            <option value="6">
+            <option :value="6">
               6 عدد
             </option>
-            <option value="7">
+            <option :value="7">
               7 عدد
             </option>
-            <option value="8">
+            <option :value="8">
               8 عدد
             </option>
-            <option value="9">
+            <option :value="9">
               9 عدد
             </option>
-            <option value="10">
+            <option :value="10">
               10 عدد
             </option>
           </select>
@@ -61,19 +63,16 @@
 
 <script>
 import { Product } from '~/models/Product'
+import mixinStore from '~/plugins/mixinStore'
 
 export default {
   name: 'ProductCard2',
+  mixins: [mixinStore],
   props: {
     product: {
       type: Product,
       default () {
         return new Product({
-          price: {
-            base: 100000,
-            discount: 20000,
-            final: 80000
-          },
           image: {
             url: 'https://media.chibekhoonam.net/2020/09/golbarg-olom6.jpg'
           },
@@ -86,6 +85,11 @@ export default {
       type: Number,
       required: false,
       default: 1
+    }
+  },
+  data () {
+    return {
+      selectedQuantity: 1
     }
   }
 }

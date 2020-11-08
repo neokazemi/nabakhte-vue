@@ -36,9 +36,9 @@ class Cart extends Collection {
     return CartItem
   }
 
-  addItem (item) {
+  addItem (item, quantity = 1) {
     let product = null
-    let qty = 1
+    let qty = quantity
     let availableCartItem = null
 
     if (item instanceof Product) {
@@ -47,7 +47,7 @@ class Cart extends Collection {
       if (availableCartItem) {
         // eslint-disable-next-line
         // availableCartItem.qty++
-        Vue.set(availableCartItem, 'qty', (availableCartItem.qty + 1))
+        Vue.set(availableCartItem, 'qty', (availableCartItem.qty + quantity))
       }
     } else if (item instanceof CartItem) {
       product = item.product

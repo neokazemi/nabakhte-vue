@@ -38,10 +38,10 @@
               اضافه کردن منو
             </v-btn>
           </div>
-          <div v-for="(item, index) in list1" :key="index" class="menu-button">
+          <div v-for="(item, index) in menus.list" :key="index" class="menu-button">
             <div class="menu-name">
               <v-text-field
-                v-model="item.name"
+                v-model="item.title"
                 outlined
                 dense
                 color="#2bbb28"
@@ -54,7 +54,7 @@
                   mdi-content-save
                 </v-icon>
               </v-btn>
-              <nuxt-link :to="'/admin/menus/' + item.name.split(' ').join('-')">
+              <nuxt-link :to="'/admin/menus/' + item.title.split(' ').join('-')">
                 <v-btn icon>
                   <v-icon>mdi-pencil</v-icon>
                 </v-btn>
@@ -73,19 +73,20 @@
 
 <script>
 // import NestedDraggable from '~/components/admin/menus/NestedDraggable'
-// import { MenuList } from '~/models/Menu'
+import mixinMenu from '~/plugins/mixinMenu'
+import { Menu } from '~/models/Menu'
 let id = 1
 
 export default {
   name: 'NestedWithVmodel',
   display: 'Nested (v-model & vuex)',
+  mixins: [mixinMenu],
   order: 16,
   // components: { NestedDraggable },
   data () {
     return {
       value: null,
       enabled: true,
-      list1: [],
       list2: [
         {
           id: 0,
@@ -221,7 +222,6 @@ export default {
         }
       ],
       dragging: false,
-      menu: [],
       newMenuName: '',
       lastId: 0
     }
@@ -261,20 +261,20 @@ export default {
     //   this.menu = this.list1
     //   this.convertMenuObjectToMenuModel(this.menu)
     // },
-    saveName (id) {
-      for (let i = 0; i < this.list1.length; i++) {
-        if (this.list1[i].id === id) {
-          this.list1[i].needSave = false
-        }
-      }
-    },
-    nameHasBeenChanged (id) {
-      for (let i = 0; i < this.list1.length; i++) {
-        if (this.list1[i].id === id) {
-          this.list1[i].needSave = true
-        }
-      }
-    },
+    // saveName (id) {
+    //   for (let i = 0; i < this.list1.length; i++) {
+    //     if (this.list1[i].id === id) {
+    //       this.list1[i].needSave = false
+    //     }
+    //   }
+    // },
+    // nameHasBeenChanged (id) {
+    //   for (let i = 0; i < this.list1.length; i++) {
+    //     if (this.list1[i].id === id) {
+    //       this.list1[i].needSave = true
+    //     }
+    //   }
+    // },
     deleteItem () {
     },
     convertMenuObjectToMenuModel (array) {
@@ -293,17 +293,13 @@ export default {
     addMenu () {
       const name = this.newMenuName
       if (name) {
-        this.list1.push(
+        this.menus.list.push(new Menu(
           {
             id: this.lastId,
-            name,
-            link: '#',
-            type: 'parent',
-            style: {},
-            tasks: [],
-            needSave: false
+            title: name,
+            children: []
           }
-        )
+        ))
       }
       this.lastId++
       this.newMenuName = ''

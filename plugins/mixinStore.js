@@ -7,8 +7,8 @@ const mixinStore = {
     }
   },
   methods: {
-    addToCart (product) {
-      this.cart.addItem(product)
+    addToCart (product, quantity = 1) {
+      this.cart.addItem(product, quantity)
       this.$store.commit('cart/updateCart', this.cart)
     },
     removeFromCart (cartItem) {

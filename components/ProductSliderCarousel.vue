@@ -37,7 +37,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import 'swiper/css/swiper.css'
 import { ProductList } from '../models/Product'
 import ProductCard from './ProductCard/ProductCard'
 
