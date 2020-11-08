@@ -3,12 +3,11 @@
     <v-row>
       <v-col>
         <Menu />
-
         <v-expansion-panels focusable multiple>
           <v-expansion-panel>
             <v-expansion-panel-header>مدیریت محصولات</v-expansion-panel-header>
             <v-expansion-panel-content>
-              <ProductsTable />
+              <ProductsTable :productslist="products" />
             </v-expansion-panel-content>
           </v-expansion-panel>
           <v-expansion-panel>
@@ -38,6 +37,8 @@
 </template>
 
 <script>
+import mixinProduct from '~/plugins/mixinProduct'
+
 import Menu from '~/components/admin/menu'
 import ProductsTable from '~/components/admin/productsPanel/tables/productsTable'
 import CouponsManagementTable from '~/components/admin/productsPanel/tables/couponsManagementTable'
@@ -46,7 +47,8 @@ import AttributeGroupsTable from '~/components/admin/productsPanel/tables/attrib
 export default {
 
   name: 'Index',
-  components: { Menu, AttributeGroupsTable, AttributesTable, CouponsManagementTable, ProductsTable }
+  components: { Menu, AttributeGroupsTable, AttributesTable, CouponsManagementTable, ProductsTable },
+  mixins: [mixinProduct]
 }
 </script>
 
