@@ -6,14 +6,6 @@ const mixinStore = {
       return new Cart(this.$store.getters['cart/cart'])
     }
   },
-  watch: {
-    cart: {
-      handler (newValue) {
-        console.log(newValue)
-      },
-      deep: true
-    }
-  },
   methods: {
     addToCart (product, quantity = 1) {
       this.cart.addItem(product, quantity)
