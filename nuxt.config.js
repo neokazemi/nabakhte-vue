@@ -78,7 +78,10 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    // baseURL: 'http://auth-api.web/api/',
+    credentials: true // this says that in the request the httponly cookie should be sent
+  },
   /*
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration
