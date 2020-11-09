@@ -11,8 +11,7 @@ const mixinStore = {
       handler (newValue) {
         console.log(newValue)
       },
-      deep: true,
-      immediate: true
+      deep: true
     }
   },
   methods: {
@@ -27,6 +26,9 @@ const mixinStore = {
     showSnackbar (text, type = 'info') {
       this.snackbar.show = true
       this.snackbar.text = text
+    },
+    updateCart () {
+      this.$store.commit('cart/updateCart', this.cart)
     }
   },
   data () {

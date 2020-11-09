@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <LoginDialog />
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="true"
@@ -19,12 +20,14 @@
 </template>
 
 <script>
+import LoginDialog from '~/components/login/LoginDialog'
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
 import mixinDetectDevice from '~/plugins/mixinDetectDevice'
 
 export default {
   components: {
+    LoginDialog,
     Header,
     Footer
   },
