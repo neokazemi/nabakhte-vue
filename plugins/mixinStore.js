@@ -6,15 +6,6 @@ const mixinStore = {
       return new Cart(this.$store.getters['cart/cart'])
     }
   },
-  watch: {
-    cart: {
-      handler (newValue) {
-        console.log(newValue)
-      },
-      deep: true,
-      immediate: true
-    }
-  },
   methods: {
     addToCart (product, quantity = 1) {
       this.cart.addItem(product, quantity)
@@ -27,6 +18,9 @@ const mixinStore = {
     showSnackbar (text, type = 'info') {
       this.snackbar.show = true
       this.snackbar.text = text
+    },
+    updateCart () {
+      this.$store.commit('cart/updateCart', this.cart)
     }
   },
   data () {
