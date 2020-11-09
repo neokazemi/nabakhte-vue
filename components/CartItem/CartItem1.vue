@@ -121,7 +121,7 @@ export default {
           this.basePrice = this.cartItem.totalPrice().toman('base', false)
           this.finalPrice = this.cartItem.totalPrice().toman('final', false)
           const gg = this.cartItem.totalPrice().toman('final', false)
-          console.log(gg)
+          this.$emit('changedQuantity')
           Vue.set(this, 'finalPrice', gg)
         }
       },

@@ -13,7 +13,8 @@ export const state = () => ({
       imgLink: '',
       link: '/'
     }
-  ]
+  ],
+  loginDialog: false
 })
 
 export const mutations = {
@@ -25,6 +26,9 @@ export const mutations = {
   },
   updateRightDrawer (state, newInfo) {
     state.rightDrawer = newInfo
+  },
+  updateLoginDialog (state, newInfo) {
+    state.loginDialog = newInfo
   }
   // updateAppProps(state, newInfo) {
   //   if (typeof newInfo === 'function') {
@@ -47,6 +51,9 @@ export const getters = {
   },
   linksOf404 (state) {
     return state.linksOf404
+  },
+  loginDialog (state) {
+    return state.loginDialog
   }
   // url_crud_model: (state) => (object) => {
   //   // let modelName = object.constructor.name;
