@@ -297,16 +297,20 @@
 
 <script>
 
+import { Product } from '../../../../models/Product'
+
 export default {
   name: 'ProductsTable',
   props: {
     productslist: {
-      type: Object
+      type: Object,
+      default: new Product()
 
     }
   },
 
   data: () => ({
+
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
 
