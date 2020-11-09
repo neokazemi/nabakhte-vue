@@ -80,9 +80,9 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'http://localhost:3000',
-    // baseURL: process.env.BASE_URL,
-    debug: true,
+    // baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL,
+    debug: false,
     // proxyHeaders: true, // In SSR context, this options sets client requests headers as default headers for the axios requests. NOTE: CloudFlare's CDN => set this to false
     proxy: true // Can be also an object with default options
     // headers: {

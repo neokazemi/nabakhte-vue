@@ -11,12 +11,27 @@
       <v-col>
         <v-row>
           <v-col>
-            <v-text-field outlined label="شماره همراه" dense :rules="notEmptyRule" />
+            <v-text-field
+              v-model="username"
+              outlined
+              label="شماره همراه"
+              dense
+              :rules="notEmptyRule"
+              dir="ltr"
+            />
           </v-col>
         </v-row>
         <v-row>
           <v-col>
-            <v-text-field outlined label="کلمه عبور" dense type="password" :rules="notEmptyRule" />
+            <v-text-field
+              v-model="password"
+              outlined
+              label="کلمه عبور"
+              dense
+              type="password"
+              :rules="notEmptyRule"
+              dir="ltr"
+            />
           </v-col>
         </v-row>
         <v-row>
@@ -27,7 +42,7 @@
             />
           </v-col>
           <v-col :md="6" class="d-flex justify-end">
-            <v-btn color="#2bbb28" medium :max-width="75" :max-height="32">
+            <v-btn color="#2bbb28" medium :max-width="75" :max-height="32" @click="submit">
               ورود
             </v-btn>
           </v-col>
@@ -45,14 +60,27 @@
 </template>
 
 <script>
+import mixinAuth from '@/plugins/mixin/api/Auth'
+
 export default {
   name: 'Login',
+  mixins: [mixinAuth],
   data () {
     return {
+      username: null,
+      password: null,
       notEmptyRule: [
         v => !!v || 'پر کردن این فیلد الزامی میباشد'
       ],
       rememberMe: false
+    }
+  },
+  methods: {
+    submit () {
+      this.api_login(this.username, this.password)
+        .then((response) => {
+          console.log('response from submit: ', response)
+        })
     }
   }
 }

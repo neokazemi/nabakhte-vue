@@ -35,16 +35,3 @@ export const actions = {
     commit('REMOVE_TOKEN')
   }
 }
-
-// submit () {
-//   const url = '/api/v2/login'
-//   const data = {
-//     mobile: this.user,
-//     password: this.pass
-//   }
-//
-//   this.$axios.post(url, data)
-//     .then((response) => {
-//
-//     })
-// }
