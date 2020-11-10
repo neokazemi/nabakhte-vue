@@ -112,14 +112,14 @@
   </div>
 </template>
 <script>
-import mixinProduct from '~/plugins/mixinProduct'
+import mixinProduct from '~/plugins/mixin/product'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductCard from '~/components/ProductCard/ProductCard'
 import Sidebar from '~/components/app/Sidebar'
 import ExpansionPanel from '~/components/ExpansionPanel'
 import ToggleButton from '~/components/ToggleButton'
 import '~/assets/css/pages/Shop.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import Pagination from '~/components/Pagination'
 
 export default {

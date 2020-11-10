@@ -526,7 +526,7 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/MyAccount.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'MyAccount',

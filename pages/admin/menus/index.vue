@@ -73,7 +73,7 @@
 
 <script>
 // import NestedDraggable from '~/components/admin/menus/NestedDraggable'
-import mixinMenu from '~/plugins/mixinMenu'
+import mixinMenu from '~/plugins/mixin/menu'
 import { Menu } from '~/models/Menu'
 let id = 1
 

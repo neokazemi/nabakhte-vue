@@ -40,7 +40,6 @@ export default {
       this.$emit('remove', cartItem)
     },
     quantityChanged () {
-      console.log('test')
       this.$emit('changedQuantity')
     }
   }

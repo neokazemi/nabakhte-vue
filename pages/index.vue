@@ -110,10 +110,10 @@
 <script>
 import LogoCarousel from '../components/LogoCarousel'
 import ExpandTransition from '~/components/ExpandTransition'
-import mixinProduct from '~/plugins/mixinProduct'
+import mixinProduct from '~/plugins/mixin/product'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import TopView from '~/components/PagesComponents/HomePage/TopView/TopView'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   components: {

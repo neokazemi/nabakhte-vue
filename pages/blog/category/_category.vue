@@ -47,8 +47,8 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
-import mixinPost from '~/plugins/mixinPost'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
+import mixinPost from '~/plugins/mixin/post'
 import '~/assets/css/pages/blog.css'
 
 export default {
