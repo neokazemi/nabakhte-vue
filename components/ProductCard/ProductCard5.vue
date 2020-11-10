@@ -3,7 +3,7 @@
     <div :class="{ 'product-card5-bg': true, 'box-shadow': boxShadow }">
       <div class="product-img">
         <nuxt-link :to="product.getLink()">
-          <v-img :src="product.image.url" alt="" contain :width="'100%'" :height="'100%'" />
+          <v-img :src="product.photo" alt="" contain :width="'100%'" :height="'100%'" />
         </nuxt-link>
       </div>
       <div class="product-name">

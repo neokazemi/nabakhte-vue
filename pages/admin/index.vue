@@ -6,8 +6,8 @@
 import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
+  middleware: 'Auth',
   components: { Menu }
-
 }
 </script>
 

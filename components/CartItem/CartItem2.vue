@@ -1,8 +1,8 @@
 <template>
   <div class="full-width card">
     <div class="product-image">
-      <v-img :src="cartItem.product.image.url" contain />
-      <a class="cart-item-image-hover">×</a>
+      <v-img :src="cartItem.product.photo" contain />
+      <a class="cart-item-image-hover" @click="removeFromCart(cartItem)">×</a>
     </div>
     <div class="card-product-details">
       <slot />
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import { CartItem } from '~/models/Cart'
 
 export default {

@@ -1,5 +1,14 @@
 <template>
   <v-app>
+    <v-snackbar
+      v-model="showNotification"
+      :timeout="notificationShowTime"
+      color="#2bbb28"
+      left
+    >
+      {{ notification }}
+    </v-snackbar>
+    <LoginDialog />
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="true"
@@ -19,16 +28,20 @@
 </template>
 
 <script>
+import LoginDialog from '~/components/login/LoginDialog'
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
+import mixinNotification from '~/plugins/mixin/notification'
+import '~/assets/css/components/snackbarStyle.css'
 
 export default {
   components: {
+    LoginDialog,
     Header,
     Footer
   },
-  mixins: [mixinDetectDevice],
+  mixins: [mixinDetectDevice, mixinNotification],
   data () {
     return {
       mainMenu: '',

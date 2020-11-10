@@ -1,63 +1,31 @@
-<!--<template>-->
-<!--  <div class="text-center">-->
-<!--    <v-snackbar-->
-<!--      v-model="snackbar.show"-->
-<!--      :timeout="snackbar.timeout"-->
-<!--      bottom-->
-<!--      left-->
-<!--      :color="snackbar.color"-->
-<!--      :style="snackbar.style"-->
-<!--    >-->
-<!--      {{ snackbar.text }}-->
-<!--    </v-snackbar>-->
-<!--    <v-text-field v-model="text" />-->
-<!--    <v-btn @click="showSnackbar(text, 'success')" />-->
-<!--  </div>-->
-<!--</template>-->
-
-<!--<script>-->
-<!--import mixinDetectDevice from '../../plugins/mixinDetectDevice'-->
-<!--import mixinStore from '../../plugins/mixinStore'-->
-<!--export default {-->
-<!--  name: 'Index',-->
-<!--  mixins: [mixinDetectDevice, mixinStore],-->
-<!--  data () {-->
-<!--    return {-->
-<!--      text: ''-->
-<!--    }-->
-<!--  }-->
-<!--}-->
-<!--</script>-->
-
 <template>
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-slide-group show-arrows>
-          <v-slide-item v-for="(item, index) in products.list" :key="index">
-            <div :style="{ width: 291 }">
-              <ProductCard :type="1" :product="item">
-                {{ item.name }}
-              </ProductCard>
-            </div>
-          </v-slide-item>
-        </v-slide-group>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <v-btn
+      color="red lighten-2"
+      dark
+      @click="showLoginDialog"
+    >
+      Click Me
+    </v-btn>
+    <LoginDialog />
+  </div>
 </template>
 
 <script>
-import ProductCard from '../../components/ProductCard/ProductCard'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
-import mixinProduct from '~/plugins/mixinProduct'
+import LoginDialog from '../../components/login/LoginDialog'
 
 export default {
   name: 'Index',
-  components: { ProductCard },
-  mixins: [mixinDetectDevice, mixinProduct],
+  components: { LoginDialog },
   data () {
-    return {}
+    return {
+      dialog: false
+    }
+  },
+  methods: {
+    showLoginDialog () {
+      this.$store.commit('updateLoginDialog', true)
+    }
   }
 }
 </script>

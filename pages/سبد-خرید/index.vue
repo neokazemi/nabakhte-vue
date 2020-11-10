@@ -58,7 +58,15 @@
                 </v-col>
               </v-row>
             </v-container>
-            <CartItem v-for="(item, index) in cart.list" :key="index" :type="1" :cart-item="item" @remove="removeFromCart" />
+            <!--            // ToDo v-model-->
+            <CartItem
+              v-for="(item, index) in cart.list"
+              :key="index"
+              :type="1"
+              :cart-item="item"
+              @remove="removeFromCart"
+              @changedQuantity="updateCart"
+            />
             <div class="discount-code">
               <input class="discount-input" placeholder="کد تخفیف:">
               <button class="apply-discount">
@@ -105,9 +113,9 @@
 
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/pages/Cart.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import CartItem from '~/components/CartItem/CartItem'
 
 export default {

@@ -2,9 +2,10 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   server: {
-    port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost,
-    timing: false
+    // port: 3000, // default: 3000
+    // proxy: 'http://localhost/'
+    // host: '0.0.0.0', // default: localhost,
+    // timing: false
   },
   /*
   ** Nuxt rendering mode
@@ -45,7 +46,9 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [],
+  plugins: [
+    // { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+  ],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -78,7 +81,36 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {},
+  axios: {
+    // baseURL: 'http://localhost:3000',
+    baseURL: process.env.BASE_URL,
+    debug: false,
+    // proxyHeaders: true, // In SSR context, this options sets client requests headers as default headers for the axios requests. NOTE: CloudFlare's CDN => set this to false
+    proxy: true // Can be also an object with default options
+    // headers: {
+    //   common: {
+    //     'Accept': 'application/json, text/plain, */*'
+    //   },
+    //   delete: {},
+    //   get: {},
+    //   head: {},
+    //   post: {},
+    //   put: {},
+    //   patch: {}
+    // }
+    // baseURL: 'http://auth-api.web/api/',
+    // credentials: true // this says that in the request the httponly cookie should be sent
+  },
+  proxy: {
+    // '/aaa/': 'http://localhost/api/'
+    '/api/': {
+      target: process.env.BASE_API_URL,
+      pathRewrite: {
+        '^/api': ''
+      },
+      changeOrigin: true
+    }
+  },
   /*
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration

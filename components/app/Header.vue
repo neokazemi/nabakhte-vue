@@ -192,16 +192,28 @@
                       </div>
                     </div>
                     <div class="account-management">
-                      <nuxt-link to="/my-account">
-                        <div class="account-logo leftSide-btn-arrow">
-                          <v-icon color="#fff" size="20">
-                            mdi-account
-                          </v-icon>
-                        </div>
-                        <h2 class="account-description">
-                          حساب کاربری
-                        </h2>
-                      </nuxt-link>
+                      <!--                      <nuxt-link to="/my-account">-->
+                      <!--                        <div class="account-logo leftSide-btn-arrow">-->
+                      <!--                          <v-icon color="#fff" size="20">-->
+                      <!--                            mdi-account-->
+                      <!--                          </v-icon>-->
+                      <!--                        </div>-->
+                      <!--                        <h2 class="account-description">-->
+                      <!--                          حساب کاربری-->
+                      <!--                        </h2>-->
+                      <!--                      </nuxt-link>-->
+                      <div @click="showLoginDialog">
+                        <nuxt-link to="#">
+                          <div class="account-logo leftSide-btn-arrow">
+                            <v-icon color="#fff" size="20">
+                              mdi-account
+                            </v-icon>
+                          </div>
+                          <h2 class="account-description">
+                            حساب کاربری
+                          </h2>
+                        </nuxt-link>
+                      </div>
                       <div class="account-options user-button-details">
                         <nuxt-link class="first-option" to="/my-account/orders">
                           <i class="fas fa-shopping-basket" />سفارش ها
@@ -340,8 +352,15 @@
               <HeaderCart :products="products" />
             </div>
           </div>
-          <div class="account-scrolled-menu">
-            <nuxt-link to="/my-account">
+          <div class="account-scrolled-menu" @click="showLoginDialog">
+            <!--            <nuxt-link to="/my-account">-->
+            <!--              <div class="leftSide-btn leftSide-btn-arrow account-logo">-->
+            <!--                <v-icon color="#fff" size="20">-->
+            <!--                  mdi-account-->
+            <!--                </v-icon>-->
+            <!--              </div>-->
+            <!--            </nuxt-link>-->
+            <nuxt-link to="#">
               <div class="leftSide-btn leftSide-btn-arrow account-logo">
                 <v-icon color="#fff" size="20">
                   mdi-account
@@ -374,9 +393,9 @@ import Badge from '~/components/HeaderComponents/Badge'
 import MainMenu from '~/components/MobileMenus/MainMenu'
 import SearchMenu from '~/components/MobileMenus/SearchMenu'
 import AccountMenu from '~/components/MobileMenus/AccountMenu'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/components/Header.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
 
 export default {
@@ -468,6 +487,9 @@ export default {
     }
   },
   methods: {
+    showLoginDialog () {
+      this.$store.commit('updateLoginDialog', true)
+    },
     menuDrawerOpen () {
       this.$store.commit('updateDrawer', true)
       this.$emit('drawer-menu', MainMenu)

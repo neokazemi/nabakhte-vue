@@ -90,18 +90,18 @@
           </v-navigation-drawer>
           <transition name="fade">
             <v-row v-if="grid === 'square'">
-              <v-col v-for="(product, index) in products.list" :key="index" :sm="3" class="product-card-col">
-                <ProductCard :type="4" :product="product">
-                  {{ product.name }}
+              <v-col v-for="(item, index) in products.list" :key="index" :sm="3" class="product-card-col">
+                <ProductCard :type="4" :product="item">
+                  {{ item.title }}
                 </ProductCard>
               </v-col>
             </v-row>
           </transition>
           <transition name="fade">
             <v-row v-if="grid === 'row'">
-              <v-col v-for="(product, index) in products.list" :key="index" :md="12" class="product-card-col">
-                <ProductCard :details="product" :type="5">
-                  {{ product.name }}
+              <v-col v-for="(item, index) in products.list" :key="index" :md="12" class="product-card-col">
+                <ProductCard :product="item" :type="5">
+                  {{ item.title }}
                 </ProductCard>
               </v-col>
             </v-row>
@@ -112,14 +112,14 @@
   </div>
 </template>
 <script>
-import mixinProduct from '~/plugins/mixinProduct'
+import mixinProduct from '~/plugins/mixin/product'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductCard from '~/components/ProductCard/ProductCard'
 import Sidebar from '~/components/app/Sidebar'
 import ExpansionPanel from '~/components/ExpansionPanel'
 import ToggleButton from '~/components/ToggleButton'
 import '~/assets/css/pages/Shop.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import Pagination from '~/components/Pagination'
 
 export default {

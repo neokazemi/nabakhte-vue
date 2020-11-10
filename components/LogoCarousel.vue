@@ -12,7 +12,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import 'swiper/css/swiper.css'
 import '~/assets/css/components/LogoCarousel.css'
 
 export default {

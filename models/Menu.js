@@ -97,7 +97,7 @@ class MenuList extends Collection {
   }
 }
 
-class Menu extends Collection {
+class Menu extends Model {
   constructor (data) {
     super(data, [
       { key: 'id' },
