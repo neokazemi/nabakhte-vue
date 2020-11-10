@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import { CartItem } from '~/models/Cart'
 
 export default {
