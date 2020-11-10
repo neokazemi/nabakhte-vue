@@ -22,7 +22,7 @@
 
 <script>
 import '~/assets/css/components/Treeview.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'Treeview',
