@@ -42,7 +42,7 @@
 <script>
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
-import detectDevice from '~/plugins/mixin/detectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 export default {
   components: {
     Header,
