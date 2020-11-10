@@ -4,16 +4,18 @@
       <v-card-title>
         اصلاح اطلاعات محصول
       </v-card-title>
-      <div
-        v-for="i in products"
+      <!--      <div-->
+      <!--        v-for="i in products"-->
 
-        :key="i.id"
-      >
-        <div v-if="$route.params.id.includes(i.id)">
+      <!--        :key="i.id"-->
+      <!--      >-->
+      <!--        <div v-if="$route.params.id.includes(i.id)">-->
+      <div>
+        <div>
           <v-row>
             <v-col>
               <v-text-field
-                v-model="i.title"
+                v-model="product.data.title"
 
                 class="input-elements "
                 label=" نام کالا"
@@ -55,7 +57,7 @@
           <v-row>
             <v-col>
               <v-text-field
-                v-model="i.price.base"
+                v-model="product.data.price.base"
                 class="input-elements "
                 label=" قیمت پایه"
                 outlined
@@ -64,7 +66,7 @@
             </v-col>
             <v-col>
               <v-text-field
-                v-model="i.price.discount"
+                v-model="product.data.price.discount"
                 class="input-elements"
                 label="تخفیف (%)"
                 outlined
@@ -141,7 +143,7 @@
                 height="200px"
 
                 class="mt-3 "
-                :src="product.photo"
+                :src="product.data.photo"
               />
               <v-btn
                 class="mt-3 mr-5"
@@ -166,12 +168,12 @@
             <v-col cols="6">
               <client-only>
                 <vue-tags-input
-                  v-model="tag"
+                  :v-model="tag"
                   class="vue-tags-input"
-                  :tags="tags"
+                  :tags="product.data.tags"
                   placeholder="تگ ها"
-
                   :allow-edit-tags="true"
+
                   @tags-changed="newTags => tags = newTags"
                 />
               </client-only>
@@ -446,6 +448,7 @@
 </template>
 
 <script>
+import { Product } from '../../../models/Product'
 
 export default {
   name: 'ProductInformationCorrection',
@@ -455,9 +458,21 @@ export default {
   },
   props: {
     productslist: {
-      type: Object
+      type: Object,
+      default: new Product()
+
     }
 
+  },
+  // mounted () {
+  //   this.getData()
+  // },
+  async fetch () {
+    this.product = await fetch(
+
+      'http://localhost/api/v2/product/' + this.$route.params.id
+
+    ).then(res => res.json())
   },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -500,20 +515,25 @@ export default {
     }
 
   }),
-
   watch: {
     dialog (val) {
       val || this.close()
     },
+
     dialogDelete (val) {
       val || this.closeDelete()
     }
   },
-
   created () {
     this.products = this.productslist.list
   },
   methods: {
+    // async getData () {
+    //   const res = await fetch('http://localhost/api/v2/product/449')
+    //   const data = await res.json()
+    //   this.test = data
+    // },
+
     addItem () {
       this.dialog = true
       this.changeshow = true
