@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import mixinProduct from '~/plugins/mixinProduct'
+import mixinProduct from '~/plugins/mixin/product'
 
 import Menu from '~/components/admin/menu'
 import ProductsTable from '~/components/admin/productsPanel/tables/productsTable'
