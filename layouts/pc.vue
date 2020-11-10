@@ -32,7 +32,7 @@ import LoginDialog from '~/components/login/LoginDialog'
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
 import mixinDetectDevice from '~/plugins/mixin/detectDevice'
-import mixinNotification from '~/plugins/mixinNotification'
+import mixinNotification from '~/plugins/mixin/notification'
 import '~/assets/css/components/snackbarStyle.css'
 
 export default {

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import mixinProduct from '~/plugins/mixinProduct'
+import mixinProduct from '~/plugins/mixin/product'
 
 import ProductInformationCorrection
 
