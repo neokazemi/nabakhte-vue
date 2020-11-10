@@ -7,55 +7,64 @@
         </v-banner>
       </v-col>
     </v-row>
-    <v-row>
-      <v-col>
-        <v-row>
-          <v-col>
-            <v-text-field
-              v-model="username"
-              outlined
-              label="شماره همراه"
-              dense
-              :rules="notEmptyRule"
-              dir="ltr"
-            />
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <v-text-field
-              v-model="password"
-              outlined
-              label="کلمه عبور"
-              dense
-              type="password"
-              :rules="notEmptyRule"
-              dir="ltr"
-            />
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col :md="6">
-            <v-checkbox
-              v-model="rememberMe"
-              label="مرا به خاطر بسپار"
-            />
-          </v-col>
-          <v-col :md="6" class="d-flex justify-end">
-            <v-btn color="#2bbb28" medium :max-width="75" :max-height="32" @click="submit">
-              ورود
-            </v-btn>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-col>
-            <nuxt-link to="#" class="forgot-password">
-              کلمه عبور خود را فراموش کرده اید؟
-            </nuxt-link>
-          </v-col>
-        </v-row>
-      </v-col>
-    </v-row>
+    <v-form ref="loginForm" v-model="valid" lazy-validation>
+      <v-row>
+        <v-col>
+          <v-row>
+            <v-col>
+              <v-text-field
+                v-model="username"
+                outlined
+                label="شماره همراه"
+                dense
+                :rules="mobileNumberRule"
+                dir="ltr"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-text-field
+                v-model="password"
+                outlined
+                label="کلمه عبور"
+                dense
+                type="password"
+                :rules="notEmptyRule"
+                dir="ltr"
+              />
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col :md="6">
+              <v-checkbox
+                v-model="rememberMe"
+                label="مرا به خاطر بسپار"
+              />
+            </v-col>
+            <v-col :md="6" class="d-flex justify-end">
+              <v-btn
+                color="#2bbb28"
+                medium
+                :max-width="75"
+                :max-height="32"
+                :loading="loading"
+                @click="submit"
+              >
+                ورود
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <nuxt-link to="#" class="forgot-password">
+                کلمه عبور خود را فراموش کرده اید؟
+              </nuxt-link>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+    </v-form>
   </v-container>
 </template>
 
@@ -72,15 +81,32 @@ export default {
       notEmptyRule: [
         v => !!v || 'پر کردن این فیلد الزامی میباشد'
       ],
-      rememberMe: false
+      mobileNumberRule: [
+        v => /09\d{9}/.test(v) || 'شماره موبایل صحیح وارد کنید',
+        v => !!v || 'پر کردن این فیلد الزامی میباشد'
+      ],
+      rememberMe: false,
+      valid: true,
+      loading: false
     }
   },
   methods: {
     submit () {
-      this.api_login(this.username, this.password)
-        .then((response) => {
-          console.log('response from submit: ', response)
-        })
+      this.loading = true
+      if (this.validate()) {
+        this.api_login(this.username, this.password)
+          .then((response) => {
+            this.loading = false
+            console.log('response from submit: ', response)
+          }).catch((response) => {
+            this.loading = false
+            console.log(response)
+          })
+      }
+    },
+    validate () {
+      this.$refs.loginForm.validate()
+      return this.valid
     }
   }
 }
