@@ -386,14 +386,14 @@
 </template>
 
 <script>
-import mixinProduct from '~/plugins/mixinProduct'
-import mixinStore from '~/plugins/mixinStore'
+import mixinProduct from '~/plugins/mixin/product'
+import mixinStore from '~/plugins/mixin/store'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import ProductSpecs from '~/components/ProductSpecs'
 import Comment from '~/components/Comment'
 import '~/assets/css/pages/Product.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import { Product } from '~/models/Product'
 
 export default {

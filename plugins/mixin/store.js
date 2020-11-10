@@ -1,4 +1,4 @@
-import mixinNotification from './mixinNotification'
+import mixinNotification from './notification'
 import { Cart } from '~/models/Cart'
 
 const mixinStore = {

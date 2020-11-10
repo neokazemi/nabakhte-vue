@@ -58,7 +58,7 @@
 
 <script>
 import { Product } from '~/models/Product'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/components/ProductCards/ProductCard1.css'
 
 export default {

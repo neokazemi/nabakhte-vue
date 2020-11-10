@@ -25,7 +25,7 @@
 
 <script>
 import { ProductList } from '~/models/Product'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/components/HeaderCart.css'
 import CartItem from '~/components/CartItem/CartItem'
 

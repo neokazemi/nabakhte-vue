@@ -63,7 +63,7 @@
 
 <script>
 import { Product } from '~/models/Product'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 
 export default {
   name: 'ProductCard2',
