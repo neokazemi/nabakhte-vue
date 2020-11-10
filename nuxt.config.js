@@ -46,7 +46,9 @@ export default {
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
   */
-  plugins: [],
+  plugins: [
+    // { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+  ],
   /*
   ** Auto import components
   ** See https://nuxtjs.org/api/configuration-components
@@ -102,7 +104,7 @@ export default {
   proxy: {
     // '/aaa/': 'http://localhost/api/'
     '/api/': {
-      target: 'http://localhost/api/',
+      target: process.env.BASE_API_URL,
       pathRewrite: {
         '^/api': ''
       },
