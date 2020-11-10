@@ -78,7 +78,7 @@
             <v-expansion-panel-content class="cart-list">
               <div v-for="(item, index) in cart.list" :key="index" class="cart-item">
                 <div class="item-name">
-                  <p>{{ item.product.name }}<span v-if="item.qty > 1">({{ item.qty }} عدد)</span></p>
+                  <p>{{ item.product.title }}<span v-if="item.qty > 1">({{ item.qty }} عدد)</span></p>
                 </div>
                 <div class="item-price">
                   {{ item.totalPrice().toman('final', true) }}
