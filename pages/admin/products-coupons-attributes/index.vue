@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import mixinProduct1 from '~/plugins/mixinProduct'
+import mixinProduct1 from '~/plugins/mixin/product'
 import mixinProduct from '~/plugins/mixin/api/Product'
 
 import { Product, ProductList } from '~/models/Product'

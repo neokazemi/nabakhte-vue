@@ -336,7 +336,7 @@
 </template>
 
 <script>
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 
 export default {
   name: 'Checkout',
