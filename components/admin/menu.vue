@@ -43,25 +43,58 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <div>
+      {{ product.title }}
+    </div>
   </div>
 </template>
 <script>
+import { Product } from '~/models/Product'
+
 export default {
   name: 'Menu',
   data () {
     return {
+
       drawer: null,
+
+      posts: null,
       items: [
-        { title: 'کاربران', icon: 'mdi-view-dashboard', link: '/admin/users-permissions-roles' },
-        { title: 'سفارشات', icon: 'mdi-view-dashboard', link: '/admin/orders' },
-        { title: 'محصولات / کپن ها / صفت ها', icon: 'mdi-view-dashboard', link: '/admin/products-coupons-attributes' },
-        { title: 'محتوا', icon: 'mdi-view-dashboard', link: '/admin/content' },
-        { title: 'منابع', icon: 'mdi-view-dashboard', link: '/admin/resources' }
-      ]
+        {
+          title: 'کاربران',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/users-permissions-roles'
+        },
+        {
+          title: 'سفارشات',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/orders'
+        },
+        {
+          title: 'محصولات / کپن ها / صفت ها',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/products-coupons-attributes'
+        },
+        {
+          title: 'محتوا',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/content'
+        },
+        {
+          title: 'منابع',
+          icon: 'mdi-view-dashboard',
+          link: '/admin/resources'
+        }
+      ],
+      product:
+
+        new Product()
 
     }
   }
+
 }
+
 </script>
 <style scoped>
 .drawer-height {

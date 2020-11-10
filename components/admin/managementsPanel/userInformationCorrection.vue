@@ -399,7 +399,9 @@ export default {
     DoubleSelect: () => import('vue-double-select')
   },
 
-  props: ['editmode', 'filled'],
+  props:
+
+    { editmode: Boolean, filled: Boolean },
   data: () => ({
     changeshow: true,
     items: ['فعال', 'غیر فعال', 'نامشخص'],

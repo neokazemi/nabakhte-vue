@@ -12,7 +12,7 @@
         بازگشت >>
       </v-btn>
     </div>
-    <product-information-correction />
+    <product-information-correction :productslist="products" />
     <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
@@ -26,11 +26,14 @@
 </template>
 
 <script>
+import mixinProduct from '~/plugins/mixinProduct'
+
 import ProductInformationCorrection
   from '~/components/admin/managementsPanel/productInformationCorrection'
 export default {
   name: 'Edit',
-  components: { ProductInformationCorrection }
+  components: { ProductInformationCorrection },
+  mixins: [mixinProduct]
 }
 </script>
 

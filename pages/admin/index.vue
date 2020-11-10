@@ -7,6 +7,7 @@ import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
   components: { Menu }
+
 }
 </script>
 
