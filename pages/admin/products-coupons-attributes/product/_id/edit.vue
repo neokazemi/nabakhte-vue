@@ -29,11 +29,22 @@
 import mixinProduct from '~/plugins/mixinProduct'
 
 import ProductInformationCorrection
+
   from '~/components/admin/managementsPanel/productInformationCorrection'
 export default {
   name: 'Edit',
   components: { ProductInformationCorrection },
   mixins: [mixinProduct]
+  // async asyncData () {
+  //   const post = await fetch('http://localhost/api/v2/product/449')
+  //   const post1 = post.json()
+  //   return { post1 }
+  // },
+  // data: () => ({
+  //   post1: {}
+  //
+  // })
+
 }
 </script>
 
