@@ -18,7 +18,9 @@ const mixinAuth = {
       return new Promise((resolve, reject) => {
         that.$axios.post(url, data)
           .then((response) => {
-            console.log('response from mixin: ', response.data.data.data)
+            const accessToken = response.data.data.access_token
+            const tokenExpiresAt = response.data.data.token_expires_at
+            that.$store.dispatch('auth/setToken', { token: accessToken, expiresIn: tokenExpiresAt })
             resolve(response)
           })
           .catch((error) => {
