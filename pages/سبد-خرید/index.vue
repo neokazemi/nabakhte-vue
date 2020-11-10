@@ -113,9 +113,9 @@
 
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/pages/Cart.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import CartItem from '~/components/CartItem/CartItem'
 
 export default {

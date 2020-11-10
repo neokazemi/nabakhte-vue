@@ -7,7 +7,10 @@
           <v-expansion-panel>
             <v-expansion-panel-header>مدیریت محصولات</v-expansion-panel-header>
             <v-expansion-panel-content>
-              <ProductsTable :productslist="products" />
+              <ProductsTable
+                :productslist="products"
+                :nextpage-products="nextpageproducts.data"
+              />
             </v-expansion-panel-content>
           </v-expansion-panel>
           <v-expansion-panel>
@@ -51,8 +54,19 @@ export default {
   name: 'Index',
   components: { Menu, AttributeGroupsTable, AttributesTable, CouponsManagementTable, ProductsTable },
   mixins: [mixinProduct1, mixinProduct],
+  async fetch () {
+    if (this.pagenum === 2) {
+      this.nextpageproducts = await fetch(
+
+        'http://localhost/api/v2/product?doesntHaveGrand=1&active=1&productPage=' + this.pagenum
+
+      ).then(res => res.json())
+    }
+  },
   data () {
     return {
+      pagenum: 2,
+      nextpageproducts: {},
       productList: new ProductList(),
       productShow: new Product()
     }

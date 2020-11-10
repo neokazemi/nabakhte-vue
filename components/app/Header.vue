@@ -393,9 +393,9 @@ import Badge from '~/components/HeaderComponents/Badge'
 import MainMenu from '~/components/MobileMenus/MainMenu'
 import SearchMenu from '~/components/MobileMenus/SearchMenu'
 import AccountMenu from '~/components/MobileMenus/AccountMenu'
-import mixinStore from '~/plugins/mixinStore'
+import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/components/Header.css'
-import mixinDetectDevice from '~/plugins/mixinDetectDevice'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
 
 export default {
