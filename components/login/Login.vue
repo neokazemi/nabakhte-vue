@@ -97,10 +97,8 @@ export default {
         this.api_login(this.username, this.password)
           .then((response) => {
             this.loading = false
-            console.log('response from submit: ', response)
           }).catch((response) => {
             this.loading = false
-            console.log(response)
           })
       }
     },

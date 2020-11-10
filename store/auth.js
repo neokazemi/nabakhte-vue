@@ -40,7 +40,6 @@ export const actions = {
 export const getters = {
   isAuthenticated () {
     const accessToken = cookies.get('x-access-token')
-    console.log('x-access-token', accessToken)
     return (typeof accessToken !== 'undefined' && accessToken !== null)
   }
 }
