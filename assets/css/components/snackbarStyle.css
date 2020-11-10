@@ -1,0 +1,4 @@
+.v-snack .v-snack__content {
+  font-weight: bold;
+  border-right: solid 10px rgba(0, 0, 0, 0.15);
+}
