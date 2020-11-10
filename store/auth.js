@@ -1,3 +1,4 @@
+// https://www.vojtechruzicka.com/protect-http-cookies/
 import cookies from 'js-cookie'
 
 export const state = () => ({
@@ -33,5 +34,13 @@ export const actions = {
     this.$axios.setToken(false)
     cookies.remove('x-access-token')
     commit('REMOVE_TOKEN')
+  }
+}
+
+export const getters = {
+  isAuthenticated () {
+    const accessToken = cookies.get('x-access-token')
+    console.log('x-access-token', accessToken)
+    return (typeof accessToken !== 'undefined' && accessToken !== null)
   }
 }
