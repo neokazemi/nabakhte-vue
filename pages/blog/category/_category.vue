@@ -37,6 +37,7 @@
           </v-col>
         </v-row>
         <PostItem v-for="(item, index) in contents.list" :key="index" :post="item" />
+        <Pagination :length="pagesCount" :total-visible="4" @pageChanged="getNewPageContents($event)" />
       </v-col>
     </v-row>
   </v-container>
@@ -51,10 +52,12 @@ import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import mixinContent from '~/plugins/mixin/api/Content'
 import { Content, ContentList } from '~/models/Content'
 import '~/assets/css/pages/blog.css'
+import Pagination from '~/components/Pagination'
 
 export default {
   name: 'Category',
   components: {
+    Pagination,
     Breadcrumbs,
     Sidebar,
     PostItem,
@@ -925,7 +928,8 @@ export default {
             ]
           }
         }
-      ]
+      ],
+      pagesCount: 4
     }
   },
   created () {
@@ -937,6 +941,9 @@ export default {
     this.api_content_search([], 1)
       .then((response) => {
         that.contents = new ContentList(response.data, response.meta)
+      })
+      .then((response) => {
+        that.pagesCount = that.contents.paginate.last_page
       })
 
     this.api_content_show(22644)
@@ -970,6 +977,21 @@ export default {
             }
           }
         }
+      }
+    },
+    getNewPageContents (event) {
+      const that = this
+      this.api_content_search([], event)
+        .then((response) => {
+          that.contents = new ContentList(response.data, response.meta)
+        })
+      this.scrollToTop()
+    },
+    scrollToTop () {
+      const c = document.documentElement.scrollTop || document.body.scrollTop
+      if (c > 0) {
+        window.requestAnimationFrame(this.scrollToTop)
+        window.scrollTo(0, c - c / 10)
       }
     }
   }
