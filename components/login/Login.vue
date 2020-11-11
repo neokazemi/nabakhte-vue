@@ -49,7 +49,8 @@
                 :max-width="75"
                 :max-height="32"
                 :loading="loading"
-                @click="submit"
+                type="submit"
+                @click.prevent="submit"
               >
                 ورود
               </v-btn>
