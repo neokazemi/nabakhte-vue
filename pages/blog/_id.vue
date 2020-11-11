@@ -21,6 +21,7 @@
           width="100%"
           :style="{ 'padding-top': '20px' }"
         >
+          <v-img :src="content.photo" contain />
           <div class="n--post-header">
             <div class="post-short-description">
               <p class="post-title">
