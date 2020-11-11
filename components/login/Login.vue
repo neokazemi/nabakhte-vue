@@ -109,7 +109,7 @@ export default {
             this.loading = false
             this.enableNotification('عملیات ورود با موفقیت انجام شد', 2000)
             if (this.isDialog) {
-              this.$router.go(0)
+              this.$store.commit('updateLoginDialog', false)
             } else {
               this.$router.go(-1)
             }
