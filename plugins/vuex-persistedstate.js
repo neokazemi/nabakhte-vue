@@ -1,14 +1,11 @@
 import createPersistedState from 'vuex-persistedstate'
 
-export default ({ store }) => {
+export default ({ store, isHMR }) => {
+  if (isHMR) { return }
   if (process.browser) {
     createPersistedState({
       key: 'vuex',
-      storage: window.localStorage
-    })(store)
-  } else {
-    createPersistedState({
-      key: 'vuex'
+      paths: ['cart']
     })(store)
   }
 }
