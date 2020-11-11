@@ -75,6 +75,13 @@ import mixinAuth from '@/plugins/mixin/api/Auth'
 export default {
   name: 'Login',
   mixins: [mixinAuth],
+  props: {
+    isDialog: {
+      required: false,
+      default: false,
+      type: Boolean
+    }
+  },
   data () {
     return {
       username: null,
@@ -98,6 +105,12 @@ export default {
         this.api_login(this.username, this.password)
           .then((response) => {
             this.loading = false
+            if (this.isDialog) {
+              this.$router.go(0)
+            } else {
+              this.$router.go(-1)
+            }
+            // console.log(this.$router.back())
           }).catch((response) => {
             this.loading = false
           })
