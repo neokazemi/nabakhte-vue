@@ -1,25 +1,5 @@
 <template>
-  <div v-if="!isFromPc" class="mobile-container">
-    <div class="category-select">
-      <v-menu offset-y auto attach="#category-select-btn">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            id="category-select-btn"
-            color="#d81816"
-            dark
-            v-bind="attrs"
-            block
-            v-on="on"
-          >
-            مقالات
-          </v-btn>
-        </template>
-        <Treeview :tree-view="treeviewItems" />
-      </v-menu>
-    </div>
-    <PostItem v-for="(item, index) in posts.list" :key="index" :post="item" />
-  </div>
-  <v-container v-else>
+  <v-container>
     <v-row>
       <v-col
         cols="3"
@@ -36,34 +16,55 @@
             <breadcrumbs :items="breadcrumbsItems" />
           </v-col>
         </v-row>
-        <PostItem v-for="(item, index) in contents.list" :key="index" :post="item" />
+        <v-sheet
+          :elevation="1"
+          width="100%"
+          :style="{ 'padding-top': '20px' }"
+        >
+          <div class="n--post-header">
+            <div class="post-short-description">
+              <p class="post-title">
+                {{ content.title }}
+              </p>
+              <div class="post-tags">
+                <div class="tag" />
+                <div class="tag">
+                  مقالات
+                </div>
+                <div class="tag">
+                  بدون دیدگاه
+                </div>
+                <div class="tag">
+                  توسط مشاور آموزشی
+                </div>
+              </div>
+            </div>
+            <div class="post-fav" />
+          </div>
+          <div class="n--post-content" v-html="content.body" />
+        </v-sheet>
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import mixinContent from '~/plugins/mixin/api/Content'
-import { Content, ContentList } from '~/models/Content'
-import '~/assets/css/pages/blog.css'
-
+import { Content } from '~/models/Content'
 export default {
-  name: 'Category',
+  name: 'Post',
   components: {
     Breadcrumbs,
     Sidebar,
-    PostItem,
     Treeview
   },
   mixins: [mixinDetectDevice, mixinContent],
   data () {
     return {
-      contents: new ContentList(),
       content: new Content(),
       breadcrumbsItems: [
         {
@@ -928,21 +929,15 @@ export default {
       ]
     }
   },
-  created () {
-    this.convertArrayForTreeview()
-  },
   mounted () {
     const that = this
-
-    this.api_content_search([], 1)
-      .then((response) => {
-        that.contents = new ContentList(response.data, response.meta)
-      })
-
-    this.api_content_show(22644)
+    this.api_content_show(this.$route.params.id)
       .then((response) => {
         that.content = new Content(response.data.data)
       })
+  },
+  created () {
+    this.convertArrayForTreeview()
   },
   methods: {
     convertArrayForTreeview () {
@@ -976,6 +971,50 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-  @import url('~/assets/css/pages/_blogScoped.css');
+<style>
+  .n--post-header {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    padding: 28px;
+    background-color: #d81816;
+  }
+
+  .n--post-header .post-short-description {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .n--post-header .post-short-description .post-title {
+    font-size: 18px;
+  }
+
+  .n--post-header .post-short-description .post-tags {
+    font-size: 11px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+
+  .n--post-header .post-short-description .post-tags .tag {
+    margin-right: 20px;
+  }
+
+  .n--post-header .post-short-description .post-tags .tag:after {
+    margin-right: 10px;
+    content: '|';
+  }
+
+  .n--post-header .post-short-description .post-tags .tag:last-child:after {
+    display: none;
+  }
+
+  .n--post-header .post-fav {
+    width: 50px;
+  }
+
+  .n--post-content {
+    padding: 28px;
+  }
 </style>
