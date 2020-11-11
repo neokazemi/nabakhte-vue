@@ -49,6 +49,8 @@ import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
 import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import mixinPost from '~/plugins/mixin/post'
+import mixinContent from '~/plugins/mixin/api/Content'
+import { Content, ContentList } from '~/models/Content'
 import '~/assets/css/pages/blog.css'
 
 export default {
@@ -59,9 +61,11 @@ export default {
     PostItem,
     Treeview
   },
-  mixins: [mixinDetectDevice, mixinPost],
+  mixins: [mixinDetectDevice, mixinPost, mixinContent],
   data () {
     return {
+      contents: new ContentList(),
+      content: new Content(),
       breadcrumbsItems: [
         {
           disabled: false,
@@ -927,6 +931,19 @@ export default {
   },
   created () {
     this.convertArrayForTreeview()
+  },
+  mounted () {
+    const that = this
+
+    this.api_content_search([], 1)
+      .then((response) => {
+        that.contents = new ContentList(response.data, response.meta)
+      })
+
+    this.api_content_show(22644)
+      .then((response) => {
+        that.content = new Content(response.data.data)
+      })
   },
   methods: {
     convertArrayForTreeview () {

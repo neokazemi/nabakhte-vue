@@ -1,5 +1,5 @@
 import { Model, Collection } from 'js-abstract-model'
-import { SetList } from './Set'
+import { Set } from './Set'
 import Url from './Url'
 // import { ContentTimePointList } from './ContentTimePoint'
 
@@ -9,6 +9,7 @@ class Content extends Model {
       { key: 'id' },
       { key: 'apiUrl' },
       { key: 'author' },
+      { key: 'body' },
       { key: 'contenttype_id' },
       { key: 'context' },
       { key: 'description' },
@@ -34,7 +35,7 @@ class Content extends Model {
       // },
       {
         key: 'set',
-        relatedModel: SetList
+        relatedModel: Set
       },
       { key: 'tags' },
       { key: 'thumbnail' },
