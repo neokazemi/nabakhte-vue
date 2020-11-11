@@ -3,7 +3,7 @@
     <v-snackbar
       v-model="showNotification"
       :timeout="notificationShowTime"
-      color="#2bbb28"
+      :color="notificationColor"
       left
     >
       {{ notification }}

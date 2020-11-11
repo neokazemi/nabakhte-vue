@@ -28,7 +28,6 @@ const mixinMenu = {
     menus: {
       deep: true,
       handler (newValue) {
-        console.log('fuckO')
         this.$store.commit('menu/updateMenuCollection', newValue.list)
       }
     }
