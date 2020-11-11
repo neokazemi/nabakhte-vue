@@ -19,6 +19,7 @@
                 dense
                 :rules="mobileNumberRule"
                 dir="ltr"
+                validate-on-blur
               />
             </v-col>
           </v-row>
