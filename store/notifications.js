@@ -1,7 +1,8 @@
 export const state = () => ({
   showNotification: false,
   notificationShowTime: 2000,
-  notification: ''
+  notification: '',
+  type: 'success'
 })
 
 export const mutations = {
@@ -13,6 +14,9 @@ export const mutations = {
   },
   updateNotification (state, newInfo) {
     state.notification = newInfo
+  },
+  updateType (state, newInfo) {
+    state.type = newInfo
   }
 }
 
@@ -25,5 +29,8 @@ export const getters = {
   },
   notification (state) {
     return state.notification
+  },
+  type (state) {
+    return state.type
   }
 }

@@ -13,13 +13,21 @@ const mixinNotification = {
     },
     notificationShowTime () {
       return this.$store.getters['notifications/notificationShowTime']
+    },
+    notificationColor () {
+      if (this.$store.getters['notifications/type'] === 'success') {
+        return '#2bbb28'
+      } else if (this.$store.getters['notifications/type'] === 'failure') {
+        return '#e2401c'
+      }
     }
   },
   methods: {
-    enableNotification (text, time = 200000) {
+    enableNotification (text, time = 2000, type = 'success') {
       this.$store.commit('notifications/updateShowNotification', true)
       this.$store.commit('notifications/updateNotificationShowTime', time)
       this.$store.commit('notifications/updateNotification', text)
+      this.$store.commit('notifications/updateType', type)
     }
   }
 }
