@@ -47,7 +47,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    // { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    // { src: '~/plugins/persistedState.client.js', ssr: false } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    // { src: '~/plugins/vuex-persistedstate.js', mode: 'client', ssr: false }
+    // { src: '~/plugins/vuex-persist', ssr: false }
   ],
   /*
   ** Auto import components
