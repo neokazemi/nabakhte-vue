@@ -1,21 +1,15 @@
 <template>
   <div>
-    <v-card class="mr-2 ml-2 pr-5 pl-5">
+    <v-card v-if="product" class="mr-2 ml-2 pr-5 pl-5">
       <v-card-title>
         اصلاح اطلاعات محصول
       </v-card-title>
-      <!--      <div-->
-      <!--        v-for="i in products"-->
-
-      <!--        :key="i.id"-->
-      <!--      >-->
-      <!--        <div v-if="$route.params.id.includes(i.id)">-->
-      <div>
+      <div v-if="product">
         <div>
           <v-row>
             <v-col>
               <v-text-field
-                v-model="product.data.title"
+                v-model="product.title"
 
                 class="input-elements "
                 label=" نام کالا"
@@ -25,7 +19,6 @@
             </v-col>
             <v-col>
               <v-text-field
-
                 v-model="name"
 
                 class="input-elements"
@@ -57,7 +50,15 @@
           <v-row>
             <v-col>
               <v-text-field
-                v-model="product.data.price.base"
+                v-if="product.price"
+                v-model="product.price.base"
+                class="input-elements "
+                label=" قیمت پایه"
+                outlined
+                dense
+              />
+              <v-text-field
+                v-if="notfilled"
                 class="input-elements "
                 label=" قیمت پایه"
                 outlined
@@ -66,7 +67,15 @@
             </v-col>
             <v-col>
               <v-text-field
-                v-model="product.data.price.discount"
+                v-if="product.price"
+                v-model="product.price.discount"
+                class="input-elements"
+                label="تخفیف (%)"
+                outlined
+                dense
+              />
+              <v-text-field
+                v-if="notfilled"
                 class="input-elements"
                 label="تخفیف (%)"
                 outlined
@@ -139,16 +148,24 @@
           <v-row>
             <v-col>
               <v-img
+                v-if="!notfilled"
                 width="200px"
                 height="200px"
 
                 class="mt-3 "
-                :src="product.data.photo"
+                :src="product.photo"
               />
               <v-btn
+                v-if="!notfilled"
                 class="mt-3 mr-5"
               >
                 تغییر عکس
+              </v-btn>
+              <v-btn
+                v-if="notfilled"
+                class="mt-3 mr-5"
+              >
+                افزودن عکس
               </v-btn>
             </v-col>
             <v-col>
@@ -165,18 +182,31 @@
                 </v-btn>
               </v-row>
             </v-col>
+
             <v-col cols="6">
-              <client-only>
+              <client-only v-if="!notfilled">
                 <vue-tags-input
-                  :v-model="tag"
+                  v-if="product.tags"
+                  v-model="tag"
                   class="vue-tags-input"
-                  :tags="product.data.tags"
+                  :tags="product.tags"
+                  placeholder="تگ ها"
+                  :allow-edit-tags="true"
+
+                  @tags-changed="newTags => tags = newTags"
+                />
+              </client-only><client-only v-if="notfilled">
+                <vue-tags-input
+                  v-model="tag"
+                  class="vue-tags-input"
+                  :tags="tags"
                   placeholder="تگ ها"
                   :allow-edit-tags="true"
 
                   @tags-changed="newTags => tags = newTags"
                 />
               </client-only>
+
               <v-text-field
                 class="mt-3"
                 label="کانتنت های معرفی کننده محصول"
@@ -189,6 +219,7 @@
               />
             </v-col>
           </v-row>
+
           <v-row>
             <v-col class="px-5">
               <v-col>
@@ -231,214 +262,215 @@
               </v-col>
             </v-col>
           </v-row>
+
           <v-row>
             <v-col />
             <v-col>
-              <v-data-table
-                :footer-props="{
-                  showFirstLastPage: true,
-                  firstIcon: 'mdi-arrow-collapse-left',
-                  lastIcon: 'mdi-arrow-collapse-right',
-                  itemsPerPageText: 'تعداد ردیف در هر صفحه',
-                  pageText: '',
-                  itemsPerPageAllText: 'همه'
-                }"
-                :headers="headers"
-                :items="products"
-                :search="search"
-                class="elevation-1 data-table-width mt-30"
-              >
-                <template v-slot:item.status="{ item }">
-                  <v-chip
-                    :color="getColor(item.status)"
-                    dark
-                  >
-                    {{ item.status }}
-                  </v-chip>
-                </template>
-                <template v-slot:top>
-                  <v-toolbar
-                    flat
-                  >
-                    <v-spacer />
-                    <v-dialog
-                      v-model="dialog"
-                      class="dialog-width"
-                    >
-                      <v-card>
-                        <div>
-                          <v-row>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.name"
-                                class="text-fields-size"
-                                label="نام کالا"
-                              />
-                            </v-col>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.price"
-                                class="text-fields-size"
-                                label="قیمت پایه"
-                              />
-                            </v-col>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.discount"
-                                class="text-fields-size"
-                                label="تخفیف"
-                              />
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.pic"
-                                class="thetextfield"
-                                label="عکس"
-                              />
-                            </v-col>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.description"
-                                class="text-fields-size"
-                                label="توضیحات کوتاه"
-                              />
-                            </v-col>
-                            <v-col
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.type"
-                                class="text-fields-size"
-                                label="نوع"
-                              />
-                            </v-col>
-                          </v-row>
-                          <v-row>
-                            <v-col
-                              v-if="changeshow"
-                              class="form-elements-column-width"
-                            >
-                              <v-text-field
-                                v-model="editedItem.status"
-                                class="text-fields-size"
-                                label="فعال/غیر فعال"
-                              />
-                            </v-col>
-                          </v-row>
-                        </div>
-                        <v-card-actions>
-                          <v-spacer />
-                          <v-btn
-                            color="blue darken-1"
-                            text
-                            @click="close"
-                          >
-                            انصراف
-                          </v-btn>
-                          <v-btn
-                            v-if="changeshow"
-                            color="blue darken-1"
-                            text
-                            @click="save"
-                          >
-                            ذخیره
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                    <v-dialog v-model="dialogDelete" max-width="500px">
-                      <v-card>
-                        <v-card-title class="headline">
-                          آیا از حذف این محصول مطمئن هستید؟
-                        </v-card-title>
-                        <v-card-actions>
-                          <v-spacer />
-                          <v-btn color="blue darken-1" text @click="closeDelete">
-                            انصراف
-                          </v-btn>
-                          <v-btn color="blue darken-1" text @click="deleteItemConfirm">
-                            بله
-                          </v-btn>
-                          <v-spacer />
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                  </v-toolbar>
-                </template>
-                <template v-slot:item.actions="{ item }">
-                  <v-row>
-                    <v-tooltip top>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                          v-bind="attrs"
-                          class="mx-2 edit-delete-btns"
-                          fab
-                          dark
-                          x-small
-                          color="#9575CD"
-                          v-on="on"
-                          @click="editItem(item)"
-                        >
-                          <v-icon dark>
-                            mdi-pencil
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <span>اصلاح</span>
-                    </v-tooltip>
-                    <v-tooltip v-if="item.status === 'غیر فعال'" top>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                          v-bind="attrs"
-                          class="mx-2 edit-delete-btns"
-                          fab
-                          dark
-                          x-small
-                          color="green"
-                          v-on="on"
-                          @click="changestatus(item)"
-                        >
-                          <v-icon dark>
-                            mdi-wrench
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <span>فعال کردن محصول</span>
-                    </v-tooltip>
-                    <v-tooltip v-if="item.status === 'فعال'" top>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                          v-bind="attrs"
-                          class="mx-2 edit-delete-btns"
-                          fab
-                          dark
-                          x-small
-                          color="red"
-                          v-on="on"
-                          @click="changestatus(item)"
-                        >
-                          <v-icon dark>
-                            mdi-wrench
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <span>غیر فعال کردن محصول</span>
-                    </v-tooltip>
-                  </v-row>
-                </template>
-              </v-data-table>
+              <!--              <v-data-table-->
+              <!--                :footer-props="{-->
+              <!--                  showFirstLastPage: true,-->
+              <!--                  firstIcon: 'mdi-arrow-collapse-left',-->
+              <!--                  lastIcon: 'mdi-arrow-collapse-right',-->
+              <!--                  itemsPerPageText: 'تعداد ردیف در هر صفحه',-->
+              <!--                  pageText: '',-->
+              <!--                  itemsPerPageAllText: 'همه'-->
+              <!--                }"-->
+              <!--                :headers="headers"-->
+              <!--                :items="products"-->
+              <!--                :search="search"-->
+              <!--                class="elevation-1 data-table-width mt-30"-->
+              <!--              >-->
+              <!--                <template v-slot:item.status="{ item }">-->
+              <!--                  <v-chip-->
+              <!--                    :color="getColor(item.status)"-->
+              <!--                    dark-->
+              <!--                  >-->
+              <!--                    {{ item.status }}-->
+              <!--                  </v-chip>-->
+              <!--                </template>-->
+              <!--                <template v-slot:top>-->
+              <!--                  <v-toolbar-->
+              <!--                    flat-->
+              <!--                  >-->
+              <!--                    <v-spacer />-->
+              <!--                    <v-dialog-->
+              <!--                      v-model="dialog"-->
+              <!--                      class="dialog-width"-->
+              <!--                    >-->
+              <!--                      <v-card>-->
+              <!--                        <div>-->
+              <!--                          <v-row>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.name"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="نام کالا"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.price"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="قیمت پایه"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.discount"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="تخفیف"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                          </v-row>-->
+              <!--                          <v-row>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.pic"-->
+              <!--                                class="thetextfield"-->
+              <!--                                label="عکس"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.description"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="توضیحات کوتاه"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                            <v-col-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.type"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="نوع"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                          </v-row>-->
+              <!--                          <v-row>-->
+              <!--                            <v-col-->
+              <!--                              v-if="changeshow"-->
+              <!--                              class="form-elements-column-width"-->
+              <!--                            >-->
+              <!--                              <v-text-field-->
+              <!--                                v-model="editedItem.status"-->
+              <!--                                class="text-fields-size"-->
+              <!--                                label="فعال/غیر فعال"-->
+              <!--                              />-->
+              <!--                            </v-col>-->
+              <!--                          </v-row>-->
+              <!--                        </div>-->
+              <!--                        <v-card-actions>-->
+              <!--                          <v-spacer />-->
+              <!--                          <v-btn-->
+              <!--                            color="blue darken-1"-->
+              <!--                            text-->
+              <!--                            @click="close"-->
+              <!--                          >-->
+              <!--                            انصراف-->
+              <!--                          </v-btn>-->
+              <!--                          <v-btn-->
+              <!--                            v-if="changeshow"-->
+              <!--                            color="blue darken-1"-->
+              <!--                            text-->
+              <!--                            @click="save"-->
+              <!--                          >-->
+              <!--                            ذخیره-->
+              <!--                          </v-btn>-->
+              <!--                        </v-card-actions>-->
+              <!--                      </v-card>-->
+              <!--                    </v-dialog>-->
+              <!--                    <v-dialog v-model="dialogDelete" max-width="500px">-->
+              <!--                      <v-card>-->
+              <!--                        <v-card-title class="headline">-->
+              <!--                          آیا از حذف این محصول مطمئن هستید؟-->
+              <!--                        </v-card-title>-->
+              <!--                        <v-card-actions>-->
+              <!--                          <v-spacer />-->
+              <!--                          <v-btn color="blue darken-1" text @click="closeDelete">-->
+              <!--                            انصراف-->
+              <!--                          </v-btn>-->
+              <!--                          <v-btn color="blue darken-1" text @click="deleteItemConfirm">-->
+              <!--                            بله-->
+              <!--                          </v-btn>-->
+              <!--                          <v-spacer />-->
+              <!--                        </v-card-actions>-->
+              <!--                      </v-card>-->
+              <!--                    </v-dialog>-->
+              <!--                  </v-toolbar>-->
+              <!--                </template>-->
+              <!--                <template v-slot:item.actions="{ item }">-->
+              <!--                  <v-row>-->
+              <!--                    <v-tooltip top>-->
+              <!--                      <template v-slot:activator="{ on, attrs }">-->
+              <!--                        <v-btn-->
+              <!--                          v-bind="attrs"-->
+              <!--                          class="mx-2 edit-delete-btns"-->
+              <!--                          fab-->
+              <!--                          dark-->
+              <!--                          x-small-->
+              <!--                          color="#9575CD"-->
+              <!--                          v-on="on"-->
+              <!--                          @click="editItem(item)"-->
+              <!--                        >-->
+              <!--                          <v-icon dark>-->
+              <!--                            mdi-pencil-->
+              <!--                          </v-icon>-->
+              <!--                        </v-btn>-->
+              <!--                      </template>-->
+              <!--                      <span>اصلاح</span>-->
+              <!--                    </v-tooltip>-->
+              <!--                    <v-tooltip v-if="item.status === 'غیر فعال'" top>-->
+              <!--                      <template v-slot:activator="{ on, attrs }">-->
+              <!--                        <v-btn-->
+              <!--                          v-bind="attrs"-->
+              <!--                          class="mx-2 edit-delete-btns"-->
+              <!--                          fab-->
+              <!--                          dark-->
+              <!--                          x-small-->
+              <!--                          color="green"-->
+              <!--                          v-on="on"-->
+              <!--                          @click="changestatus(item)"-->
+              <!--                        >-->
+              <!--                          <v-icon dark>-->
+              <!--                            mdi-wrench-->
+              <!--                          </v-icon>-->
+              <!--                        </v-btn>-->
+              <!--                      </template>-->
+              <!--                      <span>فعال کردن محصول</span>-->
+              <!--                    </v-tooltip>-->
+              <!--                    <v-tooltip v-if="item.status === 'فعال'" top>-->
+              <!--                      <template v-slot:activator="{ on, attrs }">-->
+              <!--                        <v-btn-->
+              <!--                          v-bind="attrs"-->
+              <!--                          class="mx-2 edit-delete-btns"-->
+              <!--                          fab-->
+              <!--                          dark-->
+              <!--                          x-small-->
+              <!--                          color="red"-->
+              <!--                          v-on="on"-->
+              <!--                          @click="changestatus(item)"-->
+              <!--                        >-->
+              <!--                          <v-icon dark>-->
+              <!--                            mdi-wrench-->
+              <!--                          </v-icon>-->
+              <!--                        </v-btn>-->
+              <!--                      </template>-->
+              <!--                      <span>غیر فعال کردن محصول</span>-->
+              <!--                    </v-tooltip>-->
+              <!--                  </v-row>-->
+              <!--                </template>-->
+              <!--              </v-data-table>-->
             </v-col>
           </v-row>
         </div>
@@ -449,32 +481,25 @@
 
 <script>
 import { Product } from '../../../models/Product'
+import mixinProduct from '~/plugins/mixin/api/Product'
 
 export default {
   name: 'ProductInformationCorrection',
+
   components: {
     Editor: () => import('@tinymce/tinymce-vue'),
     VueTagsInput: () => import('@johmun/vue-tags-input')
   },
+  mixins: [mixinProduct],
+
   props: {
-    productslist: {
-      type: Object,
-      default: new Product()
-
-    }
+    editmode: Boolean,
+    notfilled: Boolean
 
   },
-  // mounted () {
-  //   this.getData()
-  // },
-  async fetch () {
-    this.product = await fetch(
 
-      'http://localhost/api/v2/product/' + this.$route.params.id
-
-    ).then(res => res.json())
-  },
   data: () => ({
+    base: null,
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
     tag: '',
@@ -486,7 +511,6 @@ export default {
     name: '',
 
     dialogDelete: false,
-
     headers: [
       {
         text: 'نام محصول',
@@ -498,15 +522,15 @@ export default {
       { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
-
+    product: new Product(),
     products: [],
-    product: {},
     editedIndex: -1,
 
     editedItem: {
       name: '',
       price: null,
       status: ''
+
     },
 
     defaultItem: {
@@ -524,16 +548,21 @@ export default {
       val || this.closeDelete()
     }
   },
-  created () {
-    this.products = this.productslist.list
-  },
-  methods: {
-    // async getData () {
-    //   const res = await fetch('http://localhost/api/v2/product/449')
-    //   const data = await res.json()
-    //   this.test = data
-    // },
+  mounted () {
+    const that = this
 
+    this.product.loading = true
+    this.api_product_show(this.$route.params.id)
+      .then((response) => {
+        that.product = new Product(response.data.data)
+        that.product.loading = false
+      })
+      .catch(() => {
+        that.product.loading = false
+      })
+  },
+
+  methods: {
     addItem () {
       this.dialog = true
       this.changeshow = true

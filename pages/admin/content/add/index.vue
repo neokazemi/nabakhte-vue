@@ -20,7 +20,8 @@ import ContentAdd from '~/components/admin/contentPanel/contentAdd'
 export default {
 
   name: 'Index',
-  components: { ContentAdd }
+  components: { ContentAdd },
+  middleware: 'Auth'
 }
 </script>
 

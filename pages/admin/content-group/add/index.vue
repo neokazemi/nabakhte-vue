@@ -20,7 +20,8 @@
 import ContentGroupAdd from '~/components/admin/contentPanel/contentGroupAdd'
 export default {
   name: 'Add',
-  components: { ContentGroupAdd }
+  components: { ContentGroupAdd },
+  middleware: 'Auth'
 }
 </script>
 

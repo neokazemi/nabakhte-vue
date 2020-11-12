@@ -7,7 +7,8 @@ import ProductInformationCorrection
   from '~/components/admin/managementsPanel/productInformationCorrection'
 export default {
   name: 'Edit',
-  components: { ProductInformationCorrection }
+  components: { ProductInformationCorrection },
+  middleware: 'Auth'
 }
 
 </script>

@@ -11,7 +11,8 @@ import ContentGroupTable from '~/components/admin/contentPanel/contentGroupTable
 import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
-  components: { Menu, ContentGroupTable }
+  components: { Menu, ContentGroupTable },
+  middleware: 'Auth'
 }
 </script>
 

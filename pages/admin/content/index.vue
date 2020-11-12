@@ -20,7 +20,8 @@ import ContentTable from '~/components/admin/contentPanel/contentTable'
 import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
-  components: { Menu, ContentTable, ContentFilter }
+  components: { Menu, ContentTable, ContentFilter },
+  middleware: 'Auth'
 }
 </script>
 
