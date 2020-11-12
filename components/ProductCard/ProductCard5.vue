@@ -29,11 +29,12 @@
           <p> تومان</p>
         </div>
       </div>
+
       <div class="discount-price">
-        <p class="org-price" v-if="product.price.discountInPercent()">
+        <p v-if="product.price.discountInPercent()" class="org-price">
           {{ product.price.toman('base', false) }}
         </p>
-        <p class="discount" v-if="product.price.discountInPercent()">
+        <p v-if="product.price.discountInPercent()" class="discount">
           {{ product.price.discountInPercent() }}%
         </p>
       </div>

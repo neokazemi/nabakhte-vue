@@ -10,6 +10,7 @@
       <div class="product-buy-info">
         <div class="quantity">
           <v-select
+
             :items="quantity"
             :value="quantity[0]"
             dense
@@ -20,7 +21,7 @@
             حذف
           </nuxt-link>
         </div>
-        <div class="price" v-if="product.price.discountInPercent()">
+        <div v-if="product.price.discountInPercent()" class="price">
           {{ product.price.toman('final', true) }}
         </div>
       </div>

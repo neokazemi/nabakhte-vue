@@ -10,6 +10,7 @@
       <v-col :sm="4" class="justify-sm-center justify-start">
         <p class="name justify-start">
           <span class="d-inline-block d-sm-none title">محصول: </span>
+
           <slot />
         </p>
       </v-col>
