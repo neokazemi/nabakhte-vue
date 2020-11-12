@@ -30,10 +30,10 @@
         </div>
       </div>
       <div class="discount-price">
-        <p class="org-price">
+        <p class="org-price" v-if="product.price.discountInPercent()">
           {{ product.price.toman('base', false) }}
         </p>
-        <p class="discount">
+        <p class="discount" v-if="product.price.discountInPercent()">
           {{ product.price.discountInPercent() }}%
         </p>
       </div>

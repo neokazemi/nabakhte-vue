@@ -16,8 +16,8 @@
       <v-col :sm="2">
         <div class="price justify-sm-center justify-start">
           <span class="title d-inline-block d-sm-none">قیمت: </span>
-          <span v-if="type === 1" class="old-price">{{ cartItem.product.price.toman('base', false) }}</span>
-          <span class="percent">{{ cartItem.product.price.discountInPercent() }}%</span>
+          <span v-if="type === 1 && cartItem.product.price.discountInPercent()" class="old-price">{{ cartItem.product.price.toman('base', false) }}</span>
+          <span v-if="cartItem.product.price.discountInPercent()" class="percent">{{ cartItem.product.price.discountInPercent() }}%</span>
           <span class="new-price">{{ cartItem.product.price.toman('final', false) }}</span>
           <span class="toman"> تومان</span>
         </div>

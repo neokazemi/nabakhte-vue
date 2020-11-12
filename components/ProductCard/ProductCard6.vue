@@ -20,7 +20,7 @@
             حذف
           </nuxt-link>
         </div>
-        <div class="price">
+        <div class="price" v-if="product.price.discountInPercent()">
           {{ product.price.toman('final', true) }}
         </div>
       </div>

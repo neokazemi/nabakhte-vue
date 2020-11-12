@@ -7,8 +7,8 @@
       <div class="right-part">
         <slot />
         <div class="price">
-          <span v-if="type === 1" class="old-price">{{ product.price.toman('base', false) }}</span>
-          <span class="percent">{{ product.price.discountInPercent() }}%</span>
+          <span v-if="type === 1 && product.price.discountInPercent()" class="old-price">{{ product.price.toman('base', false) }}</span>
+          <span class="percent" v-if="product.price.discountInPercent()">{{ product.price.discountInPercent() }}%</span>
           <span class="new-price">{{ product.price.toman('final', false) }}</span>
           <span class="toman">تومان</span>
         </div>
