@@ -67,3 +67,15 @@ export const getters = {
   //   }
   // }
 }
+
+// /**
+//  * This is our 'presistedstate state' store :)
+//  * - paths: a list of 'store(s)' that we wish to be persisted.
+//  * @type {any[]}
+//  */
+// export const plugins = [
+//   createPersistedState({
+//     key: 'vuex',
+//     paths: ['cart']
+//   })
+// ]
