@@ -192,17 +192,17 @@
                       </div>
                     </div>
                     <div class="account-management">
-                      <!--                      <nuxt-link to="/my-account">-->
-                      <!--                        <div class="account-logo leftSide-btn-arrow">-->
-                      <!--                          <v-icon color="#fff" size="20">-->
-                      <!--                            mdi-account-->
-                      <!--                          </v-icon>-->
-                      <!--                        </div>-->
-                      <!--                        <h2 class="account-description">-->
-                      <!--                          حساب کاربری-->
-                      <!--                        </h2>-->
-                      <!--                      </nuxt-link>-->
-                      <div @click="showLoginDialog">
+                      <nuxt-link v-if="isAuthenticated" to="/my-account">
+                        <div class="account-logo leftSide-btn-arrow">
+                          <v-icon color="#fff" size="20">
+                            mdi-account
+                          </v-icon>
+                        </div>
+                        <h2 class="account-description">
+                          {{ userData.first_name }}
+                        </h2>
+                      </nuxt-link>
+                      <div v-else @click="showLoginDialog">
                         <nuxt-link to="#">
                           <div class="account-logo leftSide-btn-arrow">
                             <v-icon color="#fff" size="20">
@@ -214,7 +214,7 @@
                           </h2>
                         </nuxt-link>
                       </div>
-                      <div class="account-options user-button-details">
+                      <div v-if="isAuthenticated" class="account-options user-button-details">
                         <nuxt-link class="first-option" to="/my-account/orders">
                           <i class="fas fa-shopping-basket" />سفارش ها
                         </nuxt-link>
@@ -224,7 +224,7 @@
                         <nuxt-link class="middle-option" to="/my-account/edit-account">
                           ویرایش پروفایل
                         </nuxt-link>
-                        <a class="last-option" href="#">خروج</a>
+                        <a class="last-option" @click="logout">خروج</a>
                       </div>
                     </div>
                   </div>
@@ -397,11 +397,12 @@ import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/components/Header.css'
 import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
+import mixinAuth from '~/plugins/mixin/api/Auth'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
-  mixins: [mixinStore, mixinDetectDevice],
+  mixins: [mixinStore, mixinDetectDevice, mixinAuth],
   data () {
     return {
       mainCarouselSlides: [
