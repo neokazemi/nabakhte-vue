@@ -1,9 +1,20 @@
+import mixinNotification from '~/plugins/mixin/notification'
+
 const mixinAuth = {
+  mixins: [mixinNotification],
   data () {
     return {
       api_addresses: {
         login: '/api/v2/login'
       }
+    }
+  },
+  computed: {
+    isAuthenticated () {
+      return this.$store.getters['auth/isAuthenticated']
+    },
+    userData () {
+      return this.$store.getters['auth/user']
     }
   },
   methods: {
@@ -29,6 +40,12 @@ const mixinAuth = {
             reject(new Error(error))
           })
       })
+    },
+    logout () {
+      this.$store.dispatch('auth/logout')
+        .then(() => {
+          this.enableNotification('با موفقیت خارج شدید')
+        })
     }
   }
 }

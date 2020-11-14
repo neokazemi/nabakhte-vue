@@ -102,8 +102,8 @@ export default {
   },
   methods: {
     submit () {
-      this.loading = true
       if (this.validate()) {
+        this.loading = true
         this.api_login(this.username, this.password)
           .then((response) => {
             this.loading = false
@@ -122,8 +122,7 @@ export default {
       }
     },
     validate () {
-      this.$refs.loginForm.validate()
-      return this.valid
+      return this.$refs.loginForm.validate()
     }
   }
 }

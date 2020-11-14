@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isFromPc" class="mobile-box">
+    <div v-if="!isFromPc" class="mobile-box">
       <div class="category">
         <p>مقالات</p>
       </div>
@@ -11,7 +11,7 @@
       </div>
       <div class="excerpt">
         <p>
-          {{ post.excerpt | limitLength(150) }}
+          {{ post.inputData.body | limitLength(150) }}
         </p>
       </div>
     </div>
@@ -26,14 +26,14 @@
     >
       <v-img
         class="white--text align-end"
-        src="https://media.chibekhoonam.net/2020/08/entekhab-reshte-motevasete-1.jpg"
+        :src="post.photo"
       />
       <v-card-title>
         {{ post.title }}
       </v-card-title>
       <div class="post-meta">
         <div class="date">
-          {{ post.date.replace('T', ' ') }}
+          <!--          {{ post.date.replace('T', ' ') }}-->
         <!--        {{ post.shamsiDate(post.date.replace('T', ' ')).date }}-->
         </div>
         <div class="category">
@@ -51,7 +51,7 @@
           class="pb-0"
         >
           <a href="#" class="more-info">ادامه مطلب</a>
-          {{ post.excerpt | limitLength(200) }}
+          {{ post.inputData.body | limitLength(200) }}
         </v-card-subtitle>
       </transition>
       <v-card-actions />
