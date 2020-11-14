@@ -20,7 +20,8 @@ import Addresource from '~/components/admin/resourcesPanel/addresource'
 import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
-  components: { Menu, Addresource, ResourcesTable }
+  components: { Menu, Addresource, ResourcesTable },
+  middleware: 'Auth'
 }
 </script>
 

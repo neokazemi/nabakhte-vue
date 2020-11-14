@@ -6,7 +6,8 @@
 import RoleInformationCorrection from '~/components/admin/managementsPanel/roleInformationCorrection'
 export default {
   name: 'Edit',
-  components: { RoleInformationCorrection }
+  components: { RoleInformationCorrection },
+  middleware: 'Auth'
 }
 </script>
 

@@ -55,7 +55,8 @@ import AttributeAmountInformationCorrection
 export default {
 
   name: 'Edit',
-  components: { AttributeAmountInformationCorrection, AttributeInformationCorrection }
+  components: { AttributeAmountInformationCorrection, AttributeInformationCorrection },
+  middleware: 'Auth'
 }
 </script>
 

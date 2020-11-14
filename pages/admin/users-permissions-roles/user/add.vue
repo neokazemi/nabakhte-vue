@@ -6,7 +6,9 @@
 import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
 export default {
   name: 'Add',
-  components: { UserInformationCorrection }
+  components: { UserInformationCorrection },
+  middleware: 'Auth'
+
 }
 </script>
 

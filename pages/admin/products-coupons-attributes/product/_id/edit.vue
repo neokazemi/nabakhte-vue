@@ -12,7 +12,7 @@
         بازگشت >>
       </v-btn>
     </div>
-    <product-information-correction :productslist="products" />
+    <product-information-correction />
     <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
@@ -26,25 +26,15 @@
 </template>
 
 <script>
-import mixinProduct from '~/plugins/mixin/product'
 
 import ProductInformationCorrection
 
   from '~/components/admin/managementsPanel/productInformationCorrection'
 export default {
   name: 'Edit',
-  components: { ProductInformationCorrection },
-  mixins: [mixinProduct]
-  // async asyncData () {
-  //   const post = await fetch('http://localhost/api/v2/product/449')
-  //   const post1 = post.json()
-  //   return { post1 }
-  // },
-  // data: () => ({
-  //   post1: {}
-  //
-  // })
 
+  components: { ProductInformationCorrection },
+  middleware: 'Auth'
 }
 </script>
 
