@@ -1,6 +1,6 @@
 // https://www.vojtechruzicka.com/protect-http-cookies/
 import cookies from 'js-cookie'
-import { User } from '../models/User'
+import { User } from '~/models/User'
 
 export const state = () => ({
   user: null,
@@ -13,27 +13,15 @@ export const state = () => ({
 export const mutations = {
   SET_USER (state, user) {
     state.user = user
-    if (process.browser) {
-      window.localStorage.setItem('vuex.auth.user', JSON.stringify(state.user))
-    }
   },
   SET_TOKEN (state, token) {
     state.access_token = token
-    if (process.browser) {
-      window.localStorage.setItem('vuex.auth.token', state.access_token)
-    }
   },
   REMOVE_TOKEN (state) {
     state.access_token = null
-    if (process.browser) {
-      window.localStorage.setItem('vuex.auth.token', state.access_token)
-    }
   },
   REMOVE_USER (state) {
     state.user = null
-    if (process.browser) {
-      window.localStorage.setItem('vuex.auth.user', state.user)
-    }
   }
 }
 
@@ -60,14 +48,10 @@ export const actions = {
 }
 
 export const getters = {
-  isAuthenticated () {
-    const accessToken = cookies.get('x-access-token')
-    return (typeof accessToken !== 'undefined' && accessToken !== null)
+  isAuthenticated (state) {
+    return (state.user !== null && state.user.id !== null)
   },
-  user () {
-    if (process.browser) {
-      state.user = JSON.parse(window.localStorage.getItem('vuex.auth.user'))
-    }
+  user (state) {
     return new User(state.user)
   }
 }
