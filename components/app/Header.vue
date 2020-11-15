@@ -175,58 +175,60 @@
                 </div>
                 <div class="left-bar">
                   <div class="user-button">
-                    <div class="user-cart">
-                      <nuxt-link to="/سبد-خرید">
-                        <div class="cart-logo leftSide-btn-arrow">
-                          <v-icon color="#fff" size="20">
-                            mdi-cart
-                          </v-icon>
+                    <client-only>
+                      <div class="user-cart">
+                        <nuxt-link to="/سبد-خرید">
+                          <div class="cart-logo leftSide-btn-arrow">
+                            <v-icon color="#fff" size="20">
+                              mdi-cart
+                            </v-icon>
+                          </div>
+                          <h2 class="cart-description">
+                            سبد خرید
+                          </h2>
+                          <Badge v-if="typeof cart.list !== 'undefined'" :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
+                        </nuxt-link>
+                        <div class="cart-details user-button-details">
+                          <HeaderCart />
                         </div>
-                        <h2 class="cart-description">
-                          سبد خرید
-                        </h2>
-                        <Badge v-if="typeof cart.list !== 'undefined'" :content="cart.list.length" color="#fb1616" :x="50" :y="-40" />
-                      </nuxt-link>
-                      <div class="cart-details user-button-details">
-                        <HeaderCart :products="products" />
                       </div>
-                    </div>
-                    <div class="account-management">
-                      <nuxt-link v-if="isAuthenticated" to="/my-account">
-                        <div class="account-logo leftSide-btn-arrow">
-                          <v-icon color="#fff" size="20">
-                            mdi-account
-                          </v-icon>
-                        </div>
-                        <h2 class="account-description">
-                          {{ userData.first_name }}
-                        </h2>
-                      </nuxt-link>
-                      <div v-else @click="showLoginDialog">
-                        <nuxt-link to="#">
+                      <div class="account-management">
+                        <nuxt-link v-if="isAuthenticated" to="/my-account">
                           <div class="account-logo leftSide-btn-arrow">
                             <v-icon color="#fff" size="20">
                               mdi-account
                             </v-icon>
                           </div>
                           <h2 class="account-description">
-                            حساب کاربری
+                            {{ userData.first_name }}
                           </h2>
                         </nuxt-link>
+                        <div v-else @click="showLoginDialog">
+                          <nuxt-link to="#">
+                            <div class="account-logo leftSide-btn-arrow">
+                              <v-icon color="#fff" size="20">
+                                mdi-account
+                              </v-icon>
+                            </div>
+                            <h2 class="account-description">
+                              حساب کاربری
+                            </h2>
+                          </nuxt-link>
+                        </div>
+                        <div v-if="isAuthenticated" class="account-options user-button-details">
+                          <nuxt-link class="first-option" to="/my-account/orders">
+                            <i class="fas fa-shopping-basket" />سفارش ها
+                          </nuxt-link>
+                          <nuxt-link class="middle-option" to="/my-account/edit-address">
+                            <i class="fas fa-truck" />آدرس ها
+                          </nuxt-link>
+                          <nuxt-link class="middle-option" to="/my-account/edit-account">
+                            ویرایش پروفایل
+                          </nuxt-link>
+                          <a class="last-option" @click="logout">خروج</a>
+                        </div>
                       </div>
-                      <div v-if="isAuthenticated" class="account-options user-button-details">
-                        <nuxt-link class="first-option" to="/my-account/orders">
-                          <i class="fas fa-shopping-basket" />سفارش ها
-                        </nuxt-link>
-                        <nuxt-link class="middle-option" to="/my-account/edit-address">
-                          <i class="fas fa-truck" />آدرس ها
-                        </nuxt-link>
-                        <nuxt-link class="middle-option" to="/my-account/edit-account">
-                          ویرایش پروفایل
-                        </nuxt-link>
-                        <a class="last-option" @click="logout">خروج</a>
-                      </div>
-                    </div>
+                    </client-only>
                   </div>
                   <a class="logo" href="#">
                     <v-img src="https://www.chibekhoonam.net/wp-content/themes/chibekhoonam/img/logo.svg" class="logo-image" />
@@ -349,7 +351,7 @@
               </div>
             </nuxt-link>
             <div class="cart-details">
-              <HeaderCart :products="products" />
+              <HeaderCart />
             </div>
           </div>
           <div class="account-scrolled-menu" @click="showLoginDialog">
@@ -387,22 +389,21 @@
 </template>
 
 <script>
-import HeaderCart from '~/components/HeaderComponents/HeaderCart'
-import { ProductList } from '~/models/Product'
 import Badge from '~/components/HeaderComponents/Badge'
 import MainMenu from '~/components/MobileMenus/MainMenu'
 import SearchMenu from '~/components/MobileMenus/SearchMenu'
-import AccountMenu from '~/components/MobileMenus/AccountMenu'
-import mixinStore from '~/plugins/mixin/store'
-import '~/assets/css/components/Header.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
+import HeaderCart from '~/components/HeaderComponents/HeaderCart'
 import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
+import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinAuth from '~/plugins/mixin/api/Auth'
+import mixinStore from '~/plugins/mixin/store'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
+import '~/assets/css/components/Header.css'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
-  mixins: [mixinStore, mixinDetectDevice, mixinAuth],
+  mixins: [mixinDetectDevice, mixinAuth, mixinStore],
   data () {
     return {
       mainCarouselSlides: [
@@ -475,9 +476,6 @@ export default {
     }
   },
   computed: {
-    products () {
-      return new ProductList(this.$store.getters.products)
-    },
     consultingMegaMenuTabContent () {
       for (let i = 0; i < this.consultingMegaMenuItems.length; i++) {
         if (this.consultingMegaMenuItems[i].title === this.consultingMegaMenuTab) {

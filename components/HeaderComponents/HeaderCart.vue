@@ -24,24 +24,15 @@
 </template>
 
 <script>
-import { ProductList } from '~/models/Product'
 import mixinStore from '~/plugins/mixin/store'
-import '~/assets/css/components/HeaderCart.css'
 import CartItem from '~/components/CartItem/CartItem'
+import '~/assets/css/components/HeaderCart.css'
 
 export default {
   name: 'HeaderCart',
+  mixins: [mixinStore],
   components: {
     CartItem
-  },
-  mixins: [mixinStore],
-  props: {
-    products: {
-      type: ProductList,
-      default () {
-        return new ProductList()
-      }
-    }
   }
 }
 </script>

@@ -1,3 +1,5 @@
+import { Cart } from '~/models/Cart'
+
 export const state = () => ({
   cart: null
 })
@@ -10,6 +12,6 @@ export const mutations = {
 
 export const getters = {
   cart (state) {
-    return state.cart
+    return new Cart(state.cart)
   }
 }

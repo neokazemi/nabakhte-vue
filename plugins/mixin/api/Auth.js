@@ -1,7 +1,8 @@
 import mixinNotification from '~/plugins/mixin/notification'
+import mixinStore from '~/plugins/mixin/store'
 
 const mixinAuth = {
-  mixins: [mixinNotification],
+  mixins: [mixinNotification, mixinStore],
   data () {
     return {
       api_addresses: {
@@ -10,11 +11,18 @@ const mixinAuth = {
     }
   },
   computed: {
-    isAuthenticated () {
-      return this.$store.getters['auth/isAuthenticated']
+    isAuthenticated: {
+      get () {
+        return this.$store.getters['auth/isAuthenticated']
+      }
     },
-    userData () {
-      return this.$store.getters['auth/user']
+    userData: {
+      get () {
+        return this.$store.getters['auth/user']
+      },
+      set (value) {
+        this.$store.commit('auth/SET_USER', value)
+      }
     }
   },
   methods: {
@@ -42,9 +50,11 @@ const mixinAuth = {
       })
     },
     logout () {
+      const that = this
       this.$store.dispatch('auth/logout')
         .then(() => {
-          this.enableNotification('با موفقیت خارج شدید')
+          that.enableNotification('با موفقیت خارج شدید')
+          that.clearCart()
         })
     }
   }

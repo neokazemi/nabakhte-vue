@@ -3,6 +3,7 @@ import cookies from 'js-cookie'
 import { User } from '~/models/User'
 
 export const state = () => ({
+  saveTokenInCookie: false,
   user: null,
   access_token: null,
   token_expires_at: null,
@@ -26,23 +27,29 @@ export const mutations = {
 }
 
 export const actions = {
-  setToken ({ commit }, { user, token, expiresIn }) {
-    this.$axios.setToken(token, 'Bearer')
-    const expiryTime = new Date(new Date().getTime() + expiresIn * 1000)
-    cookies.set('x-access-token', token, { expires: expiryTime })
-    commit('SET_TOKEN', token)
+  setToken ({ state, commit }, { user, token, expiresIn }) {
+    if (state.saveTokenInCookie) {
+      this.$axios.setToken(token, 'Bearer')
+      const expiryTime = new Date(new Date().getTime() + expiresIn * 1000)
+      cookies.set('x-access-token', token, { expires: expiryTime })
+      commit('SET_TOKEN', token)
+    }
     commit('SET_USER', user)
   },
 
-  async refreshToken ({ dispatch }) {
-    const { token, expiresIn } = await this.$axios.$post('refresh-token')
-    dispatch('setToken', { token, expiresIn })
+  async refreshToken ({ state, dispatch }) {
+    if (state.saveTokenInCookie) {
+      const { token, expiresIn } = await this.$axios.$post('refresh-token')
+      dispatch('setToken', { token, expiresIn })
+    }
   },
 
-  logout ({ commit }) {
-    this.$axios.setToken(false)
-    cookies.remove('x-access-token')
-    commit('REMOVE_TOKEN')
+  logout ({ state, commit }) {
+    if (state.saveTokenInCookie) {
+      this.$axios.setToken(false)
+      cookies.remove('x-access-token')
+      commit('REMOVE_TOKEN')
+    }
     commit('REMOVE_USER')
   }
 }
