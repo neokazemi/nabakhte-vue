@@ -83,7 +83,7 @@ class Set extends Model {
       url = this.favor_url
     }
     if (url === null) {
-      console.error('url is null.')
+      // console.error('url is null.')
     }
     return this.crud.create(url)
   }
@@ -93,7 +93,7 @@ class Set extends Model {
       url = this.unfavor_url
     }
     if (url === null) {
-      console.error('url is null.')
+      // console.error('url is null.')
     }
     return this.crud.create(url)
   }

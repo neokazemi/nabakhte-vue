@@ -19,6 +19,7 @@
                 dense
                 :rules="mobileNumberRule"
                 dir="ltr"
+                validate-on-blur
               />
             </v-col>
           </v-row>
@@ -49,7 +50,8 @@
                 :max-width="75"
                 :max-height="32"
                 :loading="loading"
-                @click="submit"
+                type="submit"
+                @click.prevent="submit"
               >
                 ورود
               </v-btn>
@@ -70,10 +72,18 @@
 
 <script>
 import mixinAuth from '@/plugins/mixin/api/Auth'
+import mixinNotification from '~/plugins/mixin/notification'
 
 export default {
   name: 'Login',
-  mixins: [mixinAuth],
+  mixins: [mixinAuth, mixinNotification],
+  props: {
+    isDialog: {
+      required: false,
+      default: false,
+      type: Boolean
+    }
+  },
   data () {
     return {
       username: null,
@@ -92,19 +102,27 @@ export default {
   },
   methods: {
     submit () {
-      this.loading = true
       if (this.validate()) {
+        this.loading = true
         this.api_login(this.username, this.password)
           .then((response) => {
             this.loading = false
+            this.enableNotification('عملیات ورود با موفقیت انجام شد', 2000)
+            if (this.isDialog) {
+              this.$store.commit('updateLoginDialog', false)
+            } else {
+              this.$router.go(-1)
+            }
           }).catch((response) => {
             this.loading = false
+            this.enableNotification('شماره همراه یا کلمه عبور اشتباه است', 5000, 'failure')
+            this.password = ''
+            this.$refs.loginForm.resetValidation()
           })
       }
     },
     validate () {
-      this.$refs.loginForm.validate()
-      return this.valid
+      return this.$refs.loginForm.validate()
     }
   }
 }

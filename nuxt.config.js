@@ -47,7 +47,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    // { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    // { src: '~/plugins/vuex-persistedstate.js', mode: 'client', ssr: false }
+    // { src: '~/plugins/vuex-persist', ssr: false }
   ],
   /*
   ** Auto import components
@@ -73,9 +75,9 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    '@nuxtjs/pwa'
+    // // Doc: https://github.com/nuxt/content
+    // '@nuxt/content'
   ],
   /*
   ** Axios module configuration
@@ -146,7 +148,7 @@ export default {
   build: {
     extend (config, { isClient }) {
       if (isClient) {
-        config.devtool = process.env.NODE_ENV === 'development' ? '#source-map' : ''
+        config.devtool = process.env.NODE_ENV === 'development' ? 'eval-source-map' : '' // '#source-map'
       }
     },
     transpile: [

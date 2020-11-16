@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import '~/assets/scss/components/header/CommentScoped.scss'
 export default {
   name: 'Comment',
   props: {
@@ -34,6 +35,6 @@ export default {
 }
 </script>
 
-<style scoped>
-  @import url('~/assets/css/components/CommentScoped.css');
+<style scoped lang="scss">
+  @import '~/assets/scss/components/header/CommentScoped.scss';
 </style>

@@ -18,6 +18,14 @@ class CartItem extends Model {
     ])
   }
 
+  isCartItem () {
+    if (typeof this.id !== 'undefined' && this.qty && this.product) {
+      return true
+    }
+
+    return false
+  }
+
   totalPrice () {
     return new Price({
       base: this.product.price.base * this.qty,
@@ -40,6 +48,8 @@ class Cart extends Collection {
     let product = null
     let qty = quantity
     let availableCartItem = null
+    const fakeCartItem = new CartItem(item)
+    const isCartItem = fakeCartItem.isCartItem()
 
     if (item instanceof Product) {
       product = item
@@ -49,7 +59,7 @@ class Cart extends Collection {
         // availableCartItem.qty++
         Vue.set(availableCartItem, 'qty', (availableCartItem.qty + quantity))
       }
-    } else if (item instanceof CartItem) {
+    } else if (item instanceof CartItem || isCartItem) {
       product = item.product
       qty = (item.qty !== null) ? item.qty : 1
     } else {
@@ -58,7 +68,9 @@ class Cart extends Collection {
 
     if (
       (item instanceof Product && !availableCartItem) ||
-      item instanceof CartItem
+      (
+        item instanceof CartItem || isCartItem
+      )
     ) {
       super.addItem({
         product,

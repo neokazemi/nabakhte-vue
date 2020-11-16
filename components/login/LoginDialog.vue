@@ -5,7 +5,7 @@
       v-model="dialog"
       width="500"
     >
-      <Login />
+      <Login :is-dialog="true" />
     </v-dialog>
   </div>
 </template>

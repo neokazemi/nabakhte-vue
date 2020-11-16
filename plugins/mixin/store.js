@@ -4,11 +4,19 @@ import { Cart } from '~/models/Cart'
 const mixinStore = {
   mixins: [mixinNotification],
   computed: {
-    cart () {
-      return new Cart(this.$store.getters['cart/cart'])
+    cart: {
+      get () {
+        return this.$store.getters['cart/cart']
+      },
+      set (val) {
+        this.$store.commit('cart/updateCart', val)
+      }
     }
   },
   methods: {
+    clearCart () {
+      this.$store.commit('cart/updateCart', new Cart())
+    },
     addToCart (product, quantity = 1) {
       this.cart.addItem(product, quantity)
       this.$store.commit('cart/updateCart', this.cart)

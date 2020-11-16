@@ -68,6 +68,7 @@ export default {
     changePage (newValue) {
       if (newValue !== '...') {
         this.page = newValue
+        this.$emit('pageChanged', this.page)
       }
     }
   }
@@ -90,7 +91,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 23px;
+    width: 30px;
     height: 30px;
   }
 
