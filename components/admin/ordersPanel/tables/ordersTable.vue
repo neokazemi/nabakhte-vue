@@ -1,6 +1,6 @@
 <template>
   <v-card class="mb-20 pa-3">
-    <!--    <tables-header :inputData.sync="search" />-->
+    <tables-header v-model="search" />
     <v-data-table
       :footer-props="{
         showFirstLastPage: true,
@@ -223,10 +223,10 @@
 </template>
 
 <script>
-// import TablesHeader from '../../tablesHeader'
+import TablesHeader from '../../tablesHeader'
 export default {
   name: 'OrdersTable',
-  // components: { TablesHeader },
+  components: { TablesHeader },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
