@@ -3,6 +3,7 @@
     <v-card-title>
       ست ها
     </v-card-title>
+    <tables-header v-model="search" />
     <v-data-table
 
       :footer-props="{
@@ -110,8 +111,10 @@
 </template>
 
 <script>
+import TablesHeader from '../tablesHeader'
 export default {
   name: 'ContentGroupTable',
+  components: { TablesHeader },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,

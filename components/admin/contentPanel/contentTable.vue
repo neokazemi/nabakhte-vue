@@ -50,7 +50,7 @@
       لیست محتوای آموزشی
     </v-card-title>
     <v-card class="mb-20 pa-8 mr-20">
-      <!--      <tables-header :input-data.sync="search" />-->
+      <tables-header v-model="search" />
       <v-data-table
 
         :footer-props="{
@@ -158,10 +158,10 @@
 </template>
 
 <script>
-// import TablesHeader from '../tablesHeader'
+import TablesHeader from '../tablesHeader'
 export default {
   name: 'ContentTable',
-  // components: { TablesHeader },
+  components: { TablesHeader },
   data: () => ({
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
