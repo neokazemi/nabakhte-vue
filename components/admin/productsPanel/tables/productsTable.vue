@@ -1,73 +1,13 @@
 <template>
   <v-card class="mb-20 pa-8">
-    <v-row>
-      <v-col>
-        <v-text-field
-          v-model="search"
-          class="the-card-search"
-          append-icon="mdi-magnify"
-          label="جستجو"
-          single-line
-          hide-details
-        />
-      </v-col>
-      <v-col>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#212121"
-        >
-          Print
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#c62828"
-        >
-          Copy
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#00e676"
-        >
-          PDF
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#ff6f00"
-        >
-          Excel
-        </v-btn>
-        <v-btn
-          class="output-btns-width"
-          small
-          elevation="2"
-          outlined
-          rounded
-          color="#03a9f4"
-        >
-          CSV
-        </v-btn>
-      </v-col>
-    </v-row>
+    <tables-header v-model="search" />
+
     <v-data-table
       hide-default-footer
+      :items-per-page="5"
+
       :headers="headers"
-      :items="products.list"
+      :items="showproducts"
       :search="search"
       class="elevation-1 data-table-width mt-30"
     >
@@ -116,81 +56,20 @@
             </template>
 
             <v-card>
-              <div>
-                <ProductInformationCorrection :notfilled="true" />
-                <!--                <v-row>-->
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.title"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="نام کالا"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.price.base"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="قیمت پایه"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.price.discount"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="تخفیف"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                </v-row>-->
-
-                <!--                <v-row>-->
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.pic"-->
-                <!--                      class="thetextfield"-->
-                <!--                      label="عکس"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.description"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="توضیحات کوتاه"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-
-                <!--                  <v-col-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.type"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="نوع"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                </v-row>-->
-                <!--                <v-row>-->
-                <!--                  <v-col-->
-                <!--                    v-if="changeshow"-->
-                <!--                    class="form-elements-column-width"-->
-                <!--                  >-->
-                <!--                    <v-text-field-->
-                <!--                      v-model="editedItem.status"-->
-                <!--                      class="text-fields-size"-->
-                <!--                      label="فعال/غیر فعال"-->
-                <!--                    />-->
-                <!--                  </v-col>-->
-                <!--                </v-row>-->
-              </div>
+              <v-card-actions>
+                <v-btn
+                  class="mx-2"
+                  icon
+                  small
+                  color="primary"
+                  @click="close"
+                >
+                  <v-icon dark>
+                    mdi-close-circle
+                  </v-icon>
+                </v-btn>
+              </v-card-actions>
+              <ProductInformationCorrection :notfilled="true" :dialog="true" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -201,7 +80,6 @@
                   انصراف
                 </v-btn>
                 <v-btn
-                  v-if="changeshow"
                   color="blue darken-1"
                   text
                   @click="save"
@@ -294,50 +172,29 @@
         </v-row>
       </template>
     </v-data-table>
-    <v-row>
-      <v-col />
-      <v-col />
-      <v-col />
-      <v-col cols="1">
-        <div style="float: left; margin-bottom: 3px;">
-          <v-btn
-            color="black"
-            text
-            @click="loadpreviouspage"
-          >
-            <v-icon>
-              mdi-arrow-right
-            </v-icon>
-          </v-btn>
-        </div>
-      </v-col>
-      <v-col cols="1">
-        <div style="float: left; margin-bottom: 3px;">
-          <v-btn
-            color="black"
-            text
-            @click="loadnextpage"
-          >
-            <v-icon>
-              mdi-arrow-left
-            </v-icon>
-          </v-btn>
-        </div>
-      </v-col>
-    </v-row>
+    <v-pagination v-model="currentPage" :length="5" :total-visible="6" />
   </v-card>
 </template>
 
 <script>
 import { ProductList } from '../../../../models/Product'
+import TablesHeader from '../../tablesHeader'
 import mixinProduct from '~/plugins/mixin/api/Product'
 import ProductInformationCorrection from '~/components/admin/managementsPanel/productInformationCorrection'
 
 export default {
   name: 'ProductsTable',
-  components: { ProductInformationCorrection },
+  components: { TablesHeader, ProductInformationCorrection },
   mixins: [mixinProduct],
   data: () => ({
+    emptyarray: [],
+    emptyarray2: [],
+    allproducts: [],
+
+    showproducts: [],
+    currentPage: 1,
+    pageNumberList: [1],
+    products2: new ProductList(),
     pagenumber: 1,
     shownextpage: false,
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -412,46 +269,61 @@ export default {
     },
     dialogDelete (val) {
       val || this.closeDelete()
+    },
+    currentPage (newVal, oldVal) {
+      if (!this.pageNumberList.includes(newVal)) {
+        this.paginatepage(newVal)
+      } else if (newVal !== 1) {
+        this.showproducts = this.products.list.slice((newVal - 1) * 5, (newVal - 1) * 5 + 5)
+      } else {
+        this.showproducts = this.products.list.slice(0, 5)
+      }
     }
   },
   mounted () {
     const that = this
     this.api_product_list(1)
       .then((response) => {
-        that.products = new ProductList(response.data.data, response.data.meta)
-        that.products.loading = false
+        that.products2 = new ProductList(response.data.data, response.data.meta)
+        that.products2.loading = false
+        that.products.list.push(that.products2.list[0])
+        that.products.list.push(that.products2.list[1])
+        that.products.list.push(that.products2.list[2])
+        that.products.list.push(that.products2.list[3])
+        that.products.list.push(that.products2.list[4])
+        let i
+
+        for (i = 1; i < 10; i++) {
+          that.products.list.push(1)
+        }
+        that.showproducts = that.products.list
       })
       .catch(() => {
-        that.products.loading = false
+        that.products2.loading = false
       }
       )
   },
   methods: {
-    loadpreviouspage () {
-      this.pagenumber -= 1
+    paginatepage (pageNumber) {
       const that = this
-      this.api_product_list(that.pagenumber)
+      this.api_product_list(pageNumber)
         .then((response) => {
-          that.products = new ProductList(response.data.data, response.data.meta)
-          that.products.loading = false
-        })
-        .catch(() => {
-          that.products.loading = false
-        })
-    },
-    loadnextpage () {
-      this.pagenumber += 1
-      const that = this
-      this.api_product_list(that.pagenumber)
-        .then((response) => {
-          that.products = new ProductList(response.data.data, response.data.meta)
-          that.products.loading = false
-        })
-        .catch(() => {
-          that.products.loading = false
-        }
+          that.showproducts = []
+          that.pageNumberList.unshift(pageNumber)
+          that.products2 = new ProductList(response.data.data, response.data.meta)
+          that.products2.loading = false
+          that.products.list[(pageNumber - 1) * 5] = that.products2.list[0]
+          that.products.list[(pageNumber - 1) * 5 + 1] = that.products2.list[1]
+          that.products.list[(pageNumber - 1) * 5 + 2] = that.products2.list[2]
+          that.products.list[(pageNumber - 1) * 5 + 3] = that.products2.list[3]
+          that.products.list[(pageNumber - 1) * 5 + 4] = that.products2.list[4]
 
-        )
+          that.showproducts = that.products.list
+          that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 5)
+        })
+        .catch(() => {
+          that.products2.loading = false
+        })
     },
     addItem () {
       this.dialog = true
