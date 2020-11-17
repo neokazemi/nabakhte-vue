@@ -1,12 +1,13 @@
 import mixinNotification from '~/plugins/mixin/notification'
 import mixinStore from '~/plugins/mixin/store'
+import API_ADDRESS from '~/plugins/api.js'
 
 const mixinAuth = {
   mixins: [mixinNotification, mixinStore],
   data () {
     return {
       api_addresses: {
-        login: '/api/v2/login'
+        login: API_ADDRESS.auth.login
       }
     }
   },
@@ -33,8 +34,19 @@ const mixinAuth = {
         mobile: username,
         password
       }
-
       return new Promise((resolve, reject) => {
+        // this.$auth.loginWith('local', { data })
+        //   .then((response) => {
+        //     // this.$toast.success('Logged In!')
+        //
+        //     console.log('response: ', response)
+        //     resolve(response)
+        //   })
+        //   .catch((error) => {
+        //     console.log('error: ', error)
+        //     reject(error)
+        //   })
+
         that.$axios.post(url, data)
           .then((response) => {
             const user = response.data.data.user
@@ -45,7 +57,7 @@ const mixinAuth = {
             resolve(response)
           })
           .catch((error) => {
-            reject(new Error(error))
+            reject(error)
           })
       })
     },
