@@ -3,7 +3,7 @@ import cookies from 'js-cookie'
 import { User } from '~/models/User'
 
 export const state = () => ({
-  saveTokenInCookie: false,
+  saveTokenInCookie: true,
   user: null,
   access_token: null,
   token_expires_at: null,
