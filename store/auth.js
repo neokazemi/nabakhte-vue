@@ -28,28 +28,28 @@ export const mutations = {
 
 export const actions = {
   setToken ({ state, commit }, { user, token, expiresIn }) {
-    if (state.saveTokenInCookie) {
-      this.$axios.setToken(token, 'Bearer')
-      const expiryTime = new Date(new Date().getTime() + expiresIn * 1000)
-      cookies.set('x-access-token', token, { expires: expiryTime })
-      commit('SET_TOKEN', token)
-    }
+    // if (state.saveTokenInCookie) {
+    this.$axios.setToken(token, 'Bearer')
+    const expiryTime = new Date(new Date().getTime() + expiresIn * 1000)
+    cookies.set('x-access-token', token, { expires: expiryTime })
+    commit('SET_TOKEN', token)
+    // }
     commit('SET_USER', user)
   },
 
   async refreshToken ({ state, dispatch }) {
-    if (state.saveTokenInCookie) {
-      const { token, expiresIn } = await this.$axios.$post('refresh-token')
-      dispatch('setToken', { token, expiresIn })
-    }
+    // if (state.saveTokenInCookie) {
+    const { token, expiresIn } = await this.$axios.$post('refresh-token')
+    dispatch('setToken', { token, expiresIn })
+    // }
   },
 
   logout ({ state, commit }) {
-    if (state.saveTokenInCookie) {
-      this.$axios.setToken(false)
-      cookies.remove('x-access-token')
-      commit('REMOVE_TOKEN')
-    }
+    // if (state.saveTokenInCookie) {
+    this.$axios.setToken(false)
+    cookies.remove('x-access-token')
+    commit('REMOVE_TOKEN')
+    // }
     commit('REMOVE_USER')
   }
 }
