@@ -56,6 +56,7 @@ import AttributeGroupInformationCorrection
   from '~/components/admin/managementsPanel/attributeGroupInformationCorrection'
 export default {
   name: 'Edit',
+  middleware: 'Auth',
   components: { AttributeGroupInformationCorrection, AttributeCategoryInformationCorrection }
 }
 </script>

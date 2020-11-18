@@ -1,20 +1,29 @@
 import mixinNotification from '~/plugins/mixin/notification'
+import mixinStore from '~/plugins/mixin/store'
+import API_ADDRESS from '~/plugins/api.js'
 
 const mixinAuth = {
-  mixins: [mixinNotification],
+  mixins: [mixinNotification, mixinStore],
   data () {
     return {
       api_addresses: {
-        login: '/api/v2/login'
+        login: API_ADDRESS.auth.login
       }
     }
   },
   computed: {
-    isAuthenticated () {
-      return this.$store.getters['auth/isAuthenticated']
+    isAuthenticated: {
+      get () {
+        return this.$store.getters['auth/isAuthenticated']
+      }
     },
-    userData () {
-      return this.$store.getters['auth/user']
+    userData: {
+      get () {
+        return this.$store.getters['auth/user']
+      },
+      set (value) {
+        this.$store.commit('auth/SET_USER', value)
+      }
     }
   },
   methods: {
@@ -25,8 +34,19 @@ const mixinAuth = {
         mobile: username,
         password
       }
-
       return new Promise((resolve, reject) => {
+        // this.$auth.loginWith('local', { data })
+        //   .then((response) => {
+        //     // this.$toast.success('Logged In!')
+        //
+        //     console.log('response: ', response)
+        //     resolve(response)
+        //   })
+        //   .catch((error) => {
+        //     console.log('error: ', error)
+        //     reject(error)
+        //   })
+
         that.$axios.post(url, data)
           .then((response) => {
             const user = response.data.data.user
@@ -37,14 +57,16 @@ const mixinAuth = {
             resolve(response)
           })
           .catch((error) => {
-            reject(new Error(error))
+            reject(error)
           })
       })
     },
     logout () {
+      const that = this
       this.$store.dispatch('auth/logout')
         .then(() => {
-          this.enableNotification('با موفقیت خارج شدید')
+          that.enableNotification('با موفقیت خارج شدید')
+          that.clearCart()
         })
     }
   }

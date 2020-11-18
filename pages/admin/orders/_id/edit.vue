@@ -5,7 +5,8 @@
 import OrderInformationCorrection from '~/components/admin/managementsPanel/orderInformationCorrection'
 export default {
   name: 'Edit',
-  components: { OrderInformationCorrection }
+  components: { OrderInformationCorrection },
+  middleware: 'Auth'
 }
 </script>
 

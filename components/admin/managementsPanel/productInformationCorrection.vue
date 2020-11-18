@@ -1,21 +1,18 @@
 <template>
   <div>
-    <v-card class="mr-2 ml-2 pr-5 pl-5">
-      <v-card-title>
+    <v-card v-if="product" class="mr-2 ml-2 pr-5 pl-5">
+      <v-card-title v-if="!dialog">
         اصلاح اطلاعات محصول
       </v-card-title>
-      <!--      <div-->
-      <!--        v-for="i in products"-->
-
-      <!--        :key="i.id"-->
-      <!--      >-->
-      <!--        <div v-if="$route.params.id.includes(i.id)">-->
-      <div>
+      <v-card-title v-if="dialog">
+        افزودن محصول
+      </v-card-title>
+      <div v-if="product">
         <div>
           <v-row>
             <v-col>
               <v-text-field
-                v-model="product.data.title"
+                v-model="product.title"
 
                 class="input-elements "
                 label=" نام کالا"
@@ -25,7 +22,6 @@
             </v-col>
             <v-col>
               <v-text-field
-
                 v-model="name"
 
                 class="input-elements"
@@ -57,7 +53,15 @@
           <v-row>
             <v-col>
               <v-text-field
-                v-model="product.data.price.base"
+                v-if="product.price"
+                v-model="product.price.base"
+                class="input-elements "
+                label=" قیمت پایه"
+                outlined
+                dense
+              />
+              <v-text-field
+                v-if="notfilled"
                 class="input-elements "
                 label=" قیمت پایه"
                 outlined
@@ -66,7 +70,15 @@
             </v-col>
             <v-col>
               <v-text-field
-                v-model="product.data.price.discount"
+                v-if="product.price"
+                v-model="product.price.discount"
+                class="input-elements"
+                label="تخفیف (%)"
+                outlined
+                dense
+              />
+              <v-text-field
+                v-if="notfilled"
                 class="input-elements"
                 label="تخفیف (%)"
                 outlined
@@ -138,18 +150,16 @@
           <br>
           <v-row>
             <v-col>
-              <v-img
-                width="200px"
-                height="200px"
-
-                class="mt-3 "
-                :src="product.data.photo"
-              />
-              <v-btn
-                class="mt-3 mr-5"
-              >
-                تغییر عکس
-              </v-btn>
+              <v-row>
+                <p class="mt-2 mr-8">
+                  عکس محصول :
+                </p>
+              </v-row>
+              <v-row>
+                <client-only>
+                  <vue2-dropzone id="dropzone" ref="myVueDropzone" class="mr-8" :options="dropzoneOptions" />
+                </client-only>
+              </v-row>
             </v-col>
             <v-col>
               <v-row>
@@ -158,25 +168,36 @@
                 </p>
               </v-row>
               <v-row>
-                <v-btn
-                  class="catalog-btn"
-                >
-                  انتخاب فایل
-                </v-btn>
+                <client-only>
+                  <vue2-dropzone id="dropzone" ref="myVueDropzone" :options="dropzoneOptions" />
+                </client-only>
               </v-row>
             </v-col>
+
             <v-col cols="6">
-              <client-only>
+              <client-only v-if="!notfilled">
                 <vue-tags-input
-                  :v-model="tag"
+                  v-if="product.tags"
+                  v-model="tag"
                   class="vue-tags-input"
-                  :tags="product.data.tags"
+                  :tags="product.tags"
+                  placeholder="تگ ها"
+                  :allow-edit-tags="true"
+
+                  @tags-changed="newTags => tags = newTags"
+                />
+              </client-only><client-only v-if="notfilled">
+                <vue-tags-input
+                  v-model="tag"
+                  class="vue-tags-input"
+                  :tags="tags"
                   placeholder="تگ ها"
                   :allow-edit-tags="true"
 
                   @tags-changed="newTags => tags = newTags"
                 />
               </client-only>
+
               <v-text-field
                 class="mt-3"
                 label="کانتنت های معرفی کننده محصول"
@@ -189,6 +210,7 @@
               />
             </v-col>
           </v-row>
+
           <v-row>
             <v-col class="px-5">
               <v-col>
@@ -231,6 +253,7 @@
               </v-col>
             </v-col>
           </v-row>
+
           <v-row>
             <v-col />
             <v-col>
@@ -449,32 +472,37 @@
 
 <script>
 import { Product } from '../../../models/Product'
-
+import mixinProduct from '~/plugins/mixin/api/Product'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
   name: 'ProductInformationCorrection',
+
   components: {
     Editor: () => import('@tinymce/tinymce-vue'),
-    VueTagsInput: () => import('@johmun/vue-tags-input')
+    VueTagsInput: () => import('@johmun/vue-tags-input'),
+    vue2Dropzone: () => import('vue2-dropzone')
   },
+  mixins: [mixinProduct],
+
   props: {
-    productslist: {
-      type: Object,
-      default: new Product()
-
-    }
+    editmode: Boolean,
+    notfilled: Boolean,
+    dialog: Boolean
 
   },
-  // mounted () {
-  //   this.getData()
-  // },
-  async fetch () {
-    this.product = await fetch(
 
-      'http://localhost/api/v2/product/' + this.$route.params.id
-
-    ).then(res => res.json())
-  },
   data: () => ({
+    dropzoneOptions: {
+      addRemoveLinks: true,
+      url: 'https://httpbin.org/post',
+      thumbnailWidth: 150,
+      maxFilesize: 0.5,
+      headers: { 'My-Awesome-Header': 'header value' },
+      dictRemoveFile: 'حذف فایل',
+      dictCancelUpload: 'انصراف'
+    },
+
+    base: null,
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
     tag: '',
@@ -486,7 +514,6 @@ export default {
     name: '',
 
     dialogDelete: false,
-
     headers: [
       {
         text: 'نام محصول',
@@ -498,15 +525,15 @@ export default {
       { text: 'عملیات', value: 'actions', sortable: false }
 
     ],
-
+    product: new Product(),
     products: [],
-    product: {},
     editedIndex: -1,
 
     editedItem: {
       name: '',
       price: null,
       status: ''
+
     },
 
     defaultItem: {
@@ -524,16 +551,21 @@ export default {
       val || this.closeDelete()
     }
   },
-  created () {
-    this.products = this.productslist.list
-  },
-  methods: {
-    // async getData () {
-    //   const res = await fetch('http://localhost/api/v2/product/449')
-    //   const data = await res.json()
-    //   this.test = data
-    // },
+  mounted () {
+    const that = this
 
+    this.product.loading = true
+    this.api_product_show(this.$route.params.id)
+      .then((response) => {
+        that.product = new Product(response.data.data)
+        that.product.loading = false
+      })
+      .catch(() => {
+        that.product.loading = false
+      })
+  },
+
+  methods: {
     addItem () {
       this.dialog = true
       this.changeshow = true

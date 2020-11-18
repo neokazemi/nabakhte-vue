@@ -39,6 +39,7 @@ import Roles from '~/components/admin/usersPanel/tables/roles'
 import UserListFilter from '~/components/admin/usersPanel/filters/UserListFilter'
 
 export default {
+  middleware: 'Auth',
   components: { Menu, UserListFilter, Roles, Access, Users }
 }
 

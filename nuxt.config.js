@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import API_ADDRESS from './plugins/api'
 
 export default {
   server: {
@@ -47,7 +48,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    // { src: '~/plugins/persistedState.client.js', ssr: false } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    { src: '~/plugins/vuex-shared-mutations.client.js' }, // https://github.com/xanf/vuex-shared-mutations#readme
+    { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
     // { src: '~/plugins/vuex-persistedstate.js', mode: 'client', ssr: false }
     // { src: '~/plugins/vuex-persist', ssr: false }
   ],
@@ -75,9 +77,10 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt/content
-    '@nuxt/content'
+    '@nuxtjs/auth',
+    '@nuxtjs/pwa'
+    // // Doc: https://github.com/nuxt/content
+    // '@nuxt/content'
   ],
   /*
   ** Axios module configuration
@@ -87,8 +90,8 @@ export default {
     // baseURL: 'http://localhost:3000',
     baseURL: process.env.BASE_URL,
     debug: false,
-    // proxyHeaders: true, // In SSR context, this options sets client requests headers as default headers for the axios requests. NOTE: CloudFlare's CDN => set this to false
-    proxy: true // Can be also an object with default options
+    proxyHeaders: true, // In SSR context, this options sets client requests headers as default headers for the axios requests. NOTE: CloudFlare's CDN => set this to false
+    proxy: true, // Can be also an object with default options
     // headers: {
     //   common: {
     //     'Accept': 'application/json, text/plain, */*'
@@ -101,7 +104,7 @@ export default {
     //   patch: {}
     // }
     // baseURL: 'http://auth-api.web/api/',
-    // credentials: true // this says that in the request the httponly cookie should be sent
+    credentials: true // this says that in the request the httponly cookie should be sent
   },
   proxy: {
     // '/aaa/': 'http://localhost/api/'
@@ -148,7 +151,7 @@ export default {
   build: {
     extend (config, { isClient }) {
       if (isClient) {
-        config.devtool = process.env.NODE_ENV === 'development' ? '#source-map' : ''
+        config.devtool = process.env.NODE_ENV === 'development' ? 'eval-source-map' : '' // '#source-map'
       }
     },
     transpile: [
@@ -165,6 +168,27 @@ export default {
       name: 'Nuxt.js PWAs are so easy',
       short_name: 'Nuxt.js PWA',
       lang: 'en'
+    }
+  },
+  auth: {
+    plugins: [
+      // { src: '~/plugins/axios', ssr: true }, '~/plugins/auth.js'
+    ],
+    vuex: {
+      namespace: 'app_auth'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: API_ADDRESS.auth.login, method: 'post', propertyName: 'data.access_token' },
+          user: false,
+          logout: false
+        },
+        autoFetchUser: true // This option can be used to disable user fetch after login. Useful if the login response already have the user.
+        // ,
+        // tokenRequired: false,
+        // tokenType: false
+      }
     }
   },
   router: {
