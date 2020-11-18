@@ -148,8 +148,8 @@
                 dark
                 x-small
                 color="#9575CD"
-                v-on="on"
-                @click="editItem2(item)"
+
+                :href="'products-coupons-attributes/attribute/' + item.id + '/edit'"
               >
                 <v-icon dark>
                   mdi-pencil

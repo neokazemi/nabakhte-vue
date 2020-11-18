@@ -93,5 +93,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/roleInformationCorrection.scss');
+  @import url('~/assets/scss/components/admin/managementsPanel/roleInformationCorrection.scss');
 </style>

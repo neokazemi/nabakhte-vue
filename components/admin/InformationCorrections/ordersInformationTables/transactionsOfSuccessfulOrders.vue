@@ -229,9 +229,11 @@
     </template>
   </v-data-table>
 </template>
+
 <script>
 export default {
-  name: 'OrdersTransactionsInformation',
+  name: 'TransactionsOfSuccessfulOrders',
+
   data: () => ({
     changeshow: false,
     detailshow: false,
@@ -401,6 +403,7 @@ export default {
           paymethod: '',
           port: '',
           transactionstatus: '',
+
           parenttransaction: '',
           price: null,
           transactioncode: '',
@@ -417,7 +420,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  background-color: #8e8e8e;
-}
+  .main {
+    background-color: #8e8e8e;
+  }
 </style>

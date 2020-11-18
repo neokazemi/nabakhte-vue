@@ -356,26 +356,28 @@
               </div>
             </v-col>
             <v-col>
-              <double-select
+              <client-only>
+                <double-select
 
-                v-if="editmode"
-                searchable-placeholder="جستجو"
-                text-items="نقش "
-                :text-selected-items="user.selectedItemsText"
-                :items="user.Roles"
-                :selected-items="user.selectedRoles"
-                :searchable="true"
-                :sorteable="true"
-                :limit-selected-items="4"
-                :order-by="'name'"
-                text-field="name"
-                value-field="id"
-              />
-              <div v-else class=" card2-input-elements">
-                نقش های انتخاب شده
-                <hr>
-                مشاور - ارسال کننده کتاب
-              </div>
+                  v-if="editmode"
+                  searchable-placeholder="جستجو"
+                  text-items="نقش "
+                  :text-selected-items="user.selectedItemsText"
+                  :items="user.Roles"
+                  :selected-items="user.selectedRoles"
+                  :searchable="true"
+                  :sorteable="true"
+                  :limit-selected-items="4"
+                  :order-by="'name'"
+                  text-field="name"
+                  value-field="id"
+                />
+                <div v-else class=" card2-input-elements">
+                  نقش های انتخاب شده
+                  <hr>
+                  مشاور - ارسال کننده کتاب
+                </div>
+              </client-only>
             </v-col>
           </v-row>
         </v-card>
@@ -394,14 +396,14 @@
 </template>
 <script>
 export default {
-  name: 'UserInformationCorrection',
+  name: 'UserInfo',
   components: {
     DoubleSelect: () => import('vue-double-select')
   },
 
   props:
 
-    { editmode: Boolean, filled: Boolean },
+      { editmode: Boolean, filled: Boolean },
   data: () => ({
     changeshow: true,
     items: ['فعال', 'غیر فعال', 'نامشخص'],
@@ -605,8 +607,9 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/userInformationCorrection.scss');
+  @import url('~/assets/scss/components/admin/managementsPanel/userInformationCorrection.scss');
 </style>

@@ -12,15 +12,15 @@
         بازگشت >>
       </v-btn>
     </div>
-    <user-information-correction :editmode="true" :filled="true" />
+    <UserInfo :editmode="true" :filled="true" />
   </div>
 </template>
 
 <script>
-import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
+import UserInfo from '../../../../../components/admin/InformationCorrections/userInfo'
 export default {
   name: 'Edit',
-  components: { UserInformationCorrection },
+  components: { UserInfo },
   middleware: 'Auth'
 }
 </script>

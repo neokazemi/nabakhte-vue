@@ -220,7 +220,7 @@
 
 <script>
 export default {
-  name: 'OrdersInformation',
+  name: 'OrdersInformationTable',
   data: () => ({
     changeshow: false,
     detailshow: false,
@@ -395,7 +395,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  background-color: #8e8e8e;
-}
+  .main {
+    background-color: #8e8e8e;
+  }
 </style>

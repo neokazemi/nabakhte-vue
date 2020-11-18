@@ -475,7 +475,7 @@ import { Product } from '../../../models/Product'
 import mixinProduct from '~/plugins/mixin/api/Product'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
-  name: 'ProductInformationCorrection',
+  name: 'ProductInfo',
 
   components: {
     Editor: () => import('@tinymce/tinymce-vue'),
@@ -639,6 +639,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/productInformationCorrection.scss');
+  @import url('~/assets/scss/components/admin/managementsPanel/productInformationCorrection.scss');
 
 </style>

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import AccessInformationCorrection from '~/components/admin/managementsPanel/accessInformationCorrection'
+import AccessInformationCorrection from '../../../../components/admin/InformationCorrections/accessInfo'
 export default {
   components: { AccessInformationCorrection }
 }

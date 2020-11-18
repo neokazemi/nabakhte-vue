@@ -69,7 +69,7 @@
                   </v-icon>
                 </v-btn>
               </v-card-actions>
-              <ProductInformationCorrection :notfilled="true" :dialog="true" />
+              <ProductInfo :notfilled="true" :dialog="true" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -172,21 +172,23 @@
         </v-row>
       </template>
     </v-data-table>
-    <v-pagination v-model="currentPage" :length="5" :total-visible="6" />
+    <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
   </v-card>
 </template>
 
 <script>
+
 import { ProductList } from '../../../../models/Product'
 import TablesHeader from '../../tablesHeader'
+import ProductInfo from '../../InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
-import ProductInformationCorrection from '~/components/admin/managementsPanel/productInformationCorrection'
 
 export default {
   name: 'ProductsTable',
-  components: { TablesHeader, ProductInformationCorrection },
+  components: { ProductInfo, TablesHeader },
   mixins: [mixinProduct],
   data: () => ({
+    totalpages: null,
     emptyarray: [],
     emptyarray2: [],
     allproducts: [],
@@ -285,6 +287,7 @@ export default {
     this.api_product_list(1)
       .then((response) => {
         that.products2 = new ProductList(response.data.data, response.data.meta)
+        that.totalpages = that.products2.paginate.last_page
         that.products2.loading = false
         that.products.list.push(that.products2.list[0])
         that.products.list.push(that.products2.list[1])
@@ -312,14 +315,24 @@ export default {
           that.pageNumberList.unshift(pageNumber)
           that.products2 = new ProductList(response.data.data, response.data.meta)
           that.products2.loading = false
-          that.products.list[(pageNumber - 1) * 5] = that.products2.list[0]
-          that.products.list[(pageNumber - 1) * 5 + 1] = that.products2.list[1]
-          that.products.list[(pageNumber - 1) * 5 + 2] = that.products2.list[2]
-          that.products.list[(pageNumber - 1) * 5 + 3] = that.products2.list[3]
-          that.products.list[(pageNumber - 1) * 5 + 4] = that.products2.list[4]
+          if (pageNumber !== that.totalpages) {
+            that.products.list[(pageNumber - 1) * 5] = that.products2.list[0]
+            that.products.list[(pageNumber - 1) * 5 + 1] = that.products2.list[1]
+            that.products.list[(pageNumber - 1) * 5 + 2] = that.products2.list[2]
+            that.products.list[(pageNumber - 1) * 5 + 3] = that.products2.list[3]
+            that.products.list[(pageNumber - 1) * 5 + 4] = that.products2.list[4]
 
-          that.showproducts = that.products.list
-          that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 5)
+            that.showproducts = that.products.list
+            that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 5)
+          } else {
+            let x
+            for (x = 0; x < that.products2.paginate.count; x++) {
+              that.products.list[(pageNumber - 1) * 5 + x] = that.products2.list[x]
+            }
+
+            that.showproducts = that.products.list
+            that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 4)
+          }
         })
         .catch(() => {
           that.products2.loading = false

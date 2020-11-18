@@ -12,7 +12,7 @@
         بازگشت >>
       </v-btn>
     </div>
-    <product-information-correction />
+    <ProductInfo />
     <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
@@ -27,13 +27,10 @@
 
 <script>
 
-import ProductInformationCorrection
-
-  from '~/components/admin/managementsPanel/productInformationCorrection'
+import ProductInfo from '../../../../../components/admin/InformationCorrections/productInfo'
 export default {
   name: 'Edit',
-
-  components: { ProductInformationCorrection },
+  components: { ProductInfo },
   middleware: 'Auth'
 }
 </script>

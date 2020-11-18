@@ -8,8 +8,8 @@
       pageText: '',
       itemsPerPageAllText: 'همه'
     }"
-    :headers="headers"
-    :items="orders"
+    :headers="transactionsheaders"
+    :items="transactions"
     :search="search"
     class="elevation-1 mt-50"
   >
@@ -34,7 +34,7 @@
               @click="addItem"
               v-on="on"
             >
-              افزودن سفارش
+              افزودن تراکنش
             </v-btn>
           </template>
           <v-card>
@@ -45,9 +45,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.name"
+                    v-model="editedItem.paymethod"
                     class="form-elements-size ma-3"
-                    label="نام محصول"
+                    label="روش پرداخت"
                   />
                 </v-col>
                 <v-col
@@ -55,9 +55,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.features"
+                    v-model="editedItem.port"
                     class="form-elements-size ma-3"
-                    label="ویژگی ها"
+                    label="درگاه"
                   />
                 </v-col>
                 <v-col
@@ -65,13 +65,23 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.lastprice"
+                    v-model="editedItem.transactionstatus"
                     class="form-elements-size ma-3"
-                    label="قیمت تمام شده به تومان (با در نظر گرفتن تخفیف ها)"
+                    label="وضعیت تراکنش"
                   />
                 </v-col>
               </v-row>
               <v-row>
+                <v-col
+                  v-if="changeshow"
+                  class="form-elements-column-width"
+                >
+                  <v-text-field
+                    v-model="editedItem.parenttransaction"
+                    class="form-elements-size ma-3"
+                    label="تراکنش والد"
+                  />
+                </v-col>
                 <v-col
                   v-if="changeshow"
                   class="form-elements-column-width"
@@ -79,7 +89,7 @@
                   <v-text-field
                     v-model="editedItem.price"
                     class="form-elements-size ma-3"
-                    label="قیمت محصول به تومان (در زمان خرید)"
+                    label="مبلغ (تومان)"
                   />
                 </v-col>
                 <v-col
@@ -87,19 +97,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.coupondiscount"
+                    v-model="editedItem.transactioncode"
                     class="form-elements-size ma-3"
-                    label="٪ تخفیف بن"
-                  />
-                </v-col>
-                <v-col
-                  v-if="changeshow"
-                  class="form-elements-column-width"
-                >
-                  <v-text-field
-                    v-model="editedItem.discount"
-                    class="form-elements-size ma-3"
-                    label="٪ تخفیف محصول"
+                    label="شماره تراکنش"
                   />
                 </v-col>
               </v-row>
@@ -109,9 +109,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.discountpercent"
+                    v-model="editedItem.refnum"
                     class="form-elements-size ma-3"
-                    label="٪ تخفیف داده شده"
+                    label="شماره مرجع"
                   />
                 </v-col>
                 <v-col
@@ -119,9 +119,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.disc"
+                    v-model="editedItem.follownum"
                     class="form-elements-size ma-3"
-                    label="مبلغ تخفیف داده شده (تومان)"
+                    label="شماره پیگیری"
                   />
                 </v-col>
                 <v-col
@@ -129,9 +129,21 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.field"
+                    v-model="editedItem.checknum"
                     class="form-elements-size ma-3"
-                    label="وضعیت تسویه"
+                    label="شماره چک"
+                  />
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col
+                  v-if="changeshow"
+                  class="form-elements-column-width"
+                >
+                  <v-text-field
+                    v-model="editedItem.managerdes"
+                    class="form-elements-size ma-3"
+                    label="توضیح مدیریتی"
                   />
                 </v-col>
               </v-row>
@@ -193,7 +205,7 @@
             </v-icon>
           </v-btn>
         </template>
-        <span>تغییر سفارش</span>
+        <span>تغییر تراکنش</span>
       </v-tooltip>
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
@@ -217,10 +229,9 @@
     </template>
   </v-data-table>
 </template>
-
 <script>
 export default {
-  name: 'DeletedOrdersInformation',
+  name: 'TransactionsOfOrders',
   data: () => ({
     changeshow: false,
     detailshow: false,
@@ -228,47 +239,50 @@ export default {
     dialog: false,
 
     dialogDelete: false,
-
-    headers: [
+    transactionsheaders: [
       {
-        text: 'نام محصول',
+        text: 'روش پرداخت',
         align: 'start',
         sortable: false,
-        value: 'name'
+        value: 'paymethod'
       },
-      { text: 'ویژگی ها', value: 'features', sortable: false },
-      { text: 'قیمت تمام شده به تومان (با در نظر گرفتن تخفیف ها)', value: 'lastprice', sortable: false },
-      { text: 'قیمت محصول به تومان (در زمان خرید)', value: 'price', sortable: false },
-      { text: '٪ تخفیف بن', value: 'coupondiscount', sortable: false },
-      { text: '٪ تخفیف محصول', value: 'discountpercent', sortable: false },
-      { text: 'مبلغ تخفیف داده شده (تومان)', value: 'discount', sortable: false },
-      { text: 'وضعیت تسویه', value: 'status', sortable: false },
-      { text: 'عملیات', value: 'actions', sortable: false }
-
-    ],
-    orders: [],
+      { text: 'درگاه', value: 'port', sortable: false },
+      { text: 'وضعیت تراکنش', value: 'transactionstatus', sortable: false },
+      { text: 'تراکنش والد', value: 'parenttransaction', sortable: false },
+      { text: 'مبلغ (تومان)', value: 'price', sortable: false },
+      { text: 'شماره تراکنش', value: 'transactioncode', sortable: false },
+      { text: 'شماره مرجع', value: 'refnum', sortable: false },
+      { text: 'شماره پیگیری', value: 'follownum', sortable: false },
+      { text: 'شماره چک', value: 'checknum', sortable: false },
+      { text: 'توضیح مدیریتی', value: 'managerdes', sortable: false },
+      { text: 'عملیات', value: 'actions', sortable: false }],
+    transactions: [],
     editedIndex: -1,
 
     editedItem: {
-      name: '',
-      features: '',
-      lastprice: null,
+      paymethod: '',
+      port: '',
+      transactionstatus: '',
+      parenttransaction: '',
       price: null,
-      coupondiscount: null,
-      discountpercent: null,
-      discount: null,
-      status: ''
+      transactioncode: '',
+      refnum: '',
+      follownum: '',
+      checknum: '',
+      managerdes: ''
     },
 
     defaultItem: {
-      name: '',
-      features: '',
-      lastprice: null,
+      paymethod: '',
+      port: '',
+      transactionstatus: '',
+      parentystatus: '',
       price: null,
-      coupondiscount: null,
-      discountpercent: null,
-      discount: null,
-      status: ''
+      transactioncode: '',
+      refnum: '',
+      follownum: '',
+      checknum: '',
+      managerdes: ''
     }
 
   }),
@@ -305,13 +319,6 @@ export default {
         return 'red'
       }
     },
-    editItem (item) {
-      this.editedIndex = this.orders.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
-      this.changeshow = true
-      this.detailshow = false
-    },
     close () {
       this.dialog = false
       this.$nextTick(() => {
@@ -320,72 +327,88 @@ export default {
       })
     },
     detailItem (item) {
-      this.editedIndex = this.orders.indexOf(item)
+      this.editedIndex = this.transactions.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
       this.changeshow = false
     },
+    editItem (item) {
+      this.editedIndex = this.transactions.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.dialog = true
+      this.changeshow = true
+      this.detailshow = false
+    },
 
     deleteItem (item) {
-      this.editedIndex = this.orders.indexOf(item)
+      this.editedIndex = this.transactions.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.orders.splice(this.editedIndex, 1)
+      this.transactions.splice(this.editedIndex, 1)
       this.closeDelete()
     },
     save () {
       if (this.editedIndex > -1) {
-        Object.assign(this.orders[this.editedIndex], this.editedItem)
+        Object.assign(this.transactions[this.editedIndex], this.editedItem)
       } else {
-        this.orders.push(this.editedItem)
+        this.transactions.push(this.editedItem)
       }
       this.close()
     },
     initialize () {
-      this.orders = [
+      this.transactions = [
         {
-          name: 'راه ابریشم ریاضی تجربی ',
-          features: 'دبیر: محمد صادق ثابتی',
-          lastprice: 0,
-          price: 0,
-          coupondiscount: 0,
-          discountpercent: 0,
-          discount: 0,
-          status: 'نا مشخص'
+          paymethod: '',
+          port: '',
+          transactionstatus: '',
+          parenttransaction: '',
+          price: null,
+          transactioncode: '',
+          refnum: '',
+          follownum: '',
+          checknum: '',
+          managerdes: ''
 
         },
         {
-          name: 'راه ابریشم ریاضی تجربی ',
-          features: 'دبیر: محمد صادق ثابتی',
-          lastprice: 0,
-          price: 0,
-          coupondiscount: 0,
-          discountpercent: 0,
-          discount: 0,
-          status: 'نا مشخص'
+          paymethod: '',
+          port: '',
+          transactionstatus: '',
+          parenttransaction: '',
+          price: null,
+          transactioncode: '',
+          refnum: '',
+          follownum: '',
+          checknum: '',
+          managerdes: ''
         },
         {
-          name: 'راه ابریشم ریاضی تجربی ',
-          features: 'دبیر: محمد صادق ثابتی',
-          lastprice: 0,
-          price: 0,
-          coupondiscount: 0,
-          discountpercent: 0,
-          discount: 0,
-          status: 'نا مشخص'
+          paymethod: '',
+          port: '',
+          transactionstatus: '',
+          parenttransaction: '',
+          price: null,
+          transactioncode: '',
+          refnum: '',
+          follownum: '',
+          checknum: '',
+          managerdes: ''
         },
         {
-          name: 'راه ابریشم ریاضی تجربی ',
-          features: 'دبیر: محمد صادق ثابتی',
-          lastprice: 0,
-          price: 0,
-          coupondiscount: 0,
-          discountpercent: 0,
-          discount: 0,
-          status: 'نا مشخص'
+          paymethod: '',
+          port: '',
+          transactionstatus: '',
+          parenttransaction: '',
+          price: null,
+          transactioncode: '',
+          refnum: '',
+          follownum: '',
+
+          checknum: '',
+          managerdes: ''
         }
       ]
     }
@@ -395,7 +418,7 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  background-color: #8e8e8e;
-}
+  .main {
+    background-color: #8e8e8e;
+  }
 </style>
