@@ -46,7 +46,7 @@ import AttributeGroupsTable from '~/components/admin/productsPanel/tables/attrib
 export default {
   name: 'Index',
   components: { Menu, AttributeGroupsTable, AttributesTable, CouponsManagementTable, ProductsTable },
-  middleware: 'Auth'
+  middleware: 'auth'
 
 }
 </script>

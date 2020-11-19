@@ -8,6 +8,9 @@
         منوی ادمین
       </v-btn>
     </div>
+    <v-btn @click="logout">
+      logout
+    </v-btn>
     <v-navigation-drawer
       v-model="drawer"
       style="height: 90%;"
@@ -50,9 +53,11 @@
 </template>
 <script>
 import { Product } from '~/models/Product'
+import mixinAuth from '~/plugins/mixin/api/Auth'
 
 export default {
   name: 'Menu',
+  mixins: [mixinAuth],
   data () {
     return {
 
@@ -90,6 +95,11 @@ export default {
 
         new Product()
 
+    }
+  },
+  methods: {
+    logout () {
+      this.api_logout()
     }
   }
 

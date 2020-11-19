@@ -44,7 +44,7 @@ import Coupons from '~/components/admin/ordersPanel/filters/coupons'
 export default {
   name: 'Index',
   components: { Menu, Orders, CouponsTable, TransactionsTable, OrdersTable, Coupons, Transactions },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 
