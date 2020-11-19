@@ -49,9 +49,9 @@
 
 <script>
 import AttributeInformationCorrection
-  from '~/components/admin/managementsPanel/attributeInformationCorrection'
+  from '~/components/admin/informationCorrections/attribute'
 import AttributeAmountInformationCorrection
-  from '~/components/admin/managementsPanel/attributeAmountInformationCorrection'
+  from '~/components/admin/informationCorrections/attributeAmount'
 export default {
 
   name: 'Edit',

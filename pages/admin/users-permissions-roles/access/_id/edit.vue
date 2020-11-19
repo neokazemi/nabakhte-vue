@@ -1,12 +1,12 @@
 <template>
-  <role-information-correction />
+  <access-information-correction />
 </template>
 
 <script>
-import RoleInformationCorrection from '~/components/admin/managementsPanel/roleInformationCorrection'
+import AccessInformationCorrection from '../../../../../components/admin/InformationCorrections/accessInfo'
 export default {
   name: 'Edit',
-  components: { RoleInformationCorrection },
+  components: { AccessInformationCorrection },
   middleware: 'Auth'
 }
 </script>

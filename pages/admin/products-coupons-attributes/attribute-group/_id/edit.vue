@@ -51,9 +51,9 @@
 
 <script>
 import AttributeCategoryInformationCorrection
-  from '~/components/admin/managementsPanel/attributeCategoryInformationCorrection'
+  from '~/components/admin/informationCorrections/attributeCategory'
 import AttributeGroupInformationCorrection
-  from '~/components/admin/managementsPanel/attributeGroupInformationCorrection'
+  from '~/components/admin/informationCorrections/attributeGroup'
 export default {
   name: 'Edit',
   middleware: 'Auth',

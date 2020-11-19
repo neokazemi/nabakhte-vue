@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import RoleInformationCorrection from '~/components/admin/managementsPanel/roleInformationCorrection'
+import RoleInformationCorrection from '~/components/admin/informationCorrections/roleInfo'
 export default {
   name: 'Edit',
   components: { RoleInformationCorrection },

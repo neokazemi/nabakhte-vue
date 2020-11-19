@@ -3,7 +3,8 @@ const mixinContent = {
     return {
       api_addresses: {
         search: '/api/v2/search?contentType[]=video&videoPage=',
-        show: '/api/v2/c/'
+        show: '/api/v2/c/',
+        paginate: '/api/v2/c?free%5B0%5D=1&contentType%5B0%5D=video&videoPage='
       }
     }
   },
@@ -21,12 +22,13 @@ const mixinContent = {
         page = 1
       }
       const that = this
-      const url = this.api_addresses.search + page + this.api_content_private_generateUrlFromTags(tags)
+
+      const url = this.api_addresses.paginate + page + this.api_content_private_generateUrlFromTags(tags)
 
       return new Promise((resolve, reject) => {
         that.$axios.get(url)
           .then((response) => {
-            resolve(response.data.data.videos)
+            resolve(response.data)
           })
           .catch((error) => {
             reject(new Error(error))
@@ -34,7 +36,7 @@ const mixinContent = {
       })
     },
     api_content_show (id) {
-      const url = this.api_addresses.show + '/' + id
+      const url = this.api_addresses.show + id
       return this.$axios.get(url)
     }
   }

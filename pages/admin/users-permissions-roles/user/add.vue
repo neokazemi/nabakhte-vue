@@ -1,12 +1,12 @@
 <template>
-  <user-information-correction :editmode="true" />
+  <UserInfo :editmode="true" />
 </template>
 
 <script>
-import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
+import UserInfo from '../../../../components/admin/InformationCorrections/userInfo'
 export default {
   name: 'Add',
-  components: { UserInformationCorrection },
+  components: { UserInfo },
   middleware: 'Auth'
 
 }
