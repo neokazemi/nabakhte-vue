@@ -199,7 +199,7 @@
 <script>
 import mixinContent from '../../../plugins/mixin/api/Content'
 import TablesHeader from '../tablesHeader'
-import { ProductList } from '../../../models/Product'
+
 import { ContentList } from '../../../models/Content'
 import ContentInfo from '../InformationCorrections/contentInfo'
 
@@ -287,7 +287,7 @@ export default {
   mounted () {
     const that = this
     this.api_content_search([], 1).then((result) => {
-      that.contents2 = new ProductList(result.data, result.meta)
+      that.contents2 = new ContentList(result.data, result.meta)
       that.totalpages = that.contents2.paginate.last_page
       that.contents2.loading = false
       let x
@@ -296,7 +296,7 @@ export default {
       }
       let i
 
-      for (i = 1; i < 1092; i++) {
+      for (i = 1; i < that.totalpages - 10; i++) {
         that.contents.list.push(1)
       }
       that.showcontents = that.contents.list
@@ -337,7 +337,7 @@ export default {
             }
 
             that.showcontents = that.contents.list
-            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 9)
+            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + that.contents2.paginate.count)
           }
         })
     },
