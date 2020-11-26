@@ -13,7 +13,7 @@
         <i class="fas fa-chart-pie" /> تحلیل
       </p>
       <nuxt-link :to="'/product/' + product.id">
-        <v-img :src="product.photo" :alt="product.name" />
+        <v-img :src="product.photo" :alt="product.name" :nam="product.name" />
       </nuxt-link>
       <div class="image-hover">
         <nuxt-link class="more-info" :to="'/product/' + product.id">
