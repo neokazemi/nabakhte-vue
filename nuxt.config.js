@@ -141,7 +141,17 @@ export default {
   vuetify: {
     rtl: true,
     customVariables: ['~/assets/variables.scss'],
+    // ToDO: read more about this config
     treeShake: true,
+    // treeShake: process.env.NODE_ENV === 'production',
+    defaultAssets: {
+      icons: {
+        iconfont: 'mdi' // Material Designs Icons (mdi) - Material Icons (md) - Font Awesome 5 (fa) - Font Awesome 4 (fa4)
+      },
+      font: {
+        family: 'IRANSans'
+      }
+    },
     theme: {
       dark: false,
       themes: {
