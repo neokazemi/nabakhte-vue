@@ -118,9 +118,9 @@
 </template>
 
 <script>
-import TablesHeader from '../tablesHeader'
-import { SetList } from '../../../models/Set'
-import mixinSet from '../../../plugins/mixin/api/Set'
+import TablesHeader from '~/components/admin/tablesHeader'
+import { SetList } from '~/models/Set'
+import mixinSet from '~/plugins/mixin/api/Set'
 
 export default {
   name: 'ContentGroupTable',
@@ -197,7 +197,7 @@ export default {
   },
   mounted () {
     const that = this
-    this.api_set_search([], 1).then((result) => {
+    this.api_set_list(1).then((result) => {
       that.sets2 = new SetList(result.data, result.meta)
       that.totalpages = that.sets2.paginate.last_page
       that.sets2.loading = false
@@ -221,23 +221,17 @@ export default {
   methods: {
     paginatepage (pageNumber) {
       const that = this
-      this.api_set_search([], pageNumber)
+      this.api_set_list(pageNumber)
         .then((result) => {
           that.showsets = []
           that.pageNumberList.unshift(pageNumber)
           that.sets2 = new SetList(result.data, result.meta)
           that.sets2.loading = false
           if (pageNumber !== that.totalpages) {
-            that.sets.list[(pageNumber - 1) * 10] = that.sets2.list[0]
-            that.sets.list[(pageNumber - 1) * 10 + 1] = that.sets2.list[1]
-            that.sets.list[(pageNumber - 1) * 10 + 2] = that.sets2.list[2]
-            that.sets.list[(pageNumber - 1) * 10 + 3] = that.sets2.list[3]
-            that.sets.list[(pageNumber - 1) * 10 + 4] = that.sets2.list[4]
-            that.sets.list[(pageNumber - 1) * 10 + 5] = that.sets2.list[5]
-            that.sets.list[(pageNumber - 1) * 10 + 6] = that.sets.list[6]
-            that.sets.list[(pageNumber - 1) * 10 + 7] = that.sets2.list[7]
-            that.sets.list[(pageNumber - 1) * 10 + 8] = that.sets2.list[8]
-            that.sets.list[(pageNumber - 1) * 10 + 9] = that.sets2.list[9]
+            let y
+            for (y = 0; y < 10; y++) {
+              that.sets.list[(pageNumber - 1) * 10 + y] = that.sets2.list[y]
+            }
 
             that.showsets = that.sets.list
             that.showsets = that.showsets.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10)

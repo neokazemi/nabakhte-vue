@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ContentInfo from '../../../../components/admin/InformationCorrections/contentInfo'
+import ContentInfo from '~/components/admin/InformationCorrections/contentInfo'
 export default {
   name: 'Edit',
   components: { ContentInfo }

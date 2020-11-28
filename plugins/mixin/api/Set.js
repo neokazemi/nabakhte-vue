@@ -2,28 +2,20 @@ const mixinSet = {
   data () {
     return {
       api_addresses: {
-        // search: '/api/v2/search?contentType[]=video&videoPage=',
         show: '/api/v2/set/',
         paginate: '/api/v2/set?enable=1&display=1&contentsetPage='
       }
     }
   },
   methods: {
-    api_set_private_generateUrlFromTags (tags) {
-      let url = tags.join('&tags[]=')
-      if (url.trim().length > 0) {
-        url = 'tags[]=' + url
-      }
-
-      return url
-    },
-    api_set_search (tags, page) {
+    api_set_list (page) {
       if (!page) {
         page = 1
       }
+
       const that = this
 
-      const url = this.api_addresses.paginate + page + this.api_set_private_generateUrlFromTags(tags)
+      const url = this.api_addresses.paginate + page
 
       return new Promise((resolve, reject) => {
         that.$axios.get(url)

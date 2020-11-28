@@ -197,11 +197,11 @@
 </template>
 
 <script>
-import mixinContent from '../../../plugins/mixin/api/Content'
-import TablesHeader from '../tablesHeader'
+import TablesHeader from '~/components/admin/tablesHeader'
 
-import { ContentList } from '../../../models/Content'
-import ContentInfo from '../InformationCorrections/contentInfo'
+import { ContentList } from '~/models/Content'
+import ContentInfo from '~/components/admin/InformationCorrections/contentInfo'
+import mixinContent from '~/plugins/mixin/api/Content'
 
 export default {
   name: 'ContentTable',
@@ -317,16 +317,10 @@ export default {
           that.contents2 = new ContentList(result.data, result.meta)
           that.contents2.loading = false
           if (pageNumber !== that.totalpages) {
-            that.contents.list[(pageNumber - 1) * 10] = that.contents2.list[0]
-            that.contents.list[(pageNumber - 1) * 10 + 1] = that.contents2.list[1]
-            that.contents.list[(pageNumber - 1) * 10 + 2] = that.contents2.list[2]
-            that.contents.list[(pageNumber - 1) * 10 + 3] = that.contents2.list[3]
-            that.contents.list[(pageNumber - 1) * 10 + 4] = that.contents2.list[4]
-            that.contents.list[(pageNumber - 1) * 10 + 5] = that.contents2.list[5]
-            that.contents.list[(pageNumber - 1) * 10 + 6] = that.contents2.list[6]
-            that.contents.list[(pageNumber - 1) * 10 + 7] = that.contents2.list[7]
-            that.contents.list[(pageNumber - 1) * 10 + 8] = that.contents2.list[8]
-            that.contents.list[(pageNumber - 1) * 10 + 9] = that.contents2.list[9]
+            let y
+            for (y = 0; y < 10; y++) {
+              that.contents.list[(pageNumber - 1) * 10 + y] = that.contents2.list[y]
+            }
 
             that.showcontents = that.contents.list
             that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10)

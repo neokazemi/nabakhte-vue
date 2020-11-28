@@ -178,9 +178,9 @@
 
 <script>
 
-import { ProductList } from '../../../../models/Product'
-import TablesHeader from '../../tablesHeader'
-import ProductInfo from '../../InformationCorrections/productInfo'
+import { ProductList } from '~/models/Product'
+import TablesHeader from '~/components/admin/tablesHeader'
+import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
 
 export default {
