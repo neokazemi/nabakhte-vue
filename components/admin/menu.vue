@@ -8,7 +8,7 @@
         منوی ادمین
       </v-btn>
     </div>
-    <v-btn @click="logout">
+    <v-btn @click="api_logout">
       logout
     </v-btn>
     <v-navigation-drawer
@@ -95,11 +95,6 @@ export default {
 
         new Product()
 
-    }
-  },
-  methods: {
-    logout () {
-      this.api_logout()
     }
   }
 

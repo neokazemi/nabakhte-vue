@@ -1,4 +1,6 @@
-export default function ({ $auth }) {
+// import { Cart } from '../models/Cart'
+
+export default function ({ $auth, store }) {
   // $auth.onRedirect((to, from) => {
   //   console.error(to)
   //   // you can optionally change `to` by returning a new value
@@ -8,8 +10,10 @@ export default function ({ $auth }) {
   //   console.error(name, error)
   // })
 
+  // console.log('$auth.loggedIn', $auth.loggedIn) // 04u848APXqtPPU
+
   // if (!$auth.loggedIn) {
-  //   return
+  //   $store.commit('cart/updateCart', new Cart())
   // }
   // const username = $auth.user.username
 }

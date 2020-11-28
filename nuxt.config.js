@@ -81,6 +81,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    // '@nuxtjs/toast',
     '@nuxtjs/auth',
     '@nuxtjs/pwa'
     // // Doc: https://github.com/nuxt/content
@@ -192,7 +193,7 @@ export default {
   },
   auth: { // https://dev.auth.nuxtjs.org/
     plugins: [
-      // { src: '~/plugins/axios', ssr: true }, '~/plugins/auth.js'
+      { src: '~/plugins/axios', ssr: true }, '~/plugins/auth.js'
     ],
     vuex: {
       namespace: 'app_auth'

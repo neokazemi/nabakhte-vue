@@ -10,7 +10,7 @@ export default function ({ req, store, redirect, res }) {
 
   const cookies = req.headers.cookie.split(';')
 
-  console.log('cookies', cookies)
+  // console.log('cookies', cookies)
 
   const accessTokenCookie = cookies.filter((item) => {
     return item.includes(tokenKeys[0] + '=') || item.includes(tokenKeys[1] + '=')
@@ -20,7 +20,7 @@ export default function ({ req, store, redirect, res }) {
     return item.trim().replace(tokenKeys[0] + '=', '').replace(tokenKeys[1] + '=', '')
   })
 
-  console.log('accessTokenCookie', accessTokenCookie)
+  // console.log('accessTokenCookie', accessTokenCookie)
 
   if (accessTokenCookie.length === 0) {
     return redirect('/login')
