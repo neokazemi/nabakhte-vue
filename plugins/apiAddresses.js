@@ -10,11 +10,23 @@ const API_ADDRESS = {
       if (!page) {
         page = 1
       }
-      const paginate = '?doesntHaveGrand=1&active=1&productPage='
-      return apiBasePath + '/product' + paginate + page
+      const paginate = '?doesntHaveGrand=1&active=1&productPage=' + page
+      return apiBasePath + '/product' + paginate
     },
     show_user (productId) {
       return apiBasePath + '/product/' + productId
+    }
+  },
+  set: {
+    list_user (page) {
+      if (!page) {
+        page = 1
+      }
+      const paginate = '?enable=1&display=1&contentsetPage=' + page
+      return apiBasePath + '/set' + paginate
+    },
+    show_user (setId) {
+      return apiBasePath + '/set/' + setId
     }
   },
   content: {

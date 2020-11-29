@@ -1,22 +1,10 @@
+import API_ADDRESS from '~/plugins/apiAddresses'
+
 const mixinSet = {
-  data () {
-    return {
-      api_addresses: {
-        show: '/api/v2/set/',
-        paginate: '/api/v2/set?enable=1&display=1&contentsetPage='
-      }
-    }
-  },
   methods: {
     api_set_list (page) {
-      if (!page) {
-        page = 1
-      }
-
       const that = this
-
-      const url = this.api_addresses.paginate + page
-
+      const url = API_ADDRESS.set.list_user(page)
       return new Promise((resolve, reject) => {
         that.$axios.get(url)
           .then((response) => {
@@ -28,7 +16,7 @@ const mixinSet = {
       })
     },
     api_set_show (id) {
-      const url = this.api_addresses.show + id
+      const url = API_ADDRESS.set.show_user(id)
       return this.$axios.get(url)
     }
   }
