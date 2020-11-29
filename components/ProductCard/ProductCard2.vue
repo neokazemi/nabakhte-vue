@@ -1,7 +1,7 @@
 <template>
   <div class="full-width card">
     <div class="product-image">
-      <v-img :src="product.photo" contain />
+      <v-img :src="product.photo" :alt="product.name" :nam="product.name" contain />
     </div>
     <div class="full-width product-info">
       <div class="right-part">

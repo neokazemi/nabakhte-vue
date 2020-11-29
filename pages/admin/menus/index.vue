@@ -80,6 +80,7 @@ let id = 1
 export default {
   name: 'NestedWithVmodel',
   display: 'Nested (v-model & vuex)',
+  middleware: 'auth',
   mixins: [mixinMenu],
   order: 16,
   // components: { NestedDraggable },

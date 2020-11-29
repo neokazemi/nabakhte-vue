@@ -11,7 +11,8 @@
         بازگشت >>
       </v-btn>
     </div>
-    <ContentInfo /><div class="d-flex justify-end">
+    <ContentInfo />
+    <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
         elevation="3"
@@ -34,7 +35,5 @@ export default {
 <style scoped>
   .main {
     background-color: #8e8e8e;
-
   }
-
 </style>

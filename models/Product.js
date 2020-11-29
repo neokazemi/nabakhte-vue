@@ -92,7 +92,7 @@ class Product extends Model {
       'https://media.chibekhoonam.net/2016/08/zaban9-mobtakeran.jpg',
       'https://media.chibekhoonam.net/2018/08/eng-9-tiz-khsabz.jpg',
       'https://media.chibekhoonam.net/2020/11/9786000022051.jpg',
-      'https://media.chibekhoonam.net/2019/11/eng-9-banihashemi.jpg',
+      'https://media.chibekhoonam.net/2020/11/51-min.jpg',
       'https://media.chibekhoonam.net/2017/08/englisi-9-reshadat-mobtakeran.jpg',
       'https://media.chibekhoonam.net/2018/10/golbarg-eng9.jpg',
       'https://media.chibekhoonam.net/2019/09/eng-9-loghme.jpg'

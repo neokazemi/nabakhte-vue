@@ -200,7 +200,7 @@
                             </v-icon>
                           </div>
                           <h2 class="account-description">
-                            {{ userData.first_name }}
+                            {{ userDataFirstName }}
                           </h2>
                         </nuxt-link>
                         <div v-else @click="showLoginDialog">
@@ -225,7 +225,7 @@
                           <nuxt-link class="middle-option" to="/my-account/edit-account">
                             ویرایش پروفایل
                           </nuxt-link>
-                          <a class="last-option" @click="logout">خروج</a>
+                          <a class="last-option" @click="api_logout">خروج</a>
                         </div>
                       </div>
                     </client-only>
@@ -476,6 +476,13 @@ export default {
     }
   },
   computed: {
+    userDataFirstName () {
+      if (this.userData.first_name) {
+        return this.userData.first_name
+      } else {
+        return 'حساب کاربری'
+      }
+    },
     consultingMegaMenuTabContent () {
       for (let i = 0; i < this.consultingMegaMenuItems.length; i++) {
         if (this.consultingMegaMenuItems[i].title === this.consultingMegaMenuTab) {

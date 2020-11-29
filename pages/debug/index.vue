@@ -1,22 +1,15 @@
 <template>
   <div>
-    <v-btn
-      color="red lighten-2"
-      dark
-      @click="showLoginDialog"
-    >
-      Click Me
-    </v-btn>
-    <LoginDialog />
+    aaaa
   </div>
 </template>
 
 <script>
-import LoginDialog from '../../components/login/LoginDialog'
+import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'Index',
-  components: { LoginDialog },
+  mixins: [mixinDetectDevice],
   data () {
     return {
       dialog: false
