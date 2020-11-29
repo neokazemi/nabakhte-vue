@@ -1,5 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
-import API_ADDRESS from './plugins/api'
+import API_ADDRESS from './plugins/apiAddresses'
 
 // https://www.npmjs.com/package/cookie-universal-nuxt
 // https://vadosware.io/post/cookie-authentication-without-nuxt-auth/#auth-check-cookie-endpoint
