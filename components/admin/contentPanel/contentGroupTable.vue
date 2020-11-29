@@ -16,12 +16,13 @@
       }"
       :headers="headers"
       :items="sets.list"
+      no-data-text="لطفا منتظر بمانید..."
 
       :search="search"
       class="elevation-1 mt-50"
     >
       <template v-slot:item.pic="{ item }">
-        <v-img :src="item.inputData.photo" width="100" height="100" class="mt-3 mb-3" />
+        <v-img :src="item.inputData.photo" max-width="150" max-height="150" contain class="mt-3 mb-3" />
       </template>
 
       <!--      <template v-slot:item.status="{ item }">-->

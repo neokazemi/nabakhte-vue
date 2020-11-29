@@ -9,6 +9,7 @@
       :headers="headers"
       :items="products.list"
       :search="search"
+      no-data-text="لطفا منتظر بمانید..."
       class="elevation-1 data-table-width mt-30"
     >
       <!--      :footer-props="{-->
@@ -29,7 +30,7 @@
       <!--        </v-chip>-->
       <!--      </template>-->
       <template v-slot:item.pic="{ item }">
-        <v-img :src="item.photo" width="100" height="100" class="mt-3 mb-3" />
+        <v-img :src="item.photo" max-width="150" max-height="150" contain class="mt-3 mb-3" />
       </template>
 
       <template v-slot:top>
