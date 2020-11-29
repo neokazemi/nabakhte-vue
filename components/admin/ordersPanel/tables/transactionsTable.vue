@@ -184,7 +184,7 @@
 </template>
 
 <script>
-import TablesHeader from '../../tablesHeader'
+import TablesHeader from '~/components/admin/tablesHeader'
 export default {
   name: 'TransactionsTable',
   components: { TablesHeader },

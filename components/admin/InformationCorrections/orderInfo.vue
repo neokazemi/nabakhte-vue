@@ -224,10 +224,10 @@
 
 <script>
 
-import OrdersInformationTable from './ordersInformationTables/allorders'
-import DeletedOrdersInformationTable from './ordersInformationTables/deletedOrders'
-import TransactionsOfOrders from './ordersInformationTables/transactionsOfOrders'
-import TransactionsOfSuccessfulOrders from './ordersInformationTables/transactionsOfSuccessfulOrders'
+import OrdersInformationTable from '~/components/admin/InformationCorrections/ordersInformationTables/allorders'
+import DeletedOrdersInformationTable from '~/components/admin/InformationCorrections/ordersInformationTables/deletedOrders'
+import TransactionsOfOrders from '~/components/admin/InformationCorrections/ordersInformationTables/transactionsOfOrders'
+import TransactionsOfSuccessfulOrders from '~/components/admin/InformationCorrections/ordersInformationTables/transactionsOfSuccessfulOrders'
 export default {
   name: 'OrderInformationCorrection',
   components: { TransactionsOfSuccessfulOrders, TransactionsOfOrders, DeletedOrdersInformationTable, OrdersInformationTable },

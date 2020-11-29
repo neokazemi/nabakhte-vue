@@ -62,7 +62,7 @@
           itemsPerPageAllText: 'همه'
         }"
         :headers="headers"
-        :items="showcontents"
+        :items="contents.list"
         :search="search"
         class="elevation-1 mt-50"
       >
@@ -197,11 +197,11 @@
 </template>
 
 <script>
-import mixinContent from '../../../plugins/mixin/api/Content'
-import TablesHeader from '../tablesHeader'
-import { ProductList } from '../../../models/Product'
-import { ContentList } from '../../../models/Content'
-import ContentInfo from '../InformationCorrections/contentInfo'
+import TablesHeader from '~/components/admin/tablesHeader'
+
+import { ContentList } from '~/models/Content'
+import ContentInfo from '~/components/admin/InformationCorrections/contentInfo'
+import mixinContent from '~/plugins/mixin/api/Content'
 
 export default {
   name: 'ContentTable',
@@ -247,7 +247,6 @@ export default {
     ],
 
     contents: new ContentList(),
-    contents2: new ContentList(),
     showcontents: [],
 
     editedIndex: -1,
@@ -274,32 +273,17 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
-    currentPage (newVal, oldVal) {
-      if (!this.pageNumberList.includes(newVal)) {
-        this.paginatepage(newVal)
-      } else if (newVal !== 1) {
-        this.showcontents = this.contents.list.slice((newVal - 1) * 10, (newVal - 1) * 10 + 10)
-      } else {
-        this.showcontents = this.contents.list.slice(0, 10)
-      }
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
   },
+
   mounted () {
     const that = this
     this.api_content_search([], 1).then((result) => {
-      that.contents2 = new ProductList(result.data, result.meta)
-      that.totalpages = that.contents2.paginate.last_page
-      that.contents2.loading = false
-      let x
-      for (x = 0; x < 10; x++) {
-        that.contents.list.push(that.contents2.list[x])
-      }
-      let i
-
-      for (i = 1; i < 1092; i++) {
-        that.contents.list.push(1)
-      }
-      that.showcontents = that.contents.list
+      that.contents = new ContentList(result.data, result.meta)
+      that.totalpages = that.contents.paginate.last_page
+      that.contents.loading = false
     })
   },
 
@@ -312,33 +296,8 @@ export default {
       const that = this
       this.api_content_search([], pageNumber)
         .then((result) => {
-          that.showcontents = []
-          that.pageNumberList.unshift(pageNumber)
-          that.contents2 = new ContentList(result.data, result.meta)
-          that.contents2.loading = false
-          if (pageNumber !== that.totalpages) {
-            that.contents.list[(pageNumber - 1) * 10] = that.contents2.list[0]
-            that.contents.list[(pageNumber - 1) * 10 + 1] = that.contents2.list[1]
-            that.contents.list[(pageNumber - 1) * 10 + 2] = that.contents2.list[2]
-            that.contents.list[(pageNumber - 1) * 10 + 3] = that.contents2.list[3]
-            that.contents.list[(pageNumber - 1) * 10 + 4] = that.contents2.list[4]
-            that.contents.list[(pageNumber - 1) * 10 + 5] = that.contents2.list[5]
-            that.contents.list[(pageNumber - 1) * 10 + 6] = that.contents2.list[6]
-            that.contents.list[(pageNumber - 1) * 10 + 7] = that.contents2.list[7]
-            that.contents.list[(pageNumber - 1) * 10 + 8] = that.contents2.list[8]
-            that.contents.list[(pageNumber - 1) * 10 + 9] = that.contents2.list[9]
-
-            that.showcontents = that.contents.list
-            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10)
-          } else {
-            let x
-            for (x = 0; x < that.contents2.paginate.count; x++) {
-              that.contents.list[(pageNumber - 1) * 10 + x] = that.contents2.list[x]
-            }
-
-            that.showcontents = that.contents.list
-            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 9)
-          }
+          that.contents = new ContentList(result.data, result.meta)
+          that.contents.loading = false
         })
     },
 
@@ -436,6 +395,7 @@ export default {
     }
 
   }
+
 }
 </script>
 

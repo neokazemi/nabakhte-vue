@@ -7,7 +7,7 @@
       :items-per-page="5"
 
       :headers="headers"
-      :items="showproducts"
+      :items="products.list"
       :search="search"
       class="elevation-1 data-table-width mt-30"
     >
@@ -178,9 +178,9 @@
 
 <script>
 
-import { ProductList } from '../../../../models/Product'
-import TablesHeader from '../../tablesHeader'
-import ProductInfo from '../../InformationCorrections/productInfo'
+import { ProductList } from '~/models/Product'
+import TablesHeader from '~/components/admin/tablesHeader'
+import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
 
 export default {
@@ -196,7 +196,6 @@ export default {
     showproducts: [],
     currentPage: 1,
     pageNumberList: [1],
-    products2: new ProductList(),
     pagenumber: 1,
     shownextpage: false,
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -272,37 +271,21 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
-    currentPage (newVal, oldVal) {
-      if (!this.pageNumberList.includes(newVal)) {
-        this.paginatepage(newVal)
-      } else if (newVal !== 1) {
-        this.showproducts = this.products.list.slice((newVal - 1) * 5, (newVal - 1) * 5 + 5)
-      } else {
-        this.showproducts = this.products.list.slice(0, 5)
-      }
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
+
   },
   mounted () {
     const that = this
     this.api_product_list(1)
       .then((response) => {
-        that.products2 = new ProductList(response.data.data, response.data.meta)
-        that.totalpages = that.products2.paginate.last_page
-        that.products2.loading = false
-        that.products.list.push(that.products2.list[0])
-        that.products.list.push(that.products2.list[1])
-        that.products.list.push(that.products2.list[2])
-        that.products.list.push(that.products2.list[3])
-        that.products.list.push(that.products2.list[4])
-        let i
-
-        for (i = 1; i < 10; i++) {
-          that.products.list.push(1)
-        }
-        that.showproducts = that.products.list
+        that.products = new ProductList(response.data.data, response.data.meta)
+        that.totalpages = that.products.paginate.last_page
+        that.products.loading = false
       })
       .catch(() => {
-        that.products2.loading = false
+        that.products.loading = false
       }
       )
   },
@@ -311,31 +294,11 @@ export default {
       const that = this
       this.api_product_list(pageNumber)
         .then((response) => {
-          that.showproducts = []
-          that.pageNumberList.unshift(pageNumber)
-          that.products2 = new ProductList(response.data.data, response.data.meta)
-          that.products2.loading = false
-          if (pageNumber !== that.totalpages) {
-            that.products.list[(pageNumber - 1) * 5] = that.products2.list[0]
-            that.products.list[(pageNumber - 1) * 5 + 1] = that.products2.list[1]
-            that.products.list[(pageNumber - 1) * 5 + 2] = that.products2.list[2]
-            that.products.list[(pageNumber - 1) * 5 + 3] = that.products2.list[3]
-            that.products.list[(pageNumber - 1) * 5 + 4] = that.products2.list[4]
-
-            that.showproducts = that.products.list
-            that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 5)
-          } else {
-            let x
-            for (x = 0; x < that.products2.paginate.count; x++) {
-              that.products.list[(pageNumber - 1) * 5 + x] = that.products2.list[x]
-            }
-
-            that.showproducts = that.products.list
-            that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 4)
-          }
+          that.products = new ProductList(response.data.data, response.data.meta)
+          that.products.loading = false
         })
         .catch(() => {
-          that.products2.loading = false
+          that.products.loading = false
         })
     },
     addItem () {

@@ -210,8 +210,8 @@
 
 <script>
 
-import TablesHeader from '../../tablesHeader'
-import UserInfo from '../../InformationCorrections/userInfo'
+import TablesHeader from '~/components/admin/tablesHeader'
+import UserInfo from '~/components/admin/InformationCorrections/userInfo'
 export default {
   name: 'Users',
   components: { UserInfo, TablesHeader },
