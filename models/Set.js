@@ -73,30 +73,30 @@ class Set extends Model {
   // contents() {
   //     return new ContentList(this.inputData.contents);
   // }
-
-  createFavorUrl (baseUrl, favored) {
-    return baseUrl + '/set/' + this.id + '/' + ((favored) ? 'favored' : 'unfavored')
-  }
-
-  setFavor (url) {
-    if (typeof url === 'undefined') {
-      url = this.favor_url
-    }
-    if (url === null) {
-      // console.error('url is null.')
-    }
-    return this.crud.create(url)
-  }
-
-  setUnfavor (url) {
-    if (typeof url === 'undefined') {
-      url = this.unfavor_url
-    }
-    if (url === null) {
-      // console.error('url is null.')
-    }
-    return this.crud.create(url)
-  }
+  //
+  // createFavorUrl (baseUrl, favored) {
+  //   return baseUrl + '/set/' + this.id + '/' + ((favored) ? 'favored' : 'unfavored')
+  // }
+  //
+  // setFavor (url) {
+  //   if (typeof url === 'undefined') {
+  //     url = this.favor_url
+  //   }
+  //   if (url === null) {
+  //     // console.error('url is null.')
+  //   }
+  //   return this.crud.create(url)
+  // }
+  //
+  // setUnfavor (url) {
+  //   if (typeof url === 'undefined') {
+  //     url = this.unfavor_url
+  //   }
+  //   if (url === null) {
+  //     // console.error('url is null.')
+  //   }
+  //   return this.crud.create(url)
+  // }
 }
 
 class SetList extends Collection {

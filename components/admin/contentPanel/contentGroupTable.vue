@@ -15,24 +15,30 @@
         itemsPerPageAllText: 'همه'
       }"
       :headers="headers"
-      :items="contentGroup"
+      :items="sets.list"
 
       :search="search"
       class="elevation-1 mt-50"
     >
-      <template v-slot:item.status="{ item }">
-        <v-chip
-          :color="getColor(item.status)"
-          dark
-        >
-          {{ item.status }}
-        </v-chip>
+      <template v-slot:item.pic="{ item }">
+        <v-img :src="item.inputData.photo" width="100" height="100" class="mt-3 mb-3" />
       </template>
+
+      <!--      <template v-slot:item.status="{ item }">-->
+      <!--        <v-chip-->
+      <!--          :color="getColor(item.status)"-->
+      <!--          dark-->
+      <!--        >-->
+      <!--          {{ item.status }}-->
+      <!--        </v-chip>-->
+      <!--      </template>-->
+
       <template v-slot:top>
         <v-toolbar
           flat
         >
           <v-spacer />
+
           <v-dialog
             v-model="dialog"
             class="dialog-width"
@@ -107,15 +113,27 @@
         </v-tooltip>
       </template>
     </v-data-table>
+    <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
   </v-card>
 </template>
 
 <script>
-import TablesHeader from '../tablesHeader'
+import TablesHeader from '~/components/admin/tablesHeader'
+import { SetList } from '~/models/Set'
+import mixinSet from '~/plugins/mixin/api/Set'
+
 export default {
   name: 'ContentGroupTable',
   components: { TablesHeader },
+  mixins: [mixinSet],
+
   data: () => ({
+    currentPage: 1,
+    totalpages: null,
+    showsets: [],
+    sets: new SetList(),
+    pageNumberList: [1],
+
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
     changeshow: false,
@@ -126,18 +144,18 @@ export default {
     dialogDelete: false,
 
     headers: [
-      {
-        text: 'آیدی ',
-        align: 'start',
-        sortable: false,
-        value: 'id'
-      },
-      { text: 'عکس', value: 'image', sortable: false },
+      // {
+      //   text: 'آیدی ',
+      //   align: 'start',
+      //   sortable: false,
+      //   value: 'id'
+      // },
+      { text: 'عکس', value: 'pic', sortable: false },
       { text: 'تیتر', value: 'title', sortable: false },
 
-      { text: 'فعال', value: 'active', sortable: false },
-
-      { text: 'نمایش', value: 'show', sortable: false },
+      // { text: 'فعال', value: 'active', sortable: false },
+      //
+      // { text: 'نمایش', value: 'show', sortable: false },
       { text: 'عملیات', value: 'actions', sortable: false }
     ],
 
@@ -165,7 +183,19 @@ export default {
     },
     dialogDelete (val) {
       val || this.closeDelete()
+    },
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
+
+  },
+  mounted () {
+    const that = this
+    this.api_set_list(1).then((result) => {
+      that.sets = new SetList(result.data, result.meta)
+      that.totalpages = that.sets.paginate.last_page
+      that.sets.loading = false
+    })
   },
 
   created () {
@@ -173,6 +203,15 @@ export default {
   },
 
   methods: {
+    paginatepage (pageNumber) {
+      const that = this
+      this.api_set_list(pageNumber)
+        .then((result) => {
+          that.sets = new SetList(result.data, result.meta)
+          that.sets.loading = false
+        })
+    },
+
     addItem () {
       this.$router.push('content-group/add')
     },

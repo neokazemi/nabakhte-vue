@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import ProductInformationCorrection from '../../../../../components/admin/InformationCorrections/productInfo'
+import ProductInformationCorrection from '~/components/admin/InformationCorrections/productInfo'
 export default {
   name: 'Edit',
   components: { ProductInformationCorrection },
