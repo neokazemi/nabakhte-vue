@@ -62,7 +62,7 @@
           itemsPerPageAllText: 'همه'
         }"
         :headers="headers"
-        :items="showcontents"
+        :items="contents.list"
         :search="search"
         class="elevation-1 mt-50"
       >
@@ -247,7 +247,6 @@ export default {
     ],
 
     contents: new ContentList(),
-    contents2: new ContentList(),
     showcontents: [],
 
     editedIndex: -1,
@@ -274,32 +273,17 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
-    currentPage (newVal, oldVal) {
-      if (!this.pageNumberList.includes(newVal)) {
-        this.paginatepage(newVal)
-      } else if (newVal !== 1) {
-        this.showcontents = this.contents.list.slice((newVal - 1) * 10, (newVal - 1) * 10 + 10)
-      } else {
-        this.showcontents = this.contents.list.slice(0, 10)
-      }
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
   },
+
   mounted () {
     const that = this
     this.api_content_search([], 1).then((result) => {
-      that.contents2 = new ContentList(result.data, result.meta)
-      that.totalpages = that.contents2.paginate.last_page
-      that.contents2.loading = false
-      let x
-      for (x = 0; x < 10; x++) {
-        that.contents.list.push(that.contents2.list[x])
-      }
-      let i
-
-      for (i = 1; i < that.totalpages - 10; i++) {
-        that.contents.list.push(1)
-      }
-      that.showcontents = that.contents.list
+      that.contents = new ContentList(result.data, result.meta)
+      that.totalpages = that.contents.paginate.last_page
+      that.contents.loading = false
     })
   },
 
@@ -312,27 +296,8 @@ export default {
       const that = this
       this.api_content_search([], pageNumber)
         .then((result) => {
-          that.showcontents = []
-          that.pageNumberList.unshift(pageNumber)
-          that.contents2 = new ContentList(result.data, result.meta)
-          that.contents2.loading = false
-          if (pageNumber !== that.totalpages) {
-            let y
-            for (y = 0; y < 10; y++) {
-              that.contents.list[(pageNumber - 1) * 10 + y] = that.contents2.list[y]
-            }
-
-            that.showcontents = that.contents.list
-            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10)
-          } else {
-            let x
-            for (x = 0; x < that.contents2.paginate.count; x++) {
-              that.contents.list[(pageNumber - 1) * 10 + x] = that.contents2.list[x]
-            }
-
-            that.showcontents = that.contents.list
-            that.showcontents = that.showcontents.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + that.contents2.paginate.count)
-          }
+          that.contents = new ContentList(result.data, result.meta)
+          that.contents.loading = false
         })
     },
 
@@ -430,6 +395,7 @@ export default {
     }
 
   }
+
 }
 </script>
 

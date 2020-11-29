@@ -15,7 +15,7 @@
         itemsPerPageAllText: 'همه'
       }"
       :headers="headers"
-      :items="showsets"
+      :items="sets.list"
 
       :search="search"
       class="elevation-1 mt-50"
@@ -132,7 +132,6 @@ export default {
     totalpages: null,
     showsets: [],
     sets: new SetList(),
-    sets2: new SetList(),
     pageNumberList: [1],
 
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -185,32 +184,17 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
-    currentPage (newVal, oldVal) {
-      if (!this.pageNumberList.includes(newVal)) {
-        this.paginatepage(newVal)
-      } else if (newVal !== 1) {
-        this.showsets = this.sets.list.slice((newVal - 1) * 10, (newVal - 1) * 10 + 10)
-      } else {
-        this.showsets = this.sets.list.slice(0, 10)
-      }
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
+
   },
   mounted () {
     const that = this
     this.api_set_list(1).then((result) => {
-      that.sets2 = new SetList(result.data, result.meta)
-      that.totalpages = that.sets2.paginate.last_page
-      that.sets2.loading = false
-      let x
-      for (x = 0; x < 10; x++) {
-        that.sets.list.push(that.sets2.list[x])
-      }
-      let i
-
-      for (i = 1; i < that.totalpages - 10; i++) {
-        that.sets.list.push(1)
-      }
-      that.showsets = that.sets.list
+      that.sets = new SetList(result.data, result.meta)
+      that.totalpages = that.sets.paginate.last_page
+      that.sets.loading = false
     })
   },
 
@@ -223,27 +207,8 @@ export default {
       const that = this
       this.api_set_list(pageNumber)
         .then((result) => {
-          that.showsets = []
-          that.pageNumberList.unshift(pageNumber)
-          that.sets2 = new SetList(result.data, result.meta)
-          that.sets2.loading = false
-          if (pageNumber !== that.totalpages) {
-            let y
-            for (y = 0; y < 10; y++) {
-              that.sets.list[(pageNumber - 1) * 10 + y] = that.sets2.list[y]
-            }
-
-            that.showsets = that.sets.list
-            that.showsets = that.showsets.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + 10)
-          } else {
-            let x
-            for (x = 0; x < that.sets2.paginate.count; x++) {
-              that.sets.list[(pageNumber - 1) * 10 + x] = that.sets2.list[x]
-            }
-
-            that.showsets = that.sets.list
-            that.showsets = that.showsets.slice((pageNumber - 1) * 10, (pageNumber - 1) * 10 + that.sets2.paginate.count)
-          }
+          that.sets = new SetList(result.data, result.meta)
+          that.sets.loading = false
         })
     },
 
