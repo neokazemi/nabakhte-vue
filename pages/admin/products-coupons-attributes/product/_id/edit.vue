@@ -31,7 +31,7 @@ import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 export default {
   name: 'Edit',
   components: { ProductInfo },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 

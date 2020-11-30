@@ -471,26 +471,22 @@
 </template>
 
 <script>
-import { Product } from '../../../models/Product'
+import { Product } from '~/models/Product'
 import mixinProduct from '~/plugins/mixin/api/Product'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
 export default {
   name: 'ProductInfo',
-
   components: {
     Editor: () => import('@tinymce/tinymce-vue'),
     VueTagsInput: () => import('@johmun/vue-tags-input'),
     vue2Dropzone: () => import('vue2-dropzone')
   },
   mixins: [mixinProduct],
-
   props: {
     editmode: Boolean,
     notfilled: Boolean,
     dialog: Boolean
-
   },
-
   data: () => ({
     dropzoneOptions: {
       addRemoveLinks: true,
@@ -564,7 +560,6 @@ export default {
         that.product.loading = false
       })
   },
-
   methods: {
     addItem () {
       this.dialog = true
@@ -640,5 +635,4 @@ export default {
 
 <style lang="scss" scoped>
   @import url('~/assets/scss/components/admin/managementsPanel/productInformationCorrection.scss');
-
 </style>

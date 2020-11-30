@@ -22,7 +22,7 @@ import UserInfo from '~/components/admin/InformationCorrections/userInfo'
 export default {
   components: { UserInfo },
   // name: '_id',
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 

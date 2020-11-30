@@ -56,7 +56,7 @@ import AttributeGroupInformationCorrection
   from '~/components/admin/informationCorrections/attributeGroup'
 export default {
   name: 'Edit',
-  middleware: 'Auth',
+  middleware: 'auth',
   components: { AttributeGroupInformationCorrection, AttributeCategoryInformationCorrection }
 }
 </script>

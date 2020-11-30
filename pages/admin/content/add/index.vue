@@ -21,7 +21,7 @@ export default {
 
   name: 'Index',
   components: { ContentAdd },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 

@@ -56,7 +56,7 @@ export default {
 
   name: 'Edit',
   components: { AttributeAmountInformationCorrection, AttributeInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 
