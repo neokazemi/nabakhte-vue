@@ -1,4 +1,4 @@
-import { BlockList } from '../../models/Block'
+import { BlockList } from '~/models/Block'
 
 const mixinBlock = {
   asyncData (context) {
