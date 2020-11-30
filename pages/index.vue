@@ -108,7 +108,8 @@
 </template>
 
 <script>
-import LogoCarousel from '../components/LogoCarousel'
+import mixinBlock from '~/plugins/mixin/block'
+import LogoCarousel from '~/components/LogoCarousel'
 import ExpandTransition from '~/components/ExpandTransition'
 import mixinProduct from '~/plugins/mixin/product'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
@@ -122,7 +123,7 @@ export default {
     TopView,
     ProductSliderCarousel
   },
-  mixins: [mixinProduct, mixinDetectDevice],
+  mixins: [mixinProduct, mixinDetectDevice, mixinBlock],
   data () {
     return {
       mainCarouselSlides: [
