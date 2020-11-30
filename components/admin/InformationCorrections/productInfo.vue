@@ -466,6 +466,16 @@
           </v-row>
         </div>
       </div>
+      <v-overlay
+        :absolute="true"
+        :value="overlay"
+      >
+        <v-progress-circular
+          :width="3"
+          color="#263238"
+          indeterminate
+        />
+      </v-overlay>
     </v-card>
   </div>
 </template>
@@ -488,6 +498,7 @@ export default {
     dialog: Boolean
   },
   data: () => ({
+    overlay: true,
     dropzoneOptions: {
       addRemoveLinks: true,
       url: 'https://httpbin.org/post',
@@ -555,6 +566,7 @@ export default {
       .then((response) => {
         that.product = new Product(response.data.data)
         that.product.loading = false
+        that.overlay = false
       })
       .catch(() => {
         that.product.loading = false
