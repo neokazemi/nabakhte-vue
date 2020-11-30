@@ -6,6 +6,7 @@ const API_ADDRESS = {
     login: apiBasePath + '/login'
   },
   product: {
+    base: apiBasePath + '/product',
     list_user (page) {
       if (!page) {
         page = 1
@@ -49,12 +50,12 @@ const API_ADDRESS = {
       return apiBasePath + '/c/' + contentId
     }
   },
-  pages: {
+  page: {
     faq: apiBasePath + '/faq',
     contact: apiBasePath + '/contact',
     rule: apiBasePath + '/rule'
   },
-  blocks: {
+  block: {
     home: apiBasePath + '/home',
     shop: apiBasePath + '/shop'
   }
