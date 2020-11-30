@@ -140,6 +140,16 @@
           </client-only>
         </v-col>
       </v-row>
+      <v-overlay
+        :absolute="true"
+        :value="overlay"
+      >
+        <v-progress-circular
+          :width="3"
+          color="#263238"
+          indeterminate
+        />
+      </v-overlay>
     </v-card>
   </div>
 </template>
@@ -167,6 +177,7 @@ export default {
 
   data () {
     return {
+      overlay: true,
       isFree: false,
 
       tag: '',
@@ -182,6 +193,7 @@ export default {
         if (that.content.is_free === 1) {
           that.isFree = true
         }
+        that.overlay = false
       })
       .catch(() => {
       })

@@ -52,7 +52,6 @@
     <v-card class="mb-20 pa-8 mr-20">
       <tables-header v-model="search" />
       <v-data-table
-
         :footer-props="{
           showFirstLastPage: true,
           firstIcon: 'mdi-arrow-collapse-left',
@@ -64,7 +63,7 @@
         :headers="headers"
         :items="contents.list"
         :search="search"
-        no-data-text="لطفا منتظر بمانید..."
+        :no-data-text="noDataText"
         class="elevation-1 mt-50"
       >
         <template v-slot:item.pic="{ item }">
@@ -163,13 +162,15 @@
                 x-small
                 color="#9575CD"
                 :href="'content/' + item.id + '/edit'"
+
+                v-on="on"
               >
                 <v-icon dark>
                   mdi-pencil
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر محتوا</span>
+            <span> ویرایش محتوا </span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -193,6 +194,16 @@
         </template>
       </v-data-table>
       <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
+      <v-overlay
+        :absolute="true"
+        :value="overlay"
+      >
+        <v-progress-circular
+          :width="3"
+          color="#263238"
+          indeterminate
+        />
+      </v-overlay>
     </v-card>
   </v-card>
 </template>
@@ -209,6 +220,9 @@ export default {
   components: { ContentInfo, TablesHeader },
   mixins: [mixinContent],
   data: () => ({
+    noDataText: '',
+    overlay: true,
+
     totalpages: null,
     currentPage: 1,
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -285,6 +299,10 @@ export default {
       that.contents = new ContentList(result.data, result.meta)
       that.totalpages = that.contents.paginate.last_page
       that.contents.loading = false
+      that.overlay = false
+      if (result.data.list.length === 0) {
+        that.noDataText = 'اطلاعاتی موجود نیست'
+      }
     })
   },
 
