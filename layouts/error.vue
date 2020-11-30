@@ -19,6 +19,9 @@ export default {
       otherError: 'An error occurred'
     }
   },
+  created () {
+    console.log('error', this.error)
+  },
   head () {
     const title =
       this.error.statusCode === 404 ? this.pageNotFound : this.otherError

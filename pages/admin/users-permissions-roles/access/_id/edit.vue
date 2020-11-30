@@ -7,7 +7,7 @@ import AccessInformationCorrection from '~/components/admin/InformationCorrectio
 export default {
   name: 'Edit',
   components: { AccessInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 

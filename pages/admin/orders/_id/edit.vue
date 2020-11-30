@@ -20,7 +20,7 @@ import OrderInformationCorrection from '~/components/admin/InformationCorrection
 export default {
   name: 'Edit',
   components: { OrderInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
 

@@ -7,7 +7,7 @@ import UserInfo from '~/components/admin/InformationCorrections/userInfo'
 export default {
   name: 'Add',
   components: { UserInfo },
-  middleware: 'Auth'
+  middleware: 'auth'
 
 }
 </script>
