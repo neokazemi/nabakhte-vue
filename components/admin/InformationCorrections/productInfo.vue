@@ -466,16 +466,7 @@
           </v-row>
         </div>
       </div>
-      <v-overlay
-        :absolute="true"
-        :value="overlay"
-      >
-        <v-progress-circular
-          :width="3"
-          color="#263238"
-          indeterminate
-        />
-      </v-overlay>
+      <overlay :overlay="product.loading" />
     </v-card>
   </div>
 </template>
@@ -484,9 +475,12 @@
 import { Product } from '~/models/Product'
 import mixinProduct from '~/plugins/mixin/api/Product'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+import Overlay from '~/components/admin/overlay'
+
 export default {
   name: 'ProductInfo',
   components: {
+    Overlay,
     Editor: () => import('@tinymce/tinymce-vue'),
     VueTagsInput: () => import('@johmun/vue-tags-input'),
     vue2Dropzone: () => import('vue2-dropzone')
@@ -558,6 +552,9 @@ export default {
       val || this.closeDelete()
     }
   },
+  created () {
+    this.product.loading = true
+  },
   mounted () {
     const that = this
 
@@ -566,7 +563,6 @@ export default {
       .then((response) => {
         that.product = new Product(response.data.data)
         that.product.loading = false
-        that.overlay = false
       })
       .catch(() => {
         that.product.loading = false

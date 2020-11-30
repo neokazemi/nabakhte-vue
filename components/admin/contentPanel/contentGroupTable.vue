@@ -116,16 +116,7 @@
       </template>
     </v-data-table>
     <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
-    <v-overlay
-      :absolute="true"
-      :value="overlay"
-    >
-      <v-progress-circular
-        :width="3"
-        color="#263238"
-        indeterminate
-      />
-    </v-overlay>
+    <overlay :overlay="sets.loading" />
   </v-card>
 </template>
 
@@ -133,10 +124,11 @@
 import TablesHeader from '~/components/admin/tablesHeader'
 import { SetList } from '~/models/Set'
 import mixinSet from '~/plugins/mixin/api/Set'
+import Overlay from '~/components/admin/overlay'
 
 export default {
   name: 'ContentGroupTable',
-  components: { TablesHeader },
+  components: { Overlay, TablesHeader },
   mixins: [mixinSet],
 
   data: () => ({
@@ -213,6 +205,7 @@ export default {
   },
 
   created () {
+    this.sets.loading = true
     this.initialize()
   },
 

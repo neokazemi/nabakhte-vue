@@ -140,27 +140,20 @@
           </client-only>
         </v-col>
       </v-row>
-      <v-overlay
-        :absolute="true"
-        :value="overlay"
-      >
-        <v-progress-circular
-          :width="3"
-          color="#263238"
-          indeterminate
-        />
-      </v-overlay>
+      <overlay :overlay="content.loading" />
     </v-card>
   </div>
 </template>
 
 <script>
-import mixinContent from '../../../plugins/mixin/api/Content'
-import { Content } from '../../../models/Content'
+import Overlay from '~/components/admin/overlay'
+import mixinContent from '~/plugins/mixin/api/Content'
+import { Content } from '~/models/Content'
 export default {
   name: 'ContentInfo',
 
   components: {
+    Overlay,
     Editor: () => import('@tinymce/tinymce-vue'),
 
     VueTagsInput: () => import('@johmun/vue-tags-input')
@@ -185,6 +178,9 @@ export default {
       content: new Content()
     }
   },
+  created () {
+    this.content.loading = true
+  },
   mounted () {
     const that = this
     this.api_content_show(this.$route.params.id)
@@ -193,7 +189,7 @@ export default {
         if (that.content.is_free === 1) {
           that.isFree = true
         }
-        that.overlay = false
+        that.content.loading = false
       })
       .catch(() => {
       })
