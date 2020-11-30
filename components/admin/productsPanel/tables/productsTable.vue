@@ -9,7 +9,7 @@
       :headers="headers"
       :items="products.list"
       :search="search"
-      no-data-text="لطفا منتظر بمانید..."
+      no-data-text=""
       class="elevation-1 data-table-width mt-30"
     >
       <!--      :footer-props="{-->
@@ -129,7 +129,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span> تغییر محصول در دیالوگ</span>
+            <span> ویرایش محصول در دیالوگ</span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -149,7 +149,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span> تغییر محصول </span>
+            <span> ویرایش محصول </span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -174,6 +174,16 @@
       </template>
     </v-data-table>
     <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
+    <v-overlay
+      :absolute="true"
+      :value="overlay"
+    >
+      <v-progress-circular
+        :width="3"
+        color="#263238"
+        indeterminate
+      />
+    </v-overlay>
   </v-card>
 </template>
 
@@ -185,6 +195,7 @@ import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
 
 export default {
+  overlay: true,
   name: 'ProductsTable',
   components: { ProductInfo, TablesHeader },
   mixins: [mixinProduct],
@@ -284,6 +295,7 @@ export default {
         that.products = new ProductList(response.data.data, response.data.meta)
         that.totalpages = that.products.paginate.last_page
         that.products.loading = false
+        that.overlay = false
       })
       .catch(() => {
         that.products.loading = false

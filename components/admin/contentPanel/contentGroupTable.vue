@@ -16,7 +16,7 @@
       }"
       :headers="headers"
       :items="sets.list"
-      no-data-text="لطفا منتظر بمانید..."
+      no-data-text=""
 
       :search="search"
       class="elevation-1 mt-50"
@@ -85,13 +85,14 @@
               dark
               x-small
               color="#9575CD"
+              v-on="on"
             >
               <v-icon dark>
                 mdi-pencil
               </v-icon>
             </v-btn>
           </template>
-          <span>تغییر دسته محتوا</span>
+          <span>ویرایش محتوا</span>
         </v-tooltip>
         <v-tooltip top>
           <template v-slot:activator="{ on, attrs }">
@@ -115,6 +116,16 @@
       </template>
     </v-data-table>
     <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
+    <v-overlay
+      :absolute="true"
+      :value="overlay"
+    >
+      <v-progress-circular
+        :width="3"
+        color="#263238"
+        indeterminate
+      />
+    </v-overlay>
   </v-card>
 </template>
 
@@ -129,6 +140,7 @@ export default {
   mixins: [mixinSet],
 
   data: () => ({
+    overlay: true,
     currentPage: 1,
     totalpages: null,
     showsets: [],
@@ -196,6 +208,7 @@ export default {
       that.sets = new SetList(result.data, result.meta)
       that.totalpages = that.sets.paginate.last_page
       that.sets.loading = false
+      that.overlay = false
     })
   },
 
