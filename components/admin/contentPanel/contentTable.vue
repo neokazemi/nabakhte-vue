@@ -194,21 +194,13 @@
         </template>
       </v-data-table>
       <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
-      <v-overlay
-        :absolute="true"
-        :value="overlay"
-      >
-        <v-progress-circular
-          :width="3"
-          color="#263238"
-          indeterminate
-        />
-      </v-overlay>
+      <overlay :overlay="contents.loading" />
     </v-card>
   </v-card>
 </template>
 
 <script>
+import Overlay from '~/components/admin/overlay'
 import TablesHeader from '~/components/admin/tablesHeader'
 
 import { ContentList } from '~/models/Content'
@@ -217,12 +209,10 @@ import mixinContent from '~/plugins/mixin/api/Content'
 
 export default {
   name: 'ContentTable',
-  components: { ContentInfo, TablesHeader },
+  components: { Overlay, ContentInfo, TablesHeader },
   mixins: [mixinContent],
   data: () => ({
     noDataText: '',
-    overlay: true,
-
     totalpages: null,
     currentPage: 1,
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -295,11 +285,11 @@ export default {
 
   mounted () {
     const that = this
+
     this.api_content_search([], 1).then((result) => {
       that.contents = new ContentList(result.data, result.meta)
       that.totalpages = that.contents.paginate.last_page
       that.contents.loading = false
-      that.overlay = false
       if (result.data.list.length === 0) {
         that.noDataText = 'اطلاعاتی موجود نیست'
       }
@@ -307,6 +297,7 @@ export default {
   },
 
   created () {
+    this.contents.loading = true
     this.initialize()
   },
 

@@ -11,9 +11,3 @@ export default {
   components: { Menu }
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>
