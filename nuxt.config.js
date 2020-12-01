@@ -87,6 +87,17 @@ export default {
     // // Doc: https://github.com/nuxt/content
     // '@nuxt/content'
   ],
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in',
+    beforeEnter (el) {
+      console.log('Before enter...')
+    }
+  },
+  layoutTransition: {
+    name: 'layout',
+    mode: 'out-in'
+  },
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
