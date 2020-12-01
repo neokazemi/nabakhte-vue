@@ -174,16 +174,7 @@
       </template>
     </v-data-table>
     <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
-    <v-overlay
-      :absolute="true"
-      :value="overlay"
-    >
-      <v-progress-circular
-        :width="3"
-        color="#263238"
-        indeterminate
-      />
-    </v-overlay>
+    <overlay :overlay="products.loading" />
   </v-card>
 </template>
 
@@ -193,11 +184,12 @@ import { ProductList } from '~/models/Product'
 import TablesHeader from '~/components/admin/tablesHeader'
 import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
+import Overlay from '~/components/admin/overlay'
 
 export default {
   overlay: true,
   name: 'ProductsTable',
-  components: { ProductInfo, TablesHeader },
+  components: { Overlay, ProductInfo, TablesHeader },
   mixins: [mixinProduct],
   data: () => ({
     totalpages: null,
@@ -287,6 +279,9 @@ export default {
       this.paginatepage(newVal)
     }
 
+  },
+  created () {
+    this.products.loading = true
   },
   mounted () {
     const that = this
