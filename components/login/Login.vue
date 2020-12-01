@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import mixinAuth from '@/plugins/mixin/api/Auth'
+import mixinAuth from '~/plugins/mixin/api/Auth'
 import mixinNotification from '~/plugins/mixin/notification'
 
 export default {
@@ -111,7 +111,7 @@ export default {
             if (this.isDialog) {
               this.$store.commit('updateLoginDialog', false)
             } else {
-              this.$router.go(-1)
+              // this.$router.go(-1)
             }
           }).catch((response) => {
             this.loading = false

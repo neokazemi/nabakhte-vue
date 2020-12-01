@@ -49,19 +49,13 @@
 
 <script>
 import AttributeInformationCorrection
-  from '~/components/admin/managementsPanel/attributeInformationCorrection'
+  from '~/components/admin/informationCorrections/attribute'
 import AttributeAmountInformationCorrection
-  from '~/components/admin/managementsPanel/attributeAmountInformationCorrection'
+  from '~/components/admin/informationCorrections/attributeAmount'
 export default {
 
   name: 'Edit',
   components: { AttributeAmountInformationCorrection, AttributeInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-  .main {
-    background-color: #8e8e8e;
-  }
-</style>

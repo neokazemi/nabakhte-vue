@@ -8,8 +8,8 @@
       pageText: '',
       itemsPerPageAllText: 'همه'
     }"
-    :headers="transactionsheaders"
-    :items="transactions"
+    :headers="headers"
+    :items="orders"
     :search="search"
     class="elevation-1 mt-50"
   >
@@ -34,7 +34,7 @@
               @click="addItem"
               v-on="on"
             >
-              افزودن تراکنش
+              افزودن سفارش
             </v-btn>
           </template>
           <v-card>
@@ -45,9 +45,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.paymethod"
+                    v-model="editedItem.name"
                     class="form-elements-size ma-3"
-                    label="روش پرداخت"
+                    label="نام محصول"
                   />
                 </v-col>
                 <v-col
@@ -55,9 +55,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.port"
+                    v-model="editedItem.features"
                     class="form-elements-size ma-3"
-                    label="درگاه"
+                    label="ویژگی ها"
                   />
                 </v-col>
                 <v-col
@@ -65,23 +65,13 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.transactionstatus"
+                    v-model="editedItem.lastprice"
                     class="form-elements-size ma-3"
-                    label="وضعیت تراکنش"
+                    label="قیمت تمام شده به تومان (با در نظر گرفتن تخفیف ها)"
                   />
                 </v-col>
               </v-row>
               <v-row>
-                <v-col
-                  v-if="changeshow"
-                  class="form-elements-column-width"
-                >
-                  <v-text-field
-                    v-model="editedItem.parenttransaction"
-                    class="form-elements-size ma-3"
-                    label="تراکنش والد"
-                  />
-                </v-col>
                 <v-col
                   v-if="changeshow"
                   class="form-elements-column-width"
@@ -89,7 +79,7 @@
                   <v-text-field
                     v-model="editedItem.price"
                     class="form-elements-size ma-3"
-                    label="مبلغ (تومان)"
+                    label="قیمت محصول به تومان (در زمان خرید)"
                   />
                 </v-col>
                 <v-col
@@ -97,21 +87,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.transactioncode"
+                    v-model="editedItem.coupondiscount"
                     class="form-elements-size ma-3"
-                    label="شماره تراکنش"
-                  />
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col
-                  v-if="changeshow"
-                  class="form-elements-column-width"
-                >
-                  <v-text-field
-                    v-model="editedItem.refnum"
-                    class="form-elements-size ma-3"
-                    label="شماره مرجع"
+                    label="٪ تخفیف بن"
                   />
                 </v-col>
                 <v-col
@@ -119,19 +97,9 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.follownum"
+                    v-model="editedItem.discount"
                     class="form-elements-size ma-3"
-                    label="شماره پیگیری"
-                  />
-                </v-col>
-                <v-col
-                  v-if="changeshow"
-                  class="form-elements-column-width"
-                >
-                  <v-text-field
-                    v-model="editedItem.checknum"
-                    class="form-elements-size ma-3"
-                    label="شماره چک"
+                    label="٪ تخفیف محصول"
                   />
                 </v-col>
               </v-row>
@@ -141,9 +109,29 @@
                   class="form-elements-column-width"
                 >
                   <v-text-field
-                    v-model="editedItem.managerdes"
+                    v-model="editedItem.discountpercent"
                     class="form-elements-size ma-3"
-                    label="توضیح مدیریتی"
+                    label="٪ تخفیف داده شده"
+                  />
+                </v-col>
+                <v-col
+                  v-if="changeshow"
+                  class="form-elements-column-width"
+                >
+                  <v-text-field
+                    v-model="editedItem.disc"
+                    class="form-elements-size ma-3"
+                    label="مبلغ تخفیف داده شده (تومان)"
+                  />
+                </v-col>
+                <v-col
+                  v-if="changeshow"
+                  class="form-elements-column-width"
+                >
+                  <v-text-field
+                    v-model="editedItem.field"
+                    class="form-elements-size ma-3"
+                    label="وضعیت تسویه"
                   />
                 </v-col>
               </v-row>
@@ -205,7 +193,7 @@
             </v-icon>
           </v-btn>
         </template>
-        <span>تغییر تراکنش</span>
+        <span>تغییر سفارش</span>
       </v-tooltip>
       <v-tooltip top>
         <template v-slot:activator="{ on, attrs }">
@@ -229,9 +217,10 @@
     </template>
   </v-data-table>
 </template>
+
 <script>
 export default {
-  name: 'OrdersTransactionsInformation',
+  name: 'DeletedOrdersInformationTable',
   data: () => ({
     changeshow: false,
     detailshow: false,
@@ -239,50 +228,47 @@ export default {
     dialog: false,
 
     dialogDelete: false,
-    transactionsheaders: [
+
+    headers: [
       {
-        text: 'روش پرداخت',
+        text: 'نام محصول',
         align: 'start',
         sortable: false,
-        value: 'paymethod'
+        value: 'name'
       },
-      { text: 'درگاه', value: 'port', sortable: false },
-      { text: 'وضعیت تراکنش', value: 'transactionstatus', sortable: false },
-      { text: 'تراکنش والد', value: 'parenttransaction', sortable: false },
-      { text: 'مبلغ (تومان)', value: 'price', sortable: false },
-      { text: 'شماره تراکنش', value: 'transactioncode', sortable: false },
-      { text: 'شماره مرجع', value: 'refnum', sortable: false },
-      { text: 'شماره پیگیری', value: 'follownum', sortable: false },
-      { text: 'شماره چک', value: 'checknum', sortable: false },
-      { text: 'توضیح مدیریتی', value: 'managerdes', sortable: false },
-      { text: 'عملیات', value: 'actions', sortable: false }],
-    transactions: [],
+      { text: 'ویژگی ها', value: 'features', sortable: false },
+      { text: 'قیمت تمام شده به تومان (با در نظر گرفتن تخفیف ها)', value: 'lastprice', sortable: false },
+      { text: 'قیمت محصول به تومان (در زمان خرید)', value: 'price', sortable: false },
+      { text: '٪ تخفیف بن', value: 'coupondiscount', sortable: false },
+      { text: '٪ تخفیف محصول', value: 'discountpercent', sortable: false },
+      { text: 'مبلغ تخفیف داده شده (تومان)', value: 'discount', sortable: false },
+      { text: 'وضعیت تسویه', value: 'status', sortable: false },
+      { text: 'عملیات', value: 'actions', sortable: false }
+
+    ],
+    orders: [],
     editedIndex: -1,
 
     editedItem: {
-      paymethod: '',
-      port: '',
-      transactionstatus: '',
-      parenttransaction: '',
+      name: '',
+      features: '',
+      lastprice: null,
       price: null,
-      transactioncode: '',
-      refnum: '',
-      follownum: '',
-      checknum: '',
-      managerdes: ''
+      coupondiscount: null,
+      discountpercent: null,
+      discount: null,
+      status: ''
     },
 
     defaultItem: {
-      paymethod: '',
-      port: '',
-      transactionstatus: '',
-      parentystatus: '',
+      name: '',
+      features: '',
+      lastprice: null,
       price: null,
-      transactioncode: '',
-      refnum: '',
-      follownum: '',
-      checknum: '',
-      managerdes: ''
+      coupondiscount: null,
+      discountpercent: null,
+      discount: null,
+      status: ''
     }
 
   }),
@@ -319,6 +305,13 @@ export default {
         return 'red'
       }
     },
+    editItem (item) {
+      this.editedIndex = this.orders.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.dialog = true
+      this.changeshow = true
+      this.detailshow = false
+    },
     close () {
       this.dialog = false
       this.$nextTick(() => {
@@ -327,87 +320,72 @@ export default {
       })
     },
     detailItem (item) {
-      this.editedIndex = this.transactions.indexOf(item)
+      this.editedIndex = this.orders.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialog = true
       this.detailshow = true
       this.changeshow = false
     },
-    editItem (item) {
-      this.editedIndex = this.transactions.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
-      this.changeshow = true
-      this.detailshow = false
-    },
 
     deleteItem (item) {
-      this.editedIndex = this.transactions.indexOf(item)
+      this.editedIndex = this.orders.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.transactions.splice(this.editedIndex, 1)
+      this.orders.splice(this.editedIndex, 1)
       this.closeDelete()
     },
     save () {
       if (this.editedIndex > -1) {
-        Object.assign(this.transactions[this.editedIndex], this.editedItem)
+        Object.assign(this.orders[this.editedIndex], this.editedItem)
       } else {
-        this.transactions.push(this.editedItem)
+        this.orders.push(this.editedItem)
       }
       this.close()
     },
     initialize () {
-      this.transactions = [
+      this.orders = [
         {
-          paymethod: '',
-          port: '',
-          transactionstatus: '',
-          parenttransaction: '',
-          price: null,
-          transactioncode: '',
-          refnum: '',
-          follownum: '',
-          checknum: '',
-          managerdes: ''
+          name: 'راه ابریشم ریاضی تجربی ',
+          features: 'دبیر: محمد صادق ثابتی',
+          lastprice: 0,
+          price: 0,
+          coupondiscount: 0,
+          discountpercent: 0,
+          discount: 0,
+          status: 'نا مشخص'
 
         },
         {
-          paymethod: '',
-          port: '',
-          transactionstatus: '',
-          parenttransaction: '',
-          price: null,
-          transactioncode: '',
-          refnum: '',
-          follownum: '',
-          checknum: '',
-          managerdes: ''
+          name: 'راه ابریشم ریاضی تجربی ',
+          features: 'دبیر: محمد صادق ثابتی',
+          lastprice: 0,
+          price: 0,
+          coupondiscount: 0,
+          discountpercent: 0,
+          discount: 0,
+          status: 'نا مشخص'
         },
         {
-          paymethod: '',
-          port: '',
-          transactionstatus: '',
-          parenttransaction: '',
-          price: null,
-          transactioncode: '',
-          refnum: '',
-          follownum: '',
-          checknum: '',
-          managerdes: ''
+          name: 'راه ابریشم ریاضی تجربی ',
+          features: 'دبیر: محمد صادق ثابتی',
+          lastprice: 0,
+          price: 0,
+          coupondiscount: 0,
+          discountpercent: 0,
+          discount: 0,
+          status: 'نا مشخص'
         },
         {
-          paymethod: '',
-          port: '',
-          transactionstatus: '',
-          parenttransaction: '',
-          price: null,
-          transactioncode: '',
-          refnum: '',
-          follownum: '',
-          checknum: '',
-          managerdes: ''
+          name: 'راه ابریشم ریاضی تجربی ',
+          features: 'دبیر: محمد صادق ثابتی',
+          lastprice: 0,
+          price: 0,
+          coupondiscount: 0,
+          discountpercent: 0,
+          discount: 0,
+          status: 'نا مشخص'
         }
       ]
     }
@@ -415,9 +393,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>

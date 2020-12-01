@@ -21,12 +21,6 @@ import ContentGroupAdd from '~/components/admin/contentPanel/contentGroupAdd'
 export default {
   name: 'Add',
   components: { ContentGroupAdd },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-  .main {
-    background-color: #8e8e8e;
-  }
-</style>

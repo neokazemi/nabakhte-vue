@@ -43,6 +43,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/attributeInformationCorrection.scss');
+  @import url('~/assets/scss/components/admin/managementsPanel/attributeInformationCorrection.scss');
 
 </style>

@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div
-      class="d-flex justify-end"
-    >
+    <div class="d-flex justify-end">
       <v-btn
+
         color="#b2dfdb"
         elevation="3"
         class="ml-5 mt-5 mb-5"
@@ -12,7 +11,7 @@
         بازگشت >>
       </v-btn>
     </div>
-    <ProductInfo />
+    <ContentInfo />
     <div class="d-flex justify-end">
       <v-btn
         color="#b2dfdb"
@@ -26,11 +25,9 @@
 </template>
 
 <script>
-
-import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
+import ContentInfo from '~/components/admin/InformationCorrections/contentInfo'
 export default {
   name: 'Edit',
-  components: { ProductInfo },
-  middleware: 'auth'
+  components: { ContentInfo }
 }
 </script>

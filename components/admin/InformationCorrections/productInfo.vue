@@ -466,32 +466,33 @@
           </v-row>
         </div>
       </div>
+      <overlay :overlay="product.loading" />
     </v-card>
   </div>
 </template>
 
 <script>
-import { Product } from '../../../models/Product'
+import { Product } from '~/models/Product'
 import mixinProduct from '~/plugins/mixin/api/Product'
 import 'vue2-dropzone/dist/vue2Dropzone.min.css'
-export default {
-  name: 'ProductInformationCorrection',
+import Overlay from '~/components/admin/overlay'
 
+export default {
+  name: 'ProductInfo',
   components: {
+    Overlay,
     Editor: () => import('@tinymce/tinymce-vue'),
     VueTagsInput: () => import('@johmun/vue-tags-input'),
     vue2Dropzone: () => import('vue2-dropzone')
   },
   mixins: [mixinProduct],
-
   props: {
     editmode: Boolean,
     notfilled: Boolean,
     dialog: Boolean
-
   },
-
   data: () => ({
+    overlay: true,
     dropzoneOptions: {
       addRemoveLinks: true,
       url: 'https://httpbin.org/post',
@@ -551,6 +552,9 @@ export default {
       val || this.closeDelete()
     }
   },
+  created () {
+    this.product.loading = true
+  },
   mounted () {
     const that = this
 
@@ -564,7 +568,6 @@ export default {
         that.product.loading = false
       })
   },
-
   methods: {
     addItem () {
       this.dialog = true
@@ -639,6 +642,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/productInformationCorrection.scss');
-
+  @import url('~/assets/scss/components/admin/managementsPanel/productInformationCorrection.scss');
 </style>

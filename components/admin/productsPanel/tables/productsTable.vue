@@ -7,8 +7,9 @@
       :items-per-page="5"
 
       :headers="headers"
-      :items="showproducts"
+      :items="products.list"
       :search="search"
+      no-data-text=""
       class="elevation-1 data-table-width mt-30"
     >
       <!--      :footer-props="{-->
@@ -29,7 +30,7 @@
       <!--        </v-chip>-->
       <!--      </template>-->
       <template v-slot:item.pic="{ item }">
-        <v-img :src="item.photo" width="100" height="100" class="mt-3 mb-3" />
+        <v-img :src="item.photo" max-width="150" max-height="150" contain class="mt-3 mb-3" />
       </template>
 
       <template v-slot:top>
@@ -69,7 +70,7 @@
                   </v-icon>
                 </v-btn>
               </v-card-actions>
-              <ProductInformationCorrection :notfilled="true" :dialog="true" />
+              <ProductInfo :notfilled="true" :dialog="true" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -128,7 +129,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span> تغییر محصول در دیالوگ</span>
+            <span> ویرایش محصول در دیالوگ</span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -148,7 +149,7 @@
                 </v-icon>
               </v-btn>
             </template>
-            <span> تغییر محصول </span>
+            <span> ویرایش محصول </span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -172,21 +173,26 @@
         </v-row>
       </template>
     </v-data-table>
-    <v-pagination v-model="currentPage" :length="5" :total-visible="6" />
+    <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
+    <overlay :overlay="products.loading" />
   </v-card>
 </template>
 
 <script>
-import { ProductList } from '../../../../models/Product'
-import TablesHeader from '../../tablesHeader'
+
+import { ProductList } from '~/models/Product'
+import TablesHeader from '~/components/admin/tablesHeader'
+import ProductInfo from '~/components/admin/InformationCorrections/productInfo'
 import mixinProduct from '~/plugins/mixin/api/Product'
-import ProductInformationCorrection from '~/components/admin/managementsPanel/productInformationCorrection'
+import Overlay from '~/components/admin/overlay'
 
 export default {
+  overlay: true,
   name: 'ProductsTable',
-  components: { TablesHeader, ProductInformationCorrection },
+  components: { Overlay, ProductInfo, TablesHeader },
   mixins: [mixinProduct],
   data: () => ({
+    totalpages: null,
     emptyarray: [],
     emptyarray2: [],
     allproducts: [],
@@ -194,7 +200,6 @@ export default {
     showproducts: [],
     currentPage: 1,
     pageNumberList: [1],
-    products2: new ProductList(),
     pagenumber: 1,
     shownextpage: false,
     items: ['item1', 'item2', 'item3', 'item4'],
@@ -270,36 +275,25 @@ export default {
     dialogDelete (val) {
       val || this.closeDelete()
     },
-    currentPage (newVal, oldVal) {
-      if (!this.pageNumberList.includes(newVal)) {
-        this.paginatepage(newVal)
-      } else if (newVal !== 1) {
-        this.showproducts = this.products.list.slice((newVal - 1) * 5, (newVal - 1) * 5 + 5)
-      } else {
-        this.showproducts = this.products.list.slice(0, 5)
-      }
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
+
+  },
+  created () {
+    this.products.loading = true
   },
   mounted () {
     const that = this
     this.api_product_list(1)
       .then((response) => {
-        that.products2 = new ProductList(response.data.data, response.data.meta)
-        that.products2.loading = false
-        that.products.list.push(that.products2.list[0])
-        that.products.list.push(that.products2.list[1])
-        that.products.list.push(that.products2.list[2])
-        that.products.list.push(that.products2.list[3])
-        that.products.list.push(that.products2.list[4])
-        let i
-
-        for (i = 1; i < 10; i++) {
-          that.products.list.push(1)
-        }
-        that.showproducts = that.products.list
+        that.products = new ProductList(response.data.data, response.data.meta)
+        that.totalpages = that.products.paginate.last_page
+        that.products.loading = false
+        that.overlay = false
       })
       .catch(() => {
-        that.products2.loading = false
+        that.products.loading = false
       }
       )
   },
@@ -308,21 +302,11 @@ export default {
       const that = this
       this.api_product_list(pageNumber)
         .then((response) => {
-          that.showproducts = []
-          that.pageNumberList.unshift(pageNumber)
-          that.products2 = new ProductList(response.data.data, response.data.meta)
-          that.products2.loading = false
-          that.products.list[(pageNumber - 1) * 5] = that.products2.list[0]
-          that.products.list[(pageNumber - 1) * 5 + 1] = that.products2.list[1]
-          that.products.list[(pageNumber - 1) * 5 + 2] = that.products2.list[2]
-          that.products.list[(pageNumber - 1) * 5 + 3] = that.products2.list[3]
-          that.products.list[(pageNumber - 1) * 5 + 4] = that.products2.list[4]
-
-          that.showproducts = that.products.list
-          that.showproducts = that.showproducts.slice((pageNumber - 1) * 5, (pageNumber - 1) * 5 + 5)
+          that.products = new ProductList(response.data.data, response.data.meta)
+          that.products.loading = false
         })
         .catch(() => {
-          that.products2.loading = false
+          that.products.loading = false
         })
     },
     addItem () {

@@ -49,7 +49,7 @@
               </v-btn>
             </template>
             <v-card v-if="detailshow">
-              <user-information-correction :editmode="false" />
+              <UserInfo :editmode="false" />
               <v-card-actions>
                 <v-spacer />
                 <v-btn
@@ -210,11 +210,11 @@
 
 <script>
 
-import UserInformationCorrection from '../../managementsPanel/userInformationCorrection'
-import TablesHeader from '../../tablesHeader'
+import TablesHeader from '~/components/admin/tablesHeader'
+import UserInfo from '~/components/admin/InformationCorrections/userInfo'
 export default {
   name: 'Users',
-  components: { TablesHeader, UserInformationCorrection },
+  components: { UserInfo, TablesHeader },
   props: {
     value: {
       type: Object,

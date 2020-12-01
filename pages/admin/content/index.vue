@@ -21,12 +21,6 @@ import Menu from '~/components/admin/menu'
 export default {
   name: 'Index',
   components: { Menu, ContentTable, ContentFilter },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>

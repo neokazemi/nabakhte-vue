@@ -27,14 +27,13 @@ export const mutations = {
 }
 
 export const actions = {
-  setToken ({ state, commit }, { user, token, expiresIn }) {
+  setToken ({ state, commit }, { token, expiresIn }) {
     // if (state.saveTokenInCookie) {
     this.$axios.setToken(token, 'Bearer')
     const expiryTime = new Date(new Date().getTime() + expiresIn * 1000)
     cookies.set('x-access-token', token, { expires: expiryTime })
     commit('SET_TOKEN', token)
     // }
-    commit('SET_USER', user)
   },
 
   async refreshToken ({ state, dispatch }) {

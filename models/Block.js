@@ -36,17 +36,15 @@ class BlockList extends Collection {
   }
 
   sortByOrder () {
-    this.list.sort(this.compare)
-  }
-
-  compare (first, second) {
-    if (first.order < second.order) {
-      return -1
-    }
-    if (first.order > second.order) {
-      return 1
-    }
-    return 0
+    this.list.sort((first, second) => {
+      if (first.order < second.order) {
+        return -1
+      }
+      if (first.order > second.order) {
+        return 1
+      }
+      return 0
+    })
   }
 }
 

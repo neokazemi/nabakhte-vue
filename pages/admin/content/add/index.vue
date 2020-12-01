@@ -21,12 +21,6 @@ export default {
 
   name: 'Index',
   components: { ContentAdd },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>

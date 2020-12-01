@@ -1,10 +1,10 @@
 import API_ADDRESS from '~/plugins/apiAddresses'
 
-const mixinContent = {
+const mixinSet = {
   methods: {
-    api_content_search (tags, page) {
+    api_set_list (page) {
       const that = this
-      const url = API_ADDRESS.content.search_user(tags, page)
+      const url = API_ADDRESS.set.list_user(page)
       return new Promise((resolve, reject) => {
         that.$axios.get(url)
           .then((response) => {
@@ -15,11 +15,11 @@ const mixinContent = {
           })
       })
     },
-    api_content_show (id) {
-      const url = API_ADDRESS.content.show_user(id)
+    api_set_show (id) {
+      const url = API_ADDRESS.set.show_user(id)
       return this.$axios.get(url)
     }
   }
 }
 
-export default mixinContent
+export default mixinSet

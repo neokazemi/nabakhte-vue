@@ -39,13 +39,8 @@ import Roles from '~/components/admin/usersPanel/tables/roles'
 import UserListFilter from '~/components/admin/usersPanel/filters/UserListFilter'
 
 export default {
-  middleware: 'Auth',
+  middleware: 'auth',
   components: { Menu, UserListFilter, Roles, Access, Users }
 }
 
 </script>
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>

@@ -52,7 +52,6 @@
     <v-card class="mb-20 pa-8 mr-20">
       <tables-header v-model="search" />
       <v-data-table
-
         :footer-props="{
           showFirstLastPage: true,
           firstIcon: 'mdi-arrow-collapse-left',
@@ -62,10 +61,15 @@
           itemsPerPageAllText: 'همه'
         }"
         :headers="headers"
-        :items="content"
+        :items="contents.list"
         :search="search"
+        :no-data-text="noDataText"
         class="elevation-1 mt-50"
       >
+        <template v-slot:item.pic="{ item }">
+          <v-img :src="item.inputData.photo" max-width="150" max-height="150" contain class="mt-3 mb-3" />
+        </template>
+
         <template v-slot:item.status="{ item }">
           <v-chip
             :color="getColor(item.status)"
@@ -94,6 +98,39 @@
                   افزودن محتوا
                 </v-btn>
               </template>
+              <v-card>
+                <v-card-actions>
+                  <v-btn
+                    class="mx-2"
+                    icon
+                    small
+                    color="primary"
+                    @click="close"
+                  >
+                    <v-icon dark>
+                      mdi-close-circle
+                    </v-icon>
+                  </v-btn>
+                </v-card-actions>
+                <ContentInfo :notfilled="true" :dialog="true" />
+                <v-card-actions>
+                  <v-spacer />
+                  <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="close"
+                  >
+                    انصراف
+                  </v-btn>
+                  <v-btn
+                    color="blue darken-1"
+                    text
+                    @click="save"
+                  >
+                    ذخیره
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
             </v-dialog>
             <v-dialog v-model="dialogDelete" max-width="500px">
               <v-card>
@@ -124,13 +161,16 @@
                 dark
                 x-small
                 color="#9575CD"
+                :href="'content/' + item.id + '/edit'"
+
+                v-on="on"
               >
                 <v-icon dark>
                   mdi-pencil
                 </v-icon>
               </v-btn>
             </template>
-            <span>تغییر محتوا</span>
+            <span> ویرایش محتوا </span>
           </v-tooltip>
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -153,16 +193,28 @@
           </v-tooltip>
         </template>
       </v-data-table>
+      <v-pagination v-model="currentPage" :length="totalpages" :total-visible="6" />
+      <overlay :overlay="contents.loading" />
     </v-card>
   </v-card>
 </template>
 
 <script>
-import TablesHeader from '../tablesHeader'
+import Overlay from '~/components/admin/overlay'
+import TablesHeader from '~/components/admin/tablesHeader'
+
+import { ContentList } from '~/models/Content'
+import ContentInfo from '~/components/admin/InformationCorrections/contentInfo'
+import mixinContent from '~/plugins/mixin/api/Content'
+
 export default {
   name: 'ContentTable',
-  components: { TablesHeader },
+  components: { Overlay, ContentInfo, TablesHeader },
+  mixins: [mixinContent],
   data: () => ({
+    noDataText: '',
+    totalpages: null,
+    currentPage: 1,
     items: ['item1', 'item2', 'item3', 'item4'],
     switch1: false,
     changeshow: false,
@@ -177,33 +229,40 @@ export default {
         text: 'نام ',
         align: 'start',
         sortable: false,
-        value: 'name'
+        value: 'title'
       },
-      { text: 'فعال / غیر فعال', value: 'link', sortable: false },
-      { text: 'عکس', value: 'image', sortable: false },
-      { text: 'نوع محتوا', value: 'image', sortable: false },
-
-      { text: 'فایل ها', value: 'image', sortable: false },
-
-      { text: 'توضیح', value: 'image', sortable: false },
-
-      { text: 'زمان نمایان شدن', value: 'image', sortable: false },
-
-      { text: 'زمان درج', value: 'image', sortable: false },
-      { text: 'زمان اصلاح', value: 'image', sortable: false },
+      {
+        text: 'عکس',
+        value: 'pic',
+        sortable: false
+      },
+      // { text: 'فعال / غیر فعال', value: 'link', sortable: false },
+      // { text: 'عکس', value: 'image', sortable: false },
+      // { text: 'نوع محتوا', value: 'image', sortable: false },
+      //
+      // { text: 'فایل ها', value: 'image', sortable: false },
+      //
+      // { text: 'توضیح', value: 'image', sortable: false },
+      //
+      // { text: 'زمان نمایان شدن', value: 'image', sortable: false },
+      //
+      // { text: 'زمان درج', value: 'image', sortable: false },
+      // { text: 'زمان اصلاح', value: 'image', sortable: false },
       { text: 'عملیات', value: 'actions', sortable: false }
     ],
 
-    content: [],
+    contents: new ContentList(),
+    showcontents: [],
 
     editedIndex: -1,
 
     editedItem: {
       name: '',
+
       link: '',
       image: ''
     },
-
+    pageNumberList: [1],
     defaultItem: {
       name: '',
       link: '',
@@ -218,16 +277,44 @@ export default {
     },
     dialogDelete (val) {
       val || this.closeDelete()
+    },
+    currentPage (newVal) {
+      this.paginatepage(newVal)
     }
   },
 
+  mounted () {
+    const that = this
+
+    this.api_content_search([], 1).then((result) => {
+      that.contents = new ContentList(result.data, result.meta)
+      that.totalpages = that.contents.paginate.last_page
+      that.contents.loading = false
+      if (result.data.list.length === 0) {
+        that.noDataText = 'اطلاعاتی موجود نیست'
+      }
+    })
+  },
+
   created () {
+    this.contents.loading = true
     this.initialize()
   },
 
   methods: {
+    paginatepage (pageNumber) {
+      const that = this
+      this.api_content_search([], pageNumber)
+        .then((result) => {
+          that.contents = new ContentList(result.data, result.meta)
+          that.contents.loading = false
+        })
+    },
+
     addItem () {
-      this.$router.push('content/add')
+      this.dialog = true
+      this.changeshow = true
+      this.detailshow = false
     },
     closeDelete () {
       this.dialogDelete = false
@@ -318,6 +405,7 @@ export default {
     }
 
   }
+
 }
 </script>
 

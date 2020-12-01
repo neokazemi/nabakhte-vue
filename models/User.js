@@ -12,6 +12,9 @@ class User extends Model {
       {
         key: 'first_name',
         value (itemVal, inputData) {
+          if (!inputData) {
+            return null
+          }
           if (typeof inputData.first_name !== 'undefined' && inputData.first_name !== null) {
             return inputData.first_name
           } else if (typeof inputData.firstName !== 'undefined' && inputData.firstName !== null) {

@@ -1,6 +1,11 @@
 <template>
   <v-app dark>
-    <Error>{{ otherError }}</Error>
+    <div v-if="error && error.message">
+      error message: {{ error.message }}
+    </div>
+    <Error>
+      {{ otherError }}
+    </Error>
   </v-app>
 </template>
 
@@ -18,6 +23,12 @@ export default {
       pageNotFound: '404 Not Found',
       otherError: 'An error occurred'
     }
+  },
+  created () {
+    console.log('created error', this.error)
+  },
+  mounted () {
+    console.log('mounted error', this.error)
   },
   head () {
     const title =

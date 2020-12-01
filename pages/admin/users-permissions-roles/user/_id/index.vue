@@ -13,21 +13,15 @@
       </v-btn>
     </div>
 
-    <user-information-correction />
+    <UserInfo />
   </div>
 </template>
 
 <script>
-import UserInformationCorrection from '~/components/admin/managementsPanel/userInformationCorrection'
+import UserInfo from '~/components/admin/InformationCorrections/userInfo'
 export default {
+  components: { UserInfo },
   // name: '_id',
-  components: { UserInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>

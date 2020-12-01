@@ -148,8 +148,8 @@
                 dark
                 x-small
                 color="#9575CD"
-                v-on="on"
-                @click="editItem2(item)"
+
+                :href="'products-coupons-attributes/attribute-group/' + item.id + '/edit'"
               >
                 <v-icon dark>
                   mdi-pencil
@@ -185,7 +185,7 @@
 </template>
 
 <script>
-import TablesHeader from '../../tablesHeader'
+import TablesHeader from '~/components/admin/tablesHeader'
 export default {
   name: 'AttributeGroupsTable',
   components: { TablesHeader },

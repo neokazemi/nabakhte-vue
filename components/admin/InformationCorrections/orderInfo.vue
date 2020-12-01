@@ -1,16 +1,7 @@
 <template>
   <div>
-    <div class="d-flex justify-end">
-      <v-btn
-        color="#b2dfdb"
-        elevation="3"
-        class="ml-5 mt-5 mb-5"
-        @click="$router.go(-1)"
-      >
-        بازگشت >>
-      </v-btn>
-    </div>
     <v-card
+
       class="card-size"
     >
       <v-card-title>
@@ -192,28 +183,28 @@
         <v-tab-item>
           <v-card flat>
             <v-card-text>
-              <orders-information />
+              <OrdersInformationTable />
             </v-card-text>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card flat>
             <v-card-text>
-              <deleted-orders-information />
+              <deleted-orders-information-table />
             </v-card-text>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card flat>
             <v-card-text>
-              <orders-transactions-information />
+              <transactions-of-orders />
             </v-card-text>
           </v-card>
         </v-tab-item>
         <v-tab-item>
           <v-card flat>
             <v-card-text>
-              <successful-orders-transactions-information />
+              <transactions-of-successful-orders />
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -232,19 +223,14 @@
 </template>
 
 <script>
-import OrdersInformation from './ordersInformationTables/ordersInformation'
-import OrdersTransactionsInformation from './ordersInformationTables/ordersTransactionsInformation'
-import SuccessfulOrdersTransactionsInformation from './ordersInformationTables/successfulOrdersTransactionsInformation'
-import DeletedOrdersInformation from './ordersInformationTables/deletedOrdersInformation'
 
+import OrdersInformationTable from '~/components/admin/InformationCorrections/ordersInformationTables/allorders'
+import DeletedOrdersInformationTable from '~/components/admin/InformationCorrections/ordersInformationTables/deletedOrders'
+import TransactionsOfOrders from '~/components/admin/InformationCorrections/ordersInformationTables/transactionsOfOrders'
+import TransactionsOfSuccessfulOrders from '~/components/admin/InformationCorrections/ordersInformationTables/transactionsOfSuccessfulOrders'
 export default {
   name: 'OrderInformationCorrection',
-  components: {
-    DeletedOrdersInformation,
-    SuccessfulOrdersTransactionsInformation,
-    OrdersTransactionsInformation,
-    OrdersInformation
-  },
+  components: { TransactionsOfSuccessfulOrders, TransactionsOfOrders, DeletedOrdersInformationTable, OrdersInformationTable },
   data: () => ({
     userfirstname: 'هلیا',
     userlastname: 'محمدی',
@@ -261,6 +247,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('~/assets/scss/components/admin/managementsPanel/orderInformationCorrection.scss');
+  @import url('~/assets/scss/components/admin/managementsPanel/orderInformationCorrection.scss');
 
 </style>

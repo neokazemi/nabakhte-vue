@@ -3,16 +3,10 @@
 </template>
 
 <script>
-import RoleInformationCorrection from '~/components/admin/managementsPanel/roleInformationCorrection'
+import RoleInformationCorrection from '~/components/admin/informationCorrections/roleInfo'
 export default {
   name: 'Edit',
   components: { RoleInformationCorrection },
-  middleware: 'Auth'
+  middleware: 'auth'
 }
 </script>
-
-<style scoped>
-.main {
-  background-color: #8e8e8e;
-}
-</style>
