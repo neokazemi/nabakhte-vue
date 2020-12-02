@@ -393,7 +393,6 @@ import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import ProductSpecs from '~/components/ProductSpecs'
 import Comment from '~/components/Comment'
 import '~/assets/css/pages/Product.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import { Product } from '~/models/Product'
 
 export default {
@@ -409,7 +408,7 @@ export default {
     ProductSpecs,
     Comment
   },
-  mixins: [mixinProduct, mixinDetectDevice, mixinStore],
+  mixins: [mixinProduct, mixinStore],
   props: {
     productData: {
       type: Object,

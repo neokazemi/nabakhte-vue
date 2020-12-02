@@ -62,6 +62,7 @@
     "stylelint": "^13.7.2",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-config-sass-guidelines": "^7.1.0",
-    "stylelint-config-standard": "^20.0.0"
+    "stylelint-config-standard": "^20.0.0",
+    "vuetify": "^2.3.19"
   }
 }

@@ -1,3 +1,4 @@
+import Vue from 'vue'
 const Notification = {
   install (Vue) {
     // // add global method or property
@@ -50,4 +51,4 @@ const Notification = {
   }
 }
 
-export default Notification
+Vue.use(Notification)

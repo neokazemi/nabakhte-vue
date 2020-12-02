@@ -119,7 +119,6 @@ import Sidebar from '~/components/app/Sidebar'
 import ExpansionPanel from '~/components/ExpansionPanel'
 import ToggleButton from '~/components/ToggleButton'
 import '~/assets/css/pages/Shop.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import Pagination from '~/components/Pagination'
 
 export default {
@@ -132,7 +131,7 @@ export default {
     ExpansionPanel,
     ToggleButton
   },
-  mixins: [mixinProduct, mixinDetectDevice],
+  mixins: [mixinProduct],
   data () {
     return {
       breadcrumbsItems: [

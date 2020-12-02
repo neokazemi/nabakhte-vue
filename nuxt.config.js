@@ -53,7 +53,9 @@ export default {
   plugins: [
     { src: '~/plugins/axios.js' }, // https://github.com/xanf/vuex-shared-mutations#readme
     { src: '~/plugins/vuex-shared-mutations.client.js' }, // https://github.com/xanf/vuex-shared-mutations#readme
-    { src: '~/plugins/persistedState.client.js' } // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    { src: '~/plugins/persistedState.client.js' }, // https://www.vuetoolbox.com/projects/vuex-persistedstate
+    { src: '~/plugins/notification.js' },
+    { src: '~/plugins/detectDevice.js' }
     // { src: '~/plugins/vuex-persistedstate.js', mode: 'client', ssr: false }
     // { src: '~/plugins/vuex-persist', ssr: false }
   ],
@@ -91,7 +93,7 @@ export default {
     name: 'page',
     mode: 'out-in',
     beforeEnter (el) {
-      console.log('Before enter...')
+      // console.log('Before enter...')
     }
   },
   layoutTransition: {
@@ -247,6 +249,6 @@ export default {
     }
   },
   router: {
-    middleware: ['DetectDevice']
+    // middleware: ['DetectDevice']
   }
 }

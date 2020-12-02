@@ -48,7 +48,6 @@ import PostItem from '~/components/PostItem'
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import mixinContent from '~/plugins/mixin/api/Content'
 import { Content, ContentList } from '~/models/Content'
 import '~/assets/css/pages/blog.css'
@@ -63,7 +62,7 @@ export default {
     PostItem,
     Treeview
   },
-  mixins: [mixinDetectDevice, mixinContent],
+  mixins: [mixinContent],
   data () {
     return {
       contents: new ContentList(),

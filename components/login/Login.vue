@@ -72,11 +72,10 @@
 
 <script>
 import mixinAuth from '~/plugins/mixin/api/Auth'
-import mixinNotification from '~/plugins/mixin/notification'
 
 export default {
   name: 'Login',
-  mixins: [mixinAuth, mixinNotification],
+  mixins: [mixinAuth],
   props: {
     isDialog: {
       required: false,
@@ -107,7 +106,7 @@ export default {
         this.api_login(this.username, this.password)
           .then((response) => {
             this.loading = false
-            this.enableNotification('عملیات ورود با موفقیت انجام شد', 2000)
+            this.$notify('عملیات ورود با موفقیت انجام شد', 2000)
             if (this.isDialog) {
               this.$store.commit('updateLoginDialog', false)
             } else {
@@ -115,7 +114,7 @@ export default {
             }
           }).catch((response) => {
             this.loading = false
-            this.enableNotification('شماره همراه یا کلمه عبور اشتباه است', 5000, 'failure')
+            this.$notify('شماره همراه یا کلمه عبور اشتباه است', 5000, 'failure')
             this.password = ''
             this.$refs.loginForm.resetValidation()
           })

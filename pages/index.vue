@@ -114,7 +114,6 @@ import ExpandTransition from '~/components/ExpandTransition'
 import mixinProduct from '~/plugins/mixin/product'
 import ProductSliderCarousel from '~/components/ProductSliderCarousel'
 import TopView from '~/components/PagesComponents/HomePage/TopView/TopView'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   components: {
@@ -123,7 +122,7 @@ export default {
     TopView,
     ProductSliderCarousel
   },
-  mixins: [mixinProduct, mixinDetectDevice, mixinBlock],
+  mixins: [mixinProduct, mixinBlock],
   data () {
     return {
       mainCarouselSlides: [
