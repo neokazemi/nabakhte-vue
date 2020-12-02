@@ -397,13 +397,12 @@ import MainPcMenu from '~/components/PcDrawerComponents/MainPcMenu'
 import AccountMenu from '~/components/MobileMenus/AccountMenu'
 import mixinAuth from '~/plugins/mixin/api/Auth'
 import mixinStore from '~/plugins/mixin/store'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import '~/assets/css/components/Header.css'
 
 export default {
   name: 'Header',
   components: { HeaderCart, Badge },
-  mixins: [mixinDetectDevice, mixinAuth, mixinStore],
+  mixins: [mixinAuth, mixinStore],
   data () {
     return {
       mainCarouselSlides: [

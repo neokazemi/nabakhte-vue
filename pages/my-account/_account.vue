@@ -526,14 +526,12 @@
 <script>
 import Breadcrumbs from '~/components/Breadcrumbs'
 import '~/assets/css/pages/MyAccount.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'MyAccount',
   components: {
     Breadcrumbs
   },
-  mixins: [mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [

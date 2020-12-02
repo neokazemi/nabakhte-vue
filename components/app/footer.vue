@@ -206,10 +206,8 @@
 </template>
 
 <script>
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 export default {
   name: 'Footer',
-  mixins: [mixinDetectDevice],
   props: {
     margin: {
       type: String,

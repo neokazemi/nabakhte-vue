@@ -19,13 +19,11 @@
 <script>
 import Footer from '~/components/app/footer'
 import Header from '~/components/app/Header'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 export default {
   components: {
     Header,
     Footer
   },
-  mixins: [mixinDetectDevice],
   data () {
     return {
       items: [

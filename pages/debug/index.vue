@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'Index',
-  mixins: [mixinDetectDevice],
   data () {
     return {
       dialog: false

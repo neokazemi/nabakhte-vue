@@ -1,8 +1,6 @@
-import mixinNotification from './notification'
 import { Cart } from '~/models/Cart'
 
 const mixinStore = {
-  mixins: [mixinNotification],
   computed: {
     cart: {
       get () {
@@ -20,7 +18,7 @@ const mixinStore = {
     addToCart (product, quantity = 1) {
       this.cart.addItem(product, quantity)
       this.$store.commit('cart/updateCart', this.cart)
-      this.enableNotification('محصول به درستی به سبد خرید اضافه شد')
+      this.$notify('محصول به درستی به سبد خرید اضافه شد')
     },
     removeFromCart (cartItem) {
       this.cart.remove(cartItem, true)

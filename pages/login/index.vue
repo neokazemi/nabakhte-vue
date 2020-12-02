@@ -20,12 +20,10 @@
 <script>
 import Login from '~/components/login/Login'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'LoginPage',
   components: { Login, Breadcrumbs },
-  mixins: [mixinDetectDevice],
   data () {
     return {
       breadcrumbsItems: [

@@ -115,7 +115,6 @@
 import Breadcrumbs from '~/components/Breadcrumbs'
 import mixinStore from '~/plugins/mixin/store'
 import '~/assets/css/pages/Cart.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import CartItem from '~/components/CartItem/CartItem'
 
 export default {
@@ -124,7 +123,7 @@ export default {
     CartItem,
     Breadcrumbs
   },
-  mixins: [mixinStore, mixinDetectDevice],
+  mixins: [mixinStore],
   data () {
     return {
       breadcrumbsItems: [

@@ -61,7 +61,6 @@
 
 <script>
 import '~/assets/css/components/PostItem.css'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 
 export default {
   name: 'PostItem',
@@ -74,7 +73,6 @@ export default {
       } else { return input }
     }
   },
-  mixins: [mixinDetectDevice],
   props: {
     post: {
       type: Object,

@@ -53,7 +53,6 @@
 import Treeview from '~/components/Treeview'
 import Sidebar from '~/components/app/Sidebar'
 import Breadcrumbs from '~/components/Breadcrumbs'
-import mixinDetectDevice from '~/plugins/mixin/detectDevice'
 import mixinContent from '~/plugins/mixin/api/Content'
 import { Content } from '~/models/Content'
 export default {
@@ -63,7 +62,7 @@ export default {
     Sidebar,
     Treeview
   },
-  mixins: [mixinDetectDevice, mixinContent],
+  mixins: [mixinContent],
   data () {
     return {
       content: new Content(),
