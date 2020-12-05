@@ -2,7 +2,7 @@ import { Model, Collection } from 'js-abstract-model'
 import { SetList } from './Set'
 import Price from './Price'
 import Image from './Image'
-import API_ADDRESS from '~/plugins/apiAddresses'
+// import API_ADDRESS from '~/plugins/apiAddresses'
 
 class Product extends Model {
   constructor (data) {
@@ -10,8 +10,8 @@ class Product extends Model {
       {
         key: 'baseRoute',
         // default: 'https://ads.alaatv.com/getAd?UUID=35b39d4b-517b-44bc-85c4-44f93242836f'
-        // default: 'https://alaatv.com/api/v2/product'
-        default: API_ADDRESS.product.base
+        default: 'https://alaatv.com/api/v2/product'
+        // default: API_ADDRESS.product.base
       },
       {
         key: 'id',
