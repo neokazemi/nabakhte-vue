@@ -12,5 +12,10 @@ export default ({ store }) => {
   //   })(store)
   // }
   //
-  createPersistedState({})(store)
+  createPersistedState({
+    paths: [
+      'auth',
+      'cart'
+    ]
+  })(store)
 }

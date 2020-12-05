@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-overlay
-      :absolute="true"
+      :absolute="absolute"
       :value="overlay"
     >
       <v-progress-circular
-        :width="3"
-        color="#263238"
+        :width="width"
+        :color="color"
         indeterminate
       />
     </v-overlay>
@@ -16,7 +16,13 @@
 <script>
 export default {
   name: 'Overlay',
-  props: { overlay: Boolean }
+  props: {
+    overlay: Boolean,
+    color: { type: String, default: '#64ffda' },
+    width: { type: Number, default: 5 },
+    absolute: { type: Boolean, default: true }
+
+  }
 
 }
 </script>
